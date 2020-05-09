@@ -17,20 +17,16 @@ url: "https://daleonai.com"
 favicon: images/favicon.png
 
 # Google Analytics id, e.g. "UA-NNNNNNNN-N"
-google_analytics: ""
+google_analytics: "UA-165957528-1"
 
 # Site navigation - each item must have a title and a url.
 navigation:
-  - text: Home
+  - text: Blog
     url: /
   - text: About
     url: /about/
-  - text: Style Guide
-    url: /style-guide/
   - text: Tags
     url: /tags/
-  - text: Download
-    url: https://github.com/JustGoodThemes/Scriptor-Jekyll-Theme
 
 # The shortname for your Disqus site to enable comments.
 disqus: daleonai-com

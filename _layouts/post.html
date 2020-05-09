@@ -27,21 +27,6 @@ layout: default
       <a target="_blank"
         href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}&amp;t={{ page.title | uri_escape }}" rel="noopener">Facebook</a>
     </div><!-- .share-post -->
-    <div class="author-box">
-      {% if site.data.author.image and site.data.author.image != "" %}
-      <div class="author-avatar" style="background-image: url('{{ site.data.author.image }}')"><span class="screen-reader-text">{{ site.data.author.name }}'s Picture</span></div>
-      {% endif %}
-      <div class="author-details">
-        <h2 class="author-title">About {{ site.data.author.name }}</h2>
-        <div class="author-bio">{{ site.data.author.bio | markdownify }}</div>
-        {% if site.data.author.location and site.data.author.location != "" %}
-        <span class="author-location">{{ site.data.author.location}}</span>
-        {% endif %}
-        {% if site.data.author.url and site.data.author.url != "" %}
-        <span class="author-website"><a href="{{ site.data.author.url }}" target="_blank" rel="noopener">{{ site.data.author.url }}</a></span>
-        {% endif %}
-      </div><!-- .author-details -->
-    </div><!-- .author-box -->
   </article><!-- .post -->
 
   {% if site.disqus and site.disqus != "" %}
