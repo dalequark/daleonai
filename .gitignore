@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.swp
 
 # Ruby Gem
@@ -15,3 +16,10 @@ vendor/bundle
 .sass-cache
 _asset_bundler_cache
 _site
+=======
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+>>>>>>> 5d072a49d4f2b23d6d0e5c140105cc0675a2d635
