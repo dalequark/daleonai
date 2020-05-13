@@ -14,11 +14,11 @@ tags: ["chatbots", "dialogflow", "google cloud"]
 
 _In which we finish our trivia alarm(!) and learn all about Fulfillments in Dialogflow._
 
-Welcome back, and _wow_ —if you’re here because you finished reading [Part 1](https://medium.com/talking-to-machines/alarm-part-1-728a5d923701?source=friends_link&sk=ee12dd8b16d33d317afc0de4c23bf495) and [Part 2](https://medium.com/talking-to-machines/alarm-part-2-8db5a92e5fbb) of this series, I applaud you. You have enviable endurance or are _really really_ hard to wake up in the morning.
+Welcome back, and _wow_ —if you’re here because you finished reading [Part 1](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-1-intro-to-dialogflow) and [Part 2](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-2-streaming-dialogflow-on-a-raspberry-pi) of this series, I applaud you. You have enviable endurance or are _really really_ hard to wake up in the morning.
 
 <!--more-->
 
-But, if you got here some other way, some context: this is Part 3 of a series of articles explaining how to build a talking trivia alarm clock that wakes you up by asking you things like, “What’s 8923 times 2893084?” It’s also a sneaky good way to learn some about some advanced concepts in [Dialogflow](http://www.dialogflow.com) (Google’s framework for building AI-powered chatbots) like Fulfillments, Event Triggers, and complex logic flows. If you’re new to Dialogflow, make sure to check out those [earlier posts](https://medium.com/talking-to-machines/alarm-part-1-728a5d923701?source=friends_link&sk=ee12dd8b16d33d317afc0de4c23bf495) first.
+But, if you got here some other way, some context: this is Part 3 of a series of articles explaining how to build a talking trivia alarm clock that wakes you up by asking you things like, “What’s 8923 times 2893084?” It’s also a sneaky good way to learn some about some advanced concepts in [Dialogflow](http://www.dialogflow.com) (Google’s framework for building AI-powered chatbots) like Fulfillments, Event Triggers, and complex logic flows. If you’re new to Dialogflow, make sure to check out those [earlier posts](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-1-intro-to-dialogflow) first.
 
 And now, on with the alarm clock building!
 
@@ -29,7 +29,7 @@ In parts 1 and 2, we learned how to:
 1.  Build an alarm-setting Voice User Interface in Dialogflow and
 2.  Deploy that “VUI” on a Raspberry Pi (or Macbook or desktop or whatever)
 
-The trickiest bit of those two parts was probably figuring out how to get Dialogflow streaming on a computer (see some [additional reading](https://medium.com/google-cloud/streaming-dialogflow-on-your-desktop-device-raspberry-pi-fe95b70b33a1)). That more challenging section aside, the alarm-setting Dialogflow agent we created in Part 1 (designed to recognize phrases like, “Set an alarm for 8 AM” or “Delete my alarm”) was fairly simple in terms of Dialogflow agents.
+The trickiest bit of those two parts was probably figuring out how to get Dialogflow streaming on a computer (see some [additional reading](https://daleonai.com/streaming-dialogflow-on-your-desktop-device-raspberry-pi)). That more challenging section aside, the alarm-setting Dialogflow agent we created in Part 1 (designed to recognize phrases like, “Set an alarm for 8 AM” or “Delete my alarm”) was fairly simple in terms of Dialogflow agents.
 
 But now we need to build the real fun part of this trivia alarm clock — the trivia part! The plan is to build a _second_ Dialogflow agent (call it something like `TriviaGame`) that works like this:
 
@@ -58,7 +58,7 @@ So let’s go ahead and create our new trivia Dialogflow Agent.
 Creating a Dialogflow Trivia Agent
 ==================================
 
-To get started, create a new Dialogflow Agent called something like `TriviaGame`. When you’re asked if you’d like to create a new GCP project to go along with this Agent, say yes (at this time, a GCP project can support at most one Dialogflow agent). If you need a refresher on how to create a new Dialogflow agent, check out [Part 1](https://medium.com/talking-to-machines/alarm-part-1-728a5d923701?source=friends_link&sk=ee12dd8b16d33d317afc0de4c23bf495).
+To get started, create a new Dialogflow Agent called something like `TriviaGame`. When you’re asked if you’d like to create a new GCP project to go along with this Agent, say yes (at this time, a GCP project can support at most one Dialogflow agent). If you need a refresher on how to create a new Dialogflow agent, check out [Part 1](http://daleonai.com/building-a-talking-trivia-alarm-clock-part-1-intro-to-dialogflow).
 
 If you haven’t already, go ahead and clone the Talking to Machines [Github repo](https://github.com/dalequark/talking_to_machines):
 

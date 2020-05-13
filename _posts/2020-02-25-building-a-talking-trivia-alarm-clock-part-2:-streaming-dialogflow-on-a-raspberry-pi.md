@@ -16,7 +16,7 @@ Howdy and welcome back! In this post, we’ll (continue) building a talking alar
 
 <!--more-->
 
-In the [first post](https://medium.com/talking-to-machines/alarm-part-1-728a5d923701?source=friends_link&sk=ee12dd8b16d33d317afc0de4c23bf495), we built a Voice User Interface that, given a command like “Set my alarm for 8 AM,” set an alarm and spoke a response like, “Sure thing, I set your alarm for 8.”
+In the [first post](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-1-intro-to-dialogflow), we built a Voice User Interface that, given a command like “Set my alarm for 8 AM,” set an alarm and spoke a response like, “Sure thing, I set your alarm for 8.”
 
 To build that interface, our alarm clock had to be able to:
 
@@ -32,7 +32,7 @@ To build that interface, our alarm clock had to be able to:
 
 Luckily for us, most of that complexity was taken care of by [Dialogflow](https://dialogflow.com/), Google’s framework for building smart conversational agents (like chatbots).
 
-In that last post, we [left off](https://medium.com/talking-to-machines/alarm-part-1-728a5d923701?source=friends_link&sk=ee12dd8b16d33d317afc0de4c23bf495) having just finished building a Dialogflow agent that recognized the commands “Set an alarm,” “List my alarms,” and “Delete my alarm.” But we only tested that agent in the browser, in Dialogflow’s built-in test console. And although our agent recognized the command “Set my alarm for 8AM,” we didn’t write code to actually then go and set that alarm. So in this post, let’s do both those things.
+In that last post, we [left off](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-1-intro-to-dialogflow) having just finished building a Dialogflow agent that recognized the commands “Set an alarm,” “List my alarms,” and “Delete my alarm.” But we only tested that agent in the browser, in Dialogflow’s built-in test console. And although our agent recognized the command “Set my alarm for 8AM,” we didn’t write code to actually then go and set that alarm. So in this post, let’s do both those things.
 
 **Streaming Dialogflow Through the AIY Voice Kit (or any other local computer)**
 ================================================================================
@@ -235,14 +235,14 @@ What Did We Do?
 
 In Part 1, we built a Dialogflow agent that handled a lot of the logic of this alarm-setting voice user interface. Here, in Part 2, we got Dialogflow streaming on our Raspberry Pi, streaming audio in through the microphone and out through the speakers. We also used Dialogflow’s intent recognition to allow us to respond to user requests, for example, by actually setting an alarm at a specified time or by deleting that alarm.
 
-If you want to know more about streaming Dialogflow on devices, check out [this very in-depth post](https://medium.com/google-cloud/streaming-dialogflow-on-your-desktop-device-raspberry-pi-fe95b70b33a1) I wrote about the topic. In our project directory, that post talks about the code located in `talking_to_machines/js_utils/DialogflowStream.js`.
+If you want to know more about streaming Dialogflow on devices, check out [this very in-depth post](https://daleonai.com/streaming-dialogflow-on-your-desktop-device-raspberry-pi) I wrote about the topic. In our project directory, that post talks about the code located in `talking_to_machines/js_utils/DialogflowStream.js`.
 
 Meanwhile, to understand the code that fulfills intents, I recommend [reading the code itself](https://github.com/dalequark/talking_to_machines/blob/master/trivia_alarm/raspi/run_alarm.js), which I have extensively commented 😉. The workhorse of this alarm, besides Dialogflow, is [node-cron](https://www.npmjs.com/package/node-cron), a Node implementation of the popular `cron` tool.
 
 What’s Next?
 ------------
 
-Now that we have a basic alarm working, let’s make it cooler and more effective by adding trivia, [here](https://medium.com/talking-to-machines/alarm-clock-3-9680ce4d922e) in this third (and final!) trivia alarm clock post.
+Now that we have a basic alarm working, let’s make it cooler and more effective by adding trivia, [here](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-3-dialogflow-fulfillments) in this third (and final!) trivia alarm clock post.
 
 * * *
 
