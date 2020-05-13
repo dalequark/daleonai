@@ -4,7 +4,7 @@ title: "Improving Machine Translation with the Google Translation API Advanced"
 description: "Enabling Authentication"
 date: 2019-11-05
 feature_image: 
-tags: []
+tags: ["machine translation", "google cloud", "machine learning"]
 ---
     
     

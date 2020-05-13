@@ -4,7 +4,7 @@ title: "Building a Talking Trivia Alarm Clock, Part 1: Intro to Dialogflow"
 description: "**Getting Started**"
 date: 2020-02-25
 feature_image: 
-tags: []
+tags: ["chatbots", "dialogflow", "google cloud"]
 ---
     
     

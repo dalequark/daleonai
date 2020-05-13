@@ -4,7 +4,7 @@ title: "Building a Deep-Learning-Powered (Baby) Name Generator"
 description: "What can Wikipedia biographies and Deep Neural Networks tell us about what’s in a name?"
 date: 2020-02-06
 feature_image: 
-tags: ['generative models']
+tags: ["natural language processing", "google cloud", "automl"]
 ---
     
     

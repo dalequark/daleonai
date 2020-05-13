@@ -4,7 +4,7 @@ title: "Parsing Structured Documents with Custom Entity Extraction"
 description: ""
 date: 2019-05-20
 feature_image: 
-tags: []
+tags: ["natural language processing", "google cloud", "autotml", "machine learning"]
 ---
     
     

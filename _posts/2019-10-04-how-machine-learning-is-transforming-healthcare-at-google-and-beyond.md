@@ -4,7 +4,7 @@ title: "How Machine Learning is Transforming Healthcare at Google and Beyond"
 description: "_Google and others are recruiting algorithms to spot cancer in medical scans, predict the outcome of hospital visits, and more. Here’s how._"
 date: 2019-10-04
 feature_image: 
-tags: []
+tags: ["healthcare", "computer vision", "machine learning"]
 ---
     
     

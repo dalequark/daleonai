@@ -1,16 +1,20 @@
 ---
 layout: page
-title: About this blog
-description: An optional about page for Scriptor Jekyll theme
-feature_image: images/about.jpg
+title: About Dale Markowitz
+description: About Dale Markowitz
+feature_image: images/dale_profile.jpg
 ---
 
-**John Doe** is a Senior Art Director from [Vilnius](https://en.wikipedia.org/wiki/Vilnius), Lithuania. After graduating from The College of Visual Arts with a degree in Communication Design, he worked for three small graphic design shops where he honed his design style and sensibility.
+Applied AI Engineer @ Google Cloud. Writer, coder, maker, napper.
 
-His work has been recognized by Communication Arts, Print, How, ID, IdN, AIGA, Effie, Archive, Graphis, AdFed and Rockport. Graphic Design USA named him a person to watch in 2015.
+Making things is fun. Debugging TensorFlow models isn’t. (Usually.) Relearning Linear Algebra is definitely a party, but who has time for that?
 
->The world always seems brighter when you’ve just made something that wasn’t there before. <cite>Neil Gaiman</cite>
+New technology should inspire—not intimidate. At Google Cloud, I build tools to make Machine Learning simpler for software developers. On the internet, I share the things I build.
 
-As a hobby, John Doe authors the most influential design blog in Lithuania with over 100,000 page views a month. He lives in Vilnius with his beautiful wife, two boys and one girl.
+I got my start in tech as an undergrad at Princeton, where I studied Computer Science. I graduated just as Machine Learning was become a “thing.” 
 
-*Thank You for reading!*
+In New York, I worked as a software engineer and data scientist at the online dating site OkCupid, where we used math to find people love. (Or something like that.)  
+
+After that, I worked as a software engineer at Google Research and Google Cloud.
+
+I’ve spoken at conferences like Google Cloud NEXT and [Google I/O](https://www.youtube.com/watch?v=XrMtF_inTZ0), and have been published in The Atlantic, The Washington Post, Gizmodo, and more. Keep up with me on [Twitter](https://twitter.com/dalequark).

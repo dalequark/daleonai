@@ -4,7 +4,7 @@ title: "Software Developers: You’re Learning Machine Learning Upside Down"
 description: "Most of us learn Machine Learning from the ground up. But the skills developers need to be effective users of ML is something totally different. So what should the forward-looking software engineer learn about AI today?"
 date: 2019-12-17
 feature_image: 
-tags: []
+tags: ["machine learning"]
 ---
     
     

@@ -4,7 +4,7 @@ title: "Streaming Dialogflow on your Desktop/Device/Raspberry Pi"
 description: "Authentication"
 date: 2020-02-06
 feature_image: 
-tags: []
+tags: ["chatbots", "dialogflow", "google cloud"]
 ---
     
     
