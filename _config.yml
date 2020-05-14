@@ -32,7 +32,7 @@ navigation:
 disqus: daleonai-com
 
 # Colors
-accent_color: '#2d72d9'
+accent_color: '#F6C086'
 
 # Site footer
 footer:
@@ -44,7 +44,7 @@ plugins:
   - jekyll-paginate
 
 # http://jekyllrb.com/docs/pagination/
-paginate: 3
+paginate: 5
 paginate_path: '/page:num/'
 
 

@@ -25,19 +25,19 @@
 
 // Font.
 $font: (
-  primary: ("Lato","Helvetica Neue",Helvetica,sans-serif),
-  secondary: ("Noto Serif",Georgia,serif)
+  primary: ("Source Sans Pro","Helvetica Neue",Helvetica,sans-serif),
+  secondary: ("Playfair Display",Georgia,serif)
 );
 
 // Palette.
-{% assign accent = site.accent_color | default: '#2d72d9' %}
+{% assign accent = site.accent_color | default: '#F6C086' %}
 $palette: (
   accent:    {{ accent }},
-  primary:   #6b747a,
-  secondary: #2c343c,
-  meta:      #9ba6ad,
-  border:    #d7d7d7,
-  bg:        #fbfbfb
+  primary:   #CBFFF0,
+  secondary: #DDFDF3,
+  meta:      #ADD2C7,
+  border:    #FFFFFF,
+  bg:        #23745C,
 );
 
 // Imports
@@ -49,6 +49,8 @@ $palette: (
 @import "site-header";
 @import "content";
 @import "comments";
+@import "home";
+@import "preview";
 @import "posts-navigation";
 @import "site-footer";
 @import "animations";

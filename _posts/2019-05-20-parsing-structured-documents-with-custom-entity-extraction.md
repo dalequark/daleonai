@@ -3,12 +3,9 @@ layout: post
 title: "Parsing Structured Documents with Custom Entity Extraction"
 description: ""
 date: 2019-05-20
-feature_image: 
+feature_image: /images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/0.jpeg
 tags: ["natural language processing", "google cloud", "automl", "machine learning"]
 ---
-    
-    
-{% include image_caption.html imageurl="/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/0.jpeg" title="Let’s talk about parsing structured documents with entity extraction!" caption="Let’s talk about parsing structured documents with entity extraction!" %}
 
 _Build your own custom entity extraction model with easy-to-use Machine Learning tools_
 

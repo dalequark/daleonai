@@ -3,12 +3,9 @@ layout: post
 title: "Building a Talking Trivia Alarm Clock, Part 1: Intro to Dialogflow"
 description: "**Getting Started**"
 date: 2020-02-25
-feature_image: 
+feature_image: /images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/0.png
 tags: ["chatbots", "dialogflow", "google cloud"]
 ---
-    
-    
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/0.png" title="" caption="" %}
 
 
 Pretty much every night, I ask my Google Home to set my wake up alarm for the next day. And sometimes, when she starts chirping the next morning, I wake up. But lots of times, I just slap her on the head and snooze into oblivion.

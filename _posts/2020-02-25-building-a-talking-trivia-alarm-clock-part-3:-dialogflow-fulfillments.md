@@ -3,14 +3,9 @@ layout: post
 title: "Building a Talking Trivia Alarm Clock, Part 3: Dialogflow Fulfillments"
 description: "What are Dialogflow Fulfillments?"
 date: 2020-02-25
-feature_image: 
+feature_image: /images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/0.png
 tags: ["chatbots", "dialogflow", "google cloud"]
 ---
-    
-    
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/0.png" title="" caption="" %}
-
-
 
 _In which we finish our trivia alarm(!) and learn all about Fulfillments in Dialogflow._
 

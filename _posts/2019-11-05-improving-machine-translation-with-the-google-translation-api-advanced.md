@@ -3,12 +3,9 @@ layout: post
 title: "Improving Machine Translation with the Google Translation API Advanced"
 description: "Enabling Authentication"
 date: 2019-11-05
-feature_image: 
+feature_image: /images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/0.jpg
 tags: ["machine translation", "google cloud", "machine learning"]
 ---
-    
-    
-{% include image_caption.html imageurl="/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/0.jpg" title="" caption="" %}
 
 _What’s Google’s new Translation API Advanced (v3), and how can you use it to improve machine translations?_
 

@@ -3,14 +3,9 @@ layout: post
 title: "Building a Deep-Learning-Powered (Baby) Name Generator"
 description: "What can Wikipedia biographies and Deep Neural Networks tell us about what’s in a name?"
 date: 2020-02-06
-feature_image: 
+feature_image: /images/2020-02-06-building-a-deep-learning-powered-baby-name-generator/0.png
 tags: ["natural language processing", "google cloud", "automl"]
 ---
-    
-    
-{% include image_caption.html imageurl="/images/2020-02-06-building-a-deep-learning-powered-baby-name-generator/0.png" title="" caption="" %}
-
-
 
 _What can Wikipedia biographies and Deep Neural Networks tell us about what’s in a name?_
 

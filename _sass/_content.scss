@@ -3,6 +3,8 @@
    ========================================================================== */
 
 .post {
+  max-width: 880px;
+  margin: 0 auto;
   border-bottom: 1px solid _palette(border);
   padding: 3.33333em 0 1.66667em;
 }

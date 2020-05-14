@@ -1,0 +1,40 @@
+.preview {
+  display: flex;
+  margin: -1em;
+  margin-bottom: 3em;
+
+  > * {
+    margin: 1em;
+  }
+
+  // &:nth-child(odd) {
+  //   flex-direction: row-reverse;
+  // }
+}
+
+.preview-thumbnail {
+  display: block;
+  width: 360px;
+  height: 310px;
+  background-size: cover;
+}
+
+.preview-title {
+  font-size: 2.2em;
+  font-weight: bold;
+  //letter-spacing: 0.025em;
+
+  a {
+    color: _palette(secondary);
+    text-decoration: none;
+
+    &:hover {
+      color: _palette(primary);
+    }
+  }
+}
+
+.preview-meta {
+  display: flex;
+  justify-content: space-between;
+}

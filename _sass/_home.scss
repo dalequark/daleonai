@@ -1,0 +1,30 @@
+.home-header {
+  border-bottom: 1px solid _palette(border);
+  padding: 0 0 1em;
+  margin: 0 0 2em;
+  text-align: center;
+}
+
+.home-title {
+  font-size: 4em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.home-tags {
+  display: flex;
+  margin: -0.4em;
+  justify-content: center;
+
+  a {
+    margin: 0.4em;
+    color: _palette(meta);
+    text-decoration: none;
+
+    &.active,
+    &:hover,
+    &:focus {
+      color: _palette(secondary);
+    }
+  }
+}

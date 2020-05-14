@@ -11,7 +11,7 @@ textarea {
 }
 
 html {
-  border: 15px solid _palette(accent);
+  background: #23745C;
   box-sizing: border-box;
 
   @media only screen and (max-width: 600px) {
@@ -30,10 +30,9 @@ body {
 }
 
 a {
-  color: _palette(accent);
-  text-decoration: none;
-  -webkit-transition: color .3s ease;
-  transition: color .3s ease;
+  color: _palette(primary);
+  transition: color 80ms ease;
+
   &:hover {
     color: _palette(secondary);
     text-decoration: underline;
@@ -248,24 +247,6 @@ video {
   font-size: 0.77778rem;
   padding-top: 0.5em;
   text-align: left;
-}
-
-@media only screen and (min-width: 851px) {
-  .width-full img,
-  .width-wide img {
-    margin-left: calc(425px - 50vw);
-    margin-right: calc(425px - 50vw);
-    max-width: none;
-    width: calc(100vw - 90px);
-  }
-}
-
-@media only screen and (min-width: 971px) {
-  .width-wide img {
-    margin-left: -60px;
-    margin-right: -60px;
-    width: 880px;
-  }
 }
 
 /* Clearing floats */

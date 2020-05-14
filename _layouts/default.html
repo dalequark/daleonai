@@ -12,14 +12,14 @@
   <link rel="shortcut icon" href="{{ site.favicon | relative_url }}" type="image/png" />
   {% endif %}
   <!-- Styles -->
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i%7CNoto+Serif:400,400i,700,700i&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
   <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
 </head>
 <body>
 
   <div id="page" class="site">
+    {% include header.html %}
     <div class="inner">
-      {% include header.html %}
       {{content}}
       {% include footer.html %}
     </div><!-- .inner -->

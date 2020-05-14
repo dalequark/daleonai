@@ -3,12 +3,9 @@ layout: post
 title: "Streaming Dialogflow on your Desktop/Device/Raspberry Pi"
 description: "Authentication"
 date: 2020-02-06
-feature_image: 
+feature_image: /images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/0.png
 tags: ["chatbots", "dialogflow", "google cloud"]
 ---
-    
-    
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/0.png" title="" caption="" %}
 
 _Turn your local computer into a listening, talking Voice User Interface powered by Dialogflow._
 

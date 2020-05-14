@@ -3,13 +3,9 @@ layout: post
 title: "Building a Talking Trivia Alarm Clock, Part 2: Streaming Dialogflow on a Raspberry Pi"
 description: "The AIY Voice Kit"
 date: 2020-02-25
-feature_image: 
+feature_image: /images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/0.png
 tags: ["chatbots", "dialogflow", "google cloud"]
 ---
-    
-    
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/0.png" title="" caption="" %}
-
 
 
 Howdy and welcome back! In this post, we’ll (continue) building a talking alarm clock that wakes people up by nagging them to answer 3 trivia questions, first thing in the morning. It turns out that this seemingly, er, _niche_ project forces us to learn a lot about what it takes to build a general voice assistant like, Google Home or Alexa.

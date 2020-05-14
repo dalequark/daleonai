@@ -3,12 +3,9 @@ layout: post
 title: "Software Developers: You’re Learning Machine Learning Upside Down"
 description: "Most of us learn Machine Learning from the ground up. But the skills developers need to be effective users of ML is something totally different. So what should the forward-looking software engineer learn about AI today?"
 date: 2019-12-17
-feature_image: 
+feature_image: /images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/0.jpg
 tags: ["machine learning"]
 ---
-    
-    
-{% include image_caption.html imageurl="/images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/0.jpg" title="Don’t be this guy." caption="Don’t be this guy." %}
 
 _Most of us learn Machine Learning from the ground up. But the skills developers need to be effective users of ML is something totally different. So what should the forward-looking software engineer learn about AI today?_
 
