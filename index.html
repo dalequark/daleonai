@@ -18,7 +18,9 @@ layout: default
   <article class="preview">
     {% if post.feature_image and post.feature_image != "" %}
       <a href="{{site.baseurl}}{{post.url}}">
-        <div class="preview-thumbnail" style="background-image: url({{ post.feature_image | relative_url }})"></div>
+      <div
+        class="preview-thumbnail"
+      style="background-image: url({{ post.feature_image | relative_url }}); {% if post.feature_image_pos %}background-position: {{ post.feature_image_pos }};{% endif %}"></div>
       </a>
     {% endif %}
     <div class="preview-text">

@@ -2,10 +2,11 @@
 layout: page
 title: About Dale Markowitz
 description: About Dale Markowitz
-feature_image: images/dale_profile.jpg
 ---
 
-Applied AI Engineer @ Google Cloud. Writer, coder, maker, napper.
+<img src="/images/dale_profile.jpg" style="display: inline-block; float: left; margin: 0 2em 0.5em 0;" width="300" />
+
+<h3 style="margin-top: -1.15em;">Applied AI Engineer @ Google Cloud. Writer, coder, maker, napper.</h3>
 
 Making things is fun. Debugging TensorFlow models isn’t. (Usually.) Relearning Linear Algebra is definitely a party, but who has time for that?
 

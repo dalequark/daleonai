@@ -6,17 +6,16 @@
   > * {
     margin: 1em;
   }
-
-  // &:nth-child(odd) {
-  //   flex-direction: row-reverse;
-  // }
 }
 
 .preview-thumbnail {
+  position: relative;
   display: block;
-  width: 360px;
+  width: 400px;
   height: 310px;
   background-size: cover;
+  background-position: center;
+  border: 4px solid _palette(primary);
 }
 
 .preview-title {

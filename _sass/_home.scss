@@ -13,11 +13,12 @@
 
 .home-tags {
   display: flex;
-  margin: -0.4em;
+  margin: -0.65em;
   justify-content: center;
 
   a {
-    margin: 0.4em;
+    font-size: 1.25em;
+    margin: 0.65em;
     color: _palette(meta);
     text-decoration: none;
 

@@ -4,6 +4,7 @@ title: "Building a Talking Trivia Alarm Clock, Part 2: Streaming Dialogflow on a
 description: "The AIY Voice Kit"
 date: 2020-02-25
 feature_image: /images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/0.png
+feature_image_pos: "right center"
 tags: ["chatbots", "dialogflow", "google cloud"]
 ---
 

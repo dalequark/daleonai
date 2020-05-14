@@ -1,0 +1,22 @@
+.subscribe-form {
+  display: flex;
+}
+
+.subscribe-input,
+.subscribe-submit {
+  display: block;
+  height: 40px;
+  padding: 0 0.5em;
+  background: none;
+  border: 1px solid _palette(border);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.subscribe-input {
+  margin-right: 0.5em;
+  
+  &::placeholder {
+    color: rgba(_palette(primary), 0.5);
+  }
+}
