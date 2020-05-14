@@ -21,12 +21,10 @@ google_analytics: "UA-165957528-1"
 
 # Site navigation - each item must have a title and a url.
 navigation:
-  - text: Blog
+  - text: Home
     url: /
   - text: About
     url: /about
-  - text: Tags
-    url: /tags
 
 # The shortname for your Disqus site to enable comments.
 disqus: daleonai-com
@@ -44,7 +42,7 @@ plugins:
   - jekyll-paginate
 
 # http://jekyllrb.com/docs/pagination/
-paginate: 5
+paginate: 100
 paginate_path: '/page:num/'
 
 

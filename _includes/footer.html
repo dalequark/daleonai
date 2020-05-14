@@ -3,6 +3,7 @@
     <div class="subscribe">
       <div class="subscribe-title">Never miss an update</div>
       <form class="subscribe-form" action="https://getsimpleform.com/messages?form_api_token=9614d366a96deaef6923068dab84d7a4" method="post">
+        <input type="hidden" name="redirect_to" value="{{ site.url }}/subscribed" />
         <!-- all your input fields here.... -->
         <input class="subscribe-input" type="text" name="Email" placeholder="you@email.com"/>
         <input class="subscribe-submit" type="submit" value="Submit" />
