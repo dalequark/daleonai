@@ -11,7 +11,7 @@ textarea {
 }
 
 html {
-  background: #23745C;
+  background: _palette(theme);
   box-sizing: border-box;
 
   @media only screen and (max-width: 600px) {
