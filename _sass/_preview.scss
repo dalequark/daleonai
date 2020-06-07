@@ -6,12 +6,13 @@
   position: relative;
   display: block;
   width: 100%;
+  margin-bottom: 0.5em;
 }
 
 .preview-title {
   font-size: 2.2em;
+  line-height: 1.3;
   font-weight: bold;
-  //letter-spacing: 0.025em;
 
   a {
     color: _palette(secondary);
@@ -25,5 +26,10 @@
 
 .preview-meta {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+
+.preview-date {
+  margin-bottom: 0.5em;
 }

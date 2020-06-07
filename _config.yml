@@ -21,7 +21,7 @@ google_analytics: "UA-165957528-1"
 
 # Site navigation - each item must have a title and a url.
 navigation:
-  - text: Home
+  - text: Articles
     url: /
   - text: About
     url: /about

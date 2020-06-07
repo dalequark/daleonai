@@ -31,15 +31,16 @@ $font: (
 
 // Palette.
 $theme: #23745C;
+$primary: #212121;
 {% assign accent = site.accent_color | default: '#F6C086' %}
 $palette: (
   theme:     $theme,
   accent:    {{ accent }},
-  primary:   lighten($theme, 60%),
-  secondary: lighten($theme, 50%),
-  meta:      lighten($theme, 30%),
-  border:    lighten($theme, 5%),
-  bg:        darken($theme, 5%),
+  primary:   $primary,
+  secondary: $primary,
+  meta:      lighten($primary, 50%),
+  border:    lighten($primary, 75%),
+  bg:        #FFF,
 );
 
 // Imports

@@ -8,8 +8,6 @@ feature_image_pos: "right center"
 tags: ["chatbots", "dialogflow", "google cloud"]
 ---
 
-_In which we finish our trivia alarm(!) and learn all about Fulfillments in Dialogflow._
-
 Welcome back, and _wow_ —if you’re here because you finished reading [Part 1](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-1-intro-to-dialogflow) and [Part 2](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-2-streaming-dialogflow-on-a-raspberry-pi) of this series, I applaud you. You have enviable endurance or are _really really_ hard to wake up in the morning.
 
 <!--more-->

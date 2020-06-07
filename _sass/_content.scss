@@ -3,47 +3,33 @@
    ========================================================================== */
 
 .post {
-  max-width: 880px;
+  max-width: 740px;
   margin: 0 auto;
   border-bottom: 1px solid _palette(border);
-  padding: 2em;
 }
 
 .post-header {
-  margin-bottom: 1.66667em;
-}
-
-.post-date {
-  color: _palette(meta);
-  display: inline-block;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 1.25em;
+  margin-bottom: 2rem;
+  text-align: center;
+  margin-left: -30px;
+  margin-right: -30px;
 }
 
 .post-meta {
   font-family: _font(secondary);
-  font-size: 0.88889rem;
-  font-style: italic;
-  margin-bottom: 1.11111rem;
-}
-
-.post-tags {
-  a {
-    &:before {
-      content: "\0023";
-    }
-  }
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .post-title {
-  font-size: 2rem;
+  font-size: 2.6rem;
+  line-height: 1.3;
   margin: 0 0 1rem;
 
   @media only screen and (max-width: 600px) {
     font-size: 1.875rem;
-    letter-spacing: normal;
     line-height: 1.2;
+    padding: 0 1rem;
   }
 
   a {
@@ -116,40 +102,13 @@
 
 /* Share post */
 .post-share {
-  padding: 1.66667em 0 3.33333em;
-  span {
-    color: _palette(meta);
-    display: inline-block;
-    font-size: 0.88889em;
-    margin-right: 15px;
-  }
-  a {
-    border: 1px solid _palette(border);
-    border-radius: 3px;
-    color: _palette(primary);
-    display: inline-block;
-    font-size: 14px;
-    margin-bottom: 0.5em;
-    margin-right: 5px;
-    padding: 3px 10px;
-    text-decoration: none;
-    -webkit-transition: .3s ease;
-    transition: .3s ease;
-    &:hover {
-      border-color: _palette(accent);
-      color: _palette(accent);
-    }
-  }
+  padding: 1.5em 0 3em;
 }
 
 /* Archive page */
 .archive-tags {
-  font-style: italic;
   a {
     margin-right: 5px;
-    &:before {
-      content: "\0023";
-    }
   }
 }
 
@@ -172,5 +131,23 @@
   .archive-date {
     font-size: 14px;
     font-weight: bold;
+  }
+}
+
+.tag-block {
+  display: inline-block;
+  font-size: 1em;
+  margin: 0 0.5em 0.5em 0;
+  color: _palette(secondary);
+  padding: 0.15em 0.5em;
+  border: 1px solid _palette(secondary);
+  text-decoration: none;
+  opacity: 0.6;
+
+  &.active,
+  &:hover,
+  &:focus {
+    opacity: 1;
+    text-decoration: none;
   }
 }

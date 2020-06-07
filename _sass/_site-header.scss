@@ -4,19 +4,36 @@
 
 .site-header {
   align-items: center;
+  justify-content: space-between;
   display: flex;
-  padding: 2em;
+  padding: 1.5em 2em;
+  margin-bottom: 4em;
+  border-bottom: 1px solid rgba(_palette(primary), 0.25);
 }
 
 /* Shared */
 .menu-item a,
 .site-social a {
-  color: _palette(meta);
+  color: _palette(primary);
   text-decoration: none;
 
   &:hover,
   &:focus {
-    color: _palette(accent);
+    text-decoration: underline;
+  }
+}
+
+/* Title */
+.site-title {
+  margin: 0;
+  margin-right: auto;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -24,17 +41,19 @@
 .site-social {
   display: flex;
   margin: -10px;
+  margin-left: auto;
 
   a {
     margin: 10px;
-    font-size: 28px;
+    font-size: 1.25em;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
 /* Navigation */
-.site-navigation {
-  margin-left: auto;
-}
 
 .menu {
   list-style: none;
@@ -44,7 +63,13 @@
 
 .menu-item {
   display: inline-block;
-  margin: 0 0 0 15px;
+  margin: 0 0 0 2em;
+  font-family: _font(secondary);
+
+  &:first-child {
+    margin: 0;
+  }
+
   a {
     display: inline-block;
     font-size: 24px;

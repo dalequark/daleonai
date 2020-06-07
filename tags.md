@@ -1,5 +1,5 @@
 ---
 layout: tags
-title: Tags
-description: Dale on AI Tags page
+title: Article Tags
+description: All articles, listed by tag
 ---
