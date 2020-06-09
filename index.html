@@ -28,11 +28,11 @@ layout: default
           <div class="preview-meta">
             <time class="preview-date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{post.date | date: "%B %-d, %Y" }}</time>
     
-            <span class="preview-tags">
+            <div class="preview-tags">
               {% for tag in post.tags %}
                 <a class="tag-block" href="{{ site.baseurl }}/tags#{{ tag | cgi_escape }}" rel="tag">{{ tag }}</a>
               {% endfor %}
-            </span>
+            </div>
           </div>
         </div><!-- .post-header -->
       </article><!-- .post -->

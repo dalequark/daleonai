@@ -31,11 +31,11 @@ $font: (
 
 // Palette.
 $theme: #23745C;
+$accent: $theme;
 $primary: #212121;
-{% assign accent = site.accent_color | default: '#F6C086' %}
 $palette: (
   theme:     $theme,
-  accent:    {{ accent }},
+  accent:    $accent,
   primary:   $primary,
   secondary: $primary,
   meta:      lighten($primary, 50%),

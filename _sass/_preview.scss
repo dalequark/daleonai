@@ -32,4 +32,12 @@
 
 .preview-date {
   margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  white-space: nowrap;
+}
+
+.preview-tags {
+  height: 40px;
+  overflow: hidden;
+  text-align: right;
 }

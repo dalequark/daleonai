@@ -113,7 +113,7 @@
     display: block;
     position: absolute;
     right: 45px;
-    top: 3.33333rem;
+    top: 1.5em;
   }
 
   .site-navigation {
@@ -139,8 +139,12 @@
     position: relative;
   }
 
-  .menu {
+  .menu,
+  .site-social {
     opacity: 0;
+  }
+
+  .menu {
     padding: 7rem 45px 2.5rem;
   }
 
@@ -154,6 +158,25 @@
     a {
       display: block;
       padding: 0.5rem 0;
+    }
+  }
+
+  .site-social {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: -5vw;
+
+    a {
+      margin: 5vw;
+      font-size: 5vw;
+      opacity: 0.5;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
     }
   }
 
@@ -175,7 +198,12 @@
       z-index: 999;
     }
 
-    .menu {
+    .site-social {
+      z-index: 1000;
+    }
+
+    .menu,
+    .site-social {
       opacity: 1;
     }
   }
@@ -184,7 +212,6 @@
 @media only screen and (max-width: 600px) {
   #menu-close {
     right: 35px;
-    top: 2.8125rem;
   }
 
   .menu {

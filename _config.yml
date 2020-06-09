@@ -29,9 +29,6 @@ navigation:
 # The shortname for your Disqus site to enable comments.
 disqus: daleonai-com
 
-# Colors
-accent_color: '#F6C086'
-
 # Site footer
 footer:
   content: "&copy; Dat Dale tho."

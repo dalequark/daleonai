@@ -12,11 +12,6 @@ models:
     type: config
     label: Config
     fields:
-      - type: color
-        name: accent_color
-        label: Accent Color
-        description: The accent color of the theme.
-        required: true
       - type: string
         name: lang
         label: Site Language
