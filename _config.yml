@@ -14,7 +14,7 @@ baseurl: ""
 url: "https://daleonai.com"
 
 # Favicon
-favicon: images/favicon.png
+favicon: images/favicon.ico
 
 # Google Analytics id, e.g. "UA-NNNNNNNN-N"
 google_analytics: "UA-165957528-1"
