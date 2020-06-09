@@ -9,29 +9,33 @@
 .home-sidebar {
   margin-left: 1em;
 
+  &-card {
+    padding: 1.25em 1.5em 1.5em;
+    margin-bottom: 1em;
+    background: #F5F5F5;
+    border-radius: 3px;
+  }
+
   @media screen and (max-width: 880px) {
     margin: 0;
   }
 }
 
-.home-tags {
-  padding: 0 0.5em;
-  justify-content: center;
-
-  a {
-    display: inline-block;
-    font-size: 1em;
-    margin: 0 0.5em 0.5em 0;
-    color: _palette(secondary);
-    padding: 0.25em 0.5em;
-    border: 1px solid _palette(secondary);
-    text-decoration: none;
-    opacity: 0.6;
-
-    &.active,
-    &:hover,
-    &:focus {
-      opacity: 1;
-    }
+.home-bio {
+  &-image {
+    display: block;
+    margin-right: 0.5em;
+    width: 132px;
+    margin-bottom: 1em;
+    height: auto;
+    border-radius: 100%;
   }
+
+  &-text {
+    margin: 0;
+  }
+}
+
+.home-tags {
+  justify-content: center;
 }

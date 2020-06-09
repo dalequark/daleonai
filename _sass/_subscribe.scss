@@ -7,13 +7,14 @@
   display: block;
   height: 40px;
   padding: 0 0.5em;
-  background: none;
+  background: rgba(#FFF, 0.5);
   border: 1px solid _palette(border);
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 .subscribe-input {
+  flex: 1;
   margin-right: 0.5em;
   
   &::placeholder {
