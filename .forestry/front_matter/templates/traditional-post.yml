@@ -1,0 +1,22 @@
+---
+label: Traditional Post
+hide_body: false
+fields:
+- type: text
+  name: layout
+  label: layout
+- type: text
+  name: title
+  label: title
+- type: text
+  name: description
+  label: description
+- type: datetime
+  name: date
+  label: date
+- type: file
+  name: feature_image
+  label: feature_image
+- type: list
+  name: tags
+  label: tags
