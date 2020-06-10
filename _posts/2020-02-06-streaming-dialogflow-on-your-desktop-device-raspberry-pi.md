@@ -1,12 +1,15 @@
 ---
 layout: post
-title: "Streaming Dialogflow on your Desktop/Device/Raspberry Pi"
-description: "Authentication"
+title: Streaming Dialogflow on your Desktop/Device/Raspberry Pi
+description: Stream Dialogflow in Javascript through your desktop or Raspberry Pi.
 date: 2020-02-06
-feature_image: /images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/0.png
-tags: ["chatbots", "dialogflow", "google cloud"]
----
+feature_image: "/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/0.png"
+tags:
+- chatbots
+- dialogflow
+- google cloud
 
+---
 _Turn your local computer into a listening, talking Voice User Interface powered by Dialogflow._
 
 If you’ve worked with [Dialogflow](https://dialogflow.com/) (DF) before, you know it’s a quick way to build smart conversational interfaces. A Dialogflow [Agent](https://cloud.google.com/dialogflow/docs/agents-overview) can be the brains behind a Facebook Messenger or Slack chatbot, a Google Assistant or Alexa app, or even an automated customer service agent.
