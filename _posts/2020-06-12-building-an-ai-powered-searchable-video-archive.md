@@ -59,5 +59,10 @@ I use this kind of architecture or pipeline all the time when I build apps that 
 4. The Video Intelligence API writes its results as JSON to a second storage bucket
 5. _That_ written data, in turn, kicks off a _second_ cloud function that parses the JSON and writes it to a more convenient data store--in this case [Firestore](https://firebase.google.com/docs/firestore) and [Algolia](algolia.com).
 
-    gsutil cp path/to/your/video gs://your_bucket_name
-    
+From here, my frontend Flutter app could talk to the backend and search for user queries. If these technologies are unfamiliar to you, fear not--I'll go into depth in a bit.
+
+There are also a couple of steps I couldn't fit in that diagram. For example, I did a bit of preprocessing with the Video Intelligence API on some very long video files that split them into smaller clips, and that also identified any timestamps shown on screen. Also, I wrote a Cloud Function specifically for taking an uploaded video and generating a thumbnail for it (check out the code for that here TODO: ADD LINK).
+
+### Using the Video Intelligence API
+
+1. gsutil cp path/to/your/video gs://your_bucket_name
