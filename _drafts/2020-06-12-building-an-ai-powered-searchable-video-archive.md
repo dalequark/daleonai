@@ -23,10 +23,20 @@ There are lots of reasons you'd want to build your own searchable video app. For
 
 My searchable video archive ended up looking like this:
 
-![Custom-made searchable video archive user interface](/images/screen-shot-2020-06-09-at-5-19-48-pm.png "Video Archive User Interface")
+![Custom-build searchable video archive built in Flutter](/images/ui_preview.png "Custom-build searchable video archive built in Flutter")
 
-I used it to store and index all of my family home videos (\~126 GB). I used machine learning, specifically the [Video Intelligence API](https://cloud.google.com/video-intelligence "Google Cloud Video Intelligence API"), to do all sorts of analysis, including automatically splitting long videos, identifying objects and scenes, transcribing audio, and extracting on-screen text.
+I used it to store and index all of my family home videos (\~126 GB). Using machine learning, specifically the [Video Intelligence API](https://cloud.google.com/video-intelligence "Google Cloud Video Intelligence API"), I was able to do all sorts of analysis, including automatically splitting long videos, identifying objects and scenes, transcribing audio, and extracting on-screen text.
 
-My app ended up being extremely good at finding 
+The app ended up being extremely good at searching for cute moments. Using computer vision, it recognized scenes and objects like "wedding," "firework", "performance," "baby laughing", "home improvement," "roller coaster," and even Disney World:
+
+![](/images/screen-shot-2020-06-12-at-4-18-52-pm.png)
+
+It could also search transcripts. This is how I found the clip of my very first steps, because in these clips, my parents say something like, "Look, Dale is taking her first steps!":
+
+![](/images/screen-shot-2020-06-04-at-6-04-46-pm.png)
+
+Finally, the tool was able to search any on-screen text. For example, it read the string "Happy 1st Birthday Dale" right off my birthday cake:
+
+![](/images/screen-shot-2020-06-09-at-5-08-25-pm.png)
 
 See all the code at [github.com/google/making_with_ml](github.com/google/making_with_ml.com).
