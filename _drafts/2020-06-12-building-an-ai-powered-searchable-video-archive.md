@@ -41,6 +41,4 @@ Finally, the tool was able to search any on-screen text, like the words "Mets" a
 
 The video archive ended up being a pretty good Father's Day gift, especially since I wasn't actually able to see my dad in person this year. 
 
-In this post, I'll show you how you can build your own archive, just like this. But if you want to skip straight to the code, check out the Making with ML Github Repo.
-
-See all the code at the Making with ML [Github repo](https://github.com/dalequark/making_with_ml/tree/master/discord_moderator).
+In this post, I'll show you how you can build your own archive, just like this. But if you want to skip straight to the code, check out the Making with ML [Github repo](https://github.com/dalequark/making_with_ml/tree/master/discord_moderator).
