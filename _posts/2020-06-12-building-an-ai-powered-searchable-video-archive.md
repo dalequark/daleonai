@@ -65,4 +65,4 @@ There are also a couple of steps I couldn't fit in that diagram. For example, I 
 
 ### Using the Video Intelligence API
 
-1. gsutil cp path/to/your/video gs://your_bucket_name
+This blog post is still a WIP. Sorry! Hang tight, more content will land in the next few days.
