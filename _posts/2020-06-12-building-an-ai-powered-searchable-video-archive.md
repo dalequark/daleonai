@@ -13,6 +13,8 @@ tags:
 ---
 _In this post, I'll show you how to build an AI-powered, searchable video archive using machine learning and Google Cloud--no experience required._
 
+<!--more-->
+
 One of my favorite apps ever is definitely Google Photos. In addition to backing up my precious pics to the cloud, it also makes all of my photos and videos searchable using machine learning. So if I type "pool" in the Photos app, it returns all everything it recognizes as a pool:
 
 ![The Google Photo App showing results for the query "pool".](/images/screen-shot-2020-06-03-at-11-53-29-am.png "Google Photos Pool Search")
