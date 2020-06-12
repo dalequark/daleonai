@@ -50,3 +50,9 @@ The app is divided into two bits, the frontend and the backend. The backend was 
 The backend architecture looked something like this:
 
 ![Architecture diagram for video archive backend.](/images/serverless_architecture.png "Architecture diagram for video archive backend.")
+
+I use this kind of architecture or pipeline all the time when I build apps that tag or index data with machine learning. It works like this:
+
+1. First, data (in this case, an individual video) is uploaded to a Google Cloud Storage bucket. You can do this from the command line with command:
+
+\`gsutil cp path/to/your/video gs://your_bucket_name`
