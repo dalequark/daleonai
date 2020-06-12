@@ -1,13 +1,17 @@
 ---
 layout: post
-title: "Building a Talking Trivia Alarm Clock, Part 3: Dialogflow Fulfillments"
-description: "What are Dialogflow Fulfillments?"
+title: 'Building a Talking Trivia Alarm Clock, Part 3: Dialogflow Fulfillments'
+description: Learn how to use Fulfillments with Dialogflow to augment your chatbot
+  with custom code.
 date: 2020-02-25
-feature_image: /images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/0.png
-feature_image_pos: "right center"
-tags: ["chatbots", "dialogflow", "google cloud"]
----
+feature_image: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/0.png"
+feature_image_pos: right center
+tags:
+- chatbots
+- dialogflow
+- google cloud
 
+---
 Welcome back, and _wow_ —if you’re here because you finished reading [Part 1](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-1-intro-to-dialogflow) and [Part 2](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-2-streaming-dialogflow-on-a-raspberry-pi) of this series, I applaud you. You have enviable endurance or are _really really_ hard to wake up in the morning.
 
 <!--more-->
