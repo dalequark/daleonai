@@ -53,6 +53,11 @@ The backend architecture looked something like this:
 
 I use this kind of architecture or pipeline all the time when I build apps that tag or index data with machine learning. It works like this:
 
-1. First, data (in this case, an individual video) is uploaded to a Google Cloud Storage bucket. You can do this from the command line with command:
+1. First, data (in this case, an individual video) is uploaded to a [Google Cloud Storage](https://cloud.google.com/storage) bucket.
+2. Uploading kicks off a [Cloud Function](https://cloud.google.com/functions) (this is like an AWS lambda, i.e. a small chunk of code that runs in the cloud)
+3. The cloud functions calls the [Video Intelligence API](https://cloud.google.com/video-intelligence) to kick off video analysis
+4. The Video Intelligence API writes its results as JSON to a second storage bucket
+5. _That_ written data, in turn, kicks off a _second_ cloud function that parses the JSON and writes it to a more convenient data store--in this case [Firestore](https://firebase.google.com/docs/firestore) and [Algolia](algolia.com).
 
     gsutil cp path/to/your/video gs://your_bucket_name
+    
