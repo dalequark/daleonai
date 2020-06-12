@@ -55,4 +55,4 @@ I use this kind of architecture or pipeline all the time when I build apps that 
 
 1. First, data (in this case, an individual video) is uploaded to a Google Cloud Storage bucket. You can do this from the command line with command:
 
-\`gsutil cp path/to/your/video gs://your_bucket_name`
+    gsutil cp path/to/your/video gs://your_bucket_name
