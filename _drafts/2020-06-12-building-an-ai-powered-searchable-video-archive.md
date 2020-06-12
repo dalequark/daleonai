@@ -3,8 +3,8 @@ layout: post
 title: Building an AI-Powered Searchable Video Archive
 description: Learn how to use machine learning / AI to build a queryable video archive
   on Google Cloud.
-date: 2020-06-12T20:00:00.000+00:00
-feature_image: "/images/ai_video_archive_header.png"
+date: 2020-06-12 20:00:00 +0000
+feature_image: "/images/ai_video_archiv_header.png"
 tags:
 - google cloud
 - computer vision
