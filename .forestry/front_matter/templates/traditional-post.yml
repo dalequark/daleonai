@@ -21,5 +21,3 @@ fields:
 - type: list
   name: tags
   label: tags
-pages:
-- _posts/2001-03-01-building-an-ai-powered-searchable-video-archive.md
