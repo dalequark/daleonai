@@ -39,6 +39,14 @@ Finally, the tool was able to search any on-screen text, like the words "Mets" a
 
 ![A picture of a Mets baseball game](/images/screen-shot-2020-06-12-at-4-53-42-pm.png "Mets baseball game")
 
-The video archive ended up being a pretty good Father's Day gift, especially since I wasn't actually able to see my dad in person this year. 
+The video archive ended up being a pretty good Father's Day gift, especially since I wasn't actually able to see my dad in person this year.
 
 In this post, I'll show you how you can build your own archive, just like this. But if you want to skip straight to the code, check out the Making with ML [Github repo](https://github.com/dalequark/making_with_ml/tree/master/discord_moderator).
+
+## Machine Learning Architecture for Video Processing
+
+The app is divided into two bits, the frontend and the backend. The backend was built using a combination of [Google Cloud](cloud.google.com "cloud.google.com"), [Firebase](firebase.google.com "firebase.google.com"), and a tool called [Algolia](algolia.com "algolia.com") (for search). The frontend was built with [Flutter](flutter.dev "flutter.dev"), a framework for building web and mobile apps, but could have easily been a React or Angular or iOS or Android app.
+
+The backend architecture looked something like this:
+
+![Architecture diagram for video archive backend.](/images/serverless_architecture.png "Architecture diagram for video archive backend.")
