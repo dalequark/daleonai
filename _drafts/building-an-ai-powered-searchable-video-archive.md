@@ -11,3 +11,6 @@ tags:
 - machine learning
 
 ---
+In this post, I'll show you how to build an AI-powered, searchable video archive using machine learning and Google Cloud--no experience required.
+
+See all the code at [github.com/google/making_with_ml.com](github.com/google/making_with_ml.com).
