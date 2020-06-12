@@ -27,16 +27,20 @@ My searchable video archive ended up looking like this:
 
 I used it to store and index all of my family home videos (\~126 GB). Using machine learning, specifically the [Video Intelligence API](https://cloud.google.com/video-intelligence "Google Cloud Video Intelligence API"), I was able to do all sorts of analysis, including automatically splitting long videos, identifying objects and scenes, transcribing audio, and extracting on-screen text.
 
-The app ended up being extremely good at searching for cute moments. Using computer vision, it recognized scenes and objects like "wedding," "firework", "performance," "baby laughing", "home improvement," "roller coaster," and even Disney World:
+The app ended up being extremely good at searching for cute moments. Using computer vision, it recognized scenes and objects like "wedding," "firework", "performance," "baby laughing", "home improvement," "roller coaster," and even "Disney World":
 
 ![](/images/screen-shot-2020-06-12-at-4-18-52-pm.png)
 
 It could also search transcripts. This is how I found the clip of my very first steps, because in these clips, my parents say something like, "Look, Dale is taking her first steps!":
 
-![](/images/screen-shot-2020-06-04-at-6-04-46-pm.png)
+![A picture of a baby learning to walk](/images/screen-shot-2020-06-04-at-6-04-46-pm.png "Dale's First Steps")
 
-Finally, the tool was able to search any on-screen text. For example, it read the string "Happy 1st Birthday Dale" right off my birthday cake:
+Finally, the tool was able to search any on-screen text, like the words "Mets" and "New York" on these players' shirts or the "Bud" poster in the background:
 
-![](/images/screen-shot-2020-06-09-at-5-08-25-pm.png)
+![A picture of a Mets baseball game](/images/screen-shot-2020-06-12-at-4-53-42-pm.png "Mets baseball game")
 
-See all the code at [github.com/google/making_with_ml](github.com/google/making_with_ml.com).
+The video archive ended up being a pretty good Father's Day gift, especially since I wasn't actually able to see my dad in person this year. 
+
+In this post, I'll show you how you can build your own archive, just like this. But if you want to skip straight to the code, check out the Making with ML Github Repo.
+
+See all the code at the Making with ML [Github repo](https://github.com/dalequark/making_with_ml/tree/master/discord_moderator).
