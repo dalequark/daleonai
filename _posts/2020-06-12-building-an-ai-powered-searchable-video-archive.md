@@ -120,3 +120,5 @@ Using the Video Intelligence API is pretty straightforward once you've got your 
       console.log(`Kicking off client annotation`);
       const [operation] = await client.annotateVideo(request);
       console.log('operation', operation);
+      
+This
