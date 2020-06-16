@@ -87,4 +87,36 @@ If you're me, your first thought is, _sure, but I bet it's super expensive._ I a
 
 ![](/images/screen-shot-2020-06-16-at-12-36-19-am.png)
 
-I was surprised to learn that the bulk of the cost came from one single type of analysis--detecting on-screen text. Everything else amounted to just \~$80, which is funny, because on-screen text was the least interesting attribute I extracted. So 
+I was surprised to learn that the bulk of the cost came from one single type of analysis--detecting on-screen text. Everything else amounted to just \~$80, which is funny, because on-screen text was the least interesting attribute I extracted! So a word of advice: if you're on a budget, maybe leave this feature out. 
+
+Now to clarify, I ran the Video Intelligence API _once_ for every video in my collection. For my archive use case, it's just an upfront cost, not a recurring one.
+
+### Using the API
+
+Using the Video Intelligence API is pretty straightforward once you've got your data uploaded to a [Cloud Storage Bucket](https://cloud.google.com/storage). (Never heard of a Storage Bucket? It's basically just a folder stored in Google Cloud.) For this project, the code that calls the API lives in [video_archive/functions/index.js](https://github.com/google/making_with_ml/blob/a68f61280898c53806bc412bbb3e517d979bd52f/video_archive/functions/index.js#L79) and looks like this:
+
+    const videoContext = {
+        speechTranscriptionConfig: {
+          languageCode: 'en-US',
+          enableAutomaticPunctuation: true,
+        },
+      };
+    
+      const request = {
+        inputUri: `gs://VIDEO_BUCKET/my_sick_video.mp4`,
+        outputUri: `gs://JSON_BUCKET/my_sick_video.json`,
+        features: [
+          'LABEL_DETECTION',
+          'SHOT_CHANGE_DETECTION',
+          'TEXT_DETECTION',
+          'SPEECH_TRANSCRIPTION',
+        ],
+        videoContext: videoContext,
+      };
+    
+      const client = new video.v1.VideoIntelligenceServiceClient();
+    
+      // Detects labels in a video
+      console.log(`Kicking off client annotation`);
+      const [operation] = await client.annotateVideo(request);
+      console.log('operation', operation);
