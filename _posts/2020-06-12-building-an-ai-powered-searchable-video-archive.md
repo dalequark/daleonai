@@ -121,9 +121,9 @@ Using the Video Intelligence API is pretty straightforward once you've got your 
       const [operation] = await client.annotateVideo(request);
       console.log('operation', operation);
 
-1. One line 1, we create a `videoContext` with some configuration settings for the API. Here we tell the tool that audio tracks will be in English (`en-US`). 
+1. One line 1, we create a `videoContext` with some configuration settings for the API. Here we tell the tool that audio tracks will be in English (`en-US`).
 2. One line 8, we create a request object, passing the path to our video file as `inputUri`, and the location where we'd like the results to be written as `outputUri`. Note that the Video Intelligence API will write the data as `json` to whatever path you specify, as long as its in a Storage Bucket you have permission to write to.
-3. On line 12, we specify what types of analyses we'd like the API to run. 
+3. On line 12, we specify what types of analyses we'd like the API to run.
 4. On line 24, we kick off a video annotation request. There are two ways of doing this, one by running the function synchronously and waiting for the results in code, or by kicking off a background job and writing the results to a json file. The Video Intelligence API analyses videos approximately in real time, so a 2 minute video would take about 2 minutes to analyze. Since that's kind of a long time, I decided to use the asynchronous function call here.
 
 If you want to play with this API quickly on your own computer, try out [this sample](https://github.com/googleapis/nodejs-video-intelligence/blob/master/samples/analyze.js) from the official Google Cloud Node.js sample repo.
@@ -252,7 +252,7 @@ The response also contains text annotations and transcriptions, but it's really 
 
 To actually make the Video Intelligence API into a useful video archive, I had to build a whole app around it. That required some sort of backend for running code, storing data, hosting a database, handling users and authentication, hosting a website--all the typical web app stuff.
 
-For this I turned to one of my favorite developer tool suites, [Firebase]( "https://firebase.google.com/"). Firebase is a "serverless" approach to building apps. It provides support for common app functionality--databases, file storage, performance monitoring, hosting, authentication, analytics, messaging, and more--so that you, the developer, can forgo paying for an entire server or VM. 
+For this I turned to one of my favorite developer tool suites, [Firebase]( "https://firebase.google.com/"). Firebase is a "serverless" approach to building apps. It provides support for common app functionality--databases, file storage, performance monitoring, hosting, authentication, analytics, messaging, and more--so that you, the developer, can forgo paying for an entire server or VM.
 
 If you want to run my project yourself, you'll have to create your own Firebase account and project to get started (it's free).
 
@@ -290,7 +290,7 @@ I also used Firebase functions to later build a Search HTTP endpoint:
       return {'hits': hits};
     });
 
-1. On line 3, I use `functions.https.onCall` to register a new Firebase function that's triggered when an HTTPS GET request is made. 
+1. On line 3, I use `functions.https.onCall` to register a new Firebase function that's triggered when an HTTPS GET request is made.
 2. On line 4, I check to see if the user that called my HTTPS endpoint is authenticated and has registered with an email address. [Authentication]() is easy to set up with Firebase, and in my project, I've enabled it with Google login.
 3. On line 12, I call my search function, passing the userid `context.auth.uid` that Firebase generates when a new user registers and that's passed when they hit my endpoint.
 4. On line 13, I return search results.
@@ -332,3 +332,4 @@ If you want to see some code samples, take a look at [video_archive/functions/al
           });
     };
     
+So...
