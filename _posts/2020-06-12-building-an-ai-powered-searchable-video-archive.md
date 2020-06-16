@@ -19,7 +19,7 @@ One of my favorite apps ever is definitely Google Photos. In addition to backing
 
 ![The Google Photo App showing results for the query "pool".](/images/screen-shot-2020-06-03-at-11-53-29-am.png "Google Photos Pool Search")
 
-This is all well and good if you just want to use _somebody else's_ software. But on this website, we build our own PCs, store our own encryption keys, churn our own butter, and build our own Google ~Photos~ Videos app.
+This is all well and good if you just want to use _somebody else's_ software. But on this website, we build our own PCs, store our own encryption keys, churn our own butter, and build our own Google <del>Photos</del> Videos app.
 
 There are lots of reasons you'd want to build your own searchable video app. For one, it's fun. For two, you can add features Google Photos doesn't currently support, especially for videos. Like searching by what people say (transcripts), in case you need to find all the  clips where someone says, "well now we have it on film," or "oh crap." For three, building your own app allows you to more easily integrate with your other software and control how your data is stored and handled. For example, I built my archive's backend on Google Cloud, which let me take advantage of Google Cloud's [privacy, security, and compliance guarantees](https://cloud.google.com/security "Google cloud security and privacy").
 
