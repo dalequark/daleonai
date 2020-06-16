@@ -71,4 +71,20 @@ But first, before we get into the weeds, let's talk about transferring data from
 
 ### Using the Video Intelligence API
 
-The key tool that made this project possible was the [Video Intelligence API](cloud.google.com/video-intelligence) built by Google Cloud.
+The key tool that made this project possible was the [Video Intelligence API](cloud.google.com/video-intelligence) built by Google Cloud. It takes a path to a video in Cloud Storage and spits out, among other things:
+
+* Audio transcriptions (i.e. “automatic subtitles”)
+* Known objects (e.g. plane, beach, snow, bicycle, cake, wedding)
+* On-screen text (i.e. on street signs, T-shirts, banners, and posters)
+* Shot changes
+* Explicit content detection
+
+This data can then be used as indices we can use to search for specific videos.
+
+### The Price
+
+If you're me, your first thought is, _sure, but I bet it's super expensive._ I analyzed 126 GB of video or about 36 straight hours, and my total cost using this API was $300, which _was_ kind of pricey. Here's the cost breakdown per type of analysis:
+
+![](/images/screen-shot-2020-06-16-at-12-36-19-am.png)
+
+I was surprised to learn that the bulk of the cost came from one single type of analysis--detecting on-screen text. Everything else amounted to just \~$80, which is funny, because on-screen text was the least interesting attribute I extracted. So 
