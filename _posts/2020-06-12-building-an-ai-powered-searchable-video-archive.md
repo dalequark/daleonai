@@ -3,7 +3,7 @@ layout: post
 title: Building an AI-Powered Searchable Video Archive
 description: Learn how to use machine learning / AI to build a queryable video archive
   on Google Cloud.
-date: 2020-06-12 20:00:00 +0000
+date: 2020-06-12T20:00:00.000+00:00
 feature_image: "/images/ai_video_archiv_header.png"
 tags:
 - google cloud
@@ -27,7 +27,7 @@ My searchable video archive ended up looking like this:
 
 ![Custom-build searchable video archive built in Flutter](/images/ui_preview.png "Custom-build searchable video archive built in Flutter")
 
-I used it to store and index all of my family home videos (\~126 GB). Using machine learning, specifically the [Video Intelligence API](https://cloud.google.com/video-intelligence "Google Cloud Video Intelligence API"), I was able to do all sorts of analysis, including automatically splitting long videos, identifying objects and scenes, transcribing audio, and extracting on-screen text.
+and it stored and indexed all of my family home videos (\~126 GB). Using machine learning, specifically the [Video Intelligence API](https://cloud.google.com/video-intelligence "Google Cloud Video Intelligence API"), I was able to do all sorts of analysis, including automatically splitting long videos, identifying objects and scenes, transcribing audio, and extracting on-screen text.
 
 The app ended up being extremely good at searching for cute moments. Using computer vision, it recognized scenes and objects like "wedding," "firework", "performance," "baby laughing", "home improvement," "roller coaster," and even "Disney World":
 
@@ -43,7 +43,7 @@ Finally, the tool was able to search any on-screen text, like the words "Mets" a
 
 The video archive ended up being a pretty good Father's Day gift, especially since I wasn't actually able to see my dad in person this year.
 
-In this post, I'll show you how you can build your own archive, just like this. But if you want to skip straight to the code, check out the Making with ML [Github repo](https://github.com/dalequark/making_with_ml/tree/master/discord_moderator).
+In this post, I'll show you how you can build your own archive, just like this. But if you want to skip straight to the code, check out the Making with ML [Github repo](https://github.com/google/making_with_ml/tree/master/video_archive).
 
 ## Machine Learning Architecture for Video Processing
 
@@ -63,8 +63,12 @@ I use this kind of architecture or pipeline all the time when I build apps that 
 
 From here, my frontend Flutter app could talk to the backend and search for user queries. If these technologies are unfamiliar to you, fear not--I'll go into depth in a bit.
 
-There are also a couple of steps I couldn't fit in that diagram. For example, I did a bit of preprocessing with the Video Intelligence API on some very long video files that split them into smaller clips, and that also identified any timestamps shown on screen. Also, I wrote a Cloud Function specifically for taking an uploaded video and generating a thumbnail for it (check out the code for that here TODO: ADD LINK).
+There are also a couple of steps I couldn't fit in that diagram. For example, I did a bit of preprocessing with the Video Intelligence API on some very long video files that split them into smaller clips, and that also identified any timestamps shown on screen. Also, I wrote a Cloud Function specifically for taking an uploaded video and generating a thumbnail for it (check out [this function]()).
+
+### Quickly Transferring Video from Drive to Cloud Storage
+
+But first, before we get into the weeds, let's talk about transferring data from Google Drive to Cloud Storage. In theory, moving data from Drive to Storage should be fast, since all the data can stay within Google's network. But frustratingly, in practice, there's no slick way to do the transfer. Happily, I found a neat hack in [this Medium article](https://medium.com/@philipplies/transferring-data-from-google-drive-to-google-cloud-storage-using-google-colab-96e088a8c041) by Philipp Lies. The trick is to use a [Colab notebook](colab.research.google.com)--a free, educational Google tool for running Python code in the cloud--to do the transfer. It's quick, easy, and very effective!
 
 ### Using the Video Intelligence API
 
-This blog post is still a WIP. Sorry! Hang tight, more content will land in the next few days.
+The key tool that made this project possible was the [Video Intelligence API](cloud.google.com/video-intelligence) built by Google Cloud.
