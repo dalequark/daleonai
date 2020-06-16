@@ -331,5 +331,22 @@ If you want to see some code samples, take a look at [video_archive/functions/al
             return {videoId: hit['videoId']};
           });
     };
-    
-So...
+
+1. On line 2, I provide my credentials and create a search client.
+2. On line 6, I specify which dataset or "index" I want to search.
+3. On line 7, I kick off a search query specifying both query text (e.g. "birthday"), "tags" to filter by (I used tags to associate data with users), and which json fields I'd like to receive.
+4. Line 14 looks kind of complicated, but I'm just filtering for duplicate movie ids and formatting a json response.
+
+## A Flutter Frontend
+
+Because I'm not a very good frontend developer, I decided to use this project as an excuse to learn Flutter, Google's new-ish platform for writing code that runs anywhere (web, Android, iOS). Overall I had a lot of fun playing with it and thought styling Flutter apps was way easier than CSS. Here's the end result:
+
+![](/images/ui_preview.png)
+
+I just built a web app, not iOS or Android this time.
+
+You can check out all the frontend code in the [Flutter folder](https://github.com/google/making_with_ml/tree/master/video_archive/flutter) of the repo, but since I'm new to this, no promises it's "correct" ;).
+
+***
+
+So that's how you build an AI-powered video archive! Questions or comments? Ping me on [Twitter](https://twitter.com/dalequark)!
