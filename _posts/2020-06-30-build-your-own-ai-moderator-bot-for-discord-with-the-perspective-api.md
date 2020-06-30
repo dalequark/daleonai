@@ -69,7 +69,7 @@ As you can see, we’ll need a couple of different API and developer tokens to g
 What is the Perspective API?
 The Perspective API is a free tool built by Jigsaw, a unit within Google that, in their own words, “forecasts and confronts emerging threats, creating future-defining research and technology to keep our world safer.” The Perspective API is one such tool they provide for keeping the (digital) world safer. It takes text as input (“You stink like butts”) and analyzes it for attributes like toxicity, insults, profanity, identity attacks, sexual explicitness, flirtation, threats, and more. You can quickly it out in their interactive web demo:
 
-![A screenshot of the Perspective API's built in preview analyzing the text "You stink like butts" and labeling it as 90% likely to be toxic.](https://lh6.googleusercontent.com/9fv3SzQHQXVl3axxhBLCEgyalWv3jknmnkZHXtRAqNNjdCxgswEWC9meJ5DgvmWpPbZ0jMBRLvhj7ekO9uELfJ2B8jwheKPCcHF2SBSBcJutvHnOW6bk-t1Qb_4WASgX_pk7RDHfFQ "Perspective API preview" =624x328)
+![Example of Perspective interactive demo](/images/screen-shot-2020-06-30-at-11-10-09-am.png "Example of Perspective interactive demo")
 
 Today, The New York Times uses Perspective to help automatically moderate their comments section.
 
@@ -197,7 +197,7 @@ Tick the permissions “Send Messages,” “Add Reactions” (for reacting to m
 
 If you scroll up, just above the BOT PERMISSIONS panel, you should see a url, like: `https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=2114&scope=bot`. Paste that url in your browser. If everything’s set up correctly, you should be able to add your bot to your server. And there you go! You created your first Discord bot without writing a single line of code. But right now, it doesn’t do anything. You need to give it a brain.
 
-\###Building a Discord Moderator
+### Building a Discord Moderator
 
 In this project, our bot’s brain lives in the file `discord.js.`
 
