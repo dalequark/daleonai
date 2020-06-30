@@ -81,7 +81,7 @@ First, sign in to your Google Cloud account (it’s [free to get started](https:
 
 Next you’ll need to generate an API key to access the API in code. In the Google Cloud console left hand menu, click API & Services -> Credentials. On that screen, click "+ Create Credentials" -> "API key". Copy that API key.
 
-![](https://lh6.googleusercontent.com/P9BhvYeKWAMF0lRk7IcUEqnopAToNJ_G2ay1r638p4u69TW3gwodQU76uLvZm6fTJGf31doXRmmRj7lp7gJ4lKwSrkXU8N3_Is1DsKwelqk4LHU1I0Mg2P__UVVIzprFtsoqaFRLrQ =624x396)
+![Creating an api key from the google developer console](/images/screen-shot-2020-06-30-at-12-44-05-pm.png "Create an API key")
 
 Now go back to that file you created earlier--`.env`--and drop the key into the `PERSPECTIVE_API_KEY` field:
 
@@ -120,7 +120,7 @@ See all those numbers next to each attribute? When you ask the Perspective API t
     	}
     }
 
-The score represents roughly how confident the machine learning model is that a comment is really fliration or toxic or threatening, etc. The job is then on you, the developer, to choose a “cutoff” for deciding when a comment should really get a label. That’s what all those numbers mean in the `attributeThreshold` object I posted above. I’ll only consider a comment insulting or toxic or threatening if the summaryScore is above 0.75.
+The score represents roughly how confident the machine learning model is that a comment is really flirtation or toxic or threatening, etc. The job is then on you, the developer, to choose a “cutoff” for deciding when a comment should really get a label. That’s what all those numbers mean in the `attributeThreshold` object I posted above. I’ll only consider a comment insulting or toxic or threatening if the summaryScore is above 0.75.
 
 Pro tip: In your own application, you’ll want to choose a cutoff that aligns with how your human moderation team (if you have one) is already moderating content. For example, on Tinder, sending flirtatious messages is totally ok, and we might have a higher cutoff for filtering sexually explicit messages than, say, a site like LinkedIn.
 
@@ -171,11 +171,11 @@ If you’ve never used [Discord](https://discord.com/), it’s a voice, video, a
 
 To get started, download Discord (or use the web version), and [sign up](https://discord.com/developers) for a Discord developer account. Once you’re in, click “New Application,” and give your new app a name and a description.
 
-![](https://lh5.googleusercontent.com/UuuwQnNemiNmXxpa34h_jKWgwIdEs1ieH31etzAtbZxDkvIh_93T4dSZyartmPUFlevi2oSnHj-DOweLCABu8aM85E84oo9OOyua7D019lPVpuSc0Wuv7RpZjiK7dzOJWTezgmaT5Q =624x384)
+![Create a new Discord application](/images/screen-shot-2020-06-30-at-12-44-15-pm.png "Create a new Discord application")
 
 On the left hand panel, choose “Bot” to create a new bot. Select "Add Bot." Give your new Bot a username and upload a cute or intimidating user icon.
 
-![](https://lh6.googleusercontent.com/D9Csn5YuGdjN5fa7StNaoqtk-RDOVsMwmBwWdy3ftt3CP4G7wj3GVL_scbg_Q712eZScew5Z3egdcTkNe5ZPmEMkSv1TnDXiPyLBbpKbmd-Ai84-J1_wmGvAXkAHwXqDbdhA-lmr3Q =624x232)
+![](/images/screen-shot-2020-06-30-at-10-41-42-am.png)
 
 To be able to control your bot in code, you’ll need a Discord developer token, which you can grab straight from that bot page by clicking “Copy.” Drop that code in your \`.env\` file:
 
@@ -185,13 +185,13 @@ To be able to control your bot in code, you’ll need a Discord developer token,
 
 Now that you’ve created a bot in Discord, you can actually immediately add it to a channel. In any Discord app (I’m using the desktop app), log in and create a new server:
 
-![](https://lh6.googleusercontent.com/5vyzBestbSJBM6fVtECJq7VJ7opxU9qyQWUc5CRroZjopJR3U1weKuW0hHDGTUG8L6JNsizn7nakon7Zv11Q3_qgku0jgkbY_5ASIaBaO4ka1B7ax728-bowNSRa1Xf8IjdKDdT5xQ =624x528)
+![Create a new Discord server](/images/screen-shot-2020-06-30-at-11-46-53-am.png "Create a new Discord server")
 
 Now let’s add your bot to the server. Back in the Discord [Developer Portal](https://discord.com/developers), in your application, click on OAuth on the left side panel
 
 Discord has a very nice system for handling bot permissions. Under “SCOPES,” tick off the box next to “bot.” This should open a “BOT PERMISSIONS” section below.
 
-![](https://lh4.googleusercontent.com/9uUp8OtMtKN3ZwdhYtrqZsKEKRrKXiWLs0I7nsZ8WyqFjsTUwQ3dM3pbImtDgf6FFQ8X8uNCiUOYoG9u2YuICuKADhvkBYznQcVbtMixHhu-uRDRFImjW7v2DO2Z-J56dwOfL_yXNA =624x304)
+![Setting bot permissions on Discord](/images/screen-shot-2020-06-30-at-11-51-40-am.png "Setting bot permissions on Discord")
 
 Tick the permissions “Send Messages,” “Add Reactions” (for reacting to message with emojis), and “Kick Members” (to bad ban members from the channel).
 
