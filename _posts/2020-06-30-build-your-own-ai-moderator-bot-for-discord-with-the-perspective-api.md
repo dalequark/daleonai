@@ -25,7 +25,7 @@ But, before we get into the tech-y details, let’s talk about some high-level m
 1. **Pre-Moderation** is when a team of human moderators review every single piece of content before it’s ever posted. It’s a good approach when it’s _very, very_ important that no “bad” content slips through the cracks. Apple, for example, requires every app submitted to the App Store to be[ reviewed by an employee](https://www.cnbc.com/2019/06/21/how-apples-app-review-process-for-the-app-store-works.html) before it's published.
 2. **Post-Moderation** is the opposite--content is allowed to be posted _before_ it’s reviewed by moderators. Instead, the job of flagging posts usually gets crowdsourced to users, who are able to “flag” or “report” content they believe violates a site’s TOS. You see this almost everywhere (YouTube, Facebook, Instagram, and many more).
 
-**![](https://lh6.googleusercontent.com/XNb-vMdhaDs87QwOp0pL8YgKe-YL9Mr_wcJMLDbG6zRuzl8GzKoyUXw_YNccrWnQNbk69iijHEhTmqh2wqiRqsmycveE8fYTrAkcxdFHWQAVM7GJrDZGoQBvfqsWk7Eozvxg435KMg =624x409)**
+![Screenshot of reporting a video on YouTube](/images/screen-shot-2020-06-30-at-12-42-05-pm.png "Reporting a video on youtube")
 
 Both of these approaches clearly come with drawbacks--pre-moderation requires a large human moderation team, and doesn’t work for real-time applications (chat, or any type of streaming). Post-moderation scales better, but forces your users to consume potentially offensive or disturbing media. Which leads us to:
 
