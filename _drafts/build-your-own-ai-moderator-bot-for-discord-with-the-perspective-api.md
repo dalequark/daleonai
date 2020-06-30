@@ -197,73 +197,75 @@ Tick the permissions “Send Messages,” “Add Reactions” (for reacting to m
 
 If you scroll up, just above the BOT PERMISSIONS panel, you should see a url, like: `https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=2114&scope=bot`. Paste that url in your browser. If everything’s set up correctly, you should be able to add your bot to your server. And there you go! You created your first Discord bot without writing a single line of code. But right now, it doesn’t do anything. You need to give it a brain.
 
-###Building a Discord Moderator
+\###Building a Discord Moderator
 
-In this project, our bot’s brain lives in the file `discord.js.` 
+In this project, our bot’s brain lives in the file `discord.js.`
 
 At the top of the file, we import the Perspective file I talked about earlier:
 
-```const perspective = require('./perspective.js');```
+`const perspective = require('./perspective.js');`
 
 Then we set up an emoji map, which tells the bot how to react when various attributes are detected:
 
-```
-// Set your emoji "awards" here
-const emojiMap = {
- 'FLIRTATION': '💋',
- 'TOXICITY': '🧨',
- 'INSULT': '👊',
- 'INCOHERENT': '🤪',
- 'SPAM': '🐟',
-};
-```
+    // Set your emoji "awards" here
+    const emojiMap = {
+     'FLIRTATION': '💋',
+     'TOXICITY': '🧨',
+     'INSULT': '👊',
+     'INCOHERENT': '🤪',
+     'SPAM': '🐟',
+    };
+
 Feel free to change those to whatever you’d like.
 
 What we’d like our bot to do is analyze every message in a channel. We do that by creating a new Discord client and passing our developer token (that’s the last line in the file):
 
-```
-// Log our bot in using the token from https://discordapp.com/developers/applications/me
-const client = new Discord.Client();
-client.login(process.env.DISCORD_TOKEN);
-```
+    // Log our bot in using the token from https://discordapp.com/developers/applications/me
+    const client = new Discord.Client();
+    client.login(process.env.DISCORD_TOKEN);
 
 To listen for messages, we write a function that listens on the client `message` event:
 
-```
-client.on('message', async (message) => {
- // Ignore messages that aren't from a guild
- // or are from a bot
- if (!message.guild || message.author.bot) return;
+    client.on('message', async (message) => {
+     // Ignore messages that aren't from a guild
+     // or are from a bot
+     if (!message.guild || message.author.bot) return;
+    
+     // If we've never seen a user before, add them to memory
+     const userid = message.author.id;
+     if (!users[userid]) {
+       users[userid] = [];
+     }
+    
+     // Evaluate attributes of user's message
+     let shouldKick = false;
+     try {
+       shouldKick = await evaluateMessage(message);
+     } catch (err) {
+       console.log(err);
+     }
+     if (shouldKick) {
+       kickBaddie(message.author, message.guild);
+       delete users[message.author.id];
+       message.channel.send(`Kicked user ${message.author.username} from channel`);
+       return;
+     }
+    
+    
+     if (message.content.startsWith('!karma')) {
+       const karma = getKarma(message);
+       message.channel.send(karma ? karma : 'No karma yet!');
+     }
+    });
 
- // If we've never seen a user before, add them to memory
- const userid = message.author.id;
- if (!users[userid]) {
-   users[userid] = [];
- }
-
- // Evaluate attributes of user's message
- let shouldKick = false;
- try {
-   shouldKick = await evaluateMessage(message);
- } catch (err) {
-   console.log(err);
- }
- if (shouldKick) {
-   kickBaddie(message.author, message.guild);
-   delete users[message.author.id];
-   message.channel.send(`Kicked user ${message.author.username} from channel`);
-   return;
- }
-
-
- if (message.content.startsWith('!karma')) {
-   const karma = getKarma(message);
-   message.channel.send(karma ? karma : 'No karma yet!');
- }
-});
-```
 There’s a lot going on here.
 
-// TODO--line by line breakdown
+* On line 4, we make sure that the messages we're analyzing only come from other users (not bots)
+* On 8, we allocate some memory to keep track of our users. This is how we'll remember how many emojis we've given them, and how many times they've said toxic things.
+* On 14, we call the `evaluateMessage` function, which uses the Perspective API to analyze a user's message. That function (which you can further investigate in the file) passes text to the Perspective API, responds with an emoji reaction if an attribute is found, and counts up the number of times a user has said something toxic. If it's more than `KICK_THRESHOLD`, a value set in our `.env` file, the function returns True (i.e. we should kick the user from the channel). 
+* On line 19, we actually kick the user from the channel, using the function `kickBaddie`.
+* Finally, on line 241, we watch for the "!karma" hot word. If a user types this hot word, we'll send a message with a roundup of the stats for users in the channel.
+
+To really see what's going on here in detail, you'll have to look at the functions `evaluateMessage` and `kickBaddie` in the file. I've added lots of documentation in line. But in a nutshell, that's all there is to it.
 
 So there you go--you have your own AI-powered moderator bot for Discord. What do you think? And what do you want to learn how to build next? Let me know in the comments below, but guess what? Disqus uses the Perspective API to flag toxic comments too. 😉
