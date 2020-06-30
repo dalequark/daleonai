@@ -161,7 +161,7 @@ Meanwhile, take a look at the function `analyzeText` to see how we actually call
      return data;
     }
 
-To actually connect with the API, we call `const analyzer = new googleapis.commentanalyzer_v1alpha1.Commentanalyzer();`. We then package up a request (LINE TODO), specifying our language and the attributes we want to analyze, and send it to the API. That’s it! On line 30, we check to see if the scores returned from the Perspective API are above our threshold (0.75).
+To actually connect with the API, we call `const analyzer = new googleapis.commentanalyzer_v1alpha1.Commentanalyzer();`. We then package up a request on line 21, specifying our language and the attributes we want to analyze, and send it to the API. That’s it! On line 30, we check to see if the scores returned from the Perspective API are above our threshold (0.75).
 
 Congratulations, you can now use machine learning to analyze text! Now let’s throw that useful functionality into a Discord bot.
 
@@ -262,9 +262,9 @@ There’s a lot going on here.
 
 * On line 4, we make sure that the messages we're analyzing only come from other users (not bots)
 * On 8, we allocate some memory to keep track of our users. This is how we'll remember how many emojis we've given them, and how many times they've said toxic things.
-* On 14, we call the `evaluateMessage` function, which uses the Perspective API to analyze a user's message. That function (which you can further investigate in the file) passes text to the Perspective API, responds with an emoji reaction if an attribute is found, and counts up the number of times a user has said something toxic. If it's more than `KICK_THRESHOLD`, a value set in our `.env` file, the function returns True (i.e. we should kick the user from the channel). 
+* On 14, we call the `evaluateMessage` function, which uses the Perspective API to analyze a user's message. That function (which you can further investigate in the file) passes text to the Perspective API, responds with an emoji reaction if an attribute is found, and counts up the number of times a user has said something toxic. If it's more than `KICK_THRESHOLD`, a value set in our `.env` file, the function returns True (i.e. we should kick the user from the channel).
 * On line 19, we actually kick the user from the channel, using the function `kickBaddie`.
-* Finally, on line 241, we watch for the "!karma" hot word. If a user types this hot word, we'll send a message with a roundup of the stats for users in the channel.
+* Finally, on line 27, we watch for the "!karma" hot word. If a user types this hot word, we'll send a message with a roundup of the stats for users in the channel.
 
 To really see what's going on here in detail, you'll have to look at the functions `evaluateMessage` and `kickBaddie` in the file. I've added lots of documentation in line. But in a nutshell, that's all there is to it.
 
