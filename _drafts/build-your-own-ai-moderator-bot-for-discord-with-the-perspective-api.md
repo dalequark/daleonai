@@ -98,7 +98,6 @@ Now you should be able to use the Perspective API to analyze text in code. To se
     // "PROFANITY", "THREAT", "SEXUALLY_EXPLICIT", "FLIRTATION", "SPAM",
     // "ATTACK_ON_AUTHOR", "ATTACK_ON_COMMENTER", "INCOHERENT",
     // "INFLAMMATORY", "OBSCENE", "SPAM", "UNSUBSTANTIAL"];
-    
 
 On the next line, you’ll see the attributes we’ll actually using in our bot:
 
@@ -120,7 +119,6 @@ See all those numbers next to each attribute? When you ask the Perspective API t
     		}
     	}
     }
-    
 
 The score represents roughly how confident the machine learning model is that a comment is really fliration or toxic or threatening, etc. The job is then on you, the developer, to choose a “cutoff” for deciding when a comment should really get a label. That’s what all those numbers mean in the `attributeThreshold` object I posted above. I’ll only consider a comment insulting or toxic or threatening if the summaryScore is above 0.75.
 
@@ -162,7 +160,6 @@ Meanwhile, take a look at the function `analyzeText` to see how we actually call
      }
      return data;
     }
-    
 
 To actually connect with the API, we call `const analyzer = new googleapis.commentanalyzer_v1alpha1.Commentanalyzer();`. We then package up a request (LINE TODO), specifying our language and the attributes we want to analyze, and send it to the API. That’s it! On line 30, we check to see if the scores returned from the Perspective API are above our threshold (0.75).
 
@@ -182,9 +179,91 @@ On the left hand panel, choose “Bot” to create a new bot. Select "Add Bot." 
 
 To be able to control your bot in code, you’ll need a Discord developer token, which you can grab straight from that bot page by clicking “Copy.” Drop that code in your \`.env\` file:
 
+    PERSPECTIVE_API_KEY="YOUR_API_KEY"
+    DISCORD_TOKEN="YOUR_DISCORD_TOKEN" \\ your Discord token here
+    KICK_THRESHOLD=4
+
+Now that you’ve created a bot in Discord, you can actually immediately add it to a channel. In any Discord app (I’m using the desktop app), log in and create a new server:
+
+![](https://lh6.googleusercontent.com/5vyzBestbSJBM6fVtECJq7VJ7opxU9qyQWUc5CRroZjopJR3U1weKuW0hHDGTUG8L6JNsizn7nakon7Zv11Q3_qgku0jgkbY_5ASIaBaO4ka1B7ax728-bowNSRa1Xf8IjdKDdT5xQ =624x528)
+
+Now let’s add your bot to the server. Back in the Discord [Developer Portal](https://discord.com/developers), in your application, click on OAuth on the left side panel
+
+Discord has a very nice system for handling bot permissions. Under “SCOPES,” tick off the box next to “bot.” This should open a “BOT PERMISSIONS” section below.
+
+![](https://lh4.googleusercontent.com/9uUp8OtMtKN3ZwdhYtrqZsKEKRrKXiWLs0I7nsZ8WyqFjsTUwQ3dM3pbImtDgf6FFQ8X8uNCiUOYoG9u2YuICuKADhvkBYznQcVbtMixHhu-uRDRFImjW7v2DO2Z-J56dwOfL_yXNA =624x304)
+
+Tick the permissions “Send Messages,” “Add Reactions” (for reacting to message with emojis), and “Kick Members” (to bad ban members from the channel).
+
+If you scroll up, just above the BOT PERMISSIONS panel, you should see a url, like: `https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=2114&scope=bot`. Paste that url in your browser. If everything’s set up correctly, you should be able to add your bot to your server. And there you go! You created your first Discord bot without writing a single line of code. But right now, it doesn’t do anything. You need to give it a brain.
+
+###Building a Discord Moderator
+
+In this project, our bot’s brain lives in the file `discord.js.` 
+
+At the top of the file, we import the Perspective file I talked about earlier:
+
+```const perspective = require('./perspective.js');```
+
+Then we set up an emoji map, which tells the bot how to react when various attributes are detected:
+
 ```
-PERSPECTIVE_API_KEY="YOUR_API_KEY"
-DISCORD_TOKEN="YOUR_DISCORD_TOKEN" \\ your Discord token here
-KICK_THRESHOLD=4
+// Set your emoji "awards" here
+const emojiMap = {
+ 'FLIRTATION': '💋',
+ 'TOXICITY': '🧨',
+ 'INSULT': '👊',
+ 'INCOHERENT': '🤪',
+ 'SPAM': '🐟',
+};
 ```
-hello
+Feel free to change those to whatever you’d like.
+
+What we’d like our bot to do is analyze every message in a channel. We do that by creating a new Discord client and passing our developer token (that’s the last line in the file):
+
+```
+// Log our bot in using the token from https://discordapp.com/developers/applications/me
+const client = new Discord.Client();
+client.login(process.env.DISCORD_TOKEN);
+```
+
+To listen for messages, we write a function that listens on the client `message` event:
+
+```
+client.on('message', async (message) => {
+ // Ignore messages that aren't from a guild
+ // or are from a bot
+ if (!message.guild || message.author.bot) return;
+
+ // If we've never seen a user before, add them to memory
+ const userid = message.author.id;
+ if (!users[userid]) {
+   users[userid] = [];
+ }
+
+ // Evaluate attributes of user's message
+ let shouldKick = false;
+ try {
+   shouldKick = await evaluateMessage(message);
+ } catch (err) {
+   console.log(err);
+ }
+ if (shouldKick) {
+   kickBaddie(message.author, message.guild);
+   delete users[message.author.id];
+   message.channel.send(`Kicked user ${message.author.username} from channel`);
+   return;
+ }
+
+
+ if (message.content.startsWith('!karma')) {
+   const karma = getKarma(message);
+   message.channel.send(karma ? karma : 'No karma yet!');
+ }
+});
+```
+There’s a lot going on here.
+
+// TODO--line by line breakdown
+
+So there you go--you have your own AI-powered moderator bot for Discord. What do you think? And what do you want to learn how to build next? Let me know in the comments below, but guess what? Disqus uses the Perspective API to flag toxic comments too. 😉
