@@ -16,7 +16,7 @@ _In this post, I'll show you how to build an AI-powered moderator bot for the Di
 
 <!--more-->
 
-I’ve been fascinated by the topic of moderation--deciding who gets to post what on the internet--ever since I started working at the online dating site OkCupid, five years ago . The moderation team there was responsible for the [near-impossible task](https://www.thecut.com/2017/02/banned-from-okcupid-sexting-moderation.html) of drawing the line between which messages counted as riské flirtation (usually ok), ilicit come-ons (possibly ok), and sexual harassment (which would get you banned). As RadioLab put it in their [excellent podcast episode](https://www.wnycstudios.org/podcasts/radiolab/articles/post-no-evil) on the topic, “How much butt is too much butt?” Questions like these are tough enough, and then, if you’re Twitter, you have to decide what to do when the President’s tweets [violate your Terms of Service](https://www.nytimes.com/2020/06/05/technology/twitter-trump-facebook-moderation.html).
+I’ve been fascinated by the topic of moderation--deciding who gets to post what on the internet--ever since I started working at the online dating site OkCupid, five years ago . The moderation team there was responsible for the [near-impossible task](https://www.thecut.com/2017/02/banned-from-okcupid-sexting-moderation.html) of drawing the line between which messages counted as riské flirtation (usually ok), illicit come-ons (possibly ok), and sexual harassment (which would get you banned). As RadioLab put it in their [excellent podcast episode](https://www.wnycstudios.org/podcasts/radiolab/articles/post-no-evil) on the topic, “How much butt is too much butt?” Questions like these are tough enough, and then, if you’re Twitter, you have to decide what to do when the President’s tweets [violate your Terms of Service](https://www.nytimes.com/2020/06/05/technology/twitter-trump-facebook-moderation.html).
 
 It’s a dirty job, but someone’s got to do it. Or do they? Can an AI handle moderation instead?
 
@@ -70,8 +70,7 @@ Open that file up in your favorite text editor:
 
 As you can see, we’ll need a couple of different API and developer tokens to get started, one for the Perspective API, which we’ll use for analyzing messages, and one for Discord (more on that in a second).
 
-What is the Perspective API?
-The Perspective API is a free tool built by Jigsaw, a unit within Google that, in their own words, “forecasts and confronts emerging threats, creating future-defining research and technology to keep our world safer.” The Perspective API is one such tool they provide for keeping the (digital) world safer. It takes text as input (“You stink like butts”) and analyzes it for attributes like toxicity, insults, profanity, identity attacks, sexual explicitness, flirtation, threats, and more. You can quickly it out in their interactive web demo:
+What is the Perspective API? The Perspective API is a free tool built by Jigsaw, a unit within Google that, in their own words, “forecasts and confronts emerging threats, creating future-defining research and technology to keep our world safer.” The Perspective API is one such tool they provide for keeping the (digital) world safer. It takes text as input (“You stink like butts”) and analyzes it for attributes like toxicity, insults, profanity, identity attacks, sexual explicitness, flirtation, threats, and more. You can quickly try it out in their interactive web demo:
 
 ![Example of Perspective interactive demo](/images/screen-shot-2020-06-30-at-11-10-09-am.png "Example of Perspective interactive demo")
 
@@ -95,7 +94,7 @@ Now go back to that file you created earlier--`.env`--and drop the key into the 
 
 \##Analyzing Messages
 
-Now you should be able to use the Perspective API to analyze text in code. To see an example, check out the file `perspective.js`. At the top of the file, you’ll all of the possible attributes the API can recognize:
+Now you should be able to use the Perspective API to analyze text in code. To see an example, check out the file `perspective.js`. At the top of the file, you’ll see all of the possible attributes the API can recognize:
 
     // Some supported attributes
     // attributes = ["TOXICITY", "SEVERE_TOXICITY", "IDENTITY_ATTACK", "INSULT",
@@ -187,7 +186,7 @@ To be able to control your bot in code, you’ll need a Discord developer token,
     DISCORD_TOKEN="YOUR_DISCORD_TOKEN" \\ your Discord token here
     KICK_THRESHOLD=4
 
-Now that you’ve created a bot in Discord, you can actually immediately add it to a channel. In any Discord app (I’m using the desktop app), log in and create a new server:
+Now that you’ve created a bot in Discord, you can immediately add it to a channel. In any Discord app (I’m using the desktop app), log in and create a new server:
 
 ![Create a new Discord server](/images/screen-shot-2020-06-30-at-11-46-53-am.png "Create a new Discord server")
 
