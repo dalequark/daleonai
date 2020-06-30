@@ -77,7 +77,7 @@ Unfortunately, the documentation to actually use the Perspective API in Javascri
 
 ### Enabling Perspective
 
-First, sign in to your Google Cloud account (it’s [free to get started](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjkoYmP96nqAhVRvsAKHZr2ADwYABAAGgJpbQ&ohost=www.google.com&cid=CAESQeD2mj7PglbdR5gh2gVTdo5o1jCSc9pBZZyZVK2oPapo3Qzhxx4huChpTLViF9aJXXXw3dvt0q_aN_5BJEVt_6KY&sig=AOD64_3zisckaS_RW1yT-ighx5qK_Hk32Q&q&adurl&ved=2ahUKEwiGsP6O96nqAhUDnq0KHbd1DysQ0Qx6BAgOEAE)), and either create a new project or select an existing one. In your project, enable the [Perspective Comment Analyzer API](https://console.cloud.google.com/apis/api/commentanalyzer.googleapis.com/overview). You’ll have to fill out a short survey to gain access (you should receive an email in a couple of hours).
+First, sign in to your Google Cloud account (it’s [free to get started](https://console.cloud.google.com)), and either create a new project or select an existing one. In your project, enable the [Perspective Comment Analyzer API](https://console.cloud.google.com/apis/api/commentanalyzer.googleapis.com/overview). You’ll have to fill out a short survey to gain access (you should receive an email in a couple of hours).
 
 Next you’ll need to generate an API key to access the API in code. In the Google Cloud console left hand menu, click API & Services -> Credentials. On that screen, click "+ Create Credentials" -> "API key". Copy that API key.
 
