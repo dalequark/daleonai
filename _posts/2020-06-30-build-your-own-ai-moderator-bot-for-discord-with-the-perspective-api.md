@@ -4,7 +4,7 @@ title: Build Your Own AI Moderator Bot for Discord with the Perspective API
 description: Build a moderator bot that instantly flags toxic, insulting, flirtation,
   or spam messages with machine learning--no data science experience required.
 date: 2020-06-30 05:00:00 +0000
-feature_image: "/images/flag-toxic-flirty-or-spam-messages-instantly-with-an-ai-moderator-bot-for-discord-1.png"
+feature_image: "/images/copy-of-flag-toxic-flirty-or-spam-messages-instantly-with-an-ai-moderator-bot-for-discord.png"
 tags:
 - google cloud
 - natural language processing
