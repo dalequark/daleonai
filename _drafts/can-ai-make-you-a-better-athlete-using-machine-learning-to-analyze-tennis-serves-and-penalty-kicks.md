@@ -6,5 +6,6 @@ description: ''
 date: 
 feature_image: ''
 tags: []
+permalink: machine-learning-for-sports
 
 ---
