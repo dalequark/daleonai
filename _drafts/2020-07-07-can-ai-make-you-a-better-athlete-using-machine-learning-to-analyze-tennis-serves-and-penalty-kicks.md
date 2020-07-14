@@ -36,4 +36,6 @@ Already, machine learning plays a role in sports: companies [use it to](https://
 
 But as a beginner, I'd love to use that same technology simply to tell me what I'm doing wrong and where I'm making mistakes. Ideally, I'd build an app that I set up on a tripod (for example) while I'm on the tennis court that analyzes video of me serving and gives me helpful tips (i.e. "straighten your arm," "bend your knees"). In this post, I'll show you the core techniques that would make an app like that possible.
 
-_Want to jump straight to the code? Check out the [repo](https://github.com/google/making_with_ml/tree/master/sports_ai "repo") _on Github._
+_Want to jump straight to the code? Check out the_ [_repo_](https://github.com/google/making_with_ml/tree/master/sports_ai "repo") _on Github._
+
+## Using Machine Learning to Analyze My Tennis Serve
