@@ -28,7 +28,7 @@ No? Not ringing a bell? Me neither. That's what you get when you spend your high
 
 _How many friends do you think this made me?_
 
-It's time you never get back. Unless, of course, you figure out a way use that high school math to become a better athlete. 
+It's time you never get back. Unless, of course, you figure out a way use that high school math to become a better athlete.
 
 Which is what we'll be looking at today! In this post, I'll show you how to use Machine Learning to analyze your performance in your sport of choice (as an example, I'll be using my tennis serve, but you can easily adopt the technique to other games).
 
@@ -36,4 +36,4 @@ Already, machine learning plays a role in sports: companies [use it to](https://
 
 But as a beginner, I'd love to use that same technology simply to tell me what I'm doing wrong and where I'm making mistakes. Ideally, I'd build an app that I set up on a tripod (for example) while I'm on the tennis court that analyzes video of me serving and gives me helpful tips (i.e. "straighten your arm," "bend your knees"). In this post, I'll show you the core techniques that would make an app like that possible.
 
-_Want to jump straight to the code? Check out the [code](https://github.com/google/making_with_ml/tree/master/sports_ai) on Github._
+_Want to jump straight to the code? Check out the [repo](https://github.com/google/making_with_ml/tree/master/sports_ai "repo") _on Github._
