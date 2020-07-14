@@ -107,3 +107,34 @@ For starters, I plotted the y position of my left and right wrists over time:
 It might look messy, but that data actually shows pretty clearly the lifetime of a serve. The blue line shows the position of my left wrist, which peaks as I throw the tennis ball, a few seconds before I hit it with my racket (the peak in the right wrist, or orange line).
 
 Using this data, I can tell pretty accurately at what points in time I'm throwing the ball and hitting it. I'd like to align that with the _angle_ my elbow is making as I hit the ball. To do that, I'll have to convert the output of the Video Intelligence API--raw pixel locations--to angles. How do you do that? The Law of Cosines, _duh_! (Just kidding, I definitely forgot this and had to look it up. Here's [a great explanation](https://medium.com/@manivannan_data/find-the-angle-between-three-points-from-2d-using-python-348c513e2cd) and some Python code.)
+
+The Law of Cosines is the key to converting points in space to angles. In code, that looks something like:
+
+    class Point:
+      def __init__(self, x, y):
+        self.x = x
+        self.y = y 
+        
+    def getAngle(a, b, c):
+        ang = math.degrees(math.atan2(c.y-b.y, c.x-b.x) - math.atan2(a.y-b.y, a.x-b.x))
+        return ang
+        
+     def computeElbowAngle(row, which='right'):
+      wrist = Point(row[f'{which}_wrist_x'], row[f'{which}_wrist_y'])
+      elbow = Point(row[f'{which}_elbow_x'], row[f'{which}_elbow_y'])
+      shoulder = Point(row[f'{which}_shoulder_x'], row[f'{which}_shoulder_y'])
+      return getAngle(wrist, elbow, shoulder)
+    
+    def computeShoulderAngle(row, which='right'):
+      elbow = Point(row[f'{which}_elbow_x'], row[f'{which}_elbow_y'])
+      shoulder = Point(row[f'{which}_shoulder_x'], row[f'{which}_shoulder_y'])
+      hip = Point(row[f'{which}_hip_x'], row[f'{which}_hip_y'])
+      return getAngle(hip, shoulder, elbow)
+    
+    def computeKneeAngle(row, which='right'):
+      hip = Point(row[f'{which}_hip_x'], row[f'{which}_hip_y'])
+      knee = Point(row[f'{which}_knee_x'], row[f'{which}_knee_y'])
+      ankle = Point(row[f'{which}_ankle_x'], row[f'{which}_ankle_y'])
+      return getAngle(ankle, knee, hip)
+ 
+Check out the notebook to see all the details. Using these formulae, I plotted the angle of my elbow over time:
