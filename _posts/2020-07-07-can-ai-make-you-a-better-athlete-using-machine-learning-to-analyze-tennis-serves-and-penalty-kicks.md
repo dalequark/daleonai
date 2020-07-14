@@ -90,7 +90,7 @@ To start, I clipped the video of my tennis serves down to just the sections wher
     
         return operation
 
-To call the API, you pass the location in Cloud Storage where your video is stored as well as a destination in cloud storage where the Video Intelligence API can write the results.  
+To call the API, you pass the location in Cloud Storage where your video is stored as well as a destination in cloud storage where the Video Intelligence API can write the results.
 
 _Here, I'm calling the asynchronous version of the Video Intelligence API. It analyzes video on Google's backend, in the cloud, even after my notebook is closed. This is convenient for long videos, but there's also a synchronous and streaming version of this API!_
 
@@ -136,5 +136,13 @@ The Law of Cosines is the key to converting points in space to angles. In code, 
       knee = Point(row[f'{which}_knee_x'], row[f'{which}_knee_y'])
       ankle = Point(row[f'{which}_ankle_x'], row[f'{which}_ankle_y'])
       return getAngle(ankle, knee, hip)
- 
+
 Check out the notebook to see all the details. Using these formulae, I plotted the angle of my elbow over time:
+
+![](/images/right_elbow_angle.png)
+
+By aligning the height of my wrist and the angle of my elbow, I was able to determine the angle was around 120 degrees (not straight!). If JT hadn't told me what to look for, it would have nice for an app to catch that my arm angle was different from professionals and let me know.
+
+I used the same formula to calculate the angles of my knees and shoulders. Again, check out more details in the notebook.
+
+### Computing the Speed of My Serve
