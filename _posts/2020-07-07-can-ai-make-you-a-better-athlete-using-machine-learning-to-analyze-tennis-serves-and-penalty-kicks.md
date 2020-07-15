@@ -30,7 +30,7 @@ _How many friends do you think this made me?_
 
 It's time you never get back. Unless, of course, you figure out a way use that high school math to become a better athlete.
 
-Which is what we'll be looking at today! In this post, I'll show you how to use Machine Learning to analyze your performance in your sport of choice (as an example, I'll be using my tennis serve, but you can easily adopt the technique to other games). By the way, this project was inspired by my recent interview with Zack Akil, where we talked about analyzing penalty kicks, for the Making With Machine Learning YouTube show.
+Which is what we'll be looking at today! In this post, I'll show you how to use Machine Learning to analyze your performance in your sport of choice (as an example, I'll be using my tennis serve, but you can easily adopt the technique to other games). By the way, this project was inspired by [my recent interview](https://www.youtube.com/watch?v=yLrOy2Xedgk) with Zack Akil, who used the same techniques to analyze penalty kicks in soccer.
 
 Already, machine learning plays a role in sports: companies [use it to](https://www.nytimes.com/2020/04/08/technology/ai-sports-athletes-machine-learning.html) identify players’ unique talents, detect injuries earlier, and broker optimal player trades. Plus, almost every professional sport (NFL, NHL, MLB, NBA, soccer, golf, cricket, to name a few) uses ML technology for tracking. The NBA, for example, has deployed a sophisticated vision-based system all on courts, tracking players’ motions, reading numbers off their jerseys, analyzing how fast they pass the ball, and determining how accurately they shoot under pressure.
 
@@ -147,4 +147,34 @@ I used the same formula to calculate the angles of my knees and shoulders. Again
 
 ### Computing the Speed of My Serve
 
-_Coming by the end of the night... I promise!_
+Pose detection let me compute the angles of my body, but I also wanted to compute the speed of the ball after I hit it with my racket. To do that, I had to be able to track the tiny, speedy little tennis ball over time.
+
+![blurry tennis ball](/images/screen-shot-2020-07-14-at-11-50-10-pm.png "blurry tennis ball")
+
+_As you can see here, the tennis ball was sort of hard to identify because it was blurry and far away_.
+
+I handled this the way Zack did in his [Football Pier](https://www.youtube.com/watch?v=yLrOy2Xedgk) project: I trained a custom AutoML Vision model.
+
+If you're not familiar with [AutoML Vision](https://cloud.google.com/vision/automl/docs), it's a no-code way to build computer vision models using deep neural networks. The best part is, you don't have to know anything about ML to use it! The worst part is the cost. It's pricey (more on that in a minute).
+
+### Training an Object Detection Model with AutoML Vision
+
+To get started, I took a thirty second clip of me serving and split it into individual pictures I could use as training data to a vision model:
+
+    ffmpeg -i filename.mp4 -vf fps=10 -ss 00:00:01 -t 00:00:30 tmp/snapshots/%03d.jpg
+
+You can run that command from within the [notebook](https://github.com/google/making_with_ml/blob/master/sports_ai/Sports_AI_Analysis.ipynb) I provided, or from the command line if you have ffmpeg installed. It takes as an mp4 and creates a bunch of snapshots (here at fps=20, i.e. 20 frames per second) as jpgs. The `-ss` flag controls how far into the video the snapshots should start (i.e. start "seeking" at 1 second) and the flag `-t` controls how many seconds should be included (30 in this case).
+
+Once you've got all your snapshots created, you can upload them to Google Cloud storage with the command:
+
+	gsutil mb gs://my_neat_bucket  # create a new bucket
+    gsutil cp tmp/snapshots/* gs://my_neat_bucket/snapshots
+    
+so
+![](/images/screen-shot-2020-07-14-at-11-59-48-pm.png)
+
+![](/images/screen-shot-2020-07-14-at-11-59-57-pm.png)
+
+![](/images/screen-shot-2020-07-15-at-12-00-12-am.png)
+
+![](/images/screen-shot-2020-07-15-at-12-00-47-am.png)
