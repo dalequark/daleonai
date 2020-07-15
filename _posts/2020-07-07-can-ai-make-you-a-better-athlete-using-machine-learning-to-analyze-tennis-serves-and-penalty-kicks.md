@@ -34,7 +34,7 @@ Which is what we'll be looking at today! In this post, I'll show you how to use 
 
 Already, machine learning plays a role in sports: companies [use it to](https://www.nytimes.com/2020/04/08/technology/ai-sports-athletes-machine-learning.html) identify players’ unique talents, detect injuries earlier, and broker optimal player trades. Plus, almost every professional sport (NFL, NHL, MLB, NBA, soccer, golf, cricket, to name a few) uses ML technology for tracking. The NBA, for example, has deployed a sophisticated vision-based system all on courts, tracking players’ motions, reading numbers off their jerseys, analyzing how fast they pass the ball, and determining how accurately they shoot under pressure.
 
-But as a beginner, I'd love to use that same technology simply to tell me what I'm doing wrong and where I'm making mistakes. Ideally, I'd build an app that I set up on my phone on my tripod (for example) while I'm on the tennis court that analyzes video of me serving and gives me helpful tips (i.e. "straighten your arm," "bend your knees"). In this post, I'll show you the core techniques that would make an app like that possible.
+But as a beginner, I'd love to use that same technology simply to tell me what I'm doing wrong and where I'm making mistakes. Ideally, I'd build an app that I set up on my phone and mount on a tripod (for example) while I'm on the tennis court that analyzes video of me serving and gives me helpful tips (i.e. "straighten your arm," "bend your knees"). In this post, I'll show you the core techniques that would make an app like that possible.
 
 _Want to jump straight to the code? Check out the_ [_repo_](https://github.com/google/making_with_ml/tree/master/sports_ai "repo") _on Github._
 
@@ -64,7 +64,7 @@ To compute the angle of my knees and arms, I decided to use pose detection--a ma
 
 ![](/images/screen-shot-2020-07-14-at-3-45-56-pm.png "Features detected by the video intelligence API")
 
-To start, I clipped the video of my tennis serves down to just the sections where I was serving. Since I only caught 17 serves on camera, this took me about a minute. Next, I uploaded the video to Google Cloud Storage and ran it through the Video Intelligence API. All of that code is conveniently documented in a [Colab notebook](https://github.com/google/making_with_ml/blob/master/sports_ai/Sports_AI_Analysis.ipynb) which you can run yourself on your own video (you'll just need a Google Cloud account). The notebook even shows you how to set up authentication and create buckets and all that jazz. The interesting bit--analyzing pose--is this bit:
+To start, I clipped the video of my tennis serves down to just the sections where I was serving. Since I only caught 17 serves on camera, this took me about a minute. Next, I uploaded the video to Google Cloud Storage and ran it through the Video Intelligence API. All that code is conveniently documented in a [Colab notebook](https://github.com/google/making_with_ml/blob/master/sports_ai/Sports_AI_Analysis.ipynb) which you can run yourself on your own video (you'll just need a Google Cloud account). The notebook even shows you how to set up authentication and create buckets and all that jazz. The interesting bit--analyzing pose--is this bit:
 
     def detect_person(input_uri, output_uri):
         """Detects people in a video."""
@@ -180,7 +180,7 @@ Create a new AutoML Vision Model and [import your photos](https://cloud.google.c
 
 ![](/images/screen-shot-2020-07-15-at-12-09-43-am.png)
 
-Quick recap: what's a Machine Learning classifier? It's a a type of model that _learns_ how to label things from example. So to train our own AutoML Vision model, we'll need to provide some labeled training data for the model to learn from.
+Quick recap: what's a Machine Learning classifier? It's a type of model that _learns_ how to label things from example. So to train our own AutoML Vision model, we'll need to provide some labeled training data for the model to learn from.
 
 Once your data has been uploaded, you should see it in the AutoML Vision "IMAGES" tab:
 
@@ -194,7 +194,7 @@ _Gif of the AutoML Vision Data Labeling Interface_
 
 Congratulations, you have just begun a long and rewarding career as a data labeler. Next stop, MIT!
 
-For my model, I hand-labeled about 300 images which took me \~30 minutes. Once you're done labeling data, it's just one click to actually train a model with AutoML--just click the "Train New Model" button and wait.
+For my model, I hand-labeled about 300 images which took me \~30 minutes. Once you're done labeling data, it's just one click to train a model with AutoML--just click the "Train New Model" button and wait.
 
 ![](/images/screen-shot-2020-07-15-at-12-00-12-am.png)
 
@@ -232,7 +232,7 @@ I trained two AutoML models, and the cost of training for both was $91.11. Sure,
 
 The real cost comes from that first line item--AutoML Image Object Detection Online Prediction. What's that? It's the cost Google charges for _hosting_ your model for you in the cloud, so that you can call it with a standard REST API. Weirdly, you're continually charged for the cost of hosting this model, even if you're not making predictions against it, which really makes the cost rack up fast.
 
-The good news is that AutoML Vision actually runs in three ways:
+The good news is that AutoML Vision runs in three ways:
 
 1. You can configure a model to be hosted in the cloud, where you can hit it at a REST endpoint at any time (most expensive).
 2. You can use it in batch mode only (predictions are run in an asynchronous fashion, not for real-time use cases), which wipes out most of that additional cost.
