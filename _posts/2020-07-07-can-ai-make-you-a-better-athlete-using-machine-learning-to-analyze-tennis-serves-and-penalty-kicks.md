@@ -34,7 +34,7 @@ Which is what we'll be looking at today! In this post, I'll show you how to use 
 
 Already, machine learning plays a role in sports: companies [use it to](https://www.nytimes.com/2020/04/08/technology/ai-sports-athletes-machine-learning.html) identify players’ unique talents, detect injuries earlier, and broker optimal player trades. Plus, almost every professional sport (NFL, NHL, MLB, NBA, soccer, golf, cricket, to name a few) uses ML technology for tracking. The NBA, for example, has deployed a sophisticated vision-based system all on courts, tracking players’ motions, reading numbers off their jerseys, analyzing how fast they pass the ball, and determining how accurately they shoot under pressure.
 
-But as a beginner, I'd love to use that same technology simply to tell me what I'm doing wrong and where I'm making mistakes. Ideally, I'd build an app that I set up on a tripod (for example) while I'm on the tennis court that analyzes video of me serving and gives me helpful tips (i.e. "straighten your arm," "bend your knees"). In this post, I'll show you the core techniques that would make an app like that possible.
+But as a beginner, I'd love to use that same technology simply to tell me what I'm doing wrong and where I'm making mistakes. Ideally, I'd build an app that I set up on my phone on my tripod (for example) while I'm on the tennis court that analyzes video of me serving and gives me helpful tips (i.e. "straighten your arm," "bend your knees"). In this post, I'll show you the core techniques that would make an app like that possible.
 
 _Want to jump straight to the code? Check out the_ [_repo_](https://github.com/google/making_with_ml/tree/master/sports_ai "repo") _on Github._
 
@@ -153,9 +153,9 @@ Pose detection let me compute the angles of my body, but I also wanted to comput
 
 _As you can see here, the tennis ball was sort of hard to identify because it was blurry and far away_.
 
-I handled this the way Zack did in his [Football Pier](https://www.youtube.com/watch?v=yLrOy2Xedgk) project: I trained a custom AutoML Vision model. 
+I handled this the way Zack did in his [Football Pier](https://www.youtube.com/watch?v=yLrOy2Xedgk) project: I trained a custom AutoML Vision model.
 
-If you're not familiar with [AutoML Vision](https://cloud.google.com/vision/automl/docs), it's a no-code way to build computer vision models using deep neural networks. The best part is, you don't have to know anything about ML to use it! The worst part is the cost. It's pricey (more on that in a minute). 
+If you're not familiar with [AutoML Vision](https://cloud.google.com/vision/automl/docs), it's a no-code way to build computer vision models using deep neural networks. The best part is, you don't have to know anything about ML to use it! The worst part is the cost. It's pricey (more on that in a minute).
 
 AutoML Vision lets you upload your own labeled data (i.e. with labeled tennis balls) and trains a model for you.
 
@@ -184,7 +184,6 @@ Quick recap: what's a Machine Learning classifier? It's a a type of model that _
 
 Once your data has been uploaded, you should see it in the AutoML Vision "IMAGES" tab:
 
-
 ![](/images/screen-shot-2020-07-14-at-11-59-48-pm.png)
 
 Here, you can start applying labels. Click into an image. In the editing view (below), you'll be able to click and drag a little bounding box:
@@ -199,7 +198,7 @@ For my model, I hand-labeled about 300 images which took me \~30 minutes. Once y
 
 ![](/images/screen-shot-2020-07-15-at-12-00-12-am.png)
 
-When your model is done training, you'll be able to evaluate its quality in the "Evaluate" tab below. 
+When your model is done training, you'll be able to evaluate its quality in the "Evaluate" tab below.
 
 ![](/images/screen-shot-2020-07-15-at-12-00-47-am.png)
 
@@ -233,10 +232,10 @@ I trained two AutoML models, and the cost of training for both was $91.11. Sure,
 
 The real cost comes from that first line item--AutoML Image Object Detection Online Prediction. What's that? It's the cost Google charges for _hosting_ your model for you in the cloud, so that you can call it with a standard REST API. Weirdly, you're continually charged for the cost of hosting this model, even if you're not making predictions against it, which really makes the cost rack up fast.
 
-The good news is that AutoML Vision actually runs in three ways: 
+The good news is that AutoML Vision actually runs in three ways:
 
-1. You can configure a model to be hosted in the cloud, where you can hit it at a REST endpoint at any time (most expensive). 
+1. You can configure a model to be hosted in the cloud, where you can hit it at a REST endpoint at any time (most expensive).
 2. You can use it in batch mode only (predictions are run in an asynchronous fashion, not for real-time use cases), which wipes out most of that additional cost.
 3. You can actually train your model to be exportable, allowing you to download it as a TensorFlow model and use it offline. This also brings down the cost significantly.
 
-   Or, you can forgo AutoML altogether and brave it on your own with TensorFlow or PyTorch. Good luck--and let me know what you choose! 
+   Or, you can forgo AutoML altogether and brave it on your own with TensorFlow or PyTorch. Good luck--and let me know what you choose!
