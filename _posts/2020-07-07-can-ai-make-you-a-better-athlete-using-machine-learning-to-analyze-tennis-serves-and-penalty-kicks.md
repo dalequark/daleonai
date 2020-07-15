@@ -28,7 +28,7 @@ No? Not ringing a bell? Me neither. That's what you get when you spend your high
 
 _How many friends do you think this made me?_
 
-It's time you never get back. Unless, of course, you figure out a way use that high school math to become a better athlete.
+It's time you never get back. Unless, of course, you figure out a way to use that high school math to become a better athlete.
 
 Which is what we'll be looking at today! In this post, I'll show you how to use Machine Learning to analyze your performance in your sport of choice (as an example, I'll be using my tennis serve, but you can easily adopt the technique to other games). By the way, this project was inspired by [my recent interview](https://www.youtube.com/watch?v=yLrOy2Xedgk) with Zack Akil, who used the same techniques to analyze penalty kicks in soccer.
 
@@ -60,7 +60,7 @@ With JT's feedback in hand, I decided to focus on three facets of serving:
 
 ### Analyzing Posture with Pose Detection
 
-To compute the angle of my knees and arms, I decided to use pose detection--a machine learning technique that analyzes photos or videos of humans tries to locate their body parts. There are lots of tools you can use to do pose detection (like [TensorFlow.js](https://www.tensorflow.org/lite/models/pose_estimation/overview)), but for this project, I wanted to try out the new Person Detection (beta!) feature of the Google Cloud [Video Intelligence API](https://cloud.google.com/video-intelligence/docs). (You might recognize this API from my [AI-Powered Video Archive](https://daleonai.com/building-an-ai-powered-searchable-video-archive), where I used it to analyze objects, text, and speech in my family videos.) The Person Detection feature recognizes a whole bunch of body parts, facial features, and clothing. From the [docs](https://cloud.google.com/video-intelligence/docs/feature-person-detection):
+To compute the angle of my knees and arms, I decided to use pose detection--a machine learning technique that analyzes photos or videos of humans and tries to locate their body parts. There are lots of tools you can use to do pose detection (like [TensorFlow.js](https://www.tensorflow.org/lite/models/pose_estimation/overview)), but for this project, I wanted to try out the new Person Detection (beta!) feature of the Google Cloud [Video Intelligence API](https://cloud.google.com/video-intelligence/docs). (You might recognize this API from my [AI-Powered Video Archive](https://daleonai.com/building-an-ai-powered-searchable-video-archive), where I used it to analyze objects, text, and speech in my family videos.) The Person Detection feature recognizes a whole bunch of body parts, facial features, and clothing. From the [docs](https://cloud.google.com/video-intelligence/docs/feature-person-detection):
 
 ![](/images/screen-shot-2020-07-14-at-3-45-56-pm.png "Features detected by the video intelligence API")
 
