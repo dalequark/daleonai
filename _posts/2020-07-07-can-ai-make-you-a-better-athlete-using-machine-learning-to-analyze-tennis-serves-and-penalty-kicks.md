@@ -153,9 +153,11 @@ Pose detection let me compute the angles of my body, but I also wanted to comput
 
 _As you can see here, the tennis ball was sort of hard to identify because it was blurry and far away_.
 
-I handled this the way Zack did in his [Football Pier](https://www.youtube.com/watch?v=yLrOy2Xedgk) project: I trained a custom AutoML Vision model.
+I handled this the way Zack did in his [Football Pier](https://www.youtube.com/watch?v=yLrOy2Xedgk) project: I trained a custom AutoML Vision model. 
 
-If you're not familiar with [AutoML Vision](https://cloud.google.com/vision/automl/docs), it's a no-code way to build computer vision models using deep neural networks. The best part is, you don't have to know anything about ML to use it! The worst part is the cost. It's pricey (more on that in a minute).
+If you're not familiar with [AutoML Vision](https://cloud.google.com/vision/automl/docs), it's a no-code way to build computer vision models using deep neural networks. The best part is, you don't have to know anything about ML to use it! The worst part is the cost. It's pricey (more on that in a minute). 
+
+AutoML Vision lets you upload your own labeled data (i.e. with labeled tennis balls) and trains a model for you.
 
 ### Training an Object Detection Model with AutoML Vision
 
@@ -167,14 +169,74 @@ You can run that command from within the [notebook](https://github.com/google/ma
 
 Once you've got all your snapshots created, you can upload them to Google Cloud storage with the command:
 
-	gsutil mb gs://my_neat_bucket  # create a new bucket
+    gsutil mb gs://my_neat_bucket  # create a new bucket
     gsutil cp tmp/snapshots/* gs://my_neat_bucket/snapshots
-    
-so
+
+Next, navigate to the Google Cloud console and select **Vision** from the left hand menu:
+
+![](/images/screen-shot-2020-07-15-at-12-09-33-am.png)
+
+Create a new AutoML Vision Model and [import your photos](https://cloud.google.com/vision/automl/docs/prepare).
+
+![](/images/screen-shot-2020-07-15-at-12-09-43-am.png)
+
+Quick recap: what's a Machine Learning classifier? It's a a type of model that _learns_ how to label things from example. So to train our own AutoML Vision model, we'll need to provide some labeled training data for the model to learn from.
+
+Once your data has been uploaded, you should see it in the AutoML Vision "IMAGES" tab:
+
+
 ![](/images/screen-shot-2020-07-14-at-11-59-48-pm.png)
 
-![](/images/screen-shot-2020-07-14-at-11-59-57-pm.png)
+Here, you can start applying labels. Click into an image. In the editing view (below), you'll be able to click and drag a little bounding box:
+
+![](/images/automl_vision.gif "Drawing a bounding box on a tennis ball with AutoML Vision")
+
+_Gif of the AutoML Vision Data Labeling Interface_
+
+Congratulations, you have just begun a long and rewarding career as a data labeler. Next stop, MIT!
+
+For my model, I hand-labeled about 300 images which took me \~30 minutes. Once you're done labeling data, it's just one click to actually train a model with AutoML--just click the "Train New Model" button and wait.
 
 ![](/images/screen-shot-2020-07-15-at-12-00-12-am.png)
 
+When your model is done training, you'll be able to evaluate its quality in the "Evaluate" tab below. 
+
 ![](/images/screen-shot-2020-07-15-at-12-00-47-am.png)
+
+As you can see, my model was pretty darn accurate, with about 96% precision and recall--hot dog!
+
+This was more than enough to be able to track the position of the ball in my pictures, and therefore calculate its speed:
+
+![](/images/ball_tracking.gif)
+
+Once you've trained your model, you can use the code in Jupyter notebook to make a cute 'lil video like the one I plotted above.
+
+You can then use this to plot the position of the ball over time, to calculate speed (see the notebook for more details):
+
+![](/images/ball_position_over_time.png)
+
+Unfortunately, I realized too late I'd made a grave mistake here. What is speed? Change in distance over time, right? But because I didn't actually know the distance between me, the player, and the camera, I couldn't compute distance in miles or meters--only pixels! So I learned I serve the ball at approximately 200 pixels per second. _Nice_.
+
+So there you have it--some techniques you can use to build your own sports machine learning trainer app!
+
+### A Note on Cost
+
+Disclaimer: I work for Google, and I use Google Cloud for free. I try to recommend free tools here whenever possible, but I turn to GCP by instinct, and sometimes I don't notice the cost.
+
+Whelp, when it came to AutoML Vision, that turned out to not be a great idea. Here's what this project cost me:
+
+![](/images/screen-shot-2020-07-14-at-11-58-44-pm.png)
+
+The whole thing was about \~450 bucks--_ouch_. But, before you get entirely turned off by the $$, let's break things down:
+
+I trained two AutoML models, and the cost of training for both was $91.11. Sure, that's pricey, but the quality was pretty high and maybe for certain business use cases, it makes sense.
+
+The real cost comes from that first line item--AutoML Image Object Detection Online Prediction. What's that? It's the cost Google charges for _hosting_ your model for you in the cloud, so that you can call it with a standard REST API. Weirdly, you're continually charged for the cost of hosting this model, even if you're not making predictions against it, which really makes the cost rack up fast.
+
+The good news is that AutoML Vision actually runs in three ways: 
+
+1. You can configure a model to be hosted in the cloud, where you can hit it at a REST endpoint at any time (most expensive). 
+2. You can use it in batch mode only (predictions are run in an asynchronous fashion, not for real-time use cases), which wipes out most of that additional cost.
+3. You can actually train your model to be exportable, allowing you to download it as a TensorFlow model and use it offline. This also brings down the cost significantly.
+
+   Or, you can forgo AutoML altogether and brave it on your own with TensorFlow or PyTorch. Good luck--and let me know what you choose! 
