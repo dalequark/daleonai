@@ -104,7 +104,7 @@ For starters, I plotted the y position of my left and right wrists over time:
 
 ![](/images/wrist_pos-1.png)
 
-It might look messy, but that data actually shows pretty clearly the lifetime of a serve. The blue line shows the position of my left wrist, which peaks as I throw the tennis ball, a few seconds before I hit it with my racket (the peak in the right wrist, or orange line).
+It might look messy, but that data actually shows pretty clearly the lifetime of a serve. The blue line shows the position of my left wrist, which peaks as I throw the tennis ball a few seconds before I hit it with my racket (the peak in the right wrist, or orange line).
 
 Using this data, I can tell pretty accurately at what points in time I'm throwing the ball and hitting it. I'd like to align that with the _angle_ my elbow is making as I hit the ball. To do that, I'll have to convert the output of the Video Intelligence API--raw pixel locations--to angles. How do you do that? The Law of Cosines, _duh_! (Just kidding, I definitely forgot this and had to look it up. Here's [a great explanation](https://medium.com/@manivannan_data/find-the-angle-between-three-points-from-2d-using-python-348c513e2cd) and some Python code.)
 
@@ -141,7 +141,7 @@ Check out the notebook to see all the details. Using these formulae, I plotted t
 
 ![](/images/right_elbow_angle.png)
 
-By aligning the height of my wrist and the angle of my elbow, I was able to determine the angle was around 120 degrees (not straight!). If JT hadn't told me what to look for, it would have nice for an app to catch that my arm angle was different from professionals and let me know.
+By aligning the height of my wrist and the angle of my elbow, I was able to determine the angle was around 120 degrees (not straight!). If JT hadn't told me what to look for, it would have been nice for an app to catch that my arm angle was different from professionals and let me know.
 
 I used the same formula to calculate the angles of my knees and shoulders. Again, check out more details in the notebook.
 
@@ -165,7 +165,7 @@ To get started, I took a thirty second clip of me serving and split it into indi
 
     ffmpeg -i filename.mp4 -vf fps=10 -ss 00:00:01 -t 00:00:30 tmp/snapshots/%03d.jpg
 
-You can run that command from within the [notebook](https://github.com/google/making_with_ml/blob/master/sports_ai/Sports_AI_Analysis.ipynb) I provided, or from the command line if you have ffmpeg installed. It takes as an mp4 and creates a bunch of snapshots (here at fps=20, i.e. 20 frames per second) as jpgs. The `-ss` flag controls how far into the video the snapshots should start (i.e. start "seeking" at 1 second) and the flag `-t` controls how many seconds should be included (30 in this case).
+You can run that command from within the [notebook](https://github.com/google/making_with_ml/blob/master/sports_ai/Sports_AI_Analysis.ipynb) I provided, or from the command line if you have ffmpeg installed. It takes an mp4 and creates a bunch of snapshots (here at fps=20, i.e. 20 frames per second) as jpgs. The `-ss` flag controls how far into the video the snapshots should start (i.e. start "seeking" at 1 second) and the flag `-t` controls how many seconds should be included (30 in this case).
 
 Once you've got all your snapshots created, you can upload them to Google Cloud storage with the command:
 
