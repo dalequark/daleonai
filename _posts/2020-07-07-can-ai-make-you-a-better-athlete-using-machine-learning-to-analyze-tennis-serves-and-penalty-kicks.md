@@ -98,7 +98,7 @@ When the Video Intelligence API finished analyzing my video, I visualized the re
 
 ![](/images/tennis_gif.gif)
 
-Pose detection makes a great pre-processing step for training machine learning models. For example, I could use the output of the API (the position of my joints over time) as input features to a second machine learning model that tries to predict (for example) whether or not I'm serving, or whether or not my serve will go over the net. But for now, I want to do something much simpler: analyzer my serve with high school math!
+Pose detection makes a great pre-processing step for training machine learning models. For example, I could use the output of the API (the position of my joints over time) as input features to a second machine learning model that tries to predict (for example) whether or not I'm serving, or whether or not my serve will go over the net. But for now, I want to do something much simpler: analyze my serve with high school math!
 
 For starters, I plotted the y position of my left and right wrists over time:
 
