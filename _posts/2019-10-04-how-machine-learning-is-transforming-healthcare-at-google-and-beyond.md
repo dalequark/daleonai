@@ -111,4 +111,4 @@ Thanks for reading! Happy to answer any questions or comments below.
 
 * * *
 
-\[1\] If you want to play around with a cool tool that can let you build a model like this yourself, check out Google’s [Document Understanding AI](https://cloud.google.com/solutions/document-ai/).
+[1] If you want to play around with a cool tool that can let you build a model like this yourself, check out Google’s [Document Understanding AI](https://cloud.google.com/solutions/document-ai/).

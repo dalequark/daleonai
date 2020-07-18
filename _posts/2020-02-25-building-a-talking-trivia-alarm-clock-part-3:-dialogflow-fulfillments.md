@@ -61,7 +61,7 @@ To get started, create a new Dialogflow Agent called something like `TriviaGame`
 If you haven’t already, go ahead and clone the Talking to Machines [Github repo](https://github.com/dalequark/talking_to_machines):
 
 ```
-git clone [git@github.com](mailto:git@github.com):dalequark/talking\_to\_machines.git
+git clone [git@github.com](mailto:git@github.com):dalequark/talking_to_machines.git
 ```
 
 The `trivia_alarm` folder in this repository contains all the code you’ll need to complete your trivia alarm. There, you’ll a file called `TriviaAgent.zip`. That file contains all the entities and intents you’ll need for our new Dialogflow Agent. To import it into your agent, click the gear icon in the Dialogflow left hand bar, then click “IMPORT FROM ZIP” and select the file `TriviaAgent.zip`.
@@ -158,16 +158,16 @@ If you’re writing in Javascript/Node.js, you can use the [Dialogflow Fulfillme
 
 You can find all the code we’ll need for trivia alarm fulfillments on Github [here](https://github.com/dalequark/talking_to_machines/tree/master/trivia_alarm/fulfillment/functions), spread across two main files. `trivia.js` is a small Javascript library for generating easy, medium, and hard math trivia questions. For example, calling the function `getEasyQuestion` returns a json response like:
 
-```
+```json
 {          
-   "question" : \`What is 3 plus 4?\`,  
+   "question" : "What is 3 plus 4?",
    "answer" : 7     
 }
 ```
 
 The `index.js` file contains all the actual Dialogflow Fulfillment code. In that file, there’s a function corresponding to each of our agent’s intents (i.e.`function askQuestion(agent)`, `function snooze(agent)`). At the very bottom of the file, we connect those functions to their corresponding intents using a `Map`:
 
-```
+```js
 // Map Dialogflow intent names to their matching functions const intentMap = new Map();    
 intentMap.set('Ask Question', askQuestion);    
 intentMap.set('Snooze', snooze);    
@@ -192,14 +192,28 @@ Context, Event Triggers, Parameters
 
 **Contexts.** [Contexts](https://cloud.google.com/dialogflow/docs/contexts-overview)  in Dialogflow can be used to store information across multiple turns of a conversation. Here, we use context to remember what quiz question is currently being asked, its answer, and how many questions the user has already answered correctly. In code, that looks like this:
 
-```
-agent.context.set({ name: 'quiz\_data', // this can be any name you like lifespan: 99,     // how long to keep this context alive for parameters: {     // where we put the info we want to store question: "What's 5 plus 9?" answer: 14, questions\_correct: 1},});
+```js
+agent.context.set({
+  name: 'quiz_data', // this can be any name you like
+  lifespan: 99,      // how long to keep this context alive for
+  parameters: {      // where we put the info we want to store
+    question: "What's 5 plus 9?",
+    answer: 14,
+    questions_correct: 1,
+  },
+});
 ```
 
 **Event Triggers.** Earlier, we talked about how we can invoke Intents in Fulfillment code, so that we can “chain” Intents. In our alarm clock, we use these triggers several times. For example, if the user says “Next Question,” they’ll invoke the `Next Question` Intent. In this case, the user wants to be asked a _new_ question. So (in Fulfillment code), the`Next Question` Intent uses an event trigger to invoke the `Ask Question` Intent, which generates a new question and asks it to the user. In code, this looks like:
 
-```
-agent.setFollowupEvent({ 'name': 'ask-question', 'parameters': { 'lastState': lastState, }, 'languageCode': 'en', },);
+```js
+agent.setFollowupEvent({
+  name: 'ask-question',
+  parameters: {
+    lastState: lastState,
+  },
+  languageCode: 'en',
+});
 ```
 
 The sample above invokes the Intent with the name `ask-question`. You can see there’s also a `parameters` field, which lets you pass arbitrary information from the calling Intent to the target Intent. Here, we use that field to indicate why we’ve triggered an event (was it because the user got the question wrong? Right? They wanted to Snooze?).

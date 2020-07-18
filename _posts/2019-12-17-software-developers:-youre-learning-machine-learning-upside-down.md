@@ -14,9 +14,9 @@ _Most of us learn Machine Learning from the ground up. But the skills developers
 
 I remember the first time I ever tried to learn to code. I was in middle school, and my dad, a programmer himself, pulled open a text editor and typed this on the screen:
 
-```
+```java
 public class HelloWorld {  
-    public static void main(String\[\] args) {    
+    public static void main(String[] args) {    
         System.out.println("Hello World.");  
     }  
 }

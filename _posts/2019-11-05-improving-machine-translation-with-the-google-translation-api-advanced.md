@@ -46,21 +46,21 @@ Environment Variables
 
 In this post, we’ll call the API from Python. As is standard best practice when working with Python libraries, start by creating a virtual environment:
 
-```
+```sh
 python3 -m venv venv  
 source venv/bin/activate
 ```
 
 Next, install the translation library:
 
-```
+```sh
 pip install google-cloud-translate
 ```
 
 As mentioned earlier, the Translation client library uses a service account key to authenticate. It expects to find the path to that key in the environmental variable`GOOGLE_APPLICATION_CREDENTIALS.` Set that variable like so:
 
-```
-export GOOGLE\_APPLICATION\_CREDENTIALS="path/to/your\_creds\_file.json"
+```sh
+export GOOGLE_APPLICATION_CREDENTIALS="path/to/your_creds_file.json"
 ```
 
 Translating Text
@@ -70,13 +70,13 @@ Before we get in to new features, let’s see how we can simply translate text f
 
 First, create a new Python file, i.e. `translation.py`. Up top, import the library:
 
-```
-from google.cloud import translate\_v3
+```py
+from google.cloud import translate_v3
 ```
 
 Next, you’ll need to create a new TranslationServiceClient and configure it with your [GCP project id](https://cloud.google.com/resource-manager/docs/creating-managing-projects). Here’s what the code for translating text looks like:
 
-Basic translation from English to Spanish. Note that the field “source\_language\_code” is optional, since the API can detect language of the input text.
+Basic translation from English to Spanish. Note that the field “source_language_code” is optional, since the API can detect language of the input text.
 
 Which prints:
 
@@ -130,22 +130,22 @@ This glossary file specifies how the words “account” and “directions” sh
 
 Next, you’ll need to upload your glossary file to a [GCS bucket](https://cloud.google.com/storage/docs/creating-buckets). I’ll store the name of my storage bucket in an environmental variable, like so:
 
-```
-export GLOSSARY\_BUCKET="gs://your\_bucket\_name"
+```sh
+export GLOSSARY_BUCKET="gs://your_bucket_name"
 ```
 
 Next, [create a new bucket](https://cloud.google.com/storage/docs/reference/libraries) (or use an existing one) either [in Python](https://cloud.google.com/storage/docs/uploading-objects#storage-upload-object-code-sample) or from the command line using `gsutil`:
 
-```
-gsutil makebucket $GLOSSARY\_BUCKET  # create bucket  
-gsutil cp ./glossary.csv $GLOSSARY\_BUCKET # uploads file
+```sh
+gsutil makebucket $GLOSSARY_BUCKET  # create bucket  
+gsutil cp ./glossary.csv $GLOSSARY_BUCKET # uploads file
 ```
 
 **Creating a Glossary**
 
 After you’ve uploaded your `csv`, file to the cloud, you’ll need to register a new glossary, like this:
 
-Above, we created a new glossary with the id “my\_first\_glossary.” This unique identifier can be whatever you like, and you’ll use it to access this glossary later.
+Above, we created a new glossary with the id “my_first_glossary.” This unique identifier can be whatever you like, and you’ll use it to access this glossary later.
 
 The call `translate.types.Glossary.LanguageCodePair` indicates that we’re using a unidirectional glossary designed to be used in translations from `source_language_code` to `target_language_code` (in our case, from English to Spanish).
 
@@ -227,7 +227,7 @@ Now let’s see how you can call your new custom model from within Python.
 First, you’ll need to find the path to the model you just created. Conveniently, you can find this value in the UI under the “predict” tab (picture above), if you scroll down to the code samples. You’re looking for a field like:
 
 ```
-projects/your\_project\_id/locations/us-central1/models/your\_translation\_model\_path
+projects/your_project_id/locations/us-central1/models/your_translation_model_path
 ```
 
 Keep that path handy.

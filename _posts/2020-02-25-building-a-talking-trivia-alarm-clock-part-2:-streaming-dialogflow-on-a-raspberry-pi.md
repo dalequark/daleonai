@@ -53,20 +53,20 @@ If you’re using this kit, start off by [assembling it and installing the lates
 Cloning the Code
 ----------------
 
-All the code you’ll need to run your trivia alarm clock is here in the [Talking to Machines](https://github.com/dalequark/talking_to_machines) Github repo under [trivia\_alarm](https://github.com/dalequark/talking_to_machines/tree/master/trivia_alarm).
+All the code you’ll need to run your trivia alarm clock is here in the [Talking to Machines](https://github.com/dalequark/talking_to_machines) Github repo under [trivia_alarm](https://github.com/dalequark/talking_to_machines/tree/master/trivia_alarm).
 
 To download that code, on your device/Raspberry Pi:
 
-```
-git clone [git@github.com](mailto:git@github.com):dalequark/talking\_to\_machines.git
+```sh
+git clone git@github.com:dalequark/talking_to_machines.git
 ```
 
 (If you’re on a Raspberry Pi, you might have to `sudo apt-get install git` first!)
 
 Next, run:
 
-```
-cd talking\_to\_machines/trivia\_alarm
+```sh
+cd talking_to_machines/trivia_alarm
 ```
 
 and take a look around. Notice `SimpleAlarmAgent.zip`, which is Dialogflow agent we built in the first post. If you followed along in that first post and built your own agent, you can ignore that file. Otherwise, you’ll need to go to the [Dialogflow console](https://dialogflow.cloud.google.com/#/login) and import this file:
@@ -102,7 +102,7 @@ In the left hand bar, go to IAM & admin -> Service accounts.
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/6" title="Create a new service account and name it something like “raspberry\_pi”." caption="Create a new service account and name it something like “raspberry\_pi”." %}
+{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/6" title="Create a new service account and name it something like “raspberry_pi”." caption="Create a new service account and name it something like “raspberry_pi”." %}
 
 
 
@@ -126,8 +126,8 @@ If you downloaded the key file directly onto your Raspberry Pi, you’ve saved y
 
 In order to authenticate, most Google Cloud tools expect the environmental variable `GOOGLE_APPLICATION_CREDENTIALS` to point to a key file. So make sure to set that variable:
 
-```
-export GOOGLE\_APPLICATION\_CREDENTIALS="/path/to/your/key.json"
+```sh
+export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/key.json"
 ```
 
 Enabling Text-to-Speech
@@ -150,21 +150,21 @@ First, you’ll need to download some dependencies. For this alarm, we’ll use 
 
 To install `node-record-lpcm16`, you may need to install some dependencies, like `sox`, first. See the docs [here](https://github.com/gillesdemey/node-record-lpcm16), but likely you’ll need to do something like:
 
-```
+```sh
 sudo apt-get install sox libsox-fmt-all  
 npm install node-record-lpcm16
 ```
 
 To install `node-speaker`:
 
-```
+```sh
 sudo apt-get install libasound2-dev  
 npm install speaker
 ```
 
 Finally, install everything else:
 
-```
+```sh
 npm install pump dotenv dialogflow-v2
 ```
 
@@ -173,14 +173,14 @@ Configure .env Values
 
 Now that we’ve downloaded the code and dependencies, we’ll need to some environmental configuration. Navigate to the `raspi` directory and run:
 
-```
-cp .env\_template .env
+```sh
+cp .env_template .env
 ```
 
 This `.env` file will be loaded by our Node.js scripts using the [dotenv](https://www.npmjs.com/package/dotenv) library. In a text editor, open the new `.env` file you’ve just created. It should look like this:
 
-```
-RASPI=trueBUTTON\_PIN=23GOOGLE\_APPLICATION\_CREDENTIALS="PATH TO YOUR CREDS"ALARM\_PROJECT\_ID="YOUR ID"TRIVIA\_PROJECT\_ID="YOUR ID"
+```sh
+RASPI=trueBUTTON_PIN=23GOOGLE_APPLICATION_CREDENTIALS="PATH TO YOUR CREDS"ALARM_PROJECT_ID="YOUR ID"TRIVIA_PROJECT_ID="YOUR ID"
 ```
 
 The top two variables here — `RASPI` and `BUTTON_PIN` — configure our software for running on an AIY Voice Kit and using the included pushbutton. If you’re not using this kit, set `RASPI=false`.
@@ -192,7 +192,7 @@ Running the App
 
 Congratulations, you’re ready to run code! Turn the volume up and, in the `raspi` directory, run `node run_alarm.js`. You should see:
 
-```
+```sh
 "Creating alarm sound from TTS API..."
 ```
 
@@ -221,9 +221,9 @@ Choosing an Alarm Sound
 
 It’s true that we don’t yet have a functioning _trivia_ alarm clock, but do at this point have an alarm that says “This is your alarm. It’s time to wake up” and plays a little bugle tune. That sound comes from a free Google Assistant library of sounds. If you want to change the alarm to something else, find a nice alarm sound [here](https://developers.google.com/assistant/tools/sound-library/alarms) and copy its link (i.e. `[https://actions.google.com/sounds/v1/alarms/spaceship_alarm.ogg](https://actions.google.com/sounds/v1/alarms/spaceship_alarm.ogg)`). Then, in `raspi/run_alarm.js`, modify this function, replacing the url in `src` with the url you copied.
 
-```
+```js
 async function createAlarmSound() {      
-    const ssml = \`<speak><audio src="https://actions.google.com/sounds/v1/alarms/bugle\_tune.ogg"></audio>This is your alarm. It's time to wake up.</speak>\`;  
+    const ssml = `<speak><audio src="https://actions.google.com/sounds/v1/alarms/bugle_tune.ogg"></audio>This is your alarm. It's time to wake up.</speak>`;  
     return await tts(ssml);  
 }
 ```

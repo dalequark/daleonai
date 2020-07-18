@@ -57,18 +57,24 @@ Let’s see how to build it.
 
 First let’s grab the code for our moderator bot. Clone the \`making_with_ml\` [Github repo](https://github.com/google/making_with_ml) and navigate to the \`discord_moderator\` folder:
 
-    > git clone git@github.com:google/making_with_ml.git
-    > cd making_with_ml/discord_moderator
+```sh
+git clone git@github.com:google/making_with_ml.git
+cd making_with_ml/discord_moderator
+```
 
 Here’s all the code you’ll need to run your ML moderator bot. Before we can run the bot, we’ll need to get some (completely free) services set up. First, make a copy of the file `.env_template` and name it `.env`.
 
-    > cp .env_template .env`
+```sh
+cp .env_template .env`
+```
 
 Open that file up in your favorite text editor:
 
-    PERSPECTIVE_API_KEY="YOUR_API_KEY"
-    DISCORD_TOKEN="YOUR_DISCORD_TOKEN"
-    KICK_THRESHOLD=4
+```sh
+PERSPECTIVE_API_KEY="YOUR_API_KEY"
+DISCORD_TOKEN="YOUR_DISCORD_TOKEN"
+KICK_THRESHOLD=4
+```
 
 As you can see, we’ll need a couple of different API and developer tokens to get started, one for the Perspective API, which we’ll use for analyzing messages, and one for Discord (more on that in a second).
 
@@ -90,40 +96,48 @@ Next you’ll need to generate an API key to access the API in code. In the Goog
 
 Now go back to that file you created earlier--`.env`--and drop the key into the `PERSPECTIVE_API_KEY` field:
 
-        PERSPECTIVE_API_KEY="YOUR_API_KEY"  \\paste yer key here
-        DISCORD_TOKEN="YOUR_DISCORD_TOKEN"
-        KICK_THRESHOLD=4
+```sh
+PERSPECTIVE_API_KEY="YOUR_API_KEY" # paste yer key here
+DISCORD_TOKEN="YOUR_DISCORD_TOKEN"
+KICK_THRESHOLD=4
+```
 
-\##Analyzing Messages
+## Analyzing Messages
 
 Now you should be able to use the Perspective API to analyze text in code. To see an example, check out the file `perspective.js`. At the top of the file, you’ll see all of the possible attributes the API can recognize:
 
-    // Some supported attributes
-    // attributes = ["TOXICITY", "SEVERE_TOXICITY", "IDENTITY_ATTACK", "INSULT",
-    // "PROFANITY", "THREAT", "SEXUALLY_EXPLICIT", "FLIRTATION", "SPAM",
-    // "ATTACK_ON_AUTHOR", "ATTACK_ON_COMMENTER", "INCOHERENT",
-    // "INFLAMMATORY", "OBSCENE", "SPAM", "UNSUBSTANTIAL"];
+```js
+// Some supported attributes
+// attributes = ["TOXICITY", "SEVERE_TOXICITY", "IDENTITY_ATTACK", "INSULT",
+// "PROFANITY", "THREAT", "SEXUALLY_EXPLICIT", "FLIRTATION", "SPAM",
+// "ATTACK_ON_AUTHOR", "ATTACK_ON_COMMENTER", "INCOHERENT",
+// "INFLAMMATORY", "OBSCENE", "SPAM", "UNSUBSTANTIAL"];
+```
 
 On the next line, you’ll see the attributes we’ll actually using in our bot:
 
-    // Set your own thresholds for when to trigger a response
-    const attributeThresholds = {
-     'INSULT': 0.75,
-     'TOXICITY': 0.75,
-     'SPAM': 0.75,
-     'INCOHERENT': 0.75,
-     'FLIRTATION': 0.75,
-    };
+```js
+// Set your own thresholds for when to trigger a response
+const attributeThresholds = {
+  'INSULT': 0.75,
+  'TOXICITY': 0.75,
+  'SPAM': 0.75,
+  'INCOHERENT': 0.75,
+  'FLIRTATION': 0.75,
+};
+```
 
 See all those numbers next to each attribute? When you ask the Perspective API to analyze a comment (“You’re soooo sexy”), it returns a “summaryScore” for each attribute:
 
-    “attributeScores”: {
-    	“FLIRTATION”: {
-    		“summaryScore”: {
-    			“Value”: 0.88309
-    		}
-    	}
+```js
+"attributeScores": {
+  "FLIRTATION": {
+    "summaryScore": {
+      "Value": 0.88309
     }
+  }
+}
+```
 
 The score represents roughly how confident the machine learning model is that a comment is really flirtation or toxic or threatening, etc. The job is then on you, the developer, to choose a “cutoff” for deciding when a comment should really get a label. That’s what all those numbers mean in the `attributeThreshold` object I posted above. I’ll only consider a comment insulting or toxic or threatening if the summaryScore is above 0.75.
 
@@ -131,40 +145,42 @@ Pro tip: In your own application, you’ll want to choose a cutoff that aligns w
 
 Meanwhile, take a look at the function `analyzeText` to see how we actually call the Perspective API:
 
-    /**
-    * Analyze attributes in a block of text
-    * @param {string} text - text to analyze
-    * @return {json} res - analyzed atttributes
-    */
-    async function analyzeText(text) {
-     const analyzer = new googleapis.commentanalyzer_v1alpha1.Commentanalyzer();
-    
-     // This is the format the API expects
-     const requestedAttributes = {};
-     for (const key in attributeThresholds) {
-       requestedAttributes[key] = {};
-     }
-    
-     const req = {
-       comment: {text: text},
-       languages: ['en'],
-       requestedAttributes: requestedAttributes,
-     };
-    
-     const res = await analyzer.comments.analyze({
-       key: process.env.PERSPECTIVE_API_KEY,
-       resource: req},
-     );
-    
-     data = {};
-    
-     for (const key in res['data']['attributeScores']) {
-       data[key] =
-           res['data']['attributeScores'][key]['summaryScore']['value'] >
-           attributeThresholds[key];
-     }
-     return data;
-    }
+```js
+/**
+* Analyze attributes in a block of text
+* @param {string} text - text to analyze
+* @return {json} res - analyzed atttributes
+*/
+async function analyzeText(text) {
+  const analyzer = new googleapis.commentanalyzer_v1alpha1.Commentanalyzer();
+
+  // This is the format the API expects
+  const requestedAttributes = {};
+  for (const key in attributeThresholds) {
+    requestedAttributes[key] = {};
+  }
+
+  const req = {
+    comment: {text: text},
+    languages: ['en'],
+    requestedAttributes: requestedAttributes,
+  };
+
+  const res = await analyzer.comments.analyze({
+    key: process.env.PERSPECTIVE_API_KEY,
+    resource: req},
+  );
+
+  data = {};
+
+  for (const key in res['data']['attributeScores']) {
+    data[key] =
+        res['data']['attributeScores'][key]['summaryScore']['value'] >
+        attributeThresholds[key];
+  }
+  return data;
+}
+```
 
 To actually connect with the API, we call `const analyzer = new googleapis.commentanalyzer_v1alpha1.Commentanalyzer();`. We then package up a request on line 21, specifying our language and the attributes we want to analyze, and send it to the API. That’s it! On line 30, we check to see if the scores returned from the Perspective API are above our threshold (0.75).
 
@@ -184,9 +200,11 @@ On the left hand panel, choose “Bot” to create a new bot. Select "Add Bot." 
 
 To be able to control your bot in code, you’ll need a Discord developer token, which you can grab straight from that bot page by clicking “Copy.” Drop that code in your \`.env\` file:
 
-    PERSPECTIVE_API_KEY="YOUR_API_KEY"
-    DISCORD_TOKEN="YOUR_DISCORD_TOKEN" \\ your Discord token here
-    KICK_THRESHOLD=4
+```sh
+PERSPECTIVE_API_KEY="YOUR_API_KEY"
+DISCORD_TOKEN="YOUR_DISCORD_TOKEN" # your Discord token here
+KICK_THRESHOLD=4
+```
 
 Now that you’ve created a bot in Discord, you can immediately add it to a channel. In any Discord app (I’m using the desktop app), log in and create a new server:
 
@@ -212,56 +230,62 @@ At the top of the file, we import the Perspective file I talked about earlier:
 
 Then we set up an emoji map, which tells the bot how to react when various attributes are detected:
 
-    // Set your emoji "awards" here
-    const emojiMap = {
-     'FLIRTATION': '💋',
-     'TOXICITY': '🧨',
-     'INSULT': '👊',
-     'INCOHERENT': '🤪',
-     'SPAM': '🐟',
-    };
+```js
+// Set your emoji "awards" here
+const emojiMap = {
+  'FLIRTATION': '💋',
+  'TOXICITY': '🧨',
+  'INSULT': '👊',
+  'INCOHERENT': '🤪',
+  'SPAM': '🐟',
+};
+```
 
 Feel free to change those to whatever you’d like.
 
 What we’d like our bot to do is analyze every message in a channel. We do that by creating a new Discord client and passing our developer token (that’s the last line in the file):
 
-    // Log our bot in using the token from https://discordapp.com/developers/applications/me
-    const client = new Discord.Client();
-    client.login(process.env.DISCORD_TOKEN);
+```js
+// Log our bot in using the token from https://discordapp.com/developers/applications/me
+const client = new Discord.Client();
+client.login(process.env.DISCORD_TOKEN);
+```
 
 To listen for messages, we write a function that listens on the client `message` event:
 
-    client.on('message', async (message) => {
-     // Ignore messages that aren't from a guild
-     // or are from a bot
-     if (!message.guild || message.author.bot) return;
-    
-     // If we've never seen a user before, add them to memory
-     const userid = message.author.id;
-     if (!users[userid]) {
-       users[userid] = [];
-     }
-    
-     // Evaluate attributes of user's message
-     let shouldKick = false;
-     try {
-       shouldKick = await evaluateMessage(message);
-     } catch (err) {
-       console.log(err);
-     }
-     if (shouldKick) {
-       kickBaddie(message.author, message.guild);
-       delete users[message.author.id];
-       message.channel.send(`Kicked user ${message.author.username} from channel`);
-       return;
-     }
-    
-    
-     if (message.content.startsWith('!karma')) {
-       const karma = getKarma(message);
-       message.channel.send(karma ? karma : 'No karma yet!');
-     }
-    });
+```js
+client.on('message', async (message) => {
+  // Ignore messages that aren't from a guild
+  // or are from a bot
+  if (!message.guild || message.author.bot) return;
+
+  // If we've never seen a user before, add them to memory
+  const userid = message.author.id;
+  if (!users[userid]) {
+    users[userid] = [];
+  }
+
+  // Evaluate attributes of user's message
+  let shouldKick = false;
+  try {
+    shouldKick = await evaluateMessage(message);
+  } catch (err) {
+    console.log(err);
+  }
+  if (shouldKick) {
+    kickBaddie(message.author, message.guild);
+    delete users[message.author.id];
+    message.channel.send(`Kicked user ${message.author.username} from channel`);
+    return;
+  }
+
+
+  if (message.content.startsWith('!karma')) {
+    const karma = getKarma(message);
+    message.channel.send(karma ? karma : 'No karma yet!');
+  }
+});
+```
 
 There’s a lot going on here.
 
