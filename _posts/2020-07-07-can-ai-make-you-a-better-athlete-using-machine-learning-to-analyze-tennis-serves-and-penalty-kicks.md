@@ -66,29 +66,31 @@ To compute the angle of my knees and arms, I decided to use pose detection--a ma
 
 To start, I clipped the video of my tennis serves down to just the sections where I was serving. Since I only caught 17 serves on camera, this took me about a minute. Next, I uploaded the video to Google Cloud Storage and ran it through the Video Intelligence API. All that code is conveniently documented in a [Colab notebook](https://github.com/google/making_with_ml/blob/master/sports_ai/Sports_AI_Analysis.ipynb) which you can run yourself on your own video (you'll just need a Google Cloud account). The notebook even shows you how to set up authentication and create buckets and all that jazz. The interesting bit--analyzing pose--is this bit:
 
-    def detect_person(input_uri, output_uri):
-        """Detects people in a video."""
-    
-        client = videointelligence.VideoIntelligenceServiceClient(credentials=service_account.Credentials.from_service_account_file(
-        './key.json'))
-    
-        # Configure the request
-        config = videointelligence.types.PersonDetectionConfig(
-            include_bounding_boxes=True,
-            include_attributes=True,
-            include_pose_landmarks=True,
-        )
-        context = videointelligence.types.VideoContext(person_detection_config=config)
-    
-        # Start the asynchronous request
-        operation = client.annotate_video(
-            input_uri=input_uri,
-            output_uri=output_uri,
-            features=[videointelligence.enums.Feature.PERSON_DETECTION],
-            video_context=context,
-        )
-    
-        return operation
+```python
+def detect_person(input_uri, output_uri):
+    """Detects people in a video."""
+
+    client = videointelligence.VideoIntelligenceServiceClient(credentials=service_account.Credentials.from_service_account_file(
+    './key.json'))
+
+    # Configure the request
+    config = videointelligence.types.PersonDetectionConfig(
+        include_bounding_boxes=True,
+        include_attributes=True,
+        include_pose_landmarks=True,
+    )
+    context = videointelligence.types.VideoContext(person_detection_config=config)
+
+    # Start the asynchronous request
+    operation = client.annotate_video(
+        input_uri=input_uri,
+        output_uri=output_uri,
+        features=[videointelligence.enums.Feature.PERSON_DETECTION],
+        video_context=context,
+    )
+
+    return operation
+```
 
 To call the API, you pass the location in Cloud Storage where your video is stored as well as a destination in cloud storage where the Video Intelligence API can write the results.
 
@@ -110,32 +112,34 @@ Using this data, I can tell pretty accurately at what points in time I'm throwin
 
 The Law of Cosines is the key to converting points in space to angles. In code, that looks something like:
 
-    class Point:
-      def __init__(self, x, y):
-        self.x = x
-        self.y = y 
-        
-    def getAngle(a, b, c):
-        ang = math.degrees(math.atan2(c.y-b.y, c.x-b.x) - math.atan2(a.y-b.y, a.x-b.x))
-        return ang
-        
-     def computeElbowAngle(row, which='right'):
-      wrist = Point(row[f'{which}_wrist_x'], row[f'{which}_wrist_y'])
-      elbow = Point(row[f'{which}_elbow_x'], row[f'{which}_elbow_y'])
-      shoulder = Point(row[f'{which}_shoulder_x'], row[f'{which}_shoulder_y'])
-      return getAngle(wrist, elbow, shoulder)
+```python
+class Point:
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y 
     
-    def computeShoulderAngle(row, which='right'):
-      elbow = Point(row[f'{which}_elbow_x'], row[f'{which}_elbow_y'])
-      shoulder = Point(row[f'{which}_shoulder_x'], row[f'{which}_shoulder_y'])
-      hip = Point(row[f'{which}_hip_x'], row[f'{which}_hip_y'])
-      return getAngle(hip, shoulder, elbow)
+def getAngle(a, b, c):
+    ang = math.degrees(math.atan2(c.y-b.y, c.x-b.x) - math.atan2(a.y-b.y, a.x-b.x))
+    return ang
     
-    def computeKneeAngle(row, which='right'):
-      hip = Point(row[f'{which}_hip_x'], row[f'{which}_hip_y'])
-      knee = Point(row[f'{which}_knee_x'], row[f'{which}_knee_y'])
-      ankle = Point(row[f'{which}_ankle_x'], row[f'{which}_ankle_y'])
-      return getAngle(ankle, knee, hip)
+  def computeElbowAngle(row, which='right'):
+  wrist = Point(row[f'{which}_wrist_x'], row[f'{which}_wrist_y'])
+  elbow = Point(row[f'{which}_elbow_x'], row[f'{which}_elbow_y'])
+  shoulder = Point(row[f'{which}_shoulder_x'], row[f'{which}_shoulder_y'])
+  return getAngle(wrist, elbow, shoulder)
+
+def computeShoulderAngle(row, which='right'):
+  elbow = Point(row[f'{which}_elbow_x'], row[f'{which}_elbow_y'])
+  shoulder = Point(row[f'{which}_shoulder_x'], row[f'{which}_shoulder_y'])
+  hip = Point(row[f'{which}_hip_x'], row[f'{which}_hip_y'])
+  return getAngle(hip, shoulder, elbow)
+
+def computeKneeAngle(row, which='right'):
+  hip = Point(row[f'{which}_hip_x'], row[f'{which}_hip_y'])
+  knee = Point(row[f'{which}_knee_x'], row[f'{which}_knee_y'])
+  ankle = Point(row[f'{which}_ankle_x'], row[f'{which}_ankle_y'])
+  return getAngle(ankle, knee, hip)
+```
 
 Check out the notebook to see all the details. Using these formulae, I plotted the angle of my elbow over time:
 
@@ -163,14 +167,17 @@ AutoML Vision lets you upload your own labeled data (i.e. with labeled tennis ba
 
 To get started, I took a thirty second clip of me serving and split it into individual pictures I could use as training data to a vision model:
 
-    ffmpeg -i filename.mp4 -vf fps=10 -ss 00:00:01 -t 00:00:30 tmp/snapshots/%03d.jpg
+```sh
+ffmpeg -i filename.mp4 -vf fps=10 -ss 00:00:01 -t 00:00:30 tmp/snapshots/%03d.jpg
+```
 
 You can run that command from within the [notebook](https://github.com/google/making_with_ml/blob/master/sports_ai/Sports_AI_Analysis.ipynb) I provided, or from the command line if you have ffmpeg installed. It takes an mp4 and creates a bunch of snapshots (here at fps=20, i.e. 20 frames per second) as jpgs. The `-ss` flag controls how far into the video the snapshots should start (i.e. start "seeking" at 1 second) and the flag `-t` controls how many seconds should be included (30 in this case).
 
 Once you've got all your snapshots created, you can upload them to Google Cloud storage with the command:
-
-    gsutil mb gs://my_neat_bucket  # create a new bucket
-    gsutil cp tmp/snapshots/* gs://my_neat_bucket/snapshots
+```sh
+gsutil mb gs://my_neat_bucket  # create a new bucket
+gsutil cp tmp/snapshots/* gs://my_neat_bucket/snapshots
+```
 
 Next, navigate to the Google Cloud console and select **Vision** from the left hand menu:
 

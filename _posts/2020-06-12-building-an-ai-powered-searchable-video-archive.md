@@ -95,31 +95,33 @@ Now to clarify, I ran the Video Intelligence API _once_ for every video in my co
 
 Using the Video Intelligence API is pretty straightforward once you've got your data uploaded to a [Cloud Storage Bucket](https://cloud.google.com/storage). (Never heard of a Storage Bucket? It's basically just a folder stored in Google Cloud.) For this project, the code that calls the API lives in [video_archive/functions/index.js](https://github.com/google/making_with_ml/blob/a68f61280898c53806bc412bbb3e517d979bd52f/video_archive/functions/index.js#L79) and looks like this:
 
-    const videoContext = {
-        speechTranscriptionConfig: {
-          languageCode: 'en-US',
-          enableAutomaticPunctuation: true,
-        },
-      };
-    
-      const request = {
-        inputUri: `gs://VIDEO_BUCKET/my_sick_video.mp4`,
-        outputUri: `gs://JSON_BUCKET/my_sick_video.json`,
-        features: [
-          'LABEL_DETECTION',
-          'SHOT_CHANGE_DETECTION',
-          'TEXT_DETECTION',
-          'SPEECH_TRANSCRIPTION',
-        ],
-        videoContext: videoContext,
-      };
-    
-      const client = new video.v1.VideoIntelligenceServiceClient();
-    
-      // Detects labels in a video
-      console.log(`Kicking off client annotation`);
-      const [operation] = await client.annotateVideo(request);
-      console.log('operation', operation);
+```js
+const videoContext = {
+  speechTranscriptionConfig: {
+    languageCode: 'en-US',
+    enableAutomaticPunctuation: true,
+  },
+};
+
+const request = {
+  inputUri: `gs://VIDEO_BUCKET/my_sick_video.mp4`,
+  outputUri: `gs://JSON_BUCKET/my_sick_video.json`,
+  features: [
+    'LABEL_DETECTION',
+    'SHOT_CHANGE_DETECTION',
+    'TEXT_DETECTION',
+    'SPEECH_TRANSCRIPTION',
+  ],
+  videoContext: videoContext,
+};
+
+const client = new video.v1.VideoIntelligenceServiceClient();
+
+// Detects labels in a video
+console.log(`Kicking off client annotation`);
+const [operation] = await client.annotateVideo(request);
+console.log('operation', operation);
+```
 
 1. One line 1, we create a `videoContext` with some configuration settings for the API. Here we tell the tool that audio tracks will be in English (`en-US`).
 2. One line 8, we create a request object, passing the path to our video file as `inputUri`, and the location where we'd like the results to be written as `outputUri`. Note that the Video Intelligence API will write the data as `json` to whatever path you specify, as long as its in a Storage Bucket you have permission to write to.
@@ -132,121 +134,134 @@ If you want to play with this API quickly on your own computer, try out [this sa
 
 When the API finishes processing a video, it writes its results as json that looks like this:
 
+```json
+{
+  "annotation_results": [
     {
-      "annotation_results": [ {
-        "input_uri": "/family_videos/myuserid/multi_shot_test.mp4",
-        "segment": {
-          "start_time_offset": {
-          
-          },
-          "end_time_offset": {
-            "seconds": 70,
-            "nanos": 983000000
-          }
-        },
-        "segment_label_annotations": [ {
+      "input_uri": "/family_videos/myuserid/multi_shot_test.mp4",
+      "segment": {
+        "start_time_offset": {},
+        "end_time_offset": {
+          "seconds": 70,
+          "nanos": 983000000
+        }
+      },
+      "segment_label_annotations": [
+        {
           "entity": {
             "entity_id": "/m/06npx",
             "description": "sea",
             "language_code": "en-US"
           },
-          "segments": [ {
-            "segment": {
-              "start_time_offset": {
-              
+          "segments": [
+            {
+              "segment": {
+                "start_time_offset": {},
+                "end_time_offset": {
+                  "seconds": 70,
+                  "nanos": 983000000
+                }
               },
-              "end_time_offset": {
-                "seconds": 70,
-                "nanos": 983000000
-              }
-            },
-            "confidence": 0.34786162
-          } ]
-        }, {
+              "confidence": 0.34786162
+            }
+          ]
+        },
+        {
           "entity": {
             "entity_id": "/m/07bsy",
             "description": "transport",
             "language_code": "en-US"
           },
-          "segments": [ {
-            "segment": {
-              "start_time_offset": {
-              
+          "segments": [
+            {
+              "segment": {
+                "start_time_offset": {},
+                "end_time_offset": {
+                  "seconds": 70,
+                  "nanos": 983000000
+                }
               },
-              "end_time_offset": {
-                "seconds": 70,
-                "nanos": 983000000
-              }
-            },
-            "confidence": 0.57152408
-          } ]
-        }, {
+              "confidence": 0.57152408
+            }
+          ]
+        },
+        {
           "entity": {
             "entity_id": "/m/06gfj",
             "description": "road",
             "language_code": "en-US"
           },
-          "segments": [ {
-            "segment": {
-              "start_time_offset": {
-              
+          "segments": [
+            {
+              "segment": {
+                "start_time_offset": {},
+                "end_time_offset": {
+                  "seconds": 70,
+                  "nanos": 983000000
+                }
               },
-              "end_time_offset": {
-                "seconds": 70,
-                "nanos": 983000000
-              }
-            },
-            "confidence": 0.48243082
-          } ]
-        }, {
+              "confidence": 0.48243082
+            }
+          ]
+        },
+        {
           "entity": {
             "entity_id": "/m/015s2f",
             "description": "water resources",
             "language_code": "en-US"
           },
-          "category_entities": [ {
-            "entity_id": "/m/0838f",
-            "description": "water",
-            "language_code": "en-US"
-          } ],
-          "segments": [ {
-            "segment": {
-              "start_time_offset": {
-              
+          "category_entities": [
+            {
+              "entity_id": "/m/0838f",
+              "description": "water",
+              "language_code": "en-US"
+            }
+          ],
+          "segments": [
+            {
+              "segment": {
+                "start_time_offset": {},
+                "end_time_offset": {
+                  "seconds": 70,
+                  "nanos": 983000000
+                }
               },
-              "end_time_offset": {
-                "seconds": 70,
-                "nanos": 983000000
-              }
-            },
-            "confidence": 0.34592748
-          } ]
-        }, 
+              "confidence": 0.34592748
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
 
 The response also contains text annotations and transcriptions, but it's really large so I haven't pasted it all here! To make use of this file, you'll need some code for parsing it and probably writing the results to a database. You can borrow [my code](https://github.com/google/making_with_ml/blob/a68f61280898c53806bc412bbb3e517d979bd52f/video_archive/functions/utils.js#L191) for help with this. Here's what one of my functions for parsing the json looked like:
 
-    /* Grab image labels (i.e. snow, baby laughing, bridal shower) from json */
-    function parseShotLabelAnnotations(jsonBlob) {
-      return jsonBlob.annotation_results
-          .filter((annotation) => {
-          // Ignore annotations without shot label annotations
-            return annotation.shot_label_annotations;
-          })
-          .flatMap((annotation) => {
-            return annotation.shot_label_annotations.flatMap((annotation) => {
-              return annotation.segments.flatMap((segment) => {
-                return {
-                  text: null,
-                  transcript: null,
-                  entity: annotation.entity.description,
-                  confidence: segment.confidence,
-                  start_time: segment.segment.start_time_offset.seconds || 0,
-                  end_time: segment.segment.end_time_offset.seconds,
-                };
-              });
-            });
+```js
+/* Grab image labels (i.e. snow, baby laughing, bridal shower) from json */
+function parseShotLabelAnnotations(jsonBlob) {
+  return jsonBlob.annotation_results
+      .filter((annotation) => {
+      // Ignore annotations without shot label annotations
+        return annotation.shot_label_annotations;
+      })
+      .flatMap((annotation) => {
+        return annotation.shot_label_annotations.flatMap((annotation) => {
+          return annotation.segments.flatMap((segment) => {
+            return {
+              text: null,
+              transcript: null,
+              entity: annotation.entity.description,
+              confidence: segment.confidence,
+              start_time: segment.segment.start_time_offset.seconds || 0,
+              end_time: segment.segment.end_time_offset.seconds,
+            };
           });
-    }
+        });
+      });
+}
+```
 
 ## Building a Serverless Backend with Firebase
 
@@ -260,14 +275,16 @@ I used Firebase to run all my code using [Cloud Functions for Firebase](https://
 
 You can take a look at my cloud functions in [this file]( "https://github.com/google/making_with_ml/blob/master/video_archive/functions/index.js"). Here's an example of how you run a Javascript function (in this case, `analyzeVideo`), every time a file is uploaded to `YOUR INPUT VIDEO BUCKET`.
 
-    const functions = require('firebase-functions');
-    
-    exports.analyzeVideo = functions.storage
-        .bucket(YOUR_INPUT_VIDEO_BUCKET)
-        .object()
-        .onFinalize(async (object) => {
-          await analyzeVideo(object);
-        });
+```js
+const functions = require('firebase-functions');
+
+exports.analyzeVideo = functions.storage
+    .bucket(YOUR_INPUT_VIDEO_BUCKET)
+    .object()
+    .onFinalize(async (object) => {
+      await analyzeVideo(object);
+    });
+```
 
 Once you've installed the [Firebase command line tool](https://firebase.google.com/docs/cli#install_the_firebase_cli), you can deploy your functions, which should be written in a file called `index.js`, to the cloud from the command line by running:
 
@@ -275,20 +292,21 @@ Once you've installed the [Firebase command line tool](https://firebase.google.c
 
 I also used Firebase functions to later build a Search HTTP endpoint:
 
-    /* Does what it says--takes a userid and a query and returns
-    relevant video data */
-    exports.search = functions.https.onCall(async (data, context) => {
-      if (!context.auth || !context.auth.token.email) {
-        // Throwing an HttpsError so that the client gets the error details.
-        throw new functions.https.HttpsError(
-            'failed-precondition',
-            'The function must be called while authenticated.',
-        );
-      }
-    
-      const hits = await utils.search(data.text, context.auth.uid);
-      return {'hits': hits};
-    });
+```js
+/* Does what it says--takes a userid and a query and returns relevant video data */
+exports.search = functions.https.onCall(async (data, context) => {
+  if (!context.auth || !context.auth.token.email) {
+    // Throwing an HttpsError so that the client gets the error details.
+    throw new functions.https.HttpsError(
+        'failed-precondition',
+        'The function must be called while authenticated.',
+    );
+  }
+
+  const hits = await utils.search(data.text, context.auth.uid);
+  return {'hits': hits};
+});
+```
 
 1. On line 3, I use `functions.https.onCall` to register a new Firebase function that's triggered when an HTTPS GET request is made.
 2. On line 4, I check to see if the user that called my HTTPS endpoint is authenticated and has registered with an email address. [Authentication]() is easy to set up with Firebase, and in my project, I've enabled it with Google login.
@@ -311,26 +329,28 @@ The tool also has a _lot_ of different configuration options. You can adjust whi
 
 If you want to see some code samples, take a look at [video_archive/functions/algolia.js](https://github.com/google/making_with_ml/blob/master/video_archive/functions/algolia.js "https://github.com/google/making_with_ml/blob/master/video_archive/functions/algolia.js"). Here's the code for making a search query in Javascript:
 
-    exports.search = async function(query, userid) {
-      const client = algoliasearch(
-          process.env.ALGOLIA_APPID,
-          process.env.ALGOLIA_ADMIN_APIKEY,
-      );
-      const index = client.initIndex(process.env.ALOGLIA_INDEX);
-      const res = await index.search(query, {
-        tagFilters: [userid],
-        attributesToRetrieve: ['videoId', 'transcript', 'text', 'entity', '_tags'],
+```js
+exports.search = async function(query, userid) {
+  const client = algoliasearch(
+      process.env.ALGOLIA_APPID,
+      process.env.ALGOLIA_ADMIN_APIKEY,
+  );
+  const index = client.initIndex(process.env.ALOGLIA_INDEX);
+  const res = await index.search(query, {
+    tagFilters: [userid],
+    attributesToRetrieve: ['videoId', 'transcript', 'text', 'entity', '_tags'],
+  });
+  
+  if (!res.nbHits) return [];
+  return res.hits
+      .filter((hit, index) => {
+        return res.hits.findIndex((h) => h.videoId == hit.videoId) == index;
+      })
+      .map((hit) => {
+        return {videoId: hit['videoId']};
       });
-      
-      if (!res.nbHits) return [];
-      return res.hits
-          .filter((hit, index) => {
-            return res.hits.findIndex((h) => h.videoId == hit.videoId) == index;
-          })
-          .map((hit) => {
-            return {videoId: hit['videoId']};
-          });
-    };
+};
+```
 
 1. On line 2, I provide my credentials and create a search client.
 2. On line 6, I specify which dataset or "index" I want to search.
