@@ -18,7 +18,15 @@ _Peek under the hood of GPT-3 in under 3 minutes._
 
 <!--more-->
 
-So, you’ve seen some amazing GPT-3 demos on Twitter (machine-made Op-Eds, poems, articles, even working code)... but what’s going on under the hood of this incredible model? Here’s a (brief!) look inside.
+So, you’ve seen some amazing GPT-3 demos on Twitter (if not, where've you been?). This mega machine learning model can write it's own op-eds, poems, articles, and even working code:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">This is mind blowing.<br><br>With GPT-3, I built a layout generator where you just describe any layout you want, and it generates the JSX code for you.<br><br>W H A T <a href="https://t.co/w8JkrZO4lk">pic.twitter.com/w8JkrZO4lk</a></p>&mdash; Sharif Shameem (@sharifshameem) <a href="https://twitter.com/sharifshameem/status/1282676454690451457?ref_src=twsrc%5Etfw">July 13, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Here&#39;s <a href="https://twitter.com/hashtag/gpt3?src=hash&amp;ref_src=twsrc%5Etfw">#gpt3</a> writing some SQL for me. <a href="https://t.co/JVeyijV2MX">pic.twitter.com/JVeyijV2MX</a></p>&mdash; Ayush Patel (@ayushpatel34) <a href="https://twitter.com/ayushpatel34/status/1284810560555479043?ref_src=twsrc%5Etfw">July 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">=GPT3()... the spreadsheet function to rule them all.<br><br>Impressed with how well it pattern matches from a few examples.<br><br>The same function looked up state populations, peoples&#39; twitter usernames and employers, and did some math. <a href="https://t.co/W8FgVAov2f">pic.twitter.com/W8FgVAov2f</a></p>&mdash; Paul Katsen (@pavtalk) <a href="https://twitter.com/pavtalk/status/1285410751092416513?ref_src=twsrc%5Etfw">July 21, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+But what’s going on under the hood of this incredible model? Here’s a (brief!) look inside.
 
 GPT-3 is a neural-network-powered language model. A [language model](https://towardsdatascience.com/language-modeling-c1cf7b983685) is a model that predicts the likelihood of a sentence existing in the world. For example, a language model can label the sentence “I take my dog for a walk” as more probable to exist (i.e. on the Internet) than the sentence “I take my banana for a walk.” This is true for sentences as well as phrases and, more generally, any sequence of characters.
 
@@ -28,7 +36,7 @@ The GPT-3 model architecture itself is a [transformer-based](https://towardsdata
 
 IT’S REALLY BIG. I mean _really_ big. With 175 billion parameters, it’s the largest language model ever created (GPT-2 had only 1.5 parameters!), and was trained on the largest dataset of any language model. This, it appears, is the main reason GPT-3 is so impressive.
 
-And here’s the magical part. As a result, GPT-3 can do what no other model can do (well): perform *specific* tasks without any special tuning. You can ask GPT-3 to be a translator, a programmer, a poet, or a famous author, and it can do it with fewer than 10 training examples. _Damn_.
+And here’s the magical part. As a result, GPT-3 can do what no other model can do (well): perform _specific_ tasks without any special tuning. You can ask GPT-3 to be a translator, a programmer, a poet, or a famous author, and it can do it with fewer than 10 training examples. _Damn_.
 
 Most other models (like BERT) require an elaborate fine-tuning step, where you gather _thousands_ of examples of (say) French-English sentence pairs to teach it how to do translation. With GPT-3, you don’t need to do that fine-tuning step. This is the heart of it. This is what gets people excited about GPT-3: custom language tasks without training data.
 
