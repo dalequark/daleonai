@@ -18,7 +18,7 @@ _Peek under the hood of GPT-3 in under 3 minutes._
 
 <!--more-->
 
-So, you’ve seen some amazing GPT-3 demos on Twitter (machine-made Op-Eds, poems, articles, even working code)... but what’s going on under the hood of this incredible model? Here’s a (brief!) look under the hood.
+So, you’ve seen some amazing GPT-3 demos on Twitter (machine-made Op-Eds, poems, articles, even working code)... but what’s going on under the hood of this incredible model? Here’s a (brief!) look inside.
 
 GPT-3 is a neural-network-powered language model. A [language model](https://towardsdatascience.com/language-modeling-c1cf7b983685) is a model that predicts the likelihood of a sentence existing in the world. For example, a language model can label the sentence “I take my dog for a walk” more probable to exist (i.e. on the Internet) than the sentence “I take my banana for a walk.” This is true for sentences as well as phrases and, more generally, any sequence of characters.
 
