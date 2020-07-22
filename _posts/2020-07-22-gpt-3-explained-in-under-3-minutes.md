@@ -30,7 +30,7 @@ IT’S REALLY BIG. I mean _really_ big. With 175 billion parameters, it’s the 
 
 And here’s the magical part. As a result, GPT-3 can do what no other model can do (well): perform *specific* tasks without any special tuning. You can ask GPT-3 to be a translator, a programmer, a poet, or a famous author, and it can do it with fewer than 10 training examples. _Damn_.
 
-Most other models (like BERT) require an elaborate fine-tuning step, where you gather _thousands_ of examples of (for example) French-English sentence pairs to teach it how to do translation. With GPT-3, you don’t need to do that fine-tuning step. This is the heart of it. This is what gets people excited about GPT-3: custom language tasks without training data.
+Most other models (like BERT) require an elaborate fine-tuning step, where you gather _thousands_ of examples of (say) French-English sentence pairs to teach it how to do translation. With GPT-3, you don’t need to do that fine-tuning step. This is the heart of it. This is what gets people excited about GPT-3: custom language tasks without training data.
 
 Today, GPT-3 is in private beta, but boy can I not wait to get my hands on it.
 
