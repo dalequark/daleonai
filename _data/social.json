@@ -19,6 +19,11 @@
       "title": "LinkedIn",
       "icon": "fa-linkedin",
       "url": "https://www.linkedin.com/in/dale-markowitz-40a9a852"
+    },
+    {
+      "title": "YouTube",
+      "icon": "fa-youtube",
+      "url": "https://www.youtube.com/playlist?list=PLIivdWyY5sqLsaG5hNms0D9aZRBE7DHBb"
     }
   ]
 }
