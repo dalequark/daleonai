@@ -226,10 +226,9 @@ Unfortunately, I realized too late I'd made a grave mistake here. What is speed?
 
 One of the coolest things that happened after I published this post is that [Anudeep Ayinaparthi](https://www.linkedin.com/in/anudeepayinaparthi/), from the UK, reached out to me with his own version--a Cricket shot classifier! He used the Video Intelligence API along with a [recurrent neural network](https://www.tensorflow.org/guide/keras/rnn). (Check out the code [here](https://github.com/anudeepayina/CricketTracker/blob/master/LSTM_algorithm.ipynb)).
 
-
 <video width="320" height="240" controls>
-  <source src="/images/shot-classifer.mp4" type="video/mp4">
-  Your browser does not support the video tag.
+<source src="/images/shot-classifer.mp4" type="video/mp4">
+Your browser does not support the video tag.
 </video>
 
 So there you have it--some techniques you can use to build your own sports machine learning trainer app!
