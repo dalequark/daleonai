@@ -5,7 +5,7 @@ title: Can AI Make You a Better Athlete? Using Machine Learning to Analyze Tenni
 description: In this post, well use Machine Learning to analyze key features athletes
   need to know, like their posture, angles of their bodies, and the speed or power
   of their throws.
-date: 2020-07-16 13:00:00 +0000
+date: 2020-07-16T13:00:00.000+00:00
 feature_image: "/images/design-proposal.png"
 tags:
 - machine learning
@@ -174,6 +174,7 @@ ffmpeg -i filename.mp4 -vf fps=10 -ss 00:00:01 -t 00:00:30 tmp/snapshots/%03d.jp
 You can run that command from within the [notebook](https://github.com/google/making_with_ml/blob/master/sports_ai/Sports_AI_Analysis.ipynb) I provided, or from the command line if you have ffmpeg installed. It takes an mp4 and creates a bunch of snapshots (here at fps=20, i.e. 20 frames per second) as jpgs. The `-ss` flag controls how far into the video the snapshots should start (i.e. start "seeking" at 1 second) and the flag `-t` controls how many seconds should be included (30 in this case).
 
 Once you've got all your snapshots created, you can upload them to Google Cloud storage with the command:
+
 ```sh
 gsutil mb gs://my_neat_bucket  # create a new bucket
 gsutil cp tmp/snapshots/* gs://my_neat_bucket/snapshots
@@ -222,6 +223,14 @@ You can then use this to plot the position of the ball over time, to calculate s
 ![](/images/ball_position_over_time.png)
 
 Unfortunately, I realized too late I'd made a grave mistake here. What is speed? Change in distance over time, right? But because I didn't actually know the distance between me, the player, and the camera, I couldn't compute distance in miles or meters--only pixels! So I learned I serve the ball at approximately 200 pixels per second. _Nice_.
+
+One of the coolest things that happened after I published this post is that [Anudeep Ayinaparthi](https://www.linkedin.com/in/anudeepayinaparthi/), from the UK, reached out to me with his own version--a Cricket shot classifier! He used the Video Intelligence API along with a [recurrent neural network](https://www.tensorflow.org/guide/keras/rnn). (Check out the code [here](https://github.com/anudeepayina/CricketTracker/blob/master/LSTM_algorithm.ipynb)).
+
+
+<video width="320" height="240" controls>
+  <source src="/images/shot-classifer.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 So there you have it--some techniques you can use to build your own sports machine learning trainer app!
 
