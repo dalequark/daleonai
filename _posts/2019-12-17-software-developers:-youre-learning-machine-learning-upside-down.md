@@ -1,13 +1,16 @@
 ---
 layout: post
-title: "Software Developers: You’re Learning Machine Learning Upside Down"
-description: "Most of us learn Machine Learning from the ground up. But the skills developers need to be effective users of ML is something totally different. So what should the forward-looking software engineer learn about AI today?"
+title: 'Software Developers: You’re Learning Machine Learning Upside Down'
+description: Most of us learn Machine Learning from the ground up. But the skills
+  developers need to be effective users of ML is something totally different. So what
+  should the forward-looking software engineer learn about AI today?
 date: 2019-12-17
-feature_image: /images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/0.jpg
-feature_image_pos: "left center"
-tags: ["machine learning"]
----
+feature_image: "/images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/0.jpg"
+feature_image_pos: left center
+tags:
+- machine learning
 
+---
 _Most of us learn Machine Learning from the ground up. But the skills developers need to be effective users of ML is something totally different. So what should the forward-looking software engineer learn about AI today?_
 
 <!--more-->
@@ -40,34 +43,30 @@ Unfortunately, lots of folks who set out to learn Machine Learning today have th
 
 That’s a shame, because in the very near future, most software developers effectively using Machine Learning aren’t going to have to think or know about any of that low-level stuff. Just as we (usually) don’t write assembly or implement our own TCP stacks or encryption libraries, we’ll come to use ML as a tool and leave the implementation details to a small set of experts. At that point — after Machine Learning is “democratized” — developers will need to understand not implementation details but instead best practices in deploying these smart algorithms in the world.
 
-Where We Are Now
-----------------
+## Where We Are Now
 
 Today, if you want to build a neural network that recognizes your cat’s face in photos or predicts whether your next Tweet will go viral, you’d probably set off to learn either [TensorFlow](http://tensorflow.org) or [PyTorch](http://pytorch.org). These Python-based deep learning libraries are the most popular tools for designing neural networks today, and they’re both under 5 years old.
 
-In its short lifespan, TensorFlow has already become way, _wa_y more user-friendly than it was five years ago. In its early days, you had to understand not only Machine Learning but also distributed computing and deferred graph architectures to be an effective TensorFlow programmer. Even writing a simple print statement was a challenge.
+In its short lifespan, TensorFlow has already become way, _way_ more user-friendly than it was five years ago. In its early days, you had to understand not only Machine Learning but also distributed computing and deferred graph architectures to be an effective TensorFlow programmer. Even writing a simple print statement was a challenge.
 
 {% include image_caption.html imageurl="/images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/1" title="Breakdown of Keras/TensorFlow/PyTorch popularity, courtesy [this](https://www.quora.com/What-are-the-major-differences-between-TensorFlow-Keras-and-PyTorch) Quora answer." caption="Breakdown of Keras/TensorFlow/PyTorch popularity, courtesy [this](https://www.quora.com/What-are-the-major-differences-between-TensorFlow-Keras-and-PyTorch) Quora answer." %}
-
-
 
 Just earlier this fall, TensorFlow 2.0 officially launched, making the framework significantly more developer-friendly. Here’s what a Hello-World-style model looks like in TensorFlow 2.0:
 
 If you’ve designed neural networks before, the code above is straight-forward and readable. But if you haven’t or you’re just learning, you’ve probably got some questions. Like, what is Dropout? What are these dense layers, how many do you need and where do you put them? What’s `sparse_categorical_crossentropy`? TensorFlow 2.0 removes some friction from building models, but it doesn’t abstract away designing the actual architecture of those models.
 
-Where We’re Going
------------------
+## Where We’re Going
 
 So what will the future of easy-to-use ML tools look like? It’s a question that everyone from Google to Amazon to Microsoft and Apple are spending clock cycles trying to answer. Also — disclaimer — it is what _I_ spend all my time thinking about as an engineer at Google.
 
 For one, we’ll start to see many more developers using pre-trained models for common tasks, i.e. rather than collecting our own data and training our own neural networks, we’ll just use Google’s/Amazon’s/Microsoft’s models. Many cloud providers already do something like this. For example, by hitting a Google Cloud REST endpoint, you can use a pre-trained neural networks to:
 
-*   Extract text from images
-*   Tag common objects in photos
-*   Convert speech to text
-*   Translate between languages
-*   Identify the sentiment of text
-*   And more
+* Extract text from images
+* Tag common objects in photos
+* Convert speech to text
+* Translate between languages
+* Identify the sentiment of text
+* And more
 
 You can also run pre-trained models on-device, in mobile apps, using tools like Google’s [ML Kit](https://developers.google.com/ml-kit) or Apple’s [Core ML](https://www.google.com/search?q=apple+ml+core&oq=apple+ml+core&aqs=chrome..69i57j69i60l2j69i65j69i60l3.1240j0j7&sourceid=chrome&ie=UTF-8).
 
@@ -79,12 +78,9 @@ But even when it comes to training custom models for domain-specific tasks, our 
 
 {% include image_caption.html imageurl="/images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/2" title="Screenshot of Teachable Machine, a tool for building vision, gesture, and speech models in the browser." caption="Screenshot of Teachable Machine, a tool for building vision, gesture, and speech models in the browser." %}
 
-
-
 Google’s free [Teachable Machine](https://teachablemachine.withgoogle.com/) site lets users collect data and train models in the browser using a drag-and-drop interface. Earlier this year, MIT released a similar [code-free interface](http://news.mit.edu/2019/drag-drop-data-analytics-0627) for building custom models that runs on touchscreen devices, designed for non-coders like doctors. [Microsoft](https://azure.microsoft.com/en-us/services/machine-learning-studio/) and startups like [lobe.ai](https://lobe.ai/) offer similar solutions. Meanwhile, [Google Cloud AutoML](https://cloud.google.com/automl/) is an automated model-training framework for enterprise-scale workloads.
 
-What to Learn Now
------------------
+## What to Learn Now
 
 As ML tools become easier to use, the skills that developers hoping to use  this technology (but not become specialists) will change. So if you’re trying to plan for where, Wayne-Gretsky-style, the puck is going, what should you study now?
 
@@ -94,9 +90,9 @@ What makes Machine Learning algorithms distinct from standard software is that t
 
 Understanding when and how models should be used in production is and will always be a nuanced problem. It’s especially tricky in cases where:
 
-1.  Stakes are high
-2.  Human resources are limited
-3.  Humans are biased or inaccurate in their own predictions
+1. Stakes are high
+2. Human resources are limited
+3. Humans are biased or inaccurate in their own predictions
 
 Take medical imaging. We’re globally short on doctors and ML models are often [more accurate](https://medium.com/how-machine-learning-is-transforming-healthcare-at-google-and-beyond-d4f664b7e27c) than trained physicians at diagnosing disease. But would you want an algorithm to have the last say on whether or not you have cancer? Same thing with models that help judges decide jail sentences. [Models can be biased](https://www.technologyreview.com/s/612775/algorithms-criminal-justice-ai/), but so are people.
 
@@ -110,18 +106,16 @@ It’s for this reason that so many players in the ML space are focusing on buil
 
 {% include image_caption.html imageurl="/images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/3.png" title="Google’s Facial Recognition Model Card shows the limitations of this particular model." caption="Google’s Facial Recognition Model Card shows the limitations of this particular model." %}
 
-
-
 **Getting Creative with Applications**
 
 There are a handful of developers good at Machine Learning, a handful of researchers good at neuroscience, and very few folks who fall in that intersection. This is true of almost any sufficiently complex field. The biggest advances we’ll see from ML in the coming years likely won’t be from improved mathematical methods but from people with different areas of expertise learning at least enough Machine Learning to apply it to their domains. This is mostly the case in medical imaging, for example, where the [most exciting breakthroughs](https://medium.com/how-machine-learning-is-transforming-healthcare-at-google-and-beyond-d4f664b7e27c) — being able to spot pernicious diseases in scans — are powered not by new neural network architectures but instead by fairly standard models applied to a novel problem. So if you’re a software developer lucky enough to possess additional expertise, you’re already ahead of the curve.
 
-* * *
+***
 
 This, at least, is what _I_ would focus on today if I were starting my AI education from scratch. Meanwhile, I find myself spending less and less time building custom models from scratch in TensorFlow and more and more time using high-level tools like AutoML and AI APIs and focusing on application development.
 
 But that’s just me — what do you think? Let me know in the comments below.
 
-* * *
+***
 
 Thanks for feedback [Sara Robinson](https://medium.com/u/7f2ab73b39f8?source=post_page-----3867dc140862----------------------) and [Joshua Gordon](https://medium.com/u/4dde9eebddbd?source=post_page-----3867dc140862----------------------) !
