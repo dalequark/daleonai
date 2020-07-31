@@ -53,6 +53,18 @@ In its short lifespan, TensorFlow has already become way, _way_ more user-friend
 
 Just earlier this fall, TensorFlow 2.0 officially launched, making the framework significantly more developer-friendly. Here’s what a Hello-World-style model looks like in TensorFlow 2.0:
 
+    model = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(512, activation='relu'),
+    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.Dense(32, activation='relu'),
+    tf.keras.layers.Dense(1, activation='softmax')
+    ])
+    model.compile(optimizer='adam',
+    loss='sparse_categorical_crossentropy'),
+    metrics=['accuracy']))
+    model.fit(x_train, y_train, epochs=5)
+    model.evaluate(x_test, y_test)
+
 If you’ve designed neural networks before, the code above is straight-forward and readable. But if you haven’t or you’re just learning, you’ve probably got some questions. Like, what is Dropout? What are these dense layers, how many do you need and where do you put them? What’s `sparse_categorical_crossentropy`? TensorFlow 2.0 removes some friction from building models, but it doesn’t abstract away designing the actual architecture of those models.
 
 ## Where We’re Going
