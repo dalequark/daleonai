@@ -113,3 +113,79 @@ Clicking "Start" will open a panel that allows you to type in an input and hit "
 When you hit "React", Semantic Reactor uses a model to embed all of the responses you've written in your spreadsheet, calculate a score (how good a response is this sentence to the query?), and sorts the results. For example, when my input was "I want some coffee," the top ranked responses from my spreadsheet were, "I go to the mug" and "I bring you the mug."
 
 You'll also notice that there are two different ways to rank sentences using this tool: "Input/Response" and "Semantic Similarity." As the name implies, the former ranks sentences by how good they are as _responses_ to the given query, whereas "Semantic Similarity" simply rates how similar the sentences are to the query.
+
+## From Spreadsheet to Code with TensorFlow.js
+
+Underneath the hood, Semantic Reactor is powered by the open-source TensorFlow.js models found [here](https://www.npmjs.com/package/@tensorflow-models/universal-sentence-encoder).
+
+Let's take a look at how to use those models in JavaScript, so that you can convert your spreadsheet prototype to a working app.
+
+1. Create a new Node project and install module:
+```
+npm init
+npm install @tensorflow/tfjs @tensorflow-models/universal-sentence-encoder
+```
+
+2. Create a new file (`demo.js`) and require the library:
+```
+require('@tensorflow/tfjs');
+const encoder = require('@tensorflow-models/universal-sentence-encoder');
+```
+
+3. Load the model:
+```
+  const model = await encoder.loadQnA();
+```
+
+4. Encode your sentences and query:
+```
+  const input = {
+    queries: ["I want some coffee"],
+    responses: [
+      "I grab a ball",
+      "I go to you",
+      "I play with a ball",
+      "I go to school.",
+      "I go to the mug.",
+      "I bring you the mug."
+  	]
+  };
+  
+  const embeddings = await model.embed(input);
+```
+5. Voila! You've transformed your responses and query into vectors. Unfortunately vectors are just points in space. To rank the responses, you'll want to compute the distance between those points (you can do this by computing the [dot product](https://www.mathsisfun.com/algebra/vectors-dot-product.html), which gives you the squared [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance#:~:text=In%20mathematics%2C%20the%20Euclidean%20distance,metric%20as%20the%20Pythagorean%20metric.) between points):
+
+```
+
+zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+const zipWith =
+    (f, xs, ys) => {
+      const ny = ys.length;
+      return (xs.length <= ny ? xs : xs.slice(0, ny))
+          .map((x, i) => f(x, ys[i]));
+    }
+
+// Calculate the dot product of two vector arrays.
+const dotProduct = (xs, ys) => {
+  const sum = xs => xs ? xs.reduce((a, b) => a + b, 0) : undefined;
+ 
+  return xs.length === ys.length ?
+    sum(zipWith((a, b) => a * b, xs, ys))
+    : undefined;
+}
+```
+
+If you run this code, you should see some output like:
+
+```
+[
+  { response: 'I grab a ball', score: 10.788130270345432 },
+  { response: 'I go to you', score: 11.597091717283469 },
+  { response: 'I play with a ball', score: 9.346379028479209 },
+  { response: 'I go to school.', score: 10.130473646521292 },
+  { response: 'I go to the mug.', score: 12.475453722603106 },
+  { response: 'I bring you the mug.', score: 13.229019199245684 }
+]
+```
+
+TODO: Check out the full code sample here.
