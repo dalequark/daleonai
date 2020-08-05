@@ -18,6 +18,8 @@ That's where "Semantic ML" comes in, an umbrella term for machine learning techn
 
 Or stick around for some background:
 
+## Understanding Semantic ML
+
 ### What are Embeddings?
 
 One simple (but powerful) way Semantic ML can help us build natural-language-powered software is through a technique called embeddings.
@@ -46,7 +48,7 @@ Word embeddings are extremely useful in natural language processing. They can be
 
 It turns out that entire sentences (and even short paragraphs) can be effectively embedded in space too, using a type of model called a [universal sentence encoder](https://tfhub.dev/google/collections/universal-sentence-encoder/1). Using sentence embeddings, we can figure out if two sentences are similar. This is useful, for example, if you're building a chatbot and want to know if a question a user asked (i.e. "When is my alarm?") is semantically similar to a question you, the chatbot programmer, have programmed a response to ("What time is my alarm set for?").
 
-### Semantic Reactor: Prototype with Semantic ML in a Google Sheet
+## Semantic Reactor: Prototype with Semantic ML in a Google Sheet
 
 Alright, now on to the fun part--building things!
 
@@ -54,7 +56,7 @@ First, some inspiration: I first became excited by Semantic ML when [Anna Kipnis
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/30y9zk5COqw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-In Anna's game, players can interact with a virtual fox by asking any question they think of:
+In Anna's game, players interact with a virtual fox by asking any question they think of:
 
 "Fox, can I have some coffee?"
 
@@ -64,21 +66,50 @@ Then, using Semantic ML, the game engine (or the [utility system](https://en.wik
     Fox turns on radio.
     Fox move to you.
     Fox brings you mug.
-    
-One of the easiest ways to prototype Semantic ML apps is with a new tool out of Google
+
+Using a sentence encoder model, the game decides what the best response is and executes it (in this case, _Fox brings you mug_). If that sounds a little abstract, definitely watch the demo in the video above.
+
+One of the neatest things about this game was that Anna prototyped it largely in a Google Sheet using a tool called Semantic Reactor.
+
+[Semantic Reactor](https://opensource.googleblog.com/2020/03/semantic-reactor-tool-for-experimenting.html) is a plugin for Google Sheets that allows you to apply sentence encoder models right on your own data. It was released quietly by Google Research in March. (For now, you'll need to [fill out an application](https://events.withgoogle.com/ai-workshop/registrations/new/) to get access.) It's a really great way to prototype Semantic ML apps fast, which you can then turn into code using [TensorFlow.js models](https://www.npmjs.com/package/@tensorflow-models/universal-sentence-encoder) (but more on that in a minute).
+
+Here's a little gif of what the tool looks like:
 
 Here's what it looks like:
 
 ![A gif showing how semantic reactor works in a google sheet](/images/screen-shot-2020-08-04-at-11-59-23-am.png "Semantic Reactor plugin")
 
-To use it, create a new Google sheet
+To use Semantic Reactor, create a new Google sheet and fill some sentences in the first column. Here I'll loosely recreate Anna's fox demo (for all the nitty gritties, check out her [original post](https://stadia.dev/intl/fr_ca/blog/creating-game-ai-using-mostly-english/)). I used these sentences in my sheet:
 
-[https://tfhub.dev/google/universal-sentence-encoder/](https://tfhub.dev/google/universal-sentence-encoder/ "https://tfhub.dev/google/universal-sentence-encoder/")
+    I grab a ball
+    I go to you
+    I play with a ball
+    I go to school.
+    I go to the mug.
+    I bring you the mug.
+    I turn on music.
+    I take a nap.
+    I go for a hike.
+    I tell you a secret.
+    I snuggle with you.
+    I ask for a belly rub.
+    I send a text.
+    I answer the phone.
+    I make a sandwich.
+    I drink some water.
+    I play a board game.
+    I do some coding.
 
-In my humble opinion, one of the most under-hyped, user-friendly, useful tools in machine learning is embeddings--specifically text embeddings. We'll get deep dive into what embeddings are in a bit, but in brief: text embeddings let you take words (or phrases and sentences) and tell how similar they are. You can use this technique to find synonyms (i.e. "grandma" and "grand mom" and "bubby"), to do basic [translation](https://ai.stanford.edu/\~wzou/emnlp2013_ZouSocherCerManning.pdf), to cluster similar issues in your customer service queue, to power chatbot logic, to make video game worlds [come alive](https://stadia.dev/intl/fr_ca/blog/creating-game-ai-using-mostly-english/), and a whole lot more.
+You'll have to use your imagination here and think of these "actions" that a potential character (a chatbot or an actor in a video game, for example) might take.
 
-But perhaps the most exciting thing about embeddings is that you won't want to kill yourself learning how to use them. In this post, I'll show you how to use spreadsheets and pre-trained models to prototype a "Semantic ML"-powered app (no data science experience required). And, if you want to see how this tech can make video game worlds more interactive, check out [my latest interview](https://www.youtube.com/watch?v=MZEXwk_f7Tk) with Anna Kipnis--former Double Fine game developer and Stadia Creative Technologist--who is using the same technology to transform the ways we develop video games.
+Once you've applied and been given access to Semantic Reactor, you'll be able to enable it by clicking on "Add-ons -> Semantic Reactor -> Start".
 
-Let's get started.
+![A screenshot of starting Semantic Reactor](/images/screen-shot-2020-08-04-at-11-59-23-am.png "Enable Semantic Reactor in a spreadsheet")
 
-In this
+Clicking "Start" will open a panel that allows you to type in an input and hit "React":
+
+![](/images/screen-shot-2020-08-05-at-12-33-45-pm.png)
+
+When you hit "React", Semantic Reactor uses a model to embed all of the responses you've written in your spreadsheet, calculate a score (how good a response is this sentence to the query?), and sorts the results. For example, when my input was "I want some coffee," the top ranked responses from my spreadsheet were, "I go to the mug" and "I bring you the mug."
+
+You'll also notice that there are two different ways to rank sentences using this tool: "Input/Response" and "Semantic Similarity." As the name implies, the former ranks sentences by how good they are as _responses_ to the given query, whereas "Semantic Similarity" simply rates how similar the sentences are to the query.
