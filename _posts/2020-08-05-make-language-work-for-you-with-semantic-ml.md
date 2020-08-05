@@ -35,7 +35,7 @@ In machine learning, embeddings are a learned way of representing data in space 
 
 ![Visualization of word vectors](/images/word2vec-1.png "Visualization of word vectors")
 
-_This image comes from this_ [_this Medium article_](https://medium.com/analytics-vidhya/implementing-word2vec-in-tensorflow-44f93cf2665f)_._
+_This image comes from_ [_this Medium article_](https://medium.com/analytics-vidhya/implementing-word2vec-in-tensorflow-44f93cf2665f)_._
 
 The picture above shows words ("England," "he," "fast") plotted in space such that similar words ("dog" and "dogs", "Italy" and "Rome", "woman" and "queen") are near each other. Each word is represented by a set of coordinates (or a vector), so the word "queen" might be represented by the coordinates \[0.38, 0.48, 0.99, 0.48, 0.28, 0.38\].
 
@@ -82,7 +82,7 @@ One of the neatest aspects of this project was that Anna prototyped it largely i
 
 Here's a little gif of what the tool looks like:
 
-![A gif showing how semantic reactor works in a google sheet](/images/screen-shot-2020-08-04-at-11-59-23-am.png "Semantic Reactor plugin")
+![](/images/semantic_reactor.gif)
 
 To use Semantic Reactor, create a new Google sheet and write some sentences in the first column. Here, I'll loosely recreate Anna's fox demo (for all the nitty gritties, check out her [original post](https://stadia.dev/intl/fr_ca/blog/creating-game-ai-using-mostly-english/)). I put these sentences in the first column of my Google sheet:
 
@@ -127,53 +127,48 @@ Let's take a look at how to use those models in JavaScript, so that you can conv
 
 1. Create a new Node project and install the module:
 
-    npm init
-    npm install @tensorflow/tfjs @tensorflow-models/universal-sentence-encoder
+   npm init
+   npm install @tensorflow/tfjs @tensorflow-models/universal-sentence-encoder
+2. Create a new file (`use_demo.js`) and require the library:
 
-1. Create a new file (`use_demo.js`) and require the library:
+   require('@tensorflow/tfjs');
+   const encoder = require('@tensorflow-models/universal-sentence-encoder');
+3. Load the model:
 
-    require('@tensorflow/tfjs');
-    const encoder = require('@tensorflow-models/universal-sentence-encoder');
+   const model = await encoder.loadQnA();
+4. Encode your sentences and query:
 
-1. Load the model:
+   const input = {
+   queries: \["I want some coffee"\],
+   responses: \[
+   "I grab a ball",
+   "I go to you",
+   "I play with a ball",
+   "I go to school.",
+   "I go to the mug.",
+   "I bring you the mug."
+   \]
+   };
 
-      const model = await encoder.loadQnA();
+   const embeddings = await model.embed(input);
+5. Voila! You've transformed your responses and query into vectors. Unfortunately, vectors are just points in space. To rank the responses, you'll want to compute the distance between those points (you can do this by computing the [dot product](https://www.mathsisfun.com/algebra/vectors-dot-product.html), which gives you the squared [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance#:\~:text=In%20mathematics%2C%20the%20Euclidean%20distance,metric%20as%20the%20Pythagorean%20metric.) between points):
 
-1. Encode your sentences and query:
+   zipWith :: (a -> b -> c) -> \[a\] -> \[b\] -> \[c\]
+   const zipWith =
+   (f, xs, ys) => {
+   const ny = ys.length;
+   return (xs.length <= ny ? xs : xs.slice(0, ny))
+   .map((x, i) => f(x, ys\[i\]));
+   }
 
-      const input = {
-        queries: ["I want some coffee"],
-        responses: [
-          "I grab a ball",
-          "I go to you",
-          "I play with a ball",
-          "I go to school.",
-          "I go to the mug.",
-          "I bring you the mug."
-      	]
-      };
-      
-      const embeddings = await model.embed(input);
+   // Calculate the dot product of two vector arrays.
+   const dotProduct = (xs, ys) => {
+   const sum = xs => xs ? xs.reduce((a, b) => a + b, 0) : undefined;
 
-1. Voila! You've transformed your responses and query into vectors. Unfortunately, vectors are just points in space. To rank the responses, you'll want to compute the distance between those points (you can do this by computing the [dot product](https://www.mathsisfun.com/algebra/vectors-dot-product.html), which gives you the squared [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance#:\~:text=In%20mathematics%2C%20the%20Euclidean%20distance,metric%20as%20the%20Pythagorean%20metric.) between points):
-
-    
-    zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
-    const zipWith =
-        (f, xs, ys) => {
-          const ny = ys.length;
-          return (xs.length <= ny ? xs : xs.slice(0, ny))
-              .map((x, i) => f(x, ys[i]));
-        }
-    
-    // Calculate the dot product of two vector arrays.
-    const dotProduct = (xs, ys) => {
-      const sum = xs => xs ? xs.reduce((a, b) => a + b, 0) : undefined;
-     
-      return xs.length === ys.length ?
-        sum(zipWith((a, b) => a * b, xs, ys))
-        : undefined;
-    }
+   return xs.length === ys.length ?
+   sum(zipWith((a, b) => a * b, xs, ys))
+   : undefined;
+   }
 
 If you run this code, you should see output like:
 
