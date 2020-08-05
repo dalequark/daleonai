@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Build Natural-Language-Powered Apps Fast  with Semantic Reactor and TensorFlow.js
+title: Build Apps Powered by Language with Semantic ML
 description: Build a natural-language-powered app fast using Semantic Reactor (natural
   language in a Google Sheet) and TensorFlow.js
 date: 2020-08-05 19:00:00 +0000
