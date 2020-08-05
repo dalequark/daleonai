@@ -153,6 +153,7 @@ Let's take a look at how to use those models in JavaScript, so that you can conv
    const embeddings = await model.embed(input);
 5. Voila! You've transformed your responses and query into vectors. Unfortunately, vectors are just points in space. To rank the responses, you'll want to compute the distance between those points (you can do this by computing the [dot product](https://www.mathsisfun.com/algebra/vectors-dot-product.html), which gives you the squared [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance#:\~:text=In%20mathematics%2C%20the%20Euclidean%20distance,metric%20as%20the%20Pythagorean%20metric.) between points):
 
+```
    zipWith :: (a -> b -> c) -> \[a\] -> \[b\] -> \[c\]
    const zipWith =
    (f, xs, ys) => {
@@ -169,6 +170,7 @@ Let's take a look at how to use those models in JavaScript, so that you can conv
    sum(zipWith((a, b) => a * b, xs, ys))
    : undefined;
    }
+   ```
 
 If you run this code, you should see output like:
 
