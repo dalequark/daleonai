@@ -127,27 +127,27 @@ Underneath the hood, Semantic Reactor is powered by the open-source TensorFlow.j
 
 Let's take a look at how to use those models in JavaScript, so that you can convert your spreadsheet prototype into a working app.
 
-1. Create a new Node project and install the module:
+1 - Create a new Node project and install the module:
 
 ```js
    npm init
    npm install @tensorflow/tfjs @tensorflow-models/universal-sentence-encoder
 ```
 
-2. Create a new file (`use_demo.js`) and require the library:
+2 - Create a new file (`use_demo.js`) and require the library:
 
 ```js
    require('@tensorflow/tfjs');
    const encoder = require('@tensorflow-models/universal-sentence-encoder');
 ```
 
-3. Load the model:
+3 - Load the model:
 
 ```js
    const model = await encoder.loadQnA();
 ```
 
-4. Encode your sentences and query:
+4 - Encode your sentences and query:
 
 ```js
    const input = {
