@@ -188,4 +188,4 @@ If you run this code, you should see some output like:
 ]
 ```
 
-TODO: Check out the full code sample here.
+Check out the full code sample [here](https://github.com/google/making_with_ml/blob/master/semantic_ml/use_sample.js).
