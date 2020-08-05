@@ -68,12 +68,14 @@ In Anna's game, players interact with a virtual fox by asking any question they 
 "Fox, can I have some coffee?"
 
 Then, using Semantic ML, the game engine (or the [utility system](https://en.wikipedia.org/wiki/Utility_system)) considers all of the possible ways the game might respond:
+
 ```js
     Fox turns on lights.
     Fox turns on radio.
     Fox move to you.
     Fox brings you mug.
 ```
+
 Using a sentence encoder model, the game decides what the best response is and executes it (in this case, the best response is _Fox brings you mug_, so the game animates the Fox bringing you a mug). If that sounds a little abstract, definitely watch the video I linked above.
 
 One of the neatest aspects of this project was that Anna prototyped it largely in a Google Sheet using a tool called Semantic Reactor.
@@ -85,26 +87,26 @@ Here's a little gif of what the tool looks like:
 ![](/images/semantic_reactor.gif)
 
 To use Semantic Reactor, create a new Google sheet and write some sentences in the first column. Here, I'll loosely recreate Anna's fox demo (for all the nitty gritties, check out her [original post](https://stadia.dev/intl/fr_ca/blog/creating-game-ai-using-mostly-english/)). I put these sentences in the first column of my Google sheet:
-```
-    I grab a ball
-    I go to you
-    I play with a ball
-    I go to school.
-    I go to the mug.
-    I bring you the mug.
-    I turn on music.
-    I take a nap.
-    I go for a hike.
-    I tell you a secret.
-    I snuggle with you.
-    I ask for a belly rub.
-    I send a text.
-    I answer the phone.
-    I make a sandwich.
-    I drink some water.
-    I play a board game.
-    I do some coding.
-```
+
+        I grab a ball
+        I go to you
+        I play with a ball
+        I go to school.
+        I go to the mug.
+        I bring you the mug.
+        I turn on music.
+        I take a nap.
+        I go for a hike.
+        I tell you a secret.
+        I snuggle with you.
+        I ask for a belly rub.
+        I send a text.
+        I answer the phone.
+        I make a sandwich.
+        I drink some water.
+        I play a board game.
+        I do some coding.
+
 You'll have to use your imagination here and think of these "actions" that a potential character (e.g. a chatbot or an actor in a video game) might take.
 
 Once you've applied for and been given access to Semantic Reactor, you'll be able to enable it by clicking on "Add-ons -> Semantic Reactor -> Start".
@@ -126,21 +128,27 @@ Underneath the hood, Semantic Reactor is powered by the open-source TensorFlow.j
 Let's take a look at how to use those models in JavaScript, so that you can convert your spreadsheet prototype into a working app.
 
 1. Create a new Node project and install the module:
+
 ```js
    npm init
    npm install @tensorflow/tfjs @tensorflow-models/universal-sentence-encoder
 ```
+
 2. Create a new file (`use_demo.js`) and require the library:
+
 ```js
    require('@tensorflow/tfjs');
    const encoder = require('@tensorflow-models/universal-sentence-encoder');
 ```
+
 3. Load the model:
 
 ```js
    const model = await encoder.loadQnA();
 ```
+
 4. Encode your sentences and query:
+
 ```js
    const input = {
    queries: \["I want some coffee"\],
@@ -156,6 +164,7 @@ Let's take a look at how to use those models in JavaScript, so that you can conv
 
    const embeddings = await model.embed(input);
 ```
+
 5. Voila! You've transformed your responses and query into vectors. Unfortunately, vectors are just points in space. To rank the responses, you'll want to compute the distance between those points (you can do this by computing the [dot product](https://www.mathsisfun.com/algebra/vectors-dot-product.html), which gives you the squared [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance#:\~:text=In%20mathematics%2C%20the%20Euclidean%20distance,metric%20as%20the%20Pythagorean%20metric.) between points):
 
 ```js
@@ -175,9 +184,10 @@ Let's take a look at how to use those models in JavaScript, so that you can conv
    sum(zipWith((a, b) => a * b, xs, ys))
    : undefined;
    }
-   ```
+```
 
 If you run this code, you should see output like:
+
 ```js
     [
       { response: 'I grab a ball', score: 10.788130270345432 },
@@ -191,7 +201,7 @@ If you run this code, you should see output like:
 
 Check out the full code sample [here](https://github.com/google/making_with_ml/blob/master/semantic_ml/use_sample.js).
 
-And that's it--that's how you go from an Semantic ML spreadsheet to code fast!
+And that's it--that's how you go from a Semantic ML spreadsheet to code fast!
 
 Pretty cool, right? If you build something with these tools, make sure you let me know in the comments below or on Twitter.
 
