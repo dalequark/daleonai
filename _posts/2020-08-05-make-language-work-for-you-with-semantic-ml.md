@@ -78,7 +78,7 @@ Using a sentence encoder model, the game decides what the best response is and e
 
 One of the neatest aspects of this project was that Anna prototyped it largely in a Google Sheet using a tool called Semantic Reactor.
 
-[Semantic Reactor](https://opensource.googleblog.com/2020/03/semantic-reactor-tool-for-experimenting.html) is a plugin for Google Sheets that allows you to use sentence encoder models right on your own data, in a sheet. It was released quietly by Google Research in March. (For now, you'll need to [fill out an application](https://events.withgoogle.com/ai-workshop/registrations/new/) to get access.) It's a really great way to prototype Semantic ML apps fast, which you can then turn into code using [TensorFlow.js models](https://www.npmjs.com/package/@tensorflow-models/universal-sentence-encoder) (but more on that in a minute).
+[Semantic Reactor](https://opensource.googleblog.com/2020/03/semantic-reactor-tool-for-experimenting.html) is a plugin for Google Sheets that allows you to use sentence encoder models right on your own data, in a sheet. It was released quietly by Google Research in March. (For now, you'll need to [fill out an application](https://aihub.cloud.google.com/u/0/p/13efae4e-ddbc-4a8e-9b09-56260fd284db?consistent=true) to get access.) It's a really great way to prototype Semantic ML apps fast, which you can then turn into code using [TensorFlow.js models](https://www.npmjs.com/package/@tensorflow-models/universal-sentence-encoder) (but more on that in a minute).
 
 Here's a little gif of what the tool looks like:
 
