@@ -3,7 +3,7 @@ layout: post
 title: Build Apps Powered by Language with Semantic ML
 description: Build a natural-language-powered app fast using Semantic Reactor (natural
   language in a Google Sheet) and TensorFlow.js
-date: 2020-08-05 19:00:00 +0000
+date: 2020-08-05T19:00:00.000+00:00
 feature_image: "/images/build-language-powered-apps-fast-with-semantic-ml.png"
 tags:
 - chatbots
@@ -18,6 +18,8 @@ permalink: semantic-ml
 _In this post, I'll show you how to use beginner-friendly ML tools--Semantic Reactor and TensorFlow.js--to build an app that's powered by natural language._
 
 <!--more-->
+
+_NEW: Semantic Reactor has been officially released! Add it to Google Sheets_ [_here_](https://research.google.com/semanticexperiences/semantic-reactor.html)_._
 
 Most people are better at describing the world in language than they are at describing the world in code (well... _most_ people). It would be nice, then, if machine learning could help bridge the gap between the two.
 
@@ -80,7 +82,7 @@ Using a sentence encoder model, the game decides what the best response is and e
 
 One of the neatest aspects of this project was that Anna prototyped it largely in a Google Sheet using a tool called Semantic Reactor.
 
-[Semantic Reactor](https://opensource.googleblog.com/2020/03/semantic-reactor-tool-for-experimenting.html) is a plugin for Google Sheets that allows you to use sentence encoder models right on your own data, in a sheet. It was released quietly by Google Research in March. (For now, you'll need to [fill out an application](https://aihub.cloud.google.com/u/0/p/13efae4e-ddbc-4a8e-9b09-56260fd284db?consistent=true) to get access.) It's a really great way to prototype Semantic ML apps fast, which you can then turn into code using [TensorFlow.js models](https://www.npmjs.com/package/@tensorflow-models/universal-sentence-encoder) (but more on that in a minute).
+[Semantic Reactor](https://research.google.com/semanticexperiences/semantic-reactor.html) is a plugin for Google Sheets that allows you to use sentence encoder models right on your own data, in a sheet. It was just released, and you can add it to your Google Sheets [here](https://research.google.com/semanticexperiences/semantic-reactor.html). It's a really great way to prototype Semantic ML apps fast, which you can then turn into code using [TensorFlow.js models](https://www.npmjs.com/package/@tensorflow-models/universal-sentence-encoder) (but more on that in a minute).
 
 Here's a little gif of what the tool looks like:
 
@@ -109,7 +111,7 @@ To use Semantic Reactor, create a new Google sheet and write some sentences in t
 
 You'll have to use your imagination here and think of these "actions" that a potential character (e.g. a chatbot or an actor in a video game) might take.
 
-Once you've applied for and been given access to Semantic Reactor, you'll be able to enable it by clicking on "Add-ons -> Semantic Reactor -> Start".
+Once you've added Semantic Reactor to Sheets, you'll be able to enable it by clicking on "Add-ons -> Semantic Reactor -> Start".
 
 ![A screenshot of starting Semantic Reactor](/images/screen-shot-2020-08-04-at-11-59-23-am.png "Enable Semantic Reactor in a spreadsheet")
 
