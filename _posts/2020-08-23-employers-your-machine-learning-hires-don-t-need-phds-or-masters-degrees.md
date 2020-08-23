@@ -21,7 +21,7 @@ Some might say it's because ML is uniquely complex and math-y. That may be true,
 
 Machine learning is **really new** for most of us in tech. Just five years ago, my colleagues were still talking about deep learning as a dubious bet. Tools were difficult to use. Beefy hardware designed for ML was hard to get. Model quality was far from where it is today.
 
-In 2015, Princeton, my alma matter, offered only around \~ML/AI classes. Machine Learning was definitely not a "standard" part of your typical Computer Science curriculum, and you could easily graduate without learning anything about it. No wonder so many people go back to school to fill in this suddenly relevant hole in their CS educations.
+In 2015, Princeton, my alma matter, offered only around \~3 ML/AI classes. Machine Learning was definitely not a "standard" part of your typical Computer Science curriculum, and you could easily graduate without learning anything about it. No wonder so many people go back to school to fill in this suddenly relevant hole in their CS educations.
 
 It should be no surprise, then, that so many engineers who _actually_ work on deployed ML today have no background in the field. They learned on the job. Even at Google, one of the world's largest employers of ML researchers, tons of engineers who work on AI products have no prior experience with the technology. They learn through online resources, internal courses (like Google's [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course)), or by taking on small chunks of projects and learning as they go.
 
