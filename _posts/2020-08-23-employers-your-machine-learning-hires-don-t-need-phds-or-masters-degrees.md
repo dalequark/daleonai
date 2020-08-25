@@ -21,9 +21,9 @@ _Ph.D. in Data Science, Machine Learning, Statistics, Operations Research or rel
 
 _M.S. in related field with 5+ years experience applying data science techniques to real business problems_
 
-Having a PhD or even Masters degree is a really unusual ask for software engineers. We don't ask this of developers working on networking or security or systems architecture or app development. So what makes machine learning so special?
+Having a PhD or even Master's degree is a really unusual ask for software engineers. We expect this of developers working on networking or security or systems architecture or app development. So what makes machine learning so special?
 
-Some might say that machine learning is uniquely complex and math-y, the domain of scientists rather than software developer hacks (ouch!). 
+Some might say that ML is uniquely complex and math-y, the domain of scientists rather than software developer hacks (ouch!). 
 
 I don't buy it. ML may be tricky, but so is cryptography and distributed systems and graphics and tons of other topics in Computer Science. Yet we don't require developers have PhDs to work on those things. I think it's something else:
 
