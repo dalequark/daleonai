@@ -15,6 +15,8 @@ _Ever wish you could listen to documents? In this post, we'll use machine learni
 
 <!--more-->
 
+_This project was done with_ [_Kaz Sato_](https://github.com/kazunori279)_._
+
 Walking--it's one of covid-19's greatest (and only) pleasures, isn't it? These days, you can do anything on foot: listen to the news, take meetings, even write notes (with voice dictation). The only thing you can't do while walking is read machine learning research papers.
 
 Or can't you?
@@ -146,6 +148,6 @@ Anyway, that's all for now.
 
 ***
 
- If you build something neat like this, share it with me and I'll feature it on social media!
+If you build something neat like this, share it with me and I'll feature it on social media!
 
 Meanwhile, let's connect on [Instagram](instagram.com/dale_on_ai) or [Twitter](twitter.com/dalequark)!
