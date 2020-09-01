@@ -68,9 +68,9 @@ It turns out identifying those relevant sections is a tricky problem with lots o
 
 When you look at a research paper, it's probably easy for you to gloss over the irrelevant bits just by noting the layout: titles are large and bolded; captions are small; body text is medium-sized and centered on the page.
 
-Using spatial information about the layout of the text on the page, we can train a machine learning model to do that, too.
+Using spatial information about the layout of the text on the page, we can train a machine learning model to do that, too. We show the model a bunch of examples of body text, header text, and so on, and hopefully it learns to recognize them.
 
-This approach is the one that Kaz, the original author of this project, took when trying to turn textbooks into audiobooks.
+This is the approach that Kaz, the original author of this project, took when trying to turn textbooks into audiobooks.
 
 Earlier in this post, I mentioned that the Google Cloud Vision API returns not just text on the page, but also its layout. It groups text into chunks (pages, blocks, paragraphs, words, and characters) and returns its location on the page. In particular, for each word, it returns a bounding box that looks like this:
 
@@ -91,4 +91,12 @@ We can use this data to train a model. Let's take a look at the data that Kaz co
 
 ![](/images/screen-shot-2020-09-01-at-2-45-07-pm.png)
 
-![](/images/screen-shot-2020-09-01-at-2-38-02-pm.png)
+The book Kaz was converting was, obviously, in Japanese. For each chunk of text, he created a set of features to describe it: how many characters were in the chunk of text? How large was it, and where was it located on the page? What was the aspect ratio of the box enclosing the text (a narrow box, for example, might just be a side bar)? 
+
+Notice there's also a column named "label" in that spreadsheet above. That's because, in order to train a machine learning model, we need a labeled training dataset from which the model can "learn." For each block of text in the training data, Kaz had to manually label the chunk as "body," "header," "caption," or "other." Labeling training data is always one of the more time-consuming parts of ML projects, and this one was no exception!
+
+That's why, when I recreated Kaz's project, I used a hack to avoid it (more on that below).
+
+After Kaz collected and labeled a bunch of documents, he trained a machine learning model using [Google Cloud AutoML Tables](https://cloud.google.com/automl-tables). It's a no-code tool for building models based on tabular data. Here's a little gif showing what that tool looks like, and how Kaz used it to train a model:
+
+![Gif of AutoML Tables interface](/images/automl_tables_kaz.gif "Gif of AutoML Tables interface")
