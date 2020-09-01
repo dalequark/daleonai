@@ -107,4 +107,32 @@ As you can see, the model was quite accurate (\~95% precision and recall)! So Ka
 
 Look, I'm no sissy--I've spent a lot of my life labeling training data (even though, these days, you [really don't have to](https://cloud.google.com/ai-platform/data-labeling/docs)). But for this project, I wondered if I could use a heuristic hack rather than labeling data and to train a model myself.
 
-I reasoned that font size is a pretty good way to tell what a piece of text is. Paper titles are probably the biggest font in the document. Meanwhile, the majority of text in a paper is body text, so whatever font size is most common in a doc should indicate body text.
+I figured you could learn a lot just by looking at font size. For example: the title of a paper is probably written in the largest text size. Meanwhile, body text is the most common text in a document. Using those observations, I used this heuristic:
+
+1. Calculate the font size for all words
+2. Compute the most common font size. Label ever bit of text in that font size "body"
+3. Compute the largest font size. Label every bit of text in that font size as "title"
+
+For the first step, computing font size, I subtracted the y coordinates around words:
+
+![Computing font sizes from y coordinates](/images/img_20200901_161455.jpg "Computing font sizes from y coordinates")
+
+Next, to see if my idea would work, I plotted the distribution of font sizes in the document:
+
+![](/images/font_sizes.jpg)
+
+You can see that on the right hand side, there's a single dot (the largest text) that represents the document title (woohoo!). Meanwhile, that long span of points in the middle, that's the body text. The captions and other document metadata, which is in even smaller text, is all the way on the left side of the diagram.
+
+This graph gave me confidence that my little hack would work, at least for this document (note that it didn't work for _all_ research papers, especially not papers with fancy side bars or vertical layouts!).
+
+One tricky bit here, though, is that the body text font size falls in a _range_ (not one fixed value). That's because I'm not computing font size like we usually think of it (i.e. 12 pt), but as subtracted pixel values, and there's some noise. To figure out the cutoffs (i.e. what should be the bounds for what's considered body text?), I used [Jenks Natural Breaks Algorithm]() (if you haven't heard of this one, no fear--neither had I before this project!).
+
+I know I'm being a little quick here, so feel free to drop me comments below here or on Twitter and I'll definitely answer questions!
+
+### From Text to Spoken Word
+
+The most fun part of this project is definitely choosing a computer voice to be our narrator. For this, I used the Google Text-to-Speech API, which uses a technology called [WaveNet](https://deepmind.com/blog/article/wavenet-generative-model-raw-audio) to produce very lifelike voices. The API supports lots of voices and languages, and you can compare them for yourself on your own input text straight from the [product page](https://cloud.google.com/text-to-speech).
+
+I choose a male voice to read the paper title and a female voice to read the paper body. Here's what the resulting "audiobook" sounded like:
+
+<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/881952937%3Fsecret_token%3Ds-AwsVa7iQ7Gm&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/dale-markowitz" title="Dale Markowitz" target="_blank" style="color: #cccccc; text-decoration: none;">Dale Markowitz</a> · <a href="https://soundcloud.com/dale-markowitz/a-promising-path-towards-autoformalization-and-general-artificial-intelligence/s-AwsVa7iQ7Gm" title="A Promising Path Towards Autoformalization and General Artificial Intelligence" target="_blank" style="color: #cccccc; text-decoration: none;">A Promising Path Towards Autoformalization and General Artificial Intelligence</a></div>
