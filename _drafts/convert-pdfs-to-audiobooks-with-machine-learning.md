@@ -100,3 +100,11 @@ That's why, when I recreated Kaz's project, I used a hack to avoid it (more on t
 After Kaz collected and labeled a bunch of documents, he trained a machine learning model using [Google Cloud AutoML Tables](https://cloud.google.com/automl-tables). It's a no-code tool for building models based on tabular data. Here's a little gif showing what that tool looks like, and how Kaz used it to train a model:
 
 ![Gif of AutoML Tables interface](/images/automl_tables_kaz.gif "Gif of AutoML Tables interface")
+
+As you can see, the model was quite accurate (\~95% precision and recall)! So Kaz used this model as an intermediary step to identify which text to put in the audiobook.
+
+### Finding Relevant Text with Spit and Glue and Font Sizes
+
+Look, I'm no sissy--I've spent a lot of my life labeling training data (even though, these days, you [really don't have to](https://cloud.google.com/ai-platform/data-labeling/docs)). But for this project, I wondered if I could use a heuristic hack rather than labeling data and to train a model myself.
+
+I reasoned that font size is a pretty good way to tell what a piece of text is. Paper titles are probably the biggest font in the document. Meanwhile, the majority of text in a paper is body text, so whatever font size is most common in a doc should indicate body text.
