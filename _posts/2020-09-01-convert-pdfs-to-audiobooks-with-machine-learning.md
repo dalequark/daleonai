@@ -108,7 +108,7 @@ As you can see, the model was quite accurate (\~95% precision and recall)! So Ka
 
 ### Finding Relevant Text with Spit and Glue and Font Sizes
 
-Look, I'm no sissy--I've spent a lot of my life labeling training data (even though, these days, you [really don't have to](https://cloud.google.com/ai-platform/data-labeling/docs)). But for this project, I wondered if I could use a heuristic hack rather than labeling data and to train a model myself.
+Look, I'm no sissy--I've spent a lot of my life labeling training data (even though, these days, you [really don't have to](https://cloud.google.com/ai-platform/data-labeling/docs)). But for this project, I wondered if I could use a simple heuristic (one that would let me avoid labeling data) instead.
 
 I figured you could learn a lot just by looking at font size. For example: the title of a paper is probably written in the largest text size. Meanwhile, body text is the most common text in a document. Using those observations, I used this heuristic:
 
