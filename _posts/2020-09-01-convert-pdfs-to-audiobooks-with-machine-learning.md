@@ -2,9 +2,12 @@
 layout: post
 title: Convert PDFs to Audiobooks with Machine Learning
 description: Use easy-to-use Machine Learning/AI tools to convert PDFs into audiobooks.
-date: 
-feature_image: ''
-tags: []
+date: 2020-09-01 21:00:00 +0000
+feature_image: "/images/turn-a-pdf-into-an-audiobook.png"
+tags:
+- google cloud
+- nlp
+- machine learning
 permalink: pdf-to-audiobook
 
 ---
@@ -91,7 +94,7 @@ We can use this data to train a model. Let's take a look at the data that Kaz co
 
 ![](/images/screen-shot-2020-09-01-at-2-45-07-pm.png)
 
-The book Kaz was converting was, obviously, in Japanese. For each chunk of text, he created a set of features to describe it: how many characters were in the chunk of text? How large was it, and where was it located on the page? What was the aspect ratio of the box enclosing the text (a narrow box, for example, might just be a side bar)? 
+The book Kaz was converting was, obviously, in Japanese. For each chunk of text, he created a set of features to describe it: how many characters were in the chunk of text? How large was it, and where was it located on the page? What was the aspect ratio of the box enclosing the text (a narrow box, for example, might just be a side bar)?
 
 Notice there's also a column named "label" in that spreadsheet above. That's because, in order to train a machine learning model, we need a labeled training dataset from which the model can "learn." For each block of text in the training data, Kaz had to manually label the chunk as "body," "header," "caption," or "other." Labeling training data is always one of the more time-consuming parts of ML projects, and this one was no exception!
 
@@ -136,3 +139,13 @@ The most fun part of this project is definitely choosing a computer voice to be 
 I choose a male voice to read the paper title and a female voice to read the paper body. Here's what the resulting "audiobook" sounded like:
 
 <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/881952937%3Fsecret_token%3Ds-AwsVa7iQ7Gm&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/dale-markowitz" title="Dale Markowitz" target="_blank" style="color: #cccccc; text-decoration: none;">Dale Markowitz</a> · <a href="https://soundcloud.com/dale-markowitz/a-promising-path-towards-autoformalization-and-general-artificial-intelligence/s-AwsVa7iQ7Gm" title="A Promising Path Towards Autoformalization and General Artificial Intelligence" target="_blank" style="color: #cccccc; text-decoration: none;">A Promising Path Towards Autoformalization and General Artificial Intelligence</a></div>
+
+Not too bad, right?
+
+Anyway, that's all for now.
+
+***
+
+ If you build something neat like this, share it with me and I'll feature it on social media!
+
+Meanwhile, let's connect on [Instagram](instagram.com/dale_on_ai) or [Twitter](twitter.com/dalequark)!
