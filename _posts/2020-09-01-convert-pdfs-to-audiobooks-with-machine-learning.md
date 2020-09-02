@@ -130,7 +130,7 @@ You can see that on the right hand side, there's a single dot (the largest text)
 
 This graph gave me confidence that my little hack would work, at least for this document (note that it didn't work for _all_ research papers, especially not papers with fancy side bars or vertical layouts!).
 
-One tricky bit here, though, is that the body text font size falls in a _range_ (not one fixed value). That's because I'm not computing font size like we usually think of it (i.e. 12 pt), but as subtracted pixel values, and there's some noise. To figure out the cutoffs (i.e. what should be the bounds for what's considered body text?), I used [Jenks Natural Breaks Algorithm]() (if you haven't heard of this one, no fear--neither had I before this project!).
+One tricky bit here, though, is that the body text font size falls in a _range_ (not one fixed value). That's because I'm not computing font size like we usually think of it (i.e. 12 pt), but as subtracted pixel values, and there's some noise. To figure out the cutoffs (i.e. what should be the bounds for what's considered body text?), I used [Jenks Natural Breaks Algorithm](https://en.wikipedia.org/wiki/Jenks_natural_breaks_optimization) (if you haven't heard of this one, no fear--neither had I before this project!).
 
 I know I'm being a little quick here, so feel free to drop me comments below here or on Twitter and I'll definitely answer questions!
 
