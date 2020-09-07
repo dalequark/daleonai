@@ -17,6 +17,8 @@ _Ever wish you could listen to documents? In this post, we'll use machine learni
 
 _This project was a collaboration with_ [_Kaz Sato_](https://github.com/kazunori279)_._
 
+_Update: Many of you have asked me what the total cost of this project is, which I've included at the end of this post. TLDR: it was free._
+
 Walking--it's one of covid-19's greatest (and only) pleasures, isn't it? These days, you can do anything on foot: listen to the news, take meetings, even write notes (with voice dictation). The only thing you can't do while walking is read machine learning research papers.
 
 Or can't you?
@@ -145,6 +147,16 @@ I choose a male voice to read the paper title and a female voice to read the pap
 <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/881952937%3Fsecret_token%3Ds-AwsVa7iQ7Gm&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/dale-markowitz" title="Dale Markowitz" target="_blank" style="color: #cccccc; text-decoration: none;">Dale Markowitz</a> · <a href="https://soundcloud.com/dale-markowitz/a-promising-path-towards-autoformalization-and-general-artificial-intelligence/s-AwsVa7iQ7Gm" title="A Promising Path Towards Autoformalization and General Artificial Intelligence" target="_blank" style="color: #cccccc; text-decoration: none;">A Promising Path Towards Autoformalization and General Artificial Intelligence</a></div>
 
 Not too bad, right?
+
+### Pricing
+
+Since publishing this post, many of you have asked me how much it cost me to build this project. Conveniently, I stayed in the free tier of the APIs I used. For reference:
+
+I didn't build a custom model (like Kaz did), so I'll just focus on the cost of 1) extracting text from a PDF 2) converting text to audio.
+
+The cost to convert a PDF to text using the Google Vision API is free for under 1000 pages (see the pricing page [here](https://cloud.google.com/vision/pricing)).
+
+Converting text to speech using WaveNet voices is free up to 1 million characters (see the full pricing page [here]()).
 
 Anyway, that's all for now.
 
