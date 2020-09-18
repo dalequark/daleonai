@@ -27,9 +27,7 @@ In this post, I'll show you how to use machine learning to transform documents i
 
 But should you? That's for you to decide.
 
-_Want to jump straight to the code? Check it out on GitHub_ [_here_](https://github.com/kazunori279/pdf2audiobook)_. Or, watch the video:
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/q-nvbuc59Po" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+_Want to jump straight to the code? Check it out on GitHub_ [_here_](https://github.com/kazunori279/pdf2audiobook). _Or, watch the_ [_video_](https://www.youtube.com/embed/q-nvbuc59Po)
 
 ***
 
