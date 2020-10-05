@@ -115,7 +115,7 @@ ins {
 pre {
   background: _palette(bg);
   border: 1px solid _palette(border);
-  border-radius: 3px;
+  // border-radius: 3px;
   font-family: Consolas, "Andale Mono", "Courier New", Courier, monospace;
   font-size: 0.88889rem;
   margin: 0 0 1.875em;
@@ -127,7 +127,7 @@ pre {
 :not(pre) > code {
   background: _palette(bg);
   border: 1px solid _palette(border);
-  border-radius: 3px;
+  // border-radius: 3px;
   font-family: Consolas, "Andale Mono", "Courier New", Courier, monospace;
   font-size: 0.88889rem;
   padding: 1px 3px;
@@ -219,7 +219,7 @@ table tbody > tr:nth-child(odd) {
 }
 
 img {
-  border-radius: 3px;
+  // border-radius: 3px;
   height: auto;
   max-width: 100%;
 }
@@ -288,7 +288,7 @@ video {
 .back-to-top {
 	background: 0;
   border: 1px solid _palette(border);
-  border-radius: 3px;
+  // border-radius: 3px;
   box-sizing: border-box;
 	color: _palette(primary);
 	padding: 0;

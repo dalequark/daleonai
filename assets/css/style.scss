@@ -24,8 +24,10 @@
 
 // Font.
 $font: (
-  primary: ("Source Sans Pro","Helvetica Neue",Helvetica,sans-serif),
-  secondary: ("Playfair Display",Georgia,serif)
+  // primary: ("Source Sans Pro","Helvetica Neue",Helvetica,sans-serif),
+  primary: ("Open Sans", "Helvetica Neue", "Helvetica", sans-serif),
+  // secondary: ("Playfair Display",Georgia,serif)
+  secondary: ("Raleway", sans-serif)
 );
 
 // Palette.

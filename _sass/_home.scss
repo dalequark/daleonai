@@ -1,3 +1,9 @@
+.home-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 15px;
+}
+
 .home-content {
   display: flex;
 
@@ -10,10 +16,16 @@
   margin-left: 1em;
 
   &-card {
-    padding: 1.25em 1.5em 1.5em;
-    margin-bottom: 1em;
-    background: #F5F5F5;
-    border-radius: 3px;
+    border-top: 9px solid #000;
+    border-bottom: 1px solid #ccc;
+    margin: 0 16px 16px 0;
+
+    box-shadow: -1px 0 2px 0 rgba(0,0,0,0.12), 1px 0 2px 0 rgba(0,0,0,0.12), 0 1px 1px 0 rgba(0,0,0,0.24);
+    padding: 20px;
+    // padding: 1.25em 1.5em 1.5em;
+    // margin-bottom: 1em;
+    // background: #F5F5F5;
+    // border-radius: 3px;
   }
 
   @media screen and (max-width: 880px) {
@@ -28,11 +40,21 @@
     width: 250px;
     margin-bottom: 1em;
     height: auto;
-    border-radius: 3%;
   }
 
   &-text {
     margin: 0;
+  }
+
+  &-title-container {
+    margin: 0 -20 0 -20;
+    border-bottom: 1px solid #ccc;
+  }
+
+  &-title {
+    text-transform: capitalize;
+    font-size: 32px;
+
   }
 }
 
