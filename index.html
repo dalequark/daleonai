@@ -11,7 +11,7 @@ layout: default
             <a href="{{site.baseurl}}{{post.url}}">
               <img src="{{ post.thumbnail_image | relative_url }}" class="preview-thumbnail" />
             </a>
-          {% elseif post.feature_image and post.feature_image != "" %}
+          {% elsif post.feature_image and post.feature_image != "" %}
             <a href="{{site.baseurl}}{{post.url}}">
               <img src="{{ post.feature_image | relative_url }}" class="preview-thumbnail" />
             </a>
