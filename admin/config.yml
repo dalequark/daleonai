@@ -2,7 +2,7 @@ backend:
   name: github
   branch: master # Branch to update (optional; defaults to master)
   repo: dalequark/daleonai
-  site_domain: tender-fermi-3d1983.netlify.app
+  site-domain: daleonai.com
 
 
 publish_mode: editorial_workflow
