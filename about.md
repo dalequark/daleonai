@@ -1,7 +1,6 @@
 ---
 layout: page
 title: About Dale Markowitz
-description: About Dale Markowitz
 
 ---
 <img src="/images/dale_wall_small.jpeg" style="display: inline-block; float: left; margin: 0 2em 0.5em 0;" width="300" />
