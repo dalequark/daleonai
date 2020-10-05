@@ -178,6 +178,10 @@ models:
         type: image
         label: Feature image
         description: The featured image of the post.
+      - name: thumbnail_image
+        type: image
+        label: Thumbnail image
+        description: The thumbnail image of the post.
       - name: tags
         type: list
         label: Tags
