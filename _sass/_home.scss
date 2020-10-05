@@ -1,6 +1,7 @@
 .home-posts {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  /* The inner min helps appropriate sizing on mobile */
+  grid-template-columns: repeat(auto-fill, minmax(#{"min(350px, 100%)"}, 1fr));
   grid-gap: 15px;
 }
 
