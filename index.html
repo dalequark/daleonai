@@ -7,15 +7,15 @@ layout: default
     <div class="home-posts">
       {% for post in paginator.posts %}
         <article class="preview">
-          {% if post.thumbnail_image and post.thumbnail_image != "" %}
             <a href="{{site.baseurl}}{{post.url}}">
-              <img src="{{ post.thumbnail_image | relative_url }}" class="preview-thumbnail" />
+              <div class="preview-thumbnail-container">
+              {% if post.thumbnail_image and post.thumbnail_image != "" %}
+                <img src="{{ post.thumbnail_image | relative_url }}" class="preview-thumbnail" />
+              {% elsif post.feature_image and post.feature_image != "" %}
+                <img src="{{ post.feature_image | relative_url }}" class="preview-thumbnail" />
+              {% endif %}
+              </div>
             </a>
-          {% elsif post.feature_image and post.feature_image != "" %}
-            <a href="{{site.baseurl}}{{post.url}}">
-              <img src="{{ post.feature_image | relative_url }}" class="preview-thumbnail" />
-            </a>
-          {% endif %}
           <div class="preview-text">
             <div class="preview-meta">
               <time class="preview-date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{post.date | date: "%B %-d, %Y" }}</time>
