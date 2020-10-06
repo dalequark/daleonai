@@ -1,40 +1,87 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta name="description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
-  <link rel="canonical" href="{{ page.url | replace:'index.html', '' | absolute_url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }} Feed"
-    href="{{ '/feed.xml' | absolute_url }}">
-  {% if site.favicon and site.favicon != "" %}
-  <link rel="shortcut icon" href="{{ site.favicon | relative_url }}" type="image/png" />
-  {% endif %}
-  <!-- Styles -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&family=Raleway:wght@700&display=swap" rel="stylesheet">
-  <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% if page.title %}{{ page.title | escape }}{% else %}{{ site.title |
+      escape }}{% endif %}
+    </title>
+    <meta
+      name="description"
+      content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}"
+    />
+    <link
+      rel="canonical"
+      href="{{ page.url | replace:'index.html', '' | absolute_url }}"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="{{ site.title | escape }} Feed"
+      href="{{ '/feed.xml' | absolute_url }}"
+    />
+    {% if site.favicon and site.favicon != "" %}
+    <link
+      rel="shortcut icon"
+      href="{{ site.favicon | relative_url }}"
+      type="image/png"
+    />
+    {% endif %}
 
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  
-</head>
-<body>
+    <!-- Google Tags Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-K2CZJWL");
+    </script>
 
-  <div id="page" class="site">
-    {% include header.html %}
-    <div class="inner">
-      {{content}}
-      {% include footer.html %}
-    </div><!-- .inner -->
-  </div><!-- .site -->
+    <!-- Styles -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&family=Raleway:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ '/assets/css/style.css' | relative_url }}"
+      rel="stylesheet"
+    />
 
-  <!-- Scripts -->
-  {% if site.google_analytics %}
-    {% include google_analytics.html %}
-  {% endif %}
-  <script src="{{ '/assets/js/plugins.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/custom.js' | relative_url }}"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-K2CZJWL"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-</body>
+    <div id="page" class="site">
+      {% include header.html %}
+      <div class="inner">{{content}} {% include footer.html %}</div>
+      <!-- .inner -->
+    </div>
+    <!-- .site -->
+
+    <!-- Scripts -->
+    {% if site.google_analytics %} {% include google_analytics.html %} {% endif
+    %}
+    <script src="{{ '/assets/js/plugins.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/custom.js' | relative_url }}"></script>
+  </body>
 </html>
