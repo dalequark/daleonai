@@ -29,4 +29,4 @@ For example, I started following a bunch of fashion "influencers" on Instagram a
 
 ![Screenshot of the AI Stylist](/images/mismatch_ui.png "AI Stylist UI")
 
-In the left pane, you'll see my "closet" view. In the middle, you'll see my outfit recommendation fashion picture at the top and items of the clothing items (I already own) that match. On the right, I indicate w
+In the left pane, you'll see the "closet" view; in the middle, the "recommendation" view; on the right, the config view;
