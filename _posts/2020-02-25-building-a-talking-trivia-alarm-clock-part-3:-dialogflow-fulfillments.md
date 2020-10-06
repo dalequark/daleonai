@@ -12,9 +12,9 @@ tags:
 - google cloud
 
 ---
+
 Welcome back, and _wow_ —if you’re here because you finished reading [Part 1](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-1-intro-to-dialogflow) and [Part 2](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-2-streaming-dialogflow-on-a-raspberry-pi) of this series, I applaud you. You have enviable endurance or are _really really_ hard to wake up in the morning.
 
-<!--more-->
 
 But, if you got here some other way, some context: this is Part 3 of a series of articles explaining how to build a talking trivia alarm clock that wakes you up by asking you things like, “What’s 8923 times 2893084?” It’s also a sneaky good way to learn some about some advanced concepts in [Dialogflow](http://www.dialogflow.com) (Google’s framework for building AI-powered chatbots) like Fulfillments, Event Triggers, and complex logic flows. If you’re new to Dialogflow, make sure to check out those [earlier posts](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-1-intro-to-dialogflow) first.
 

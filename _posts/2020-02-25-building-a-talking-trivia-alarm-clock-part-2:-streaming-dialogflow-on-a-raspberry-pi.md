@@ -12,9 +12,9 @@ tags:
 - google cloud
 
 ---
+
 Howdy and welcome back! In this post, we’ll (continue) building a talking alarm clock that wakes people up by nagging them to answer 3 trivia questions, first thing in the morning. It turns out that this seemingly, er, _niche_ project forces us to learn a lot about what it takes to build a general voice assistant like, Google Home or Alexa.
 
-<!--more-->
 
 In the [first post](https://daleonai.com/building-a-talking-trivia-alarm-clock-part-1-intro-to-dialogflow), we built a Voice User Interface that, given a command like “Set my alarm for 8 AM,” set an alarm and spoke a response like, “Sure thing, I set your alarm for 8.”
 

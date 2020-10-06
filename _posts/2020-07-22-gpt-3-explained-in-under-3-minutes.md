@@ -12,7 +12,6 @@ tags:
 permalink: gpt3-explained-fast
 
 ---
-***
 
 _Peek under the hood of GPT-3 in under 3 minutes._
 

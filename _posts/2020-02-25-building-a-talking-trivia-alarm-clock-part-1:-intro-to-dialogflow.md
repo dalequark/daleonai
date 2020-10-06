@@ -13,10 +13,10 @@ tags:
 
 ---
 _Learn how to get started with Dialogflow by building a simple alarm clock chatbot._
+<!--more-->
 
 Pretty much every night, I ask my Google Home to set my wake up alarm for the next day. And sometimes, when she starts chirping the next morning, I wake up. But lots of times, I just slap her on the head and snooze into oblivion.
 
-<!--more-->
 
 This got me thinking that maybe I needed to build my own DIY talking alarm clock, one that a. does not support “snooze” and b. that is much more persistent in waking me up. So I decided to build a trivia alarm clock, that doesn’t let me go back to bed until I’ve answered a bunch of trivia questions.
 

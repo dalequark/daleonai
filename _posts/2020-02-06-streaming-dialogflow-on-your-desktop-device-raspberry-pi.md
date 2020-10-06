@@ -12,9 +12,9 @@ tags:
 ---
 _Turn your local computer into a listening, talking Voice User Interface powered by Dialogflow._
 
-If you’ve worked with [Dialogflow](https://dialogflow.com/) (DF) before, you know it’s a quick way to build smart conversational interfaces. A Dialogflow [Agent](https://cloud.google.com/dialogflow/docs/agents-overview) can be the brains behind a Facebook Messenger or Slack chatbot, a Google Assistant or Alexa app, or even an automated customer service agent.
-
 <!--more-->
+
+If you’ve worked with [Dialogflow](https://dialogflow.com/) (DF) before, you know it’s a quick way to build smart conversational interfaces. A Dialogflow [Agent](https://cloud.google.com/dialogflow/docs/agents-overview) can be the brains behind a Facebook Messenger or Slack chatbot, a Google Assistant or Alexa app, or even an automated customer service agent.
 
 Out of the box, Dialogflow comes with a handful of supported integrations that make deploying a DF app on Slack/Facebook/Alexa/etc a snap.
 
