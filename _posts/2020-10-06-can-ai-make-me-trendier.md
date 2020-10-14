@@ -49,13 +49,29 @@ The whole app took me about a month to build and cost ~$7.00 in Google Cloud cre
 
 ## The Architecture
 
-I built this app using a combination of [Google Cloud Storage](https://cloud.google.com/storage/?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-e-dr-1009135&utm_content=text-ad-none-any-DEV_c-CRE_79747411687-ADGP_Hybrid+%7C+AW+SEM+%7C+BKWS+%7C+US+%7C+en+%7C+EXA+~+Google+Cloud+Storage-KWID_43700007031545851-kwd-11642151515&utm_term=KW_google%20cloud%20storage-ST_google+cloud+storage&gclid=CjwKCAjww5r8BRB6EiwArcckC8WRFN95onXmZi1ly_pfNslOQMjZ6Ex03ypCr7irmeuzPsrDydBL8xoCUV8QAvD_BwE) and [Firebase](firebase.com) for the backend, [React](https://reactjs.org/) for the frontend, and the [Google Cloud Vision API](http://cloud.google.com/vision) for the ML bits. I divided the architecture into two bits.
+I built this app using a combination of [Google Cloud Storage](https://cloud.google.com/storage/?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-e-dr-1009135&utm_content=text-ad-none-any-DEV_c-CRE_79747411687-ADGP_Hybrid+%7C+AW+SEM+%7C+BKWS+%7C+US+%7C+en+%7C+EXA+~+Google+Cloud+Storage-KWID_43700007031545851-kwd-11642151515&utm_term=KW_google%20cloud%20storage-ST_google+cloud+storage&gclid=CjwKCAjww5r8BRB6EiwArcckC8WRFN95onXmZi1ly_pfNslOQMjZ6Ex03ypCr7irmeuzPsrDydBL8xoCUV8QAvD_BwE), [Firebase](firebase.com), and Cloud Functions for the backend, [React](https://reactjs.org/) for the frontend, and the [Google Cloud Vision API](http://cloud.google.com/vision) for the ML bits. I divided the architecture into two bits.
 
 First, there's the *batch process*, which runs every hour (or however frequently you like) in the Cloud:
 
 ![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \"batch process\" makes outfit recommendations using AI")
 
-"Batch process" is just a fancy way of saying that I wrote a Python script which runs on a scheduled interval (more on that later). 
+"Batch process" is just a fancy way of saying that I wrote a Python script which runs on a scheduled interval (more on that later). The process:
+
+1.  Pulls photos from social media
+
+2. Uses the Vision API's [Product Search](https://cloud.google.com/vision/product-search/docs) feature to find similar items in my closet
+
+3. Scores the matches (i.e. of all the social media pictures, which can I most accurately recreate given clothing in my closet?)
+
+4. Writes the matches to [Firestore](https://firebase.google.com/docs/firestore)
+
+This is really the beefy part of the app, where all the machine learning magic happens. The process makes outfit recommendations and writes them to Firestore, which is my favorite ever lightweight database for app development (I use it in almost all my projects). 
+
+The actual *app* (in this case, just a responsive web app) is simple: it just reads the outfit recommendations from Firestore and displays them in a pretty interface:
+
+![Architecture diagram of a web app reading from Firestore](/images/pxl_20201014_204154884.jpg "The web app just displays data from Firestore")
+
+
 
 
 
