@@ -23,19 +23,26 @@ I had a suspicion we were on different pages when, as we walked through the shoe
 
 Pfffft. We'll see about *that*! 
 
-I returned the pricey clothing and decided to build my own (cheaper!) AI-powered stylist, and in this post, I'll show you how you can, too.
+I returned the pricey clothing and decided to build my own (cheaper!) AI-powered stylist. In this post, I'll show you how you can, too.
 
-My stylist was half based on this smart closet from the movie *Clueless*:
+My AI Stylist was half based on this smart closet from the movie *Clueless*:
 
 <iframe src="https://giphy.com/embed/l0IulEDITBSPyt1BK" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
+and half based on the idea that one way to dress fashionably is to copy fashionable people. Particularly, fashionable people on Instagram.
 
-
-
-In this post, I'll show you how to build your own AI-powered stylist that makes you outfit recommendations based on your own closet and never makes you feel insecure. It's inspired by a strategy for dressing I learned post-stylist, which is that the best way to look like a stylish person is to copy the way stylish people dress ("*Good artists copy," etc*).
-
-For example, I started following a bunch of fashion "influencers" on Instagram and replicating their looks. The AI Stylist app does the same thing--it combines a stream of fashion influencer pictures from Instagram with pictures of my own clothes, letting me know which outfits I can recreate. Check out the live app [here](http://mismatch.daleonai.com/). This is what the UI looks like:
+The app pulls in the Instagram feeds of a bunch of fashion "influencers" on Instagram and combines them with pictures of clothing you already own to recommend you outfits. Here's what it looks like: 
 
 ![Screenshot of the AI Stylist](/images/mismatch_ui.png "AI Stylist UI")
 
-In the left pane, you'll see the "closet" view; in the middle, the "recommendation" view; on the right, the config view;
+(You can also check out the live app [here](http://mismatch.daleonai.com/).)
+
+On the left pane--the closet screen--you can see all the clothing items I already own. On the right pane, you'll see a list of Instagram accounts I follow for inspiration. In the middle pane (the main screen), you can see the actual outfit recommendations the AI made for me. The Instagram inspiration picture is at the top, and items for my closet are shown below:
+
+![Screenshot of swiping through outfit recommendations in the app](/images/mismatch.gif "Outfits recommended by the AI Stylist")
+
+Here my style muse is Laura Medalia, an inspiring software developer who's [@codergirl_](https://www.instagram.com/codergirl_/) on Instagram (make sure to follow her for fashion and working in tech tips!).
+
+The whole app took me about a month to build and cost ~$7.00 in Google Cloud credits (more on pricing later). Let's dive in.
+
+## The Architecture
