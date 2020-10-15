@@ -116,6 +116,7 @@ uris = [
 # Create a Vision API Client
 client = vision.ImageAnnotatorClient()
 
+# Keep track of all the fashion pics
 fashionPics = []
 
 for uri in uris:
@@ -127,6 +128,10 @@ for uri in uris:
 
 
 ```
+
+If you want the full code, check out this file. TODO: ADD FILE
+
+## Digitizing my Closet
 
 
 
