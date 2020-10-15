@@ -133,7 +133,7 @@ If you want the full code, check out this file. TODO: ADD FILE
 
 ## Digitizing my Closet
 
-
+Because I wanted to get outfit inspiration ideas from my own closet, I had to take pictures of every clothing Item I own.
 
 
 
