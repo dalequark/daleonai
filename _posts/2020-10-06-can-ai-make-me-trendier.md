@@ -41,7 +41,7 @@ On the left pane--the closet screen--you can see all the clothing items I alread
 
 ![Screenshot of swiping through outfit recommendations in the app](/images/mismatch.gif "Outfits recommended by the AI Stylist")
 
-Here my style muse is Laura Medalia, an inspiring software developer who's [@codergirl_](https://www.instagram.com/codergirl_/) on Instagram (make sure to follow her for fashion and working in tech tips!).
+Here my style muse is Laura Medalia, an inspiring software developer who's [@codergirl_](https://www.instagram.com/codergirl_/) on Instagram (make sure to follow her for fashion and tips for working in tech!).
 
 The whole app took me about a month to build and cost ~$7.00 in Google Cloud credits (more on pricing later). Let's dive in.
 
@@ -100,12 +100,44 @@ For that, I turned to my trusty steed, the [Google Cloud Vision API](cloud.googl
 
 ![Screenshot of the Vision API analyzing an outfit](/images/screen-shot-2020-10-15-at-11.43.18-am.png "The Vision API returns lots of labels for this photo")
 
+The labels are ranked by how confident the model is that they're relevant to the picture. Notice there's one label called "Fashion" (confidence 90%). To filter Laura's pictures, I labeled them all with the Vision API and removed any image that didn't get a "Fashion" label. Here's the code:
+
+```python
+from google.cloud import vision
+from google.cloud.vision import types
+
+# Path to all my inspo pics in the cloud
+uris = [
+  "gs://inspo-pics-bucket/pic1.jpg", 
+  "gs://inspo-pics-bucket/pic2.jpg",
+  ...
+ ]
+
+# Create a Vision API Client
+client = vision.ImageAnnotatorClient()
+
+fashionPics = []
+
+for uri in uris:
+  image_source = vision.types.ImageSource(image_uri="gcs/path/to/file")
+  labels = client.label_detection(image=image).label_annotations
+  # Only save images that have the label "Fashion"
+  if any([x.description == "Fashion" for x in labels]):
+    fashionPics.append(uri)
 
 
-Even though I love building stuff with machine learning, I always try to avoid the messy bit of actually having to collect data and build ML models myself. So for this project, I turned to my old trusty steed, the [Google Cloud Vision API](cloud.google.com/vision).
+```
 
-In this project, I used the Vision API in three ways. First, I used **object detection** to identify clothing in pictures:
+
+
+
+
+
+
+I did even more filtering using the **object detection** feature of the Cloud Vision API, which identifies individual objects (and their locations) in photos:
 
 ![Screenshot of using the Vision API to detect clothing item locations](/images/screen-shot-2020-10-15-at-11.43.07-am.png "The Vision API tags my top, shoes, and shorts.")
+
+
 
 As you can see, this feature tags both *what* clothing items I'm wearing but also *where* they're located in the picture (i.e. the API returns the pixel coordinates of bounding boxes for each of my shoes). You can find a list of all the clothing-related tags the API returns here (TODO: ADD LINK). More on how I used that feature in a second.
