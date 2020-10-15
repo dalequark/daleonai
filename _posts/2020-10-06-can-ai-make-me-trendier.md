@@ -74,7 +74,7 @@ Let's take a look!
 
 Ideally, I wanted my app to pull pictures from Instagram automatically, based on which accounts I told it to follow. Unfortunately, Instagram doesn't have an API (and using a [scraper](https://github.com/arc298/instagram-scraper) would violate their TOS). So I specifically asked Laura for permission to use her photos. I downloaded them to my computer and then uploaded them to a [Google Cloud Storage bucket](https://cloud.google.com/storage/?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-e-dr-1009135&utm_content=text-ad-none-any-DEV_c-CRE_79747411447-ADGP_Hybrid+%7C+AW+SEM+%7C+BKWS+%7C+US+%7C+en+%7C+EXA+~+Google+Cloud+Storage-KWID_43700007031545851-kwd-11642151515&utm_term=KW_google%20cloud%20storage-ST_google+cloud+storage&gclid=CjwKCAjw5p_8BRBUEiwAPpJO6xIv5t69bTUdDMVgY_7hC04hj1xyRz-o90_T3a332_F-QUqmofOeqhoCneUQAvD_BwE):
 
-```
+```shell
 # Create a cloud storage bucket
 gsutil mb gs://inspo-pics-bucket
 
