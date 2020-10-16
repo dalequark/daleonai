@@ -9,4 +9,24 @@ tags:
   - machine learning
 permalink: nlp-in-a-hurry
 ---
-the body text goes here
+Movie Reviews
+
+1.
+
+
+
+\- Building a traditional ML model
+
+\- Transfer Learning
+
+\- Pre-trained Models
+
+\- Entity Extraction
+
+\- Sentiment
+
+\- Categorization
+
+\- Question Answering (for clustering)
+
+\- Sentence Embeddings
