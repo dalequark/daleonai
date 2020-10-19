@@ -3,8 +3,8 @@ layout: post
 title: A Beginner's Guide to Painless ML on Google Cloud
 date: 2020-10-19T18:23:26.191Z
 description: "My favorite Google Cloud tools that make it easy for developers to use ML. "
-feature_image: /images/about.jpg
-thumbnail_image: /images/about.jpg
+feature_image: /images/painless-ai-on-google-cloud.png
+thumbnail_image: /images/painless-ai-on-google-cloud-1-.png
 tags:
   - machine learning
   - nlp
