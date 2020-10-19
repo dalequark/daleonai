@@ -95,8 +95,8 @@ When a document is uploaded to a cloud storage bucket, it triggers a cloud funct
 Hopefully that’s convinced you getting started with machine learning doesn’t have to be painful. Here are some helpful tutorials and demos to get started with ML:
 
 * [Software Developers: You're Learning Machine Learning Upside Down](https://daleonai.com/software-developers-youre-learning-machine-learning-upside-down)
-* [Classifying congressional bills with machine learning | by Sara Robinson](https://medium.com/@srobtweets/classifying-congressional-bills-with-machine-learning-d6d769d818fd)
-* [Exploring the Cloud Vision API. Interested in Machine Learning but… | by Sara Robinson](https://medium.com/@srobtweets/exploring-the-cloud-vision-api-1af9bcf080b8)
+* [Classifying congressional bills with machine learning](https://medium.com/@srobtweets/classifying-congressional-bills-with-machine-learning-d6d769d818fd)
+* [Exploring the Cloud Vision API. Interested in Machine Learning but…](https://medium.com/@srobtweets/exploring-the-cloud-vision-api-1af9bcf080b8)
 * [Making with ML YouTube Series (ft your humble author)](https://www.youtube.com/playlist?list=PLIivdWyY5sqLsaG5hNms0D9aZRBE7DHBb)
 * [Cloud AI Adventures with Yufeng Guo](https://www.youtube.com/playlist?list=PLIivdWyY5sqJxnwJhe3etaK7utrBiPBQ2)
 * [Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning](https://www.coursera.org/learn/introduction-tensorflow)
