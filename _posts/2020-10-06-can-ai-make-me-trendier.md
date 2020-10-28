@@ -48,7 +48,7 @@ The whole app took me about a month to build and cost ~$7.00 in Google Cloud cre
 
 ## The Architecture
 
-I built this app using a combination of [Google Cloud Storage](https://cloud.google.com/storage/?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-e-dr-1009135&utm_content=text-ad-none-any-DEV_c-CRE_79747411687-ADGP_Hybrid+%7C+AW+SEM+%7C+BKWS+%7C+US+%7C+en+%7C+EXA+~+Google+Cloud+Storage-KWID_43700007031545851-kwd-11642151515&utm_term=KW_google%20cloud%20storage-ST_google+cloud+storage&gclid=CjwKCAjww5r8BRB6EiwArcckC8WRFN95onXmZi1ly_pfNslOQMjZ6Ex03ypCr7irmeuzPsrDydBL8xoCUV8QAvD_BwE), [Firebase](firebase.com), and Cloud Functions for the backend, [React](https://reactjs.org/) for the frontend, and the [Google Cloud Vision API](http://cloud.google.com/vision) for the ML bits. I divided the architecture into two bits.
+I built this app using a combination of [Google Cloud Storage](https://cloud.google.com/storage/?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-e-dr-1009135&utm_content=text-ad-none-any-DEV_c-CRE_79747411687-ADGP_Hybrid+%7C+AW+SEM+%7C+BKWS+%7C+US+%7C+en+%7C+EXA+~+Google+Cloud+Storage-KWID_43700007031545851-kwd-11642151515&utm_term=KW_google%20cloud%20storage-ST_google+cloud+storage&gclid=CjwKCAjww5r8BRB6EiwArcckC8WRFN95onXmZi1ly_pfNslOQMjZ6Ex03ypCr7irmeuzPsrDydBL8xoCUV8QAvD_BwE), [Firebase](firebase.com), and Cloud Functions for the backend, [React](https://reactjs.org/) for the frontend, and the [Google Cloud Vision API](https://goo.gle/3e61wwb) for the ML bits. I divided the architecture into two bits.
 
 First, there's the *batch process*, which runs every hour (or however frequently you like) in the Cloud:
 
@@ -57,7 +57,7 @@ First, there's the *batch process*, which runs every hour (or however frequently
 "Batch process" is just a fancy way of saying that I wrote a Python script which runs on a scheduled interval (more on that later). The process:
 
 1. Pulls photos from social media
-2. Uses the Vision API's [Product Search](https://cloud.google.com/vision/product-search/docs) feature to find similar items in my closet
+2. Uses the Vision API's [Product Search](https://goo.gle/3otRoCi) feature to find similar items in my closet
 3. Scores the matches (i.e. of all the social media pictures, which can I most accurately recreate given clothing in my closet?)
 4. Writes the matches to [Firestore](https://firebase.google.com/docs/firestore)
 
@@ -89,7 +89,7 @@ I like Laura's account for inspiration because she usually posts pictures of her
 
 Adorable, yes, but I can't personally pull off the dressed-in-only-a-collar look. So I needed some way of knowing which pictures contained outfits (worn by people) and which didn't.
 
-For that, I turned to my trusty steed, the [Google Cloud Vision API](cloud.google.com/vision) (which I use in many different ways for this project). First, I used its **classification** feature, which assigns labels to an image. Here's the labels it gives me for a picture of myself, trying to pose as an influencer:
+For that, I turned to my trusty steed, the [Google Cloud Vision API](https://goo.gle/3e61wwb) (which I use in many different ways for this project). First, I used its **classification** feature, which assigns labels to an image. Here's the labels it gives me for a picture of myself, trying to pose as an influencer:
 
 ![Screenshot of the Vision API analyzing an outfit](/images/screen-shot-2020-10-15-at-11.43.18-am.png "The Vision API returns lots of labels for this photo")
 
@@ -130,13 +130,17 @@ I hung each item up on my mannequin and snapped a pic.
 
 ![gif of trying different outfits on a mannequin and taking pictures](/images/photos_of_closet.gif "Photographing clothing for my dataset")
 
+## Using the Vision Product Search API
 
+Once I had all of my fashion inspiration pictures and my closet pictures, I was ready to start making outfit recommendations using the [Google Vision Product Search API](https://goo.gle/3otRoCi).
 
+This API is designed to power features like "similar product search." Here's an example from the Pinterest app:
 
+![Screenshot of Pinterest's similar item search feature](/images/pinterest.png "Screenshot of Pinterest's similar item search feature")
 
- 
+IKEA also built a nice app that allows customers to search their products via images with this kind of tech:
 
-
+![Video of customer searching an IKEA product catalog by photo](/images/ikea_gif.gif "Original image from TechCrunch")
 
 
 
