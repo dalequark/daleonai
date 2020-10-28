@@ -52,7 +52,7 @@ I built this app using a combination of [Google Cloud Storage](https://cloud.goo
 
 First, there's the *batch process*, which runs every hour (or however frequently you like) in the Cloud:
 
-![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \"batch process\" makes outfit recommendations using AI")
+![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\"batch process\\" makes outfit recommendations using AI")
 
 "Batch process" is just a fancy way of saying that I wrote a Python script which runs on a scheduled interval (more on that later). The process:
 
@@ -66,8 +66,6 @@ This is really the beefy part of the app, where all the machine learning magic h
 The actual *app* (in this case, just a responsive web app) is simple: it just reads the outfit recommendations from Firestore and displays them in a pretty interface:
 
 ![Architecture diagram of a web app reading from Firestore](/images/pxl_20201014_204154884.jpg "The web app just displays data from Firestore")
-
-
 
 Let's take a look!
 
@@ -83,19 +81,13 @@ gsutil mb gs://inspo-pics-bucket
 gsutil cp path/to/inspo/pics/*.jpg gs://inspo-pics-bucket
 ```
 
-
-
 ## Filtering for Fashion Pics
 
 I like Laura's account for inspiration because she usually posts pictures of herself in head-to-toe outfits (shoes included). But some pics on her account are more like this:
 
-
-
 ![Dog in front of a laptop](/images/doggy.jpg "Laura's cute pooch")
 
-
-
-Adorable, yes, but not a look I can personally pull off. So I needed some way of knowing which pictures contained outfits (worn by people) and which didn't.
+Adorable, yes, but I don't think I can personally pull off the dressed-in-only-a-collar look. So I needed some way of knowing which pictures contained outfits (worn by people) and which didn't.
 
 For that, I turned to my trusty steed, the [Google Cloud Vision API](cloud.google.com/vision) (I use it in lots of different ways for this project). First, I used its **classification** feature, which assigns labels to an image. Here's the labels it gives me for a picture of myself, trying to pose as an influencer:
 
@@ -126,8 +118,6 @@ for uri in uris:
   # Only save images that have the label "Fashion"
   if any([x.description == "Fashion" for x in labels]):
     fashionPics.append(uri)
-
-
 ```
 
 If you want the full code, check out this file. TODO: ADD FILE
@@ -136,14 +126,8 @@ If you want the full code, check out this file. TODO: ADD FILE
 
 Because I wanted to get outfit inspiration ideas from my own closet, I had to take pictures of every clothing Item I own.
 
-
-
-
-
 I did even more filtering using the **object detection** feature of the Cloud Vision API, which identifies individual objects (and their locations) in photos:
 
 ![Screenshot of using the Vision API to detect clothing item locations](/images/screen-shot-2020-10-15-at-11.43.07-am.png "The Vision API tags my top, shoes, and shorts.")
-
-
 
 As you can see, this feature tags both *what* clothing items I'm wearing but also *where* they're located in the picture (i.e. the API returns the pixel coordinates of bounding boxes for each of my shoes). You can find a list of all the clothing-related tags the API returns here (TODO: ADD LINK). More on how I used that feature in a second.
