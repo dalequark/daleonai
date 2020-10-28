@@ -52,7 +52,7 @@ I built this app using a combination of [Google Cloud Storage](https://cloud.goo
 
 First, there's the *batch process*, which runs every hour (or however frequently you like) in the Cloud:
 
-![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\"batch process\\" makes outfit recommendations using AI")
+![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\\"batch process\\\" makes outfit recommendations using AI")
 
 "Batch process" is just a fancy way of saying that I wrote a Python script which runs on a scheduled interval (more on that later). The process:
 
@@ -144,19 +144,66 @@ IKEA also built a nice demo that allows customers to search their products via i
 
 I'm going to use the Product Search API in a similar way, but instead of connecting a product catalog, I'll use my own wardrobe, and instead of recommend similar individual *items*, I'll recommend entire outfits.
 
-To use this API, you'll need to start by:
+To use this API, you'll want to:
 
-a. 
+1. Uploading your closet photos to Cloud Storage
+2. Create a new Product Set using the Product Search API
+3. Create a new product for each item in your closet
+4. Upload (multiple) pictures of those products
 
+At first I attempted this using the [official Google Python client library](https://cloud.google.com/vision/product-search/docs/libraries?utm_campaign=dama_awareness_visionprod_102620&utm_source=da&utm_medium=blog), but it was a bit clunky, so I ended up writing my own Python Product Search wrapper library, which you can find [here](https://pypi.org/project/pyvisionproductsearch/) (on PyPi). Here's what it looks like in code:
 
+```python
+from visionproductsearch.ProductSearch import ProductSearch, ProductCategories
 
+# Initialize ProductSearch with your credentials
+# Pass a path to the storage bucket where you'd like to save image files
+ps = ProductSearch(`my_gcp_project_id`, 'us-west1', 'path/to/creds.json', 'my_gcp_bucket_name' )
 
+# Create a new product set
+productSet = ps.createProductSet('my_test_set')
 
+# Create a new product
+product = ps.createProduct('my_fancy_shirt', ProductCategories.APPAREL)
 
+# Add a reference image to a product
+product.addReferenceImage('./skirt_pic.jpg')
 
+# List all reference images for a product
+for img in product.listReferenceImages():
+    print(img)
 
+# Add a product to a product set
+product.addProduct(product)
 
+# List all products in a product set
+for p in productSet.listProducts():
+    print(p)
 
+# Search for similar products by image
+productSet.search(ProductCategories.APPAREL, file_path='img/to/search.jpg')
+```
+
+Note this wrapper library **handles uploading photos to a Cloud Storage bucket automatically**, so you can upload a new clothing item to your product set from a local image file:
+
+```python
+# Create a new product
+product = ps.createProduct('my_fancy_shirt', ProductCategories.APPAREL)
+
+# Add a reference image to a product
+product.addReferenceImage('./skirt_pic.jpg')
+```
+
+If you, dear reader, want to make your own product set from your own closet pics, I wrote a Python script that makes it easy(ish) (TODO: LINK TO SCRIPT). Just:
+
+1. Create a new folder on your computer to store all your clothing items
+2. Create a new folder for each clothing item and put all of your pictures of that item in the folder:
+
+![Create a folder for each clothing item](/images/local_closet.gif "Create a folder for each clothing item")
+
+So in the gif above, all my black bomber pics are in a folder named `black_bomber_jacket`.
+
+To use my script, you'll have to name your product folders using the folders using the following convention: `name_of_your_item_shoe` where `shoe` can be any of `[skirt, dress, jacket, top, shoe, shorts, scarf, pants]`.
 
 I did even more filtering using the **object detection** feature of the Cloud Vision API, which identifies individual objects (and their locations) in photos:
 
