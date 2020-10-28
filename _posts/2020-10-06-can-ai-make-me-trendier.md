@@ -392,10 +392,8 @@ results = ProductSet.search(ProductCategories.APPAREL, image_uri="gs://path/to/i
   '''
 ```
 
-The response contains lots of data, including which items were recognized in a the source photo (i.e. "skirt", "top") and what items in your project set matched with them. The API also returns a "score" field for each match which tells you how confident the the API is that an item in your product set
+The response contains lots of data, including which items were recognized in a the source photo (i.e. "skirt", "top") and what items in your project set matched with them. The API also returns a "score" field for each match which tells you how confident the the API is that an item in your product set matched the picture.
 
-I did even more filtering using the **object detection** feature of the Cloud Vision API, which identifies individual objects (and their locations) in photos:
+## From Matching Items to Matching Outfits
 
-![Screenshot of using the Vision API to detect clothing item locations](/images/screen-shot-2020-10-15-at-11.43.07-am.png "The Vision API tags my top, shoes, and shorts.")
-
-As you can see, this feature tags both *what* clothing items I'm wearing but also *where* they're located in the picture (i.e. the API returns the pixel coordinates of bounding boxes for each of my shoes). You can find a list of all the clothing-related tags the API returns here (TODO: ADD LINK). More on how I used that feature in a second.
+The Product Search API looks at an inspiration picture (in this case, Laura's fashion pics) and finds similar items in my wardrobe. But what I really want to do is put together whole *outfits*, which consist of a single top, a single pair of pants, a single set of shoes, etc. Sometimes the Product Search API will return
