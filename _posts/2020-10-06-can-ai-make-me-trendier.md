@@ -124,7 +124,13 @@ If you want the full code, check out this file. TODO: ADD FILE
 
 ## Digitizing my Closet
 
-Now the goal is to have my app look at Laura's fashion photos and recommend me items in my closet I can use to recreate them. For that, I had to take a picture of every clothing item I own. That was annoying, but luckily, I have a small closet.
+Now the goal is to have my app look at Laura's fashion photos and recommend me items in my closet I can use to recreate them. For that, I had to take a pictures of item of clothing I owned, which would have been a pain except I happen to have a very lean closet.
+
+I hung each item up on my mannequin and snapped a pic.
+
+![gif of trying different outfits on a mannequin and taking pictures](/images/photos_of_closet.gif "Photographing clothing for my dataset")
+
+
 
 
 
