@@ -1,8 +1,9 @@
 ---
 layout: post
-title: Can AI make me trendier?
-date: 2020-10-06T19:16:29.745Z
-description: asdfasdf
+title: I Built an AI Stylist Inspired by Social Media
+date: 2020-10-28T19:16:29.745Z
+description: I let an AI pick out my outfits using computer vision and pictures
+  of social media fashion influencers.
 feature_image: /images/ai-stylist.png
 thumbnail_image: /images/ai-stylist-thumb.png
 tags:
