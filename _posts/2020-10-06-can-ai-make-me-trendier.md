@@ -3,8 +3,8 @@ layout: post
 title: Can AI make me trendier?
 date: 2020-10-06T19:16:29.745Z
 description: asdfasdf
-feature_image: /images/404.jpg
-thumbnail_image: /images/about.jpg
+feature_image: /images/ai-stylist.png
+thumbnail_image: /images/ai-stylist-thumb.png
 tags:
   - computer vision
   - machine learning
