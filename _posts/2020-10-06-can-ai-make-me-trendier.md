@@ -138,11 +138,11 @@ This API is designed to power features like "similar product search." Here's an 
 
 ![Screenshot of Pinterest's similar item search feature](/images/pinterest.png "Screenshot of Pinterest's similar item search feature")
 
-IKEA also built a nice app that allows customers to search their products via images with this kind of tech:
+IKEA also built a nice demo that allows customers to search their products via images with this kind of tech:
 
 ![Video of customer searching an IKEA product catalog by photo](/images/ikea_gif.gif "Original image from TechCrunch")
 
-
+I'm going to use the Product Search API in a simliar way, but instead of connecting a product catalog, I'm going to use my own wardrobe, and instead of recommend similar individual *items*, I'm going to try to recommend entire outfits.
 
 
 
