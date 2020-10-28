@@ -18,7 +18,7 @@ In our first appointment, the stylist came to my apartment and took pictures of 
 
 In our second appointment, she met me at Nordstrom's, where she asked me to try on a $400 casual dress, a $700 blazer, and $300 sneakers. (I never thought to ask if she worked on commission.)
 
-But only after our third and final appointment, when she finally sent me a folder full of curated "looks" made from my new and old clothing items, did it finally fall into place for me: I'd just blown a *lot* of money.
+But only after our third and final appointment, when she finally sent me a folder full of curated "looks" made from my new and old clothing items, did it finally click: I'd just blown a *lot* of money.
 
 I had a suspicion we were on different pages when, as we walked through the shoes section at Nordstrom, the stylist said, "The problem with you people in tech is that you're always looking for some kind of theory or strategy or formula for fashion*.* But there is no formula--it's about *taste*.*"*
 
@@ -52,7 +52,7 @@ I built this app using a combination of [Google Cloud Storage](https://cloud.goo
 
 First, there's the *batch process*, which runs every hour (or however frequently you like) in the Cloud:
 
-![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\\\\\\"batch process\\\\\\\" makes outfit recommendations using AI")
+![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\\\\\\\"batch process\\\\\\\\" makes outfit recommendations using AI")
 
 "Batch process" is just a fancy way of saying that I wrote a Python script which runs on a scheduled interval (more on that later). The process:
 
@@ -417,13 +417,9 @@ def canAddItem(existingArray, newType):
 
  For the complete code snippet, check out the file (TODO: ADD FILE).
 
-
-
 ## Scoring Outfits
 
 Naturally, I couldn't recreate every one of Laura's outfits using only items in my limited wardrobe. So I decided my approach would be to look at the outfits I could most accurately recreate (using the confidence scores returned by the Product Search API) and create a "score" to sort the recommended outfits. (TODO)
-
-
 
 ## Putting It All Together
 
