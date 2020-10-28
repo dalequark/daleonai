@@ -142,7 +142,7 @@ IKEA also built a nice demo that allows customers to search their products via i
 
 ![Video of customer searching an IKEA product catalog by photo](/images/ikea_gif.gif "Original image from TechCrunch")
 
-I'm going to use the Product Search API in a similar way, but instead of connecting a product catalog, I'm going to use my own wardrobe, and instead of recommend similar individual *items*, I'm going to try to recommend entire outfits.
+I'm going to use the Product Search API in a similar way, but instead of connecting a product catalog, I'm going to use my own wardrobe, and instead of recommend similar individual *items*, I'm going to recommend entire outfits.
 
 
 
