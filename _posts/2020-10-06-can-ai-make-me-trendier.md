@@ -52,7 +52,7 @@ I built this app using a combination of [Google Cloud Storage](https://cloud.goo
 
 First, there's the *batch process*, which runs every hour (or however frequently you like) in the Cloud:
 
-![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\\"batch process\\\" makes outfit recommendations using AI")
+![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\\\\\\"batch process\\\\\\\" makes outfit recommendations using AI")
 
 "Batch process" is just a fancy way of saying that I wrote a Python script which runs on a scheduled interval (more on that later). The process:
 
@@ -194,16 +194,205 @@ product = ps.createProduct('my_fancy_shirt', ProductCategories.APPAREL)
 product.addReferenceImage('./skirt_pic.jpg')
 ```
 
-If you, dear reader, want to make your own product set from your own closet pics, I wrote a Python script that makes it easy(ish) (TODO: LINK TO SCRIPT). Just:
+If you, dear reader, want to make your own product set from your own closet pics, I wrote a Python script to help you make a product set from a folder on your desktop (TODO: LINK TO SCRIPT). Just:
 
-1. Create a new folder on your computer to store all your clothing items
-2. Create a new folder for each clothing item and put all of your pictures of that item in the folder:
+1. Download the code from GitHub  and navigate to the instafashion/scripts folder:
+
+```shell
+# Download the code 
+git clone git@github.com:google/making_with_ml.git
+
+# CD into the right folder
+cd making_with_ml/instafashion/scripts
+```
+
+2. Create a new folder on your computer to store all your clothing items (mine's called `my_closet`):
+
+```shell
+mkdir my_closet
+cd my_closet
+```
+
+3. Create a new folder for each clothing item and put all of your pictures of that item in the folder:
 
 ![Create a folder for each clothing item](/images/local_closet.gif "Create a folder for each clothing item")
 
 So in the gif above, all my black bomber pics are in a folder named `black_bomber_jacket`.
 
-To use my script, you'll have to name your product folders using the folders using the following convention: `name_of_your_item_shoe` where `shoe` can be any of `[skirt, dress, jacket, top, shoe, shorts, scarf, pants]`.
+To use my script, you'll have to name your product folders using the following convention: `name_of_your_item_shoe` where `shoe` can be any of `[skirt, dress, jacket, top, shoe, shorts, scarf, pants]`.
+
+![](/images/screen-shot-2020-10-28-at-4.49.16-pm.png)
+
+4. After creating your directory of product photos, you'll need to set up some config by editing the \`.env_template\` file:
+
+```powershell
+cp .env_template .env
+
+# In the .env file, fill out these fields:
+export PROJECTID="YOUR_GCP_PROJECT_ID"
+export BUCKET="YOUR_CLOSET_STORAGE_BUCKET"
+export CREDS="path/to/key.json"
+export CLOSET_DIR="./my_closet"
+export PRODUCT_SET="PRODUCT_SET_NAME"
+```
+
+(Oh, by the way: you need to have a Google Cloud account to use this API! Once you do, you can create a new project and download a credentials file.)
+
+5. Then install the relevant Python libraries and run the script `product_set_from_dir.py`:
+
+```powershell
+> pip install -r requirements.txt
+> python product_set_from_dir.py
+"Added 200 products to set"
+```
+
+Phew, that was more steps than I thought! 
+
+When you run that Python script, `product_set_from_dir.py`, your clothing photos get uploaded to the cloud and then processed or "indexed" by the Product Search API. The indexing process can take up to 30 minutes, so go fly a kite or something.
+
+## Searching for Similar Items
+
+Once your product set is done indexing, you can start using it to search for similar items. Woohoo! 🎊
+
+In code, just run:
+
+```python
+# Create a Product Search client
+ps = ProductSearch("YOUR_GCP_PROJECTID", "path/to/creds.json", "YOUR_CLOSET_BUCKET")
+# Grab the product set you just created
+productSet = ps.getProductSet("YOUR_PRODUCT_SET_NAME")
+
+# Call "search" with a path to an inspiration picture
+results = ProductSet.search(ProductCategories.APPAREL, image_uri="gs://path/to/inspo.jpg")
+
+''' Returns:
+[{'score': 0.8290401101112366,
+  'label': 'Outerwear',
+  'matches': [{'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ed700>,
+    'score': 0.35919371247291565,
+    'image': 'projects/mismatch/locations/us-west1/products/black_leather_jacket_*/referenceImages/eae20045-b4b8-44e7-8233-4d97c2197409'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ed100>,
+    'score': 0.3150341510772705,
+    'image': 'projects/mismatch/locations/us-west1/products/high_rise_black_shorts_*/referenceImages/d4df4c03-f29e-4451-9ab9-7424d7e80aa4'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ed0a0>,
+    'score': 0.2849031090736389,
+    'image': 'projects/mismatch/locations/us-west1/products/high_rise_black_jeans_pants_*/referenceImages/24663de9-92da-4c09-b01e-57eeaf854b65'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb6a0>,
+    'score': 0.27588191628456116,
+    'image': 'projects/mismatch/locations/us-west1/products/high_rise_blue_denim_shorts_*/referenceImages/dc575246-9070-4bf5-95de-09b13949d1b3'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb640>,
+    'score': 0.2750135660171509,
+    'image': 'projects/mismatch/locations/us-west1/products/brown_leather_jacket_*/referenceImages/933b2c60-6df0-4e21-95b4-2dd77f7e40a9'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb5b0>,
+    'score': 0.26410242915153503,
+    'image': 'projects/mismatch/locations/us-west1/products/high_rise_blue_jeans_pants_*/referenceImages/c3726180-7088-45f3-99ef-839d14c788ae'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb5e0>,
+    'score': 0.26126375794410706,
+    'image': 'projects/mismatch/locations/us-west1/products/leopard_skirt_*/referenceImages/8f45ab2b-0b41-4cc7-af5e-ae4fda0bfe61'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebf40>,
+    'score': 0.2557549774646759,
+    'image': 'projects/mismatch/locations/us-west1/products/black_sneaker_shoe_*/referenceImages/1b601717-cafc-490a-bf7e-5a2e7807a1d4'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb490>,
+    'score': 0.24958018958568573,
+    'image': 'projects/mismatch/locations/us-west1/products/high_rise_white_shorts_*/referenceImages/71cc9936-2a35-4a81-8f43-75e1bf50fc22'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebf10>,
+    'score': 0.2430962175130844,
+    'image': 'projects/mismatch/locations/us-west1/products/black_lace_boot_shoe_*/referenceImages/aadc7ed1-965c-41cf-ae0b-3bb1a41ebe06'}],
+  'boundingBox': [x: 0.18633857369422913
+  y: 0.19663989543914795
+  , x: 0.6501320004463196
+  y: 0.19663989543914795
+  , x: 0.6501320004463196
+  y: 0.5160660147666931
+  , x: 0.18633857369422913
+  y: 0.5160660147666931
+  ]},
+ {'score': 0.6601969003677368,
+  'label': 'Dress',
+  'matches': [{'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebeb0>,
+    'score': 0.3474685549736023,
+    'image': 'projects/mismatch/locations/us-west1/products/high_rise_black_shorts_*/referenceImages/d4df4c03-f29e-4451-9ab9-7424d7e80aa4'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb8e0>,
+    'score': 0.2839047610759735,
+    'image': 'projects/mismatch/locations/us-west1/products/denim_vest_jacket_*/referenceImages/afc55750-05de-4f0a-84e1-ed26ae1c9e8a'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebe80>,
+    'score': 0.27661362290382385,
+    'image': 'projects/mismatch/locations/us-west1/products/high_rise_blue_denim_shorts_*/referenceImages/dc575246-9070-4bf5-95de-09b13949d1b3'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebfd0>,
+    'score': 0.2677146792411804,
+    'image': 'projects/mismatch/locations/us-west1/products/black_lace_boot_shoe_*/referenceImages/660e39ae-8b18-4d0e-8ee9-25e5a5b12215'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebdf0>,
+    'score': 0.25523173809051514,
+    'image': 'projects/mismatch/locations/us-west1/products/black_leather_jacket_*/referenceImages/eae20045-b4b8-44e7-8233-4d97c2197409'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebf70>,
+    'score': 0.24909083545207977,
+    'image': 'projects/mismatch/locations/us-west1/products/black_stud_boot_shoe_*/referenceImages/11b5a313-4e4f-4712-8d33-75ca68759f96'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb520>,
+    'score': 0.24563151597976685,
+    'image': 'projects/mismatch/locations/us-west1/products/high_rise_black_jeans_pants_*/referenceImages/5c5466d0-4d3d-4fd2-88b7-17277c670955'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb1f0>,
+    'score': 0.21744869649410248,
+    'image': 'projects/mismatch/locations/us-west1/products/spotted_dress_*/referenceImages/6d4d3a3a-267f-40ec-812d-78818b835c88'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb250>,
+    'score': 0.2153632938861847,
+    'image': 'projects/mismatch/locations/us-west1/products/black_boot_shoe_*/referenceImages/f593e385-20b5-42ba-b729-59a35fc86910'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb4f0>,
+    'score': 0.20506373047828674,
+    'image': 'projects/mismatch/locations/us-west1/products/sleeveless_black_dress_*/referenceImages/97111725-aecd-496e-9723-94fc08dbba15'}],
+  'boundingBox': [x: 0.2914634048938751
+  y: 0.2835150361061096
+  , x: 0.5167719125747681
+  y: 0.2835150361061096
+  , x: 0.5167719125747681
+  y: 0.7355437874794006
+  , x: 0.2914634048938751
+  y: 0.7355437874794006
+  ]},
+ {'score': 0.8847746849060059,
+  'label': 'Skirt',
+  'matches': [{'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb9d0>,
+    'score': 0.3513137102127075,
+    'image': 'projects/mismatch/locations/us-west1/products/black_bomber_jacket_*/referenceImages/c3282849-ea54-4357-b040-0a662ac7e0d6'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb820>,
+    'score': 0.32987311482429504,
+    'image': 'projects/mismatch/locations/us-west1/products/high_rise_black_shorts_*/referenceImages/d4df4c03-f29e-4451-9ab9-7424d7e80aa4'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb580>,
+    'score': 0.31892913579940796,
+    'image': 'projects/mismatch/locations/us-west1/products/denim_vest_jacket_*/referenceImages/afc55750-05de-4f0a-84e1-ed26ae1c9e8a'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4eb8b0>,
+    'score': 0.3061317801475525,
+    'image': 'projects/mismatch/locations/us-west1/products/navy_jcrew_blazer_jacket_*/referenceImages/b3e81044-87b8-446c-b07f-5560cc309461'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebe50>,
+    'score': 0.29948967695236206,
+    'image': 'projects/mismatch/locations/us-west1/products/high_rise_blue_denim_shorts_*/referenceImages/a0e7c08b-5353-4c8a-86da-1ce558b7e093'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebc40>,
+    'score': 0.27922067046165466,
+    'image': 'projects/mismatch/locations/us-west1/products/high_rise_blue_jeans_pants_*/referenceImages/c3726180-7088-45f3-99ef-839d14c788ae'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebbe0>,
+    'score': 0.2762813866138458,
+    'image': 'projects/mismatch/locations/us-west1/products/blue_jacket_*/referenceImages/7f479285-1aa2-4763-b028-2cebdd3cbe70'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebca0>,
+    'score': 0.27550992369651794,
+    'image': 'projects/mismatch/locations/us-west1/products/bodycon_skirt_*/referenceImages/54d0269a-8dc5-4b6d-84de-8684cb119531'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebbb0>,
+    'score': 0.26349344849586487,
+    'image': 'projects/mismatch/locations/us-west1/products/chambray_top_*/referenceImages/325328f6-53ac-41bc-920b-462aa7223546'},
+   {'product': <pyvisionproductsearch.ProductSearch.ProductSearch.Product at 0x14f4ebaf0>,
+    'score': 0.2551405429840088,
+    'image': 'projects/mismatch/locations/us-west1/products/black_leather_jacket_*/referenceImages/eae20045-b4b8-44e7-8233-4d97c2197409'}],
+  'boundingBox': [x: 0.2696470618247986
+  y: 0.4767058789730072
+  , x: 0.5400000214576721
+  y: 0.4767058789730072
+  , x: 0.5400000214576721
+  y: 0.7400000691413879
+  , x: 0.2696470618247986
+  y: 0.7400000691413879
+  ]}]
+  '''
+```
+
+The response contains lots of data, including which items were recognized in a the source photo (i.e. "skirt", "top") and what items in your project set matched with them. The API also returns a "score" field for each match which tells you how confident the the API is that an item in your product set
 
 I did even more filtering using the **object detection** feature of the Cloud Vision API, which identifies individual objects (and their locations) in photos:
 
