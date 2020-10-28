@@ -416,3 +416,15 @@ def canAddItem(existingArray, newType):
 ```
 
  For the complete code snippet, check out the file (TODO: ADD FILE).
+
+
+
+## Scoring Outfits
+
+Naturally, I couldn't recreate every one of Laura's outfits using only items in my limited wardrobe. So I decided my approach would be to look at the outfits I could most accurately recreate (using the confidence scores returned by the Product Search API) and create a "score" to sort the recommended outfits. (TODO)
+
+
+
+## Putting It All Together
+
+Once I had written all the logic for making outfits in a Python script, I ran the script and wrote all the results to Firestore. After that, it was pretty easy to build an app, which was just a fancy way of displaying the data in Firestore. That's it!
