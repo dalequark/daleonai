@@ -87,9 +87,9 @@ I like Laura's account for inspiration because she usually posts pictures of her
 
 ![Dog in front of a laptop](/images/doggy.jpg "Laura's cute pooch")
 
-Adorable, yes, but I don't think I can personally pull off the dressed-in-only-a-collar look. So I needed some way of knowing which pictures contained outfits (worn by people) and which didn't.
+Adorable, yes, but I can't personally pull off the dressed-in-only-a-collar look. So I needed some way of knowing which pictures contained outfits (worn by people) and which didn't.
 
-For that, I turned to my trusty steed, the [Google Cloud Vision API](cloud.google.com/vision) (I use it in lots of different ways for this project). First, I used its **classification** feature, which assigns labels to an image. Here's the labels it gives me for a picture of myself, trying to pose as an influencer:
+For that, I turned to my trusty steed, the [Google Cloud Vision API](cloud.google.com/vision) (which I use in many different ways for this project). First, I used its **classification** feature, which assigns labels to an image. Here's the labels it gives me for a picture of myself, trying to pose as an influencer:
 
 ![Screenshot of the Vision API analyzing an outfit](/images/screen-shot-2020-10-15-at-11.43.18-am.png "The Vision API returns lots of labels for this photo")
 
@@ -124,7 +124,27 @@ If you want the full code, check out this file. TODO: ADD FILE
 
 ## Digitizing my Closet
 
-Because I wanted to get outfit inspiration ideas from my own closet, I had to take pictures of every clothing Item I own.
+Now the goal is to have my app look at Laura's fashion photos and recommend me items in my closet I can use to recreate them. For that, I had to take a picture of every clothing item I own. That was annoying, but luckily, I have a small closet.
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 I did even more filtering using the **object detection** feature of the Cloud Vision API, which identifies individual objects (and their locations) in photos:
 
