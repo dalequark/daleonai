@@ -396,4 +396,23 @@ The response contains lots of data, including which items were recognized in a t
 
 ## From Matching Items to Matching Outfits
 
-The Product Search API looks at an inspiration picture (in this case, Laura's fashion pics) and finds similar items in my wardrobe. But what I really want to do is put together whole *outfits*, which consist of a single top, a single pair of pants, a single set of shoes, etc. Sometimes the Product Search API will return
+The Product Search API looks at an inspiration picture (in this case, Laura's fashion pics) and finds similar items in my wardrobe. But what I really want to do is put together whole *outfits*, which consist of a single top, a single pair of pants, a single set of shoes, etc. Sometimes the Product Search API doesn't return a logical outfit. For example, if Laura is wearing a long shirt that looks like it could *almost* be a dress, the API might return both a similar shirt and dress in my wardrobe. To get around that, I had to write my own outfit logic algorithm to build an outfit from the Search API results:
+
+```python
+# This code snippet lets you avoid pairing items that don't
+# make sense together in an outfit (i.e. a top AND a dress 
+def canAddItem(existingArray, newType):
+    bottoms = {"pants", "skirt", "shorts", "dress"}
+    newType = newType.lower()
+    if newType in existingArray:
+        return False
+    if newType == "shoe":
+        return True
+    if newType in bottoms and len(bottoms.intersection(existingArray)):
+        return False
+    if newType == "top" and "dress" in existingArray:
+        return False
+    return True
+```
+
+ For the complete code snippet, check out the file (TODO: ADD FILE).
