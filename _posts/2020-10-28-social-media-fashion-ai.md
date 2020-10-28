@@ -52,7 +52,7 @@ I built this app using a combination of [Google Cloud Storage](https://cloud.goo
 
 First, there's the *batch process*, which runs every hour (or however frequently you like) in the Cloud:
 
-![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\\\\\\\"batch process\\\\\\\\" makes outfit recommendations using AI")
+![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\\\\\\\\"batch process\\\\\\\\\" makes outfit recommendations using AI")
 
 "Batch process" is just a fancy way of saying that I wrote a Python script which runs on a scheduled interval (more on that later). The process:
 
@@ -120,7 +120,7 @@ for uri in uris:
     fashionPics.append(uri)
 ```
 
-If you want the full code, check out this file. TODO: ADD FILE
+If you want the full code, check it out [here](https://github.com/google/making_with_ml/tree/master/instafashion).
 
 ## Digitizing my Closet
 
@@ -194,7 +194,7 @@ product = ps.createProduct('my_fancy_shirt', ProductCategories.APPAREL)
 product.addReferenceImage('./skirt_pic.jpg')
 ```
 
-If you, dear reader, want to make your own product set from your own closet pics, I wrote a Python script to help you make a product set from a folder on your desktop (TODO: LINK TO SCRIPT). Just:
+If you, dear reader, want to make your own product set from your own closet pics, I wrote a [Python script](https://github.com/google/making_with_ml/blob/master/instafashion/scripts/product_set_from_dir.py) to help you make a product set from a folder on your desktop. Just:
 
 1. Download the code from GitHub  and navigate to the instafashion/scripts folder:
 
@@ -415,11 +415,15 @@ def canAddItem(existingArray, newType):
     return True
 ```
 
- For the complete code snippet, check out the file (TODO: ADD FILE).
-
 ## Scoring Outfits
 
-Naturally, I couldn't recreate every one of Laura's outfits using only items in my limited wardrobe. So I decided my approach would be to look at the outfits I could most accurately recreate (using the confidence scores returned by the Product Search API) and create a "score" to sort the recommended outfits. (TODO)
+Naturally, I couldn't recreate every one of Laura's outfits using only items in my limited wardrobe. So I decided my approach would be to look at the outfits I could most accurately recreate (using the confidence scores returned by the Product Search API) and create a "score" to sort the recommended outfits.
+
+
+
+*Why hello there. At this moment I am organizing my rat's nest of code into something that's human readable. So for now, please stand by, and I'll update the blog post in a bit!*
+
+
 
 ## Putting It All Together
 
