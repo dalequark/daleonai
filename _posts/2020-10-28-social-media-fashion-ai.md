@@ -26,6 +26,10 @@ Pfffft. We'll see about *that*!
 
 I returned the pricey clothing and decided to build my own (cheaper!) AI-powered stylist. In this post, I'll show you how you can, too.
 
+*Want to see a video version of this post? Check out:*
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/o6nGn1euRjk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 My AI Stylist was half based on this smart closet from the movie *Clueless*:
 
 <iframe src="https://giphy.com/embed/l0IulEDITBSPyt1BK" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
@@ -52,7 +56,7 @@ I built this app using a combination of [Google Cloud Storage](https://cloud.goo
 
 First, there's the *batch process*, which runs every hour (or however frequently you like) in the Cloud:
 
-![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\\\\\\\\\"batch process\\\\\\\\\\" makes outfit recommendations using AI")
+![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\\\\\\\\\\"batch process\\\\\\\\\\\" makes outfit recommendations using AI")
 
 "Batch process" is just a fancy way of saying that I wrote a Python script which runs on a scheduled interval (more on that later). The process:
 
@@ -337,8 +341,37 @@ def canAddItem(existingArray, newType):
 
 Naturally, I couldn't recreate every one of Laura's outfits using only items in my limited wardrobe. So I decided my approach would be to look at the outfits I could most accurately recreate (using the confidence scores returned by the Product Search API) and create a "score" to sort the recommended outfits.
 
-*Why hello there. At this moment I am organizing my rat's nest of code into something that's human readable. So for now, please stand by, and I'll update the blog post in a bit!*
+Figuring out how to "score" an outfit is a creative problem that has no single answer! Here are a couple of score functions I wrote. They give outfits containing items that have high confidence matches more gravitas, and give a bonus to outfits that matched more items in my closet:
+
+```python
+# Option 1: sum up the confidence scores for each closet item matched to the inspo photo
+def scoreOutfit1(matches):
+    if not matches:
+        return 0
+    return sum([match['score'] for match in matches]) / len(matches)
+
+# Option 2: Sum up the confidence scores only of items that matched with the inspo photo 
+# with confidence > 0.3. Also, because shoes will match most images _twice_ 
+# (because people have two feet), only count the shoe confidence score once
+def scoreOutfit2(matches):
+    if not len(matches):
+        return 0
+    
+    noShoeSum = sum([x['score'] for x in matches if (x['score'] > 0.3 and not isTypeMatch("shoe", x["label"]))])
+    shoeScore = 0
+    try:
+        shoeScore = max([x['score'] for x in matches if isTypeMatch("shoe", x["label"])])
+    except:
+        pass
+    return noShoeSum + shoeScore * 0.5 # half the weight for shoes
+```
+
+If you want to see all this code together working in action, check out [this Jupyter notebook](https://github.com/google/making_with_ml/blob/master/instafashion/scripts/getMatches.ipynb).
 
 ## Putting It All Together
 
-Once I had written all the logic for making outfits in a Python script, I ran the script and wrote all the results to Firestore. After that, it was pretty easy to build an app, which was just a fancy way of displaying the data in Firestore. That's it!
+Once I had written all the logic for making outfits in a Python script, I ran the script and wrote all the results to Firestore. Firestore is a serverless database that's designed to be used easily in apps, so once I had all my outfit matches written there, it was easy to write a frontend around it that made everything look pretty. I decided to build a React web app, but you could just easily display this data in a Flutter or iOS or Android app!
+
+
+
+And that's pretty much it! Take that, expensive stylist.
