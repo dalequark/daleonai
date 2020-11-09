@@ -12,7 +12,7 @@ tags:
   - google cloud
 permalink: social-media-fashion-ai
 ---
-Last year, in a universe where it still made sense to owns pants, I decided to hire a personal stylist. 
+Last year, in a universe where it still made sense to own pants, I decided to hire a personal stylist. 
 
 In our first appointment, the stylist came to my apartment and took pictures of every clothing item I owned.
 
@@ -56,7 +56,7 @@ I built this app using a combination of [Google Cloud Storage](https://cloud.goo
 
 First, there's the *batch process*, which runs every hour (or however frequently you like) in the Cloud:
 
-![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\\\\\\\\\\"batch process\\\\\\\\\\\" makes outfit recommendations using AI")
+![Diagram of batch process for making outfit recommendations](/images/pxl_20201014_203905793.jpg "The \\\\\\\\\\\\"batch process\\\\\\\\\\\\" makes outfit recommendations using AI")
 
 "Batch process" is just a fancy way of saying that I wrote a Python script which runs on a scheduled interval (more on that later). The process:
 
@@ -371,7 +371,5 @@ If you want to see all this code together working in action, check out [this Jup
 ## Putting It All Together
 
 Once I had written all the logic for making outfits in a Python script, I ran the script and wrote all the results to Firestore. Firestore is a serverless database that's designed to be used easily in apps, so once I had all my outfit matches written there, it was easy to write a frontend around it that made everything look pretty. I decided to build a React web app, but you could just easily display this data in a Flutter or iOS or Android app!
-
-
 
 And that's pretty much it! Take that, expensive stylist.
