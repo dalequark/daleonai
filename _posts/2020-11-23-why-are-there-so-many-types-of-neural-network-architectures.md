@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Why are there so many types of neural network architectures?
+title: Why are there so many kinds of neural network architectures?
 date: 2020-11-23T23:18:38.583Z
 description: An intuitive explanation of why we need so many different types of
   neural networks
