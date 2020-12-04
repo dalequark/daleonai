@@ -15,6 +15,8 @@ You know that expression *When you have a hammer, everything looks like a nail*?
 
 In this post, I'll try to give you an intuition for how Transformers work in under five minutes. *Cracks knuckles*.
 
+## Where did we come from?
+
 But first, some background. Originally, transformers were designed as NLP models (though now they've been applied to vision, audio, and even protein folding), specifically to do translation. Before they were invented, the way people built deep learning models that understood text was with Recurrent Neural Networks (RNNs). If you've ever heard of a GRU or LSTM, these are types of recurrent neural networks.
 
 ![Diagram of RNN](/images/rnn-1.png "Simplified picture of a recurrent neural network")
@@ -25,4 +27,10 @@ But RNNs were notoriously annoying to work with. They had these mathematical qui
 
 Maybe the biggest problem with RNNs, though, was that they were really slow to train. Since RNNs analyzed one word at a time, they were hard to parallelize, which meant they couldn't take advantage of fancy processors like GPUs or TPUs.
 
-The Transformer fixes a lot of those limitations, but the most important one is that parallelization issue. Because Transformers can be easily parallelized, they can be scaled efficiently by adding more computational power, which means you can start training them on really massive datasets and get mind-boggling results (this, in fact, is why GPT-3 is so impressively good--it was trained on an enormous dataset!).
+The Transformer fixes a lot of those limitations, but the most important one is that parallelization issue. Because Transformers can be easily parallelized, they can be scaled efficiently by adding more computational power, which means you can start training them on really massive datasets and get mind-boggling results (this, in fact, is why GPT-3 is so impressively good--it was trained on an enormous dataset!). 
+
+## How Do Transformers Work?
+
+Okay, so how do these bad boys work? It should be pretty easy to glean from this diagram from the original paper:
+
+![Transformer architecture](/images/screen-shot-2020-12-04-at-1.11.31-pm.png "Transformer architecture")
