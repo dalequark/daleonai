@@ -4,8 +4,8 @@ title: "AlphaFold 2 Explained: A Semi-Deep Dive"
 date: 2020-12-09T16:08:19.324Z
 description: A quick look into the biology and machine learning behind
   DeepMind's new AlphaFold
-feature_image: /images/404.jpg
-thumbnail_image: /images/about.jpg
+feature_image: /images/copy-of-ai-stylist.png
+thumbnail_image: /images/copy-of-ai-stylist-1-.png
 tags:
   - machinelearning
   - healthcare
