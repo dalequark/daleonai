@@ -17,11 +17,11 @@ In this post, I'll try to give you an intuition for how Transformers work in und
 
 ## Where did we come from?
 
-To really understand the significance of Transformers, you have to understand where we came from. Originally, transformers were designed as NLP models (though now they've been applied to vision, audio, and even protein folding), specifically to do translation. Before they were invented, the way people built deep learning models that understood text was with Recurrent Neural Networks (RNNs). If you've ever heard of a GRU or LSTM, these are types of recurrent neural networks.
+To really understand the significance of Transformers, you have to understand where we came from. Originally, transformers were designed as natural language processing models (though now they've been applied to vision, audio, and even protein folding), specifically to do machine translation. Before they were invented, the way people built deep learning models that understood text was with Recurrent Neural Networks or RNNs (if you've ever heard of a GRU or LSTM, these are kinds of RNNs).
 
 ![Diagram of RNN](/images/rnn-1.png "Simplified picture of a recurrent neural network")
 
-RNNs process text as sequences. They take as input the first word in a sentence, do some processing, look at the second word in the second, do some processing, look at the third word, and so on, sequentially. Eventually the spit out a translation or a sentiment score or a label depending on what task you trained your RNN to do.
+RNNs process text as sequences. They take as input the first word in a sentence, do some processing, look at the second word, do some processing, look at the third word, and so on, sequentially. Eventually, they spit out a translation or a sentiment score or a label depending on what task you trained your RNN to do.
 
 But RNNs were notoriously annoying to work with. They had these mathematical quirks called vanishing and exploding gradients which made them hard to train. They didn't have very good long-term memory, meaning if you used an RNN to analyze a long paragraph, it would often forget what it'd read in the beginning by the time it got to the end.
 
