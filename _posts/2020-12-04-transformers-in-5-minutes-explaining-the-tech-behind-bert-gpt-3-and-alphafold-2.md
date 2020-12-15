@@ -21,9 +21,9 @@ To really understand the significance of Transformers, you have to understand wh
 
 ![Diagram of RNN](/images/rnn-1.png "Simplified picture of a recurrent neural network")
 
-RNNs process text as sequences. They take as input the first word in a sentence, do some processing, look at the second word, do some processing, look at the third word, and so on, sequentially. Eventually, they spit out a translation or a sentiment score or a label depending on what task you trained your RNN to do.
+RNNs process text as sequences. They take as input the first word in a sentence, do some processing, look at the second word, do some processing, look at the third word, and so on, sequentially. What the RNN ultimately does--translate, classify, compute a sentiment score--is up to the designer, but the underlying architecture is usually the same.
 
-But RNNs were notoriously annoying to work with. They had these mathematical quirks called vanishing and exploding gradients which made them hard to train. They didn't have very good long-term memory, meaning if you used an RNN to analyze a long paragraph, it would often forget what it'd read in the beginning by the time it got to the end.
+But RNNs were notoriously annoying to work with. They had mathematical quirks called vanishing and exploding gradients which made them hard to train. They didn't have very good long-term memory, meaning if you used an RNN to analyze a long paragraph, it would often forget what it'd read in the beginning of the text by the time it got to the end.
 
 Maybe the biggest problem with RNNs, though, was that they were really slow to train. Since RNNs analyzed one word at a time, they were hard to parallelize, which meant they couldn't take advantage of fancy processors like GPUs or TPUs.
 
