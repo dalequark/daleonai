@@ -11,13 +11,13 @@ tags:
   - nlp
 permalink: how-transformers-bert-gpt3-attention-works
 ---
-You know that expression *When you have a hammer, everything looks like a nail*? Well, in machine learning, it seems like we really have discovered a magical hammer for which everything is, in fact, a nail. It's called the Transformer, and it's the neural network architecture that underlies tons of recent breakthroughs in machine learning, like BERT (the NLP model that [underlies Google Search](https://blog.google/products/search/search-language-understanding-bert/)), [GPT-3](https://daleonai.com/gpt3-explained-fast) (the scary-good poem/essay/op-ed/code/html/SQL writing bot made by OpenAI), and, now [AlphaFold 2](https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology) (the model that cracked the protein-folding problem). It's fair to say that today, if you want to work in machine learning, you have to at *least* know how to use Transformers and, better yet, know how they work.
+You know that expression *When you have a hammer, everything looks like a nail*? Well, in machine learning, it seems like we really have discovered a magical hammer for which everything is, in fact, a nail. It's called the Transformer, and it's the neural network architecture that underlies tons of recent breakthroughs in machine learning, like BERT (the NLP model that [underlies Google Search](https://blog.google/products/search/search-language-understanding-bert/)), [GPT-3](https://daleonai.com/gpt3-explained-fast) (the scary-good poem/op-ed/code writing bot), and, now [AlphaFold 2](https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology) (the model that cracked the protein-folding problem). It's fair to say that today, if you want to work in machine learning, you have to understand how the Transformer works. 
 
-In this post, I'll try to give you an intuition for how Transformers work in under five minutes. *Cracks knuckles*.
+In this post, I'll try to give you an intuition for how Transformers work in under five minutes. *Cracks knuckles*. Let's get to it.
 
 ## Where did we come from?
 
-But first, some background. Originally, transformers were designed as NLP models (though now they've been applied to vision, audio, and even protein folding), specifically to do translation. Before they were invented, the way people built deep learning models that understood text was with Recurrent Neural Networks (RNNs). If you've ever heard of a GRU or LSTM, these are types of recurrent neural networks.
+To really understand the significance of Transformers, you have to understand where we came from. Originally, transformers were designed as NLP models (though now they've been applied to vision, audio, and even protein folding), specifically to do translation. Before they were invented, the way people built deep learning models that understood text was with Recurrent Neural Networks (RNNs). If you've ever heard of a GRU or LSTM, these are types of recurrent neural networks.
 
 ![Diagram of RNN](/images/rnn-1.png "Simplified picture of a recurrent neural network")
 
