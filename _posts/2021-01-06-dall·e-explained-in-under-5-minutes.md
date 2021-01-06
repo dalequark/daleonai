@@ -52,7 +52,11 @@ To train a model that identifies dog breeds, for example, we might show a neural
 
 Zero-shot learning, on the other hand, is the ability of models to perform tasks that they weren't specifically trained to do. For example, DALL·E was trained to generate images from captions. But with the right text prompt, it can also transform images into sketches:
 
+![](/images/screen-shot-2021-01-06-at-1.41.02-pm.png)
 
+*Results from the prompt, "the exact same cat on the top as a sketch on the bottom". From https://openai.com/blog/dall-e/*
+
+Or transport custom text on the street signs:
 
 
 
