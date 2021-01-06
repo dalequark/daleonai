@@ -76,14 +76,4 @@ What struck me from the blog post was the authors' own surprise at DALL·E's per
 
 We did not anticipate that this capability would emerge, and made no modifications to the neural network or training procedure to encourage it."
 
-
-
-Seeing a theme here?
-
-\#DALL·E is yet another example, along with #GPT3, that 
-
-hugely big neural networks trained on unlabeled (self-supervised) internet data are highly versatile, able to perform lots of tasks weren't originally intended for.
-
-“We find that DALL·E extends this capability to the visual domain, and is able to perform several kinds of image-to-image translation tasks when prompted in the right way.”
-
-We did not anticipate that this capability would emerge, and made no modifications to the neural network or training procedure to encourage it.
+It's amazing, but not that unexpected; DALL·E and GPT-3 are two examples of a greater theme in deep learning: that extraordinarily big neural networks trained on unlabeled internet data (an example "self-supervised learning") can be highly versatile, able to perform lots of tasks weren't originally intended for.
