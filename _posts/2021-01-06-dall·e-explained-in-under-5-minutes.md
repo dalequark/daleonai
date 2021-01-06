@@ -30,13 +30,31 @@ In one example from their blog, the model renders images from the text prompt "a
 
 Pretty slick, right? Of course, the skeptical machine learning engineer might wonder whether DALL·E's images are so high-quality because they've simply been copied or memorized from the model's training data set (all those pictures from the web).
 
-To prove DALL·E isn’t just memorizing and regurgitating images, the OpenAI authors made it render some pretty unusual prompts: “a cube made of a porcupine.” “An emoji of a baby penguin wearing a blue hat, red gloves, green shirt and yellow pants.” “A snail made of a harp.”
+To prove DALL·E isn’t just memorizing and regurgitating images, the OpenAI authors made it render some pretty unusual prompts: 
+
+
+
+“a professional high quality illustration of a giraffe turtle chimera."
+
+![](/images/screen-shot-2021-01-06-at-1.39.04-pm.png)
+
+*From https://openai.com/blog/dall-e/.* 
+
+![](/images/screen-shot-2021-01-06-at-1.39.12-pm.png)
+
+"a snail made of a harp.”
+
+It's hard to imagine the model came across many giraffe-turtle hybrids in its training data set.
+
+Plus, these bizarre prompts hint at something even more fascinating about DALL·E: its ability to perform "zero-shot visual reasoning." Typically in machine learning, we train models by giving them thousands or millions of examples of tasks we want them to preform and hope they pick up on the pattern.
+
+To train a model that identifies dog breeds, for example, we might show a neural network thousands of pictures of dogs labeled by breed and then test its ability to tag new pictures of dogs. It's a task with limited scope that seems almost quaint compared to OpenAI's latest models.
+
+Zero-shot learning, on the other hand, is the ability of models to perform tasks that they weren't specifically trained to do. For example, DALL·E was trained to generate images from captions. But with the right text prompt, it can also transform images into sketches:
 
 
 
 
-
-Although the results shown in the OpenAI blog post weren’t cherry-picked by humans, they were ranked by a second neural network called “CLIP,” so we are (probably) seeing the best of DALL·E’s results.
 
 Even more fascinating, DALL·E is able to do some “zero-shot visual reasoning.” In other words, it can perform specific tasks (like converting a picture to a sketch) without additional training. Take a look at its results for the prompt “the exact same cat on the top as a sketch on the bottom”:
 
