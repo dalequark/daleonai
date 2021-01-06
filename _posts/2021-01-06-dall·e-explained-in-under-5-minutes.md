@@ -64,17 +64,19 @@ Results from the prompt *"a store front that has the word 'openai' written on it
 
 The model even shows understanding of visual concepts (i.e. "macroscopic" or "cross-section" pictures), places (i.e. "a photo of the food of china"), and time ("a photo of alamo square, san francisco, from a street at night"; "a photo of a phone from the 20s"). For all these examples and more, check out the [original blog post](https://openai.com/blog/dall-e/).
 
+![](/images/screen-shot-2021-01-06-at-1.42.22-pm.png)
+
+*"a photo of the food of china" from https://openai.com/blog/dall-e/.*
+
+In fact, the authors went so far as to have DALL·E take a visual IQ test, where it had to complete images in a pattern. I'm looking forward to hearing more about how it did in the paper, not yet published.
+
+What struck me from the blog post was the authors' own surprise at DALL·E's performance on these general tasks:
+
+“We find that DALL·E \[...] is able to perform several kinds of image-to-image translation tasks when prompted in the right way.
+
+We did not anticipate that this capability would emerge, and made no modifications to the neural network or training procedure to encourage it."
 
 
-
-
-Even more fascinating, DALL·E is able to do some “zero-shot visual reasoning.” In other words, it can perform specific tasks (like converting a picture to a sketch) without additional training. Take a look at its results for the prompt “the exact same cat on the top as a sketch on the bottom”:
-
-DALL·E can recognize things like time period and location (i.e. “a phone from the 20s” “a photo of the food of china”) 
-
-… as well as concepts like a “macro photograph” and a “cross-section view”.
-
-The results are really quite incredible, and the blog post has a bunch more examples: <https://openai.com/blog/dall-e/>
 
 Seeing a theme here?
 
