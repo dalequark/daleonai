@@ -56,7 +56,15 @@ Zero-shot learning, on the other hand, is the ability of models to perform tasks
 
 *Results from the prompt, "the exact same cat on the top as a sketch on the bottom". From https://openai.com/blog/dall-e/*
 
-Or transport custom text on the street signs:
+Or render custom text on street signs:
+
+![](/images/screen-shot-2021-01-06-at-2.51.53-pm.png)
+
+Results from the prompt *"a store front that has the word 'openai' written on it'" , from https://openai.com/blog/dall-e/.*
+
+The model even shows understanding of visual concepts (i.e. "macroscopic" or "cross-section" pictures), places (i.e. "a photo of the food of china"), and time ("a photo of alamo square, san francisco, from a street at night"; "a photo of a phone from the 20s"). For all these examples and more, check out the [original blog post](https://openai.com/blog/dall-e/).
+
+
 
 
 
