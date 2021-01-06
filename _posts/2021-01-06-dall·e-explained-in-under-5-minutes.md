@@ -24,9 +24,17 @@ In July, the same company, OpenAI, released a similarly huge model called GPT-3 
 
 In one example from their blog, the model renders images from the text prompt "a living room with two white armchairs and a painting of the collosseum. the painting is mounted above a modern fireplace":
 
+![DALLE generated images](/images/screen-shot-2021-01-06-at-2.39.07-pm.png "DALLE generated images")
+
+*From https://openai.com/blog/dall-e/.* 
+
+Pretty slick, right? Of course, the skeptical machine learning engineer might wonder whether DALL·E's images are so high-quality because they've simply been copied or memorized from the model's training data set (all those pictures from the web).
+
+To prove DALL·E isn’t just memorizing and regurgitating images, the OpenAI authors made it render some pretty unusual prompts: “a cube made of a porcupine.” “An emoji of a baby penguin wearing a blue hat, red gloves, green shirt and yellow pants.” “A snail made of a harp.”
 
 
-To prove that DALL·E isn’t just memorizing images from the web and regurgitating them, the OpenAI authors made it work with some pretty unusual prompts: “a cube made of a porcupine.” “An emoji of a baby penguin wearing a blue hat, red gloves, green shirt and yellow pants.” “A snail made of a harp.”
+
+
 
 Although the results shown in the OpenAI blog post weren’t cherry-picked by humans, they were ranked by a second neural network called “CLIP,” so we are (probably) seeing the best of DALL·E’s results.
 
