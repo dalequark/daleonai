@@ -76,4 +76,6 @@ What struck me from the blog post was the authors' own surprise at DALL·E's per
 
 We did not anticipate that this capability would emerge, and made no modifications to the neural network or training procedure to encourage it."
 
-It's amazing, but not that unexpected; DALL·E and GPT-3 are two examples of a greater theme in deep learning: that extraordinarily big neural networks trained on unlabeled internet data (an example "self-supervised learning") can be highly versatile, able to perform lots of tasks weren't originally intended for.
+It's amazing, but not wholly unexpected; DALL·E and GPT-3 are two examples of a greater theme in deep learning: that extraordinarily big neural networks trained on unlabeled internet data (an example "self-supervised learning") can be highly versatile, able to perform lots of tasks weren't originally intended for.
+
+Of course, don't mistake this for general intelligence. The authors hint in the blog that DALL·E is "brittle" and shows much better results on some prompts than others.
