@@ -14,15 +14,17 @@ permalink: dalle-5-mins
 ---
 Is it just this massive cold brew I'm drinking, or is OpenAI's new image-generating model, [DALL·E](https://openai.com/blog/dall-e/), really out of this world?
 
-This mega 12-billion-parameter behemoth takes a text caption (i.e. "an armchair in the shape of an avocado") and generates images that match it:
+This mega 12-billion-parameter behemoth takes a text caption (i.e. "an armchair in the shape of an avocado") and generates images to match it:
 
 ![Generated images of avocado chairs](/images/screen-shot-2021-01-06-at-1.37.37-pm.png "Generated images of avocado chairs")
 
 *From https://openai.com/blog/dall-e/.*
 
+In July, the same company, OpenAI, released a similarly huge model called GPT-3 that wowed the world with [its ability to generate human-like text](https://daleonai.com/gpt3-explained-fast), including Op Eds, poems, sonnets, and even computer code. Now OpenAI has applied the same technique--training a kind of neural network called a "Transformer" on a massive dataset scraped from the web--to generate pictures from text.
+
+In one example from their blog, the model renders images from the text prompt "a living room with two white armchairs and a painting of the collosseum. the painting is mounted above a modern fireplace":
 
 
-DALL·E can take a user-generated caption—“an armchair in the shape of an avocado”—and turn them into images. It’s based on a Transformer architecture very similar to that used in BERT and GPT-3.
 
 To prove that DALL·E isn’t just memorizing images from the web and regurgitating them, the OpenAI authors made it work with some pretty unusual prompts: “a cube made of a porcupine.” “An emoji of a baby penguin wearing a blue hat, red gloves, green shirt and yellow pants.” “A snail made of a harp.”
 
