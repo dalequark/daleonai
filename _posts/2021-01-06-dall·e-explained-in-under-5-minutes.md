@@ -100,14 +100,12 @@ To test DALL·E's visual reasoning ability, the authors had it take a visual IQ 
 
 ## What does it mean?
 
-
-
-But what struck me from the blog post was the authors' own surprise at DALL·E's performance on these general tasks:
+What strikes me the most about DALL·E is its ability to perform surprisingly well on so many different tasks, ones the authors didn't even anticipate:
 
 “We find that DALL·E \[...] is able to perform several kinds of image-to-image translation tasks when prompted in the right way.
 
 We did not anticipate that this capability would emerge, and made no modifications to the neural network or training procedure to encourage it."
 
-It's amazing, but not wholly unexpected; DALL·E and GPT-3 are two examples of a greater theme in deep learning: that extraordinarily big neural networks trained on unlabeled internet data (an example "self-supervised learning") can be highly versatile, able to perform lots of tasks weren't originally intended for.
+It's amazing, but not wholly unexpected; DALL·E and GPT-3 are two examples of a greater theme in deep learning: that extraordinarily big neural networks trained on unlabeled internet data (an example of "self-supervised learning") can be highly versatile, able to do lots of things weren't specifically designed for.
 
-Of course, don't mistake this for general intelligence. The authors hint in the blog that DALL·E is "brittle" and shows much better results on some prompts than others. We'll know more when their peer-reviewed paper is published. But that doesn't mean I can't be excited in the meantime.
+Of course, don't mistake this for general intelligence. It's [not hard](https://lacker.io/ai/2020/07/06/giving-gpt-3-a-turing-test.html) to trick these types of models into looking pretty dumb. We'll know more when they're openly accessible and we can start playing around with them. But that doesn't mean I can't be excited in the meantime.
