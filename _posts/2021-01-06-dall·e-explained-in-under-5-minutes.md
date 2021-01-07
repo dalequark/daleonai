@@ -34,6 +34,12 @@ In July, DALL·E's creator, the company OpenAI, released a similarly huge model 
 
 Pretty slick, right? You can probably already see how this might be useful for designers. Notice that DALL·E can generate a large set of images from a prompt. The pictures are then ranked by a second OpenAI model, called [CLIP](https://openai.com/blog/clip/), that tries to determine which pictures match best.
 
+## How was DALL·E built?
+
+Unfortunately, we don't have a ton of details on this yet because OpenAI has yet to publish a full paper. But at its core, DALL·E uses the same new neural network architecture that's responsible for tons of recent advances in ML: the [Transformer](https://arxiv.org/abs/1706.03762). Transformers, discovered in 2017, are an easy-to-parallelize type of neural network that can be scaled up and trained on huge datasets. They've been particularly revolutionary in natural language processing, and back 
+
+
+
 By while these results are impressive, the skeptical machine learning engineer might wonder whether DALL·E's images are merely high-quality because they've simply been copied or memorized from the model's training data set (all those pictures from the web).
 
 To prove DALL·E isn’t just regurgitating images, the OpenAI authors forced it to render some pretty unusual prompts: 
@@ -55,6 +61,8 @@ It's hard to imagine the model came across many giraffe-turtle hybrids in its tr
 What's more, these weird prompts hint at something even more fascinating about DALL·E: its ability to perform "zero-shot visual reasoning." 
 
 
+
+## Zero-Shot Visual Reasoning
 
 Typically in machine learning, we train models by giving them thousands or millions of examples of tasks we want them to preform and hope they pick up on the pattern.
 
