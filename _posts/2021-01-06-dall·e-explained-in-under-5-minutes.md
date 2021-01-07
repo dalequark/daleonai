@@ -90,13 +90,17 @@ The model even shows an "understanding" of visual concepts (i.e. "macroscopic" o
 
 In other words, DALL·E can do more than just paint a pretty picture for a caption; it can also, in a sense, answer questions visually.
 
-To test DALL·E's visual reasoning ability, the authors had it take a visual IQ test:
+To test DALL·E's visual reasoning ability, the authors had it take a visual IQ test. In the examples below, the model had to complete the lower right corner of the grid, following the test's hidden pattern.
 
 ![](/images/screen-shot-2021-01-06-at-3.05.50-pm.png)
 
 *A screenshot of the visual IQ test OpenAI used to test DALL·E* *from https://openai.com/blog/dall-e/.*
 
-I'm looking forward to hearing more about how DALL·E did on those visual IQ tests in the team's official research paper, not yet published.
+"DALL·E is often able to solve matrices that involve continuing simple patterns or basic geometric reasoning," write the authors, but it did better at some problems than others. When the puzzles's colors were inverted, DALL·E did worse--"suggesting its capabilities may be brittle in unexpected ways."
+
+## What does it mean?
+
+
 
 But what struck me from the blog post was the authors' own surprise at DALL·E's performance on these general tasks:
 
