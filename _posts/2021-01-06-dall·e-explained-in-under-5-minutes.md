@@ -26,17 +26,17 @@ In this post, I'll give you a quick overview of what DALL·E can do, how it work
 
 ## What is DALL·E and what can it do?
 
-In July, DALL·E's creator, the company OpenAI, released a similarly huge model called GPT-3 that wowed the world with [its ability to generate human-like text](https://daleonai.com/gpt3-explained-fast), including Op Eds, poems, sonnets, and even computer code. Now they've applied the same technique--training a kind of neural network called a "Transformer" on a massive dataset scraped from the web--to generate pictures from text.
-
-In one example from their blog, the model renders images from the text prompt "a living room with two white armchairs and a painting of the collosseum. the painting is mounted above a modern fireplace":
+In July, DALL·E's creator, the company OpenAI, released a similarly huge model called GPT-3 that wowed the world with [its ability to generate human-like text](https://daleonai.com/gpt3-explained-fast), including Op Eds, poems, sonnets, and even computer code. DALL·E is a natural extension of GPT-3 that parses text prompts and then responds not with words but in pictures. In one example from OpenAI's blog, for example, the model renders images from the prompt "a living room with two white armchairs and a painting of the collosseum. the painting is mounted above a modern fireplace":
 
 ![DALLE generated images](/images/screen-shot-2021-01-06-at-2.39.07-pm.png "DALLE generated images")
 
 *From https://openai.com/blog/dall-e/.* 
 
-Pretty slick, right? Of course, the skeptical machine learning engineer might wonder whether DALL·E's images are merely high-quality because they've simply been copied or memorized from the model's training data set (all those pictures from the web).
+Pretty slick, right? You can probably already see how this might be useful for designers. Notice that DALL·E can generate a large set of images from a prompt. The pictures are then ranked by a second OpenAI model, called [CLIP](https://openai.com/blog/clip/), that tries to determine which pictures match best.
 
-To prove DALL·E isn’t just memorizing and regurgitating images, the OpenAI authors made it render some pretty unusual prompts: 
+By while these results are impressive, the skeptical machine learning engineer might wonder whether DALL·E's images are merely high-quality because they've simply been copied or memorized from the model's training data set (all those pictures from the web).
+
+To prove DALL·E isn’t just regurgitating images, the OpenAI authors forced it to render some pretty unusual prompts: 
 
 “a professional high quality illustration of a giraffe turtle chimera."
 
@@ -50,9 +50,13 @@ To prove DALL·E isn’t just memorizing and regurgitating images, the OpenAI au
 
 *From https://openai.com/blog/dall-e/.* 
 
-It's hard to imagine the model came across many giraffe-turtle hybrids in its training data set.
+It's hard to imagine the model came across many giraffe-turtle hybrids in its training data set, making the results more impressive.
 
-Plus, these weird prompts hint at something even more fascinating about DALL·E: its ability to perform "zero-shot visual reasoning." Typically in machine learning, we train models by giving them thousands or millions of examples of tasks we want them to preform and hope they pick up on the pattern.
+What's more, these weird prompts hint at something even more fascinating about DALL·E: its ability to perform "zero-shot visual reasoning." 
+
+
+
+Typically in machine learning, we train models by giving them thousands or millions of examples of tasks we want them to preform and hope they pick up on the pattern.
 
 To train a model that identifies dog breeds, for example, we might show a neural network thousands of pictures of dogs labeled by breed and then test its ability to tag new pictures of dogs. It's a task with limited scope that seems almost quaint compared to OpenAI's latest feats.
 
