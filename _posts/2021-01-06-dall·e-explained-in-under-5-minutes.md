@@ -36,7 +36,7 @@ Pretty slick, right? You can probably already see how this might be useful for d
 
 ## How was DALL·E built?
 
-Unfortunately, we don't have a ton of details on this yet because OpenAI has yet to publish a full paper. But at its core, DALL·E uses the same new neural network architecture that's responsible for tons of recent advances in ML: the [Transformer](https://arxiv.org/abs/1706.03762). Transformers, discovered in 2017, are an easy-to-parallelize type of neural network that can be scaled up and trained on huge datasets. They've been particularly revolutionary in natural language processing, and back 
+Unfortunately, we don't have a ton of details on this yet because OpenAI has yet to publish a full paper. But at its core, DALL·E uses the same new neural network architecture that's responsible for tons of recent advances in ML: the [Transformer](https://arxiv.org/abs/1706.03762). Transformers, discovered in 2017, are an easy-to-parallelize type of neural network that can be scaled up and trained on huge datasets. They've been particularly revolutionary in natural language processing (they're the basis of models like BERT, T5, GPT-3, and others), improving the quality of [Google Search](https://blog.google/products/search/search-language-understanding-bert/) results, translation, and even in [predicting the structures of proteins](https://daleonai.com/how-alphafold-works).
 
 
 
