@@ -42,7 +42,7 @@ Most of these big language models are trained on enormous text datasets (like al
 
 ## How "smart" is DALL·E?
 
-By while these results are impressive, the skeptical machine learning engineer might wonder whether DALL·E's images are merely high-quality because they've simply been copied or memorized from the model's training data set (all those pictures from the web).
+While these results are impressive, whenever we train a model on a huge dataset, the skeptical machine learning engineer is right to ask whether the results are merely high-quality because they've been copied or memorized from the source material.
 
 To prove DALL·E isn’t just regurgitating images, the OpenAI authors forced it to render some pretty unusual prompts: 
 
@@ -62,8 +62,6 @@ It's hard to imagine the model came across many giraffe-turtle hybrids in its tr
 
 What's more, these weird prompts hint at something even more fascinating about DALL·E: its ability to perform "zero-shot visual reasoning." 
 
-
-
 ## Zero-Shot Visual Reasoning
 
 Typically in machine learning, we train models by giving them thousands or millions of examples of tasks we want them to preform and hope they pick up on the pattern.
@@ -76,19 +74,23 @@ Zero-shot learning, on the other hand, is the ability of models to perform tasks
 
 *Results from the prompt, "the exact same cat on the top as a sketch on the bottom". From https://openai.com/blog/dall-e/*
 
-Or render custom text on street signs:
+DALL·E can also render custom text on street signs:
 
 ![](/images/screen-shot-2021-01-06-at-2.51.53-pm.png)
 
 Results from the prompt *"a store front that has the word 'openai' written on it'". From https://openai.com/blog/dall-e/.*
 
-The model even shows understanding of visual concepts (i.e. "macroscopic" or "cross-section" pictures), places (i.e. "a photo of the food of china"), and time ("a photo of alamo square, san francisco, from a street at night"; "a photo of a phone from the 20s"). For all these examples and more, check out the [original blog post](https://openai.com/blog/dall-e/).
+In this way, DALL·E can act almost like a Photoshop filter, even though it wasn't specifically designed to behave this way.
+
+The model even shows an "understanding" of visual concepts (i.e. "macroscopic" or "cross-section" pictures), places (i.e. "a photo of the food of china"), and time ("a photo of alamo square, san francisco, from a street at night"; "a photo of a phone from the 20s"). For example, here's what it spit out in response to the prompt "a photo of the food of china":
 
 ![](/images/screen-shot-2021-01-06-at-1.42.22-pm.png)
 
 *"a photo of the food of china" from https://openai.com/blog/dall-e/.*
 
-In fact, the authors went so far as to have DALL·E take a visual IQ test, where it had to complete images in a pattern:
+In other words, DALL·E can do more than just paint a pretty picture for a caption; it can also, in a sense, answer questions visually.
+
+To test DALL·E's visual reasoning ability, the authors had it take a visual IQ test:
 
 ![](/images/screen-shot-2021-01-06-at-3.05.50-pm.png)
 
