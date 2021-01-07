@@ -12,7 +12,7 @@ tags:
   - computervision
 permalink: dalle-5-mins
 ---
-Is it just this massive cold brew I'm drinking, or is OpenAI's new image-generating model, [DALL·E](https://openai.com/blog/dall-e/), really out of this world?
+It seems like every few months, someone publishes a machine learning paper or demo that makes my jaw drop. This month, it's OpenAI's new image-generating model, [DALL·E](https://openai.com/blog/dall-e/).
 
 This behemoth 12-billion-parameter neural network takes a text caption (i.e. "an armchair in the shape of an avocado") and generates images to match it:
 
@@ -20,7 +20,13 @@ This behemoth 12-billion-parameter neural network takes a text caption (i.e. "an
 
 *From https://openai.com/blog/dall-e/.*
 
-In July, the same company, OpenAI, released a similarly huge model called GPT-3 that wowed the world with [its ability to generate human-like text](https://daleonai.com/gpt3-explained-fast), including Op Eds, poems, sonnets, and even computer code. Now they've applied the same technique--training a kind of neural network called a "Transformer" on a massive dataset scraped from the web--to generate pictures from text.
+I think its pictures are pretty inspiring (I'd buy one of those avocado chairs), but what's even more impressive is DALL·E's ability to understand and render concepts of space, time, and even logic (more on that in a second).
+
+In this post, I'll give you a quick overview of what DALL·E can do, how it works, how it fits in with recent trends in ML, and why it's significant. Away we go!
+
+## What is DALL·E and what can it do?
+
+In July, DALL·E's creator, the company OpenAI, released a similarly huge model called GPT-3 that wowed the world with [its ability to generate human-like text](https://daleonai.com/gpt3-explained-fast), including Op Eds, poems, sonnets, and even computer code. Now they've applied the same technique--training a kind of neural network called a "Transformer" on a massive dataset scraped from the web--to generate pictures from text.
 
 In one example from their blog, the model renders images from the text prompt "a living room with two white armchairs and a painting of the collosseum. the painting is mounted above a modern fireplace":
 
@@ -37,8 +43,6 @@ To prove DALL·E isn’t just memorizing and regurgitating images, the OpenAI au
 ![](/images/screen-shot-2021-01-06-at-1.39.04-pm.png)
 
 *From https://openai.com/blog/dall-e/.* 
-
-
 
 "a snail made of a harp.”
 
