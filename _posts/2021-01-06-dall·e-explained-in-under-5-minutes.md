@@ -92,7 +92,7 @@ In other words, DALL·E can do more than just paint a pretty picture for a capti
 
 To test DALL·E's visual reasoning ability, the authors had it take a visual IQ test. In the examples below, the model had to complete the lower right corner of the grid, following the test's hidden pattern.
 
-![](/images/screen-shot-2021-01-06-at-3.05.50-pm.png)
+![](/images/screen-shot-2021-01-07-at-1.22.26-pm.png)
 
 *A screenshot of the visual IQ test OpenAI used to test DALL·E* *from https://openai.com/blog/dall-e/.*
 
