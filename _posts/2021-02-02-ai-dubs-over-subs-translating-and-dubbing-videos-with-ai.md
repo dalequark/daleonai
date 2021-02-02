@@ -23,3 +23,18 @@ So what are you supposed to do? The answer is obviously not to ask a computer to
 So in this post, I’ll show you how to use machine learning to transcribe, translate, and voice-act videos from one language to another, i.e. “AI-Powered Video Dubs.” It might not get you Netflix-quality results, but you can use it to localize online talks and YouTube videos in a pinch. We’ll start by transcribing audio to text using Google Cloud’s [Speech-to-Text API](https://cloud.google.com/speech-to-text). Next, we’ll translate that text with the [Translate API](https://cloud.google.com/translate). Finally, we’ll “voice act” the translations using the [Text-to-Speech API](https://cloud.google.com/text-to-speech), which produces voices that are, according to the docs, “humanlike.”
 
 By the way, before you flame-blast me in the comments, dear reader, I should tell you that YouTube will [automatically and for free](https://support.google.com/youtube/answer/6373554#zippy=%2Cautomatic-captions-on-videos-on-demand) transcribe (and even translate?) your videos for you. So you can treat this project like your new hobby of baking sourdough from scratch: a really inefficient use of 30 hours.
+
+
+
+## AI-Dubbed Video: Do they axe usually sound grood? 
+
+Let’s get down to brass tax: what quality can we expect to achieve from an ML-video-dubbing pipeline? 
+
+What makes this project trickier (read: more fun) than most is that there are (at least) three possible points of failure:
+
+1. The video can be incorrectly transcribed from audio to text by the Speech-to-Text API
+2. That text can be incorrectly or awkwardly translated by the Translation API
+3. Those translations can be mispronounced by the Text-to-Speech API
+
+**\
+In my experience, the most successful dubbed videos were those that featured a single speaker over a clear audio stream and that were dubbed from English to another language. This is largely because the quality of transcription (Speech-to-Text) was much higher in English than other source languages. To get a sense for transcription quality, take a look at this video that was dubbed from English to English (i.e. not translated at all):**
