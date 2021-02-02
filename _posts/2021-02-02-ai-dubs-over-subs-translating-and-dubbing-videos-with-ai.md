@@ -100,8 +100,8 @@ The API returns the transcribed text along with word-level timestamps as JSON. A
 
 *What I actually said:* 
 
-"Software Developers. We're not known for our rockin' style, are we? Or *are* we? Today, I'll show you how I used ML to make me trendier, taking inspiration from influencers."
+> "Software Developers. We're not known for our rockin' style, are we? Or *are* we? Today, I'll show you how I used ML to make me trendier, taking inspiration from influencers."
 
 *What the API thought I said:*
 
-"Software developers. We're not known for our Rock and style. Are we or are we today? I'll show you how I use ml to make new trendier taking inspiration from influencers."
+> "Software developers. We're not known for our Rock and style. Are we or are we today? I'll show you how I use ml to make new trendier taking inspiration from influencers."
