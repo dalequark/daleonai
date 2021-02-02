@@ -66,15 +66,33 @@ The challenging bits are the ones I bolded above, that mainly come from having t
 
 ## Using the Google Cloud Speech-to-Text API
 
-The first step in translating a video is transcribing its audio to words. To do this, I used Google Cloud's [Speech-to-Text API](?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). This tool can recognize text spoken in 125 languages and supports a handful of neat, new features (some of which are currently in beta), like:
+The first step in translating a video is transcribing its audio to words. To do this, I used Google Cloud's [Speech-to-Text API](?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). This tool can recognize text spoken in 125 languages, but as I mentioned above, the quality is highest in English. For our use case, we'll want to enable a couple of special features, like:
 
-\-  Automatic Punctuation
+\- [Enhanced models](cloud.google.com/speech-to-text?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). These are Speech-to-Text models that have been trained on specific data types ("video," "phone_call") and are usually higher-quality. We'll use the "video" model, of course.
 
-\- Speaker Diarization (recognizing what multiple speakers are saying in a video)
+\- Profanity filters. This flag prevents the API from returning any naughty words.
 
-\- Content filtering (i.e. to filter out profane words)
+\- Word time offsets. This flag tells the API that we want transcribed words returned along with the times that the speaker said them. We'll use these timestamps to help align our subtitles and dubs with the source video.
 
+To enable these options, you'll the Speech-to-Text API with this configuration (in Python):
 
+`config = speech.RecognitionConfig(`
+
+`language_code="en-US"`
+
+`enable_automatic_punctuation=True,`
+
+`enable_word_time_offsets=True,`
+
+`speech_contexts=[{"phrases": ["Dale", "Machine Learning"], "boost": 15}],`
+
+`profanity_filter=True,`
+
+`use_enhanced="video",`
+
+`model="video")`
+
+``
 
 To extract audio from video files, I used the handy Python library [PyDub](https://github.com/jiaaro/pydub).
 
