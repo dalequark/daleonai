@@ -10,6 +10,8 @@ tags:
   - nlp
 permalink: translate-dub-videos-with-ml
 ---
+https://www.youtube.com/watch?v=T2TAAHmNBnE&list=PLIivdWyY5sqLsaG5hNms0D9aZRBE7DHBb&index=9
+
 A monkey poking at a typewriter for eternity will eventually print all possible stories, and a person stuck in quarantine long enough will eventually attempt every possible solo human hobby. So I'd say it was inevitable that post baking/roller skating/sewing/sewing I would eventually become introduced to (and soon addicted to) Japanese cartoons.
 
 If you are also a person who watches anime, 
