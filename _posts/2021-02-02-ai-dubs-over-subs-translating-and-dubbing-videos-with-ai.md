@@ -74,9 +74,7 @@ The first step in translating a video is transcribing its audio to words. To do 
 
 \- Word time offsets. This flag tells the API that we want transcribed words returned along with the times that the speaker said them. We'll use these timestamps to help align our subtitles and dubs with the source video.
 
-\- [Speech Adaption](https://cloud.google.com/speech-to-text/docs/context-strength?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221).
-
-To enable these options, you'll call the Speech-to-Text API with this configuration (in Python):
+\- [Speech Adaption](https://cloud.google.com/speech-to-text/docs/context-strength?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). Typically, Speech-to-Text struggles most with uncommon words or phrases. If you know certain words or phrases are likely to appear in your video (i.e. "gradient descent," "support vector machine"), you can pass them to the API in an array that will make the more likely to be transcribed:
 
 `config = speech.RecognitionConfig(`
 
@@ -86,10 +84,12 @@ To enable these options, you'll call the Speech-to-Text API with this configurat
 
 `enable_word_time_offsets=True,`
 
-`speech_contexts=[{"phrases": ["Dale", "Machine Learning"], "boost": 15}],`
+`speech_contexts=[{"phrases": ["gradient descent", "support vector machine"], "boost": 15}],`
 
 `profanity_filter=True,`
 
 `use_enhanced="video",`
 
 `model="video")`
+
+struggles
