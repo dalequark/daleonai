@@ -46,8 +46,6 @@ Dubbing from non-English languages proved substantially more challenging. Hereâ€
 
 If you want to leave translation/dubbing to humans, well--I can't blame you. But if not, read on!
 
-
-
 ## Building an AI Translating Dubber
 
 As always, you can find all of the code for this project in the [Making with Machine Learning Github repo](https://github.com/google/making_with_ml/tree/master/ai_dubs). To run the code yourself, follow the README to configure your credentials and enable APIs. Here in this post, Iâ€™ll just walk through my findings at a high level.
@@ -68,7 +66,7 @@ The challenging bits are the ones I bolded above, that mainly come from having t
 
 ## Using the Google Cloud Speech-to-Text API
 
-The first step in translating a video is transcribing its audio to words. To do this, I used Google Cloud's [Speech-to-Text API](?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). This tool can recognize text spoken in 125 languages and supports a handful of neat, new features which are currently in beta, like:
+The first step in translating a video is transcribing its audio to words. To do this, I used Google Cloud's [Speech-to-Text API](?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). This tool can recognize text spoken in 125 languages and supports a handful of neat, new features (some of which are currently in beta), like:
 
 \-  Automatic Punctuation
 
@@ -76,39 +74,6 @@ The first step in translating a video is transcribing its audio to words. To do 
 
 \- Content filtering (i.e. to filter out profane words)
 
-Here's an example of what calling the STT API looks like:
-
-client = speech.SpeechClient()
-
-audio = speech.RecognitionAudio(uri=gcsPath)
-
-config = speech.RecognitionConfig(
-
-language_code="en-US" if langCode == "en" else langCode,
-
-enable_automatic_punctuation=True,
-
-enable_word_time_offsets=True,
-
-speech_contexts=[{
-
-"phrases": phraseHints,
-
-"boost": 15
-
-}],
-
-diarization_config=diarizationConfig,
-
-profanity_filter=True,
-
-use_enhanced=True,
-
-model="video"
-
-)
-
-res = client.long_running_recognize(config=config, audio=audio).result()
 
 
 To extract audio from video files, I used the handy Python library [PyDub](https://github.com/jiaaro/pydub).
