@@ -46,6 +46,8 @@ Dubbing from non-English languages proved substantially more challenging. Hereâ€
 
 If you want to leave translation/dubbing to humans, well--I can't blame you. But if not, read on!
 
+
+
 ## Building an AI Translating Dubber
 
 As always, you can find all of the code for this project in the [Making with Machine Learning Github repo](https://github.com/google/making_with_ml/tree/master/ai_dubs). To run the code yourself, follow the README to configure your credentials and enable APIs. Here in this post, Iâ€™ll just walk through my findings at a high level.
@@ -64,7 +66,17 @@ I admit that when I first set out to build this dubber, I was full of hubris--al
 
 The challenging bits are the ones I bolded above, that mainly come from having to align translations with video. But more on that in a bit.
 
-Speech-to-Text
+## Using the Google Cloud Speech-to-Text API
+
+The first step in translating a video is transcribing its audio to words. To do this, I used Google Cloud's [Speech-to-Text API](?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). This tool can recognize text spoken in 125 languages and supports a handful of neat, new features which are currently in beta, like:
+
+\-  Automatic Punctuation
+
+\- Speaker Diarization (recognizing what multiple speakers are saying in a video)
+
+\- Content filtering (i.e. to filter out profane words)
+
+
 
 To extract audio from video files, I used the handy Python library [PyDub](https://github.com/jiaaro/pydub).
 
