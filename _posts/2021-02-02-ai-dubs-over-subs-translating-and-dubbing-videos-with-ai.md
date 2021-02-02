@@ -104,3 +104,13 @@ The API returns the transcribed text along with word-level timestamps as JSON. A
 *What the API thought I said:*
 
 > "Software developers. We're not known for our Rock and style. Are we or are we today? I'll show you how I use ml to make new trendier taking inspiration from influencers."
+
+At this point, we can use the API output to generate (non-translated) subtitles. In fact, if you run my script with the \`--srt\` flag, it will do exactly that for you ([srt](<https://blog.hubspot.com/marketing/srt-file#:~:text=An%20SRT%20file%20(otherwise%20known,the%20sequential%20number%20of%20subtitles.>) is a file type for closed captions):
+
+```shell
+python dubber.py my_movie_file.mp4 "en" outputDirectory --srt --targetLangs ["es"]
+```
+
+## Machine Translation
+
+Alright folks, this is where the sh*t starts to get wild.
