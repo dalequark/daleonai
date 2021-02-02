@@ -77,21 +77,23 @@ The first step in translating a video is transcribing its audio to words. To do 
 \- [Speech Adaption](https://cloud.google.com/speech-to-text/docs/context-strength?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). Typically, Speech-to-Text struggles most with uncommon words or phrases. If you know certain words or phrases are likely to appear in your video (i.e. "gradient descent," "support vector machine"), you can pass them to the API in an array that will make the more likely to be transcribed:
 
 ```python
+client = speech.SpeechClient()  
+# Audio must be uploaded to a GCS bucket if it's > 5 min
+audio = speech.RecognitionAudio(uri="gs://path/to/my/audio.wav")
+    
 config = speech.RecognitionConfig(
+  language_code="en-US"
+  enable_automatic_punctuation=True,
+  enable_word_time_offsets=True,
+  speech_contexts=[
+    {"phrases": ["gradient descent", "support vector machine"], 
+     "boost": 15}
+  ],
+  profanity_filter=True,
+  use_enhanced="video",
+  model="video")
 
-language_code="en-US"
-
-enable_automatic_punctuation=True,
-
-enable_word_time_offsets=True,
-
-speech_contexts=\[{"phrases": ["gradient descent", "support vector machine"], "boost": 15}],
-
-profanity_filter=True,
-
-use_enhanced="video",
-
-model="video")
+res = client.long_running_recognize(config=config, audio=audio).result()
 ```
 
 The API returns the transcribed text along with word-level timestamps as JSON. As an example, I transcribed [this video](https://youtu.be/o6nGn1euRjk). You can see the JSON returned by the API in [this gist](https://gist.github.com/dalequark/e983b929b6194adb49d00a9c55ae4e33). The output also lets us do a quick quality sanity check:
