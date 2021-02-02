@@ -115,6 +115,4 @@ python dubber.py my_movie_file.mp4 "en" outputDirectory --srt --targetLangs ["es
 
 Now that we have the video transcripts, we can use the [Translate API](cloud.google.com/translate?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221) to... uh... translate them. 
 
-
-
-Alright folks, this is where the stuff starts to get wild 🤪.
+This was about where I started to really get punished for my overconfidence. The objective is this: we want to be able translate words in the original video and then play them back at roughly the same point in time, so that my "dubbed" voice is speaking in alignment with my actual voice.
