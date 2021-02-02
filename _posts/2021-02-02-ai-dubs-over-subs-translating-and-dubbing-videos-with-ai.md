@@ -169,6 +169,10 @@ This naturally led to some awkward translations (i.e. "or are we" is a weird fra
 
 Side bar: I also noticed that the accuracy of the timestamps returned by the Speech-to-Text API was significantly less for non-English languages, which further decreased the quality of Non-English-to-English dubbing.
 
-### The NEW Media Translation API
+### The Media Translation API
 
-As it happens, Google Cloud is working on a new API to handle exactly this problem. It's called the [Media Translation API](https://cloud.google.com/media-translation?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221), and it translates audio directly (i.e. no transcribed text intermediary). I wasn't able to use that API in this project because it doesn't yet return timestamps (the tool is currently in beta).
+As it happens, Google Cloud is working on a new API to handle exactly this problem. It's called the [Media Translation API](https://cloud.google.com/media-translation?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221), and it runs translation on audio directly (i.e. no transcribed text intermediary). I wasn't able to use that API in this project because it doesn't yet return timestamps (the tool is currently in beta), but I think it'd be great to use in future iterations!
+
+## Text-to-Speech
+
+Now for the fun bit--picking out computer voices!
