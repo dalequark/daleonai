@@ -119,18 +119,56 @@ Now that we have the video transcripts, we can use the [Translate API](cloud.goo
 
 This is where things start to get a little 🤪.
 
-The objective is this: we want to be able translate words in the original video and then play them back at roughly the same point in time, so that my "dubbed" voice is speaking in alignment with my actual voice.
+Our objective is this: we want to be able translate words in the original video and then play them back at roughly the same point in time, so that my "dubbed" voice is speaking in alignment with my actual voice.
 
 The problem, though, is that translations aren't word-for-word. A sentence translated from English to Japanese may have word order jumbled. It may contain fewer words, more words, different words, or (as is the case with idioms) completely different wording.
 
-One way we can get around this is by translating entire *sentences* and then trying to align the time boundaries of those sentences. But even this becomes complicated, because how do you denote a sentence? In English, we can split words by punctuation mark, i.e.:
+One way we can get around this is by translating entire *sentences* and then trying to align the time boundaries of those sentences. But even this becomes complicated, because how do you denote a single sentence? In English, we can split words by punctuation mark, i.e.:
 
 `"Hi! My name is Dale. What's up?" --> ["Hi", "My name is Dale", "What's up"]`
 
-But punctuation differs by language (there's no ¿ in English), and some languages don't denote sentences by punctuation marks at all.
+But punctuation differs by language (there's no ¿ in English), and some languages don't seperate sentences by punctuation marks at all.
 
 Plus, in real life speech, we often don't talk in complete sentences. Y'know?
 
-Another wrinkle that makes translation transcripts difficult is that, in general, the *more* context you feed into a translation model, the higher quality translation you can expect. So for example, it would be better to translate the sentence:
+Another wrinkle that makes translating transcripts difficult is that, in general, the *more* context you feed into a translation model, the higher quality translation you can expect. So for example, if I translate the following sentence into French:
 
-"This is the best server on the
+"I'm feeling blue, but I like pink too."
+
+I'll get the translation:
+
+"Je me sens bleu, mais j'aime aussi le rose."
+
+This is accurate. But if I split that sentence in two ("I'm feeling blue" and "But I like pink too") and translate each part separately, I get:
+
+"Je me sens triste, mais j'aime aussi le rose", i.e. "I'm feeling sad, but I like pink too."
+
+This is all to say that the more we chop up text before sending it to the Translate API, the worse quality the translations will be (though it'll be more easy to temporally align them with the video).
+
+Ultimately, the strategy I chose was to split up spoken words every time the speaker took a greater-than-one-second pause in speaking. Here's an example of what that looked like:
+
+```json
+   {
+        "en": "Software developers.",
+        "start_time": 0.2,
+        "end_time": 1.5,
+    },
+    {
+        "en": "We're not known for our Rock and style. Are we",
+        "start_time": 1.6,
+        "end_time": 4.4,
+    },
+    {
+        "en": "or are we",
+        "start_time": 5,
+        "end_time": 6.2,
+    },
+```
+
+This naturally led to some awkward translations (i.e. "or are we" is a weird fragment to translate"), but I found it worked good enough. [Here's](https://github.com/google/making_with_ml/blob/e653e86e7378b15372ad762b9d61df47d4c4879f/ai_dubs/dubber.py#L157) where that looks like in code.
+
+Side bar: I also noticed that the accuracy of the timestamps returned by the Speech-to-Text API was significantly less for non-English languages, which further decreased the quality of Non-English-to-English dubbing.
+
+### The NEW Media Translation API
+
+As it happens, Google Cloud is working on a new API to handle exactly this problem. It's called the [Media Translation API](https://cloud.google.com/media-translation?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221), and it translates audio directly (i.e. no transcribed text intermediary). I wasn't able to use that API in this project because it doesn't yet return timestamps (the tool is currently in beta).
