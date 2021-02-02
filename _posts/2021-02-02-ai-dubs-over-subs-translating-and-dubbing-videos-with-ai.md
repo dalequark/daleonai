@@ -50,17 +50,19 @@ If you want to leave translation/dubbing to humans, well--I can't blame you. But
 
 As always, you can find all of the code for this project in the [Making with Machine Learning Github repo](https://github.com/google/making_with_ml/tree/master/ai_dubs). To run the code yourself, follow the README to configure your credentials and enable APIs. Here in this post, I’ll just walk through my findings at a high level.
 
-I’ll be straight with you and admit that when I first set out to build this dubber, I thought it would be a real cake walk--just plugging three APIs together, what could be easier? I had so much hubris that I even recorded an entire video talking about my dubber without having written a single line of code. But all hubris must be punished, and boy, was I punished.
+First, here are the steps we'll follow:
 
-The challenge comes from having to align computer-generated translations and dubs with video. Here’s an overview of the steps:
-
-1. Extract audio from video files using PyDub
+1. Extract audio from video files
 2. Convert audio to text using the Speech-to-Text API
-3. Split transcribed text into sentences/segments for translation
+3. **Split transcribed text into sentences/segments for translation**
 4. Translate text
 5. Generate spoken audio versions of the translated text
-6. Speed up the generated audio to align with the original speaker in the video
+6. **Speed up the generated audio to align with the original speaker in the video**
 7. Stitch the new audio on top of the fold audio/video
+
+I admit that when I first set out to build this dubber, I was full of hubris--all I had to do was plug a few APIs together, what could be easier? But as a programmer, all hubris must be punished, and boy, was I punished.
+
+The challenging bits are the ones I bolded above, that mainly come from having to align translations with video. But more on that in a bit.
 
 Speech-to-Text
 
