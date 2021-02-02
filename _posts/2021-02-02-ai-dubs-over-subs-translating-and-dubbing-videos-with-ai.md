@@ -42,15 +42,9 @@ In my experience, the most successful dubbed videos were those that featured a s
 
 Dubbing from non-English languages proved substantially more challenging. Here’s one particularly unimpressive dub from Japanese to English of one of my favorite shows, Death Note:
 
-// Death note clip
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gWNRfeEHmp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Like I said before, I had better results going from English to other languages:
-
-// Spanish example
-
-More details on this tricky problem below.
-
-As for the quality of Text-to-Speech computer voices, I’ll let you decide--would you listen to 20 minutes of video spoken by a bot?
+If you want to leave translation/dubbing to humans, well--I can't blame you. But if not, read on!
 
 ## Building an AI Translating Dubber
 
