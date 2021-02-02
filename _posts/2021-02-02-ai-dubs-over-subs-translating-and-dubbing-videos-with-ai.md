@@ -105,6 +105,8 @@ The API returns the transcribed text along with word-level timestamps as JSON. A
 
 > "Software developers. We're not known for our Rock and style. Are we or are we today? I'll show you how I use ml to make new trendier taking inspiration from influencers."
 
+In my experience, this is about the quality you can expect when transcribing high-quality English audio. Note that the punctuation is a little off.
+
 At this point, we can use the API output to generate (non-translated) subtitles. In fact, if you run my script with the \`--srt\` flag, it will do exactly that for you ([srt](<https://blog.hubspot.com/marketing/srt-file#:~:text=An%20SRT%20file%20(otherwise%20known,the%20sequential%20number%20of%20subtitles.>) is a file type for closed captions):
 
 ```shell
@@ -115,4 +117,14 @@ python dubber.py my_movie_file.mp4 "en" outputDirectory --srt --targetLangs ["es
 
 Now that we have the video transcripts, we can use the [Translate API](cloud.google.com/translate?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221) to... uh... translate them. 
 
-This was about where I started to really get punished for my overconfidence. The objective is this: we want to be able translate words in the original video and then play them back at roughly the same point in time, so that my "dubbed" voice is speaking in alignment with my actual voice.
+This is where things start to get a little 🤪.
+
+The objective is this: we want to be able translate words in the original video and then play them back at roughly the same point in time, so that my "dubbed" voice is speaking in alignment with my actual voice.
+
+The problem, though, is that translations aren't word-for-word. A sentence translated from English to Japanese may have word order jumbled. It may contain fewer words, more words, different words, or (as is the case with idioms) completely different wording.
+
+One way we can get around this is by translating entire *sentences* and then trying to align the time boundaries of those sentences. But even this becomes complicated, because how do you denote a sentence? In English, you can split words by punctuation mark, i.e.:
+
+`"Hi! My name is Dale. What's up?" --> ["Hi", "My name is Dale", "What's up"]`
+
+But that only works
