@@ -68,13 +68,15 @@ The challenging bits are the ones I bolded above, that mainly come from having t
 
 The first step in translating a video is transcribing its audio to words. To do this, I used Google Cloud's [Speech-to-Text API](?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). This tool can recognize text spoken in 125 languages, but as I mentioned above, the quality is highest in English. For our use case, we'll want to enable a couple of special features, like:
 
-\- [Enhanced models](cloud.google.com/speech-to-text?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). These are Speech-to-Text models that have been trained on specific data types ("video," "phone_call") and are usually higher-quality. We'll use the "video" model, of course.
+\- [Enhanced models](https://cloud.google.com/speech-to-text/docs/enhanced-models?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). These are Speech-to-Text models that have been trained on specific data types ("video," "phone_call") and are usually higher-quality. We'll use the "video" model, of course.
 
 \- Profanity filters. This flag prevents the API from returning any naughty words.
 
 \- Word time offsets. This flag tells the API that we want transcribed words returned along with the times that the speaker said them. We'll use these timestamps to help align our subtitles and dubs with the source video.
 
-To enable these options, you'll the Speech-to-Text API with this configuration (in Python):
+\- [Speech Adaption](https://cloud.google.com/speech-to-text/docs/context-strength?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221).
+
+To enable these options, you'll call the Speech-to-Text API with this configuration (in Python):
 
 `config = speech.RecognitionConfig(`
 
@@ -91,9 +93,3 @@ To enable these options, you'll the Speech-to-Text API with this configuration (
 `use_enhanced="video",`
 
 `model="video")`
-
-To extract audio from video files, I used the handy Python library [PyDub](https://github.com/jiaaro/pydub).
-
-Let’s start with the Speech-to-Text API. To use this tool, we first take a video, extract the audio from it as a wav file, upload that audio to a Google Cloud bucket, and then call the API with a pointer to that file. It’s not the simplest API usage pattern in the world, but it works. To extract the audio from the video, I used the handy Python library [PyDub](https://github.com/jiaaro/pydub).
-
-The Speech-to-Text API has some interesting configuration options that are worth talking about:
