@@ -123,8 +123,14 @@ The objective is this: we want to be able translate words in the original video 
 
 The problem, though, is that translations aren't word-for-word. A sentence translated from English to Japanese may have word order jumbled. It may contain fewer words, more words, different words, or (as is the case with idioms) completely different wording.
 
-One way we can get around this is by translating entire *sentences* and then trying to align the time boundaries of those sentences. But even this becomes complicated, because how do you denote a sentence? In English, you can split words by punctuation mark, i.e.:
+One way we can get around this is by translating entire *sentences* and then trying to align the time boundaries of those sentences. But even this becomes complicated, because how do you denote a sentence? In English, we can split words by punctuation mark, i.e.:
 
 `"Hi! My name is Dale. What's up?" --> ["Hi", "My name is Dale", "What's up"]`
 
-But that only works
+But punctuation differs by language (there's no ¿ in English), and some languages don't denote sentences by punctuation marks at all.
+
+Plus, in real life speech, we often don't talk in complete sentences. Y'know?
+
+Another wrinkle that makes translation transcripts difficult is that, in general, the *more* context you feed into a translation model, the higher quality translation you can expect. So for example, it would be better to translate the sentence:
+
+"This is the best server on the
