@@ -92,8 +92,6 @@ To enable these options, you'll the Speech-to-Text API with this configuration (
 
 `model="video")`
 
-``
-
 To extract audio from video files, I used the handy Python library [PyDub](https://github.com/jiaaro/pydub).
 
 Let’s start with the Speech-to-Text API. To use this tool, we first take a video, extract the audio from it as a wav file, upload that audio to a Google Cloud bucket, and then call the API with a pointer to that file. It’s not the simplest API usage pattern in the world, but it works. To extract the audio from the video, I used the handy Python library [PyDub](https://github.com/jiaaro/pydub).
