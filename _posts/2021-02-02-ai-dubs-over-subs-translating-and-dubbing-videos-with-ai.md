@@ -22,27 +22,25 @@ So in this post, I’ll show you how to use machine learning to transcribe, tran
 
 (By the way, before you flame-blast me in the comments, dear reader, I should tell you that YouTube will [automatically and for free](https://support.google.com/youtube/answer/6373554#zippy=%2Cautomatic-captions-on-videos-on-demand) transcribe (and even translate?) your videos for you. So you can treat this project like your new hobby of baking sourdough from scratch: a really inefficient use of 30 hours.)
 
-## AI-Dubbed Video: Do they axe usually sound grood? 
+## AI-Dubbed Videos: Do they axe usually sound grood? 
 
-Let’s get down to brass tax: what quality can we expect to achieve from an ML-video-dubbing pipeline? 
+Before you embark on this journey, you probably want to know what you have to look forward to. What quality can we realistically expect to achieve from an ML-video-dubbing pipeline? 
 
-Take a look at this video dubbed automatically from English to Spanish (the subtitles are also automatically generated, in English):
+Here's one example dubbed automatically from English to Spanish (the subtitles are also automatically generated in English). I haven't done any tuning or adjusting on it:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cURHKESgNaI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-What makes this project trickier (read: more fun) than most is that there are (at least) three possible points of failure:
+As you can see, the transcriptions are decent but not perfect, and the same for translations. (Ignore the fact that the speaker sometimes speaks too fast--more on that later.) Overall. you can easily get the gist of what's going on from this dubbed video, but it's exactly near human-quality.
+
+What makes this project trickier (read: more fun) than most is that there are at least three possible points of failure:
 
 1. The video can be incorrectly transcribed from audio to text by the Speech-to-Text API
 2. That text can be incorrectly or awkwardly translated by the Translation API
 3. Those translations can be mispronounced by the Text-to-Speech API
 
-In my experience, the most successful dubbed videos were those that featured a single speaker over a clear audio stream and that were dubbed from English to another language. This is largely because the quality of transcription (Speech-to-Text) was much higher in English than other source languages. To get a sense for transcription quality, take a look at this video that was dubbed from English to English (i.e. not translated at all):
+In my experience, the most successful dubbed videos were those that featured a single speaker over a clear audio stream and that were dubbed from English to another language. This is largely because the quality of transcription (Speech-to-Text) was much higher in English than other source languages.
 
-// English to English dub
-
-It’s not perfect, but you get the gist of what’s going on.
-
-Now, how good are the translations? For video dubbing, this question is hard to answer. On one hand, for regular text, I’ve found the quality of the [Google Cloud Translation API](http://cloud.google.com/translate) to be quite high. However, translating audio from videos for the purpose of dubbing is tricky business, because you have to ensure the translated text aligns, time-wise, with the video. Depending on how you implement this logic, you can end up with some lower-than-ideal quality translations. Here’s one particularly unimpressive dub from Japanese to English of one of my favorite shows, Death Note:
+Dubbing from non-English languages proved substantially more challenging. Here’s one particularly unimpressive dub from Japanese to English of one of my favorite shows, Death Note:
 
 // Death note clip
 
