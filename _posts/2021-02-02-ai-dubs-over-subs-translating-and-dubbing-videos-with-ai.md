@@ -76,6 +76,39 @@ The first step in translating a video is transcribing its audio to words. To do 
 
 \- Content filtering (i.e. to filter out profane words)
 
+Here's an example of what calling the STT API looks like:
+
+client = speech.SpeechClient()
+
+audio = speech.RecognitionAudio(uri=gcsPath)
+
+config = speech.RecognitionConfig(
+
+language_code="en-US" if langCode == "en" else langCode,
+
+enable_automatic_punctuation=True,
+
+enable_word_time_offsets=True,
+
+speech_contexts=[{
+
+"phrases": phraseHints,
+
+"boost": 15
+
+}],
+
+diarization_config=diarizationConfig,
+
+profanity_filter=True,
+
+use_enhanced=True,
+
+model="video"
+
+)
+
+res = client.long_running_recognize(config=config, audio=audio).result()
 
 
 To extract audio from video files, I used the handy Python library [PyDub](https://github.com/jiaaro/pydub).
