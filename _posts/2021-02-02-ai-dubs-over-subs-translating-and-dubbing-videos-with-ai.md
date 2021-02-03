@@ -10,9 +10,9 @@ tags:
   - nlp
 permalink: translate-dub-videos-with-ml
 ---
-Alongside cooking for myself and taking laps around my house, anime (i.e. Japanese cartoons) is something I learned to love during quarantine.
+Alongside cooking for myself and walking laps around the house, anime (i.e. Japanese cartoons) is something I've learned to love during quarantine.
 
-The problem with watching anime though, is that short of learning Japanese, you become dependent on human translators and voice actors to port the content to your language. Sometimes you get the subtitles (“subs”) but not the voicing (“dubs”). Other times, entire seasons of shows aren’t translated at all, and you’re left on the edge of your seat with only Wikipedia summaries and 90s web forums to ferry you through the darkness. 
+The problem with watching anime, though, is that short of learning Japanese, you become dependent on human translators and voice actors to port the content to your language. Sometimes you get the subtitles (“subs”) but not the voicing (“dubs”). Other times, entire seasons of shows aren’t translated at all, and you’re left on the edge of your seat with only Wikipedia summaries and 90s web forums to ferry you through the darkness. 
 
 So what are you supposed to do? The answer is obviously not to ask a computer to transcribe, translate, and voice-act entire episodes of a TV show from Japanese to English. Translation is a careful art that can’t be automated, and requires the loving touch of a human hand. Besides, even if you did use machine learning to translate a video, you couldn’t use a computer to dub... I mean, who would want to listen to machine voices for an entire season? It’d be awful. Only a real sicko would want that.
 
@@ -28,7 +28,7 @@ Here's one example dubbed automatically from English to Spanish (the subtitles a
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cURHKESgNaI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-As you can see, the transcriptions are decent but not perfect, and the same for translations. (Ignore the fact that the speaker sometimes speaks too fast--more on that later.) Overall. you can easily get the gist of what's going on from this dubbed video, but it's exactly near human-quality.
+As you can see, the transcriptions are decent but not perfect, and the same for the translations. (Ignore the fact that the speaker sometimes speaks too fast--more on that later.) Overall, you can easily get the gist of what's going on from this dubbed video, but it's not exactly near human-quality.
 
 What makes this project trickier (read: more fun) than most is that there are at least three possible points of failure:
 
