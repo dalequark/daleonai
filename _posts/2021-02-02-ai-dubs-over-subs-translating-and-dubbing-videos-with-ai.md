@@ -64,7 +64,7 @@ The challenging bits are the ones I bolded above, that mainly come from having t
 
 ## Using the Google Cloud Speech-to-Text API
 
-The first step in translating a video is transcribing its audio to words. To do this, I used Google Cloud's [Speech-to-Text API](?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). This tool can recognize text spoken in 125 languages, but as I mentioned above, the quality is highest in English. For our use case, we'll want to enable a couple of special features, like:
+The first step in translating a video is transcribing its audio to words. To do this, I used Google Cloud's [Speech-to-Text API](?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). This tool can recognize audio spoken in 125 languages, but as I mentioned above, the quality is highest in English. For our use case, we'll want to enable a couple of special features, like:
 
 * [Enhanced models](https://cloud.google.com/speech-to-text/docs/enhanced-models?utm_source=blog&utm_medium=partner&utm_campaign=CDR_dal_aiml_ai-dubs_020221). These are Speech-to-Text models that have been trained on specific data types ("video," "phone_call") and are usually higher-quality. We'll use the "video" model, of course.
 * Profanity filters. This flag prevents the API from returning any naughty words.
@@ -125,7 +125,7 @@ One way we can get around this is by translating entire *sentences* and then try
 
 `"Hi! My name is Dale. What's up?" --> ["Hi", "My name is Dale", "What's up"]`
 
-But punctuation differs by language (there's no ¿ in English), and some languages don't seperate sentences by punctuation marks at all.
+But punctuation differs by language (there's no ¿ in English), and some languages don't separate sentences by punctuation marks at all.
 
 Plus, in real life speech, we often don't talk in complete sentences. Y'know?
 
@@ -163,7 +163,7 @@ Ultimately, the strategy I chose was to split up spoken words every time the spe
     },
 ```
 
-This naturally led to some awkward translations (i.e. "or are we" is a weird fragment to translate"), but I found it worked good enough. [Here's](https://github.com/google/making_with_ml/blob/e653e86e7378b15372ad762b9d61df47d4c4879f/ai_dubs/dubber.py#L157) where that looks like in code.
+This naturally led to some awkward translations (i.e. "or are we" is a weird fragment to translate), but I found it worked well enough. [Here's](https://github.com/google/making_with_ml/blob/e653e86e7378b15372ad762b9d61df47d4c4879f/ai_dubs/dubber.py#L157) where that logic looks like in code.
 
 Side bar: I also noticed that the accuracy of the timestamps returned by the Speech-to-Text API was significantly less for non-English languages, which further decreased the quality of Non-English-to-English dubbing.
 
