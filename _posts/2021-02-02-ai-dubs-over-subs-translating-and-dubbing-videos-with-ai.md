@@ -256,4 +256,4 @@ This solved the problem of aligning audio to video, but it did sometimes mean th
 
 ## Was it worth it?
 
-You know the expression, "Play stupid games, win stupid prizes"?
+You know the expression, "Play stupid games, win stupid prizes?" It feels like every ML project I build here is something of a labor of love, but this time, I love my stupid prize: the ability to generate an unlimited number of weird, robotic, awkward anime dubs, that are sometimes kinda decent.
