@@ -24,3 +24,5 @@ permalink: humans
 \- It's like a mirror, mismatched and rearranged.
 
 \- Understanding this, we can start to ask what types of problems won't be able to be solved by neural networks do to a lack of data.
+
+\- However, humans parody TV and movies too.
