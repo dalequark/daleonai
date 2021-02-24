@@ -1,6 +1,6 @@
 ---
 layout: post
-title: What is human anymore?
+title: What is truly human?
 date: 2021-02-24T17:57:35.772Z
 description: What won't machines be able to do next?
 feature_image: /images/about.jpg
