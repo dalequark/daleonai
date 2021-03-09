@@ -1,13 +1,13 @@
 ---
 layout: post
-title: How I, a Humble Coder, Handle Imposter Syndrome
+title: How I, One Humble Engineer, Deal With Imposter Syndrome
 date: 2021-03-09T18:17:18.790Z
-description: Imposter syndrome
-feature_image: /images/about.jpg
-thumbnail_image: /images/about.jpg
+description: But it's just, like, my opinion.
+feature_image: /images/copy-of-painless-ai-on-google-cloud.png
+thumbnail_image: /images/imposter-syndrome.png
 tags:
   - life
-permalink: imposter-syndrome-in-tech
+permalink: my-take-imposter-syndrome-tech
 ---
 Let me start this post off by saying that imposter syndrome has already been covered profusely and at length, and there’s probably nothing new I can add to the discussion, so let me stop here, thanks for reading, and sorry for wasting your time.
 
@@ -84,9 +84,9 @@ Of course, at the end of this calibration exercise, you may learn something that
 
 ## Talk the Talk
 
-It’s important to calibrate your abilities against your peers not just so you know how “good” you are, but also so that you understand how your peers (who are sometimes your competition) are representing themselves. No, you don’t want to lie on your resume and say you’re C# expert when all you’ve written is “Hello, world.” But at the same time, if everyone on the job market is listing themselves as experienced C# developers with only a year of experience, shouldn’t you be using that as the same bar for yourself? In fact, if you don’t do this--if you hold yourself to a higher bar--you might be inadvertently misleading the people around you by using a different scale.
+It’s important to calibrate your abilities against your peers not just so you know how “good” you are, but also so that you understand how your peers (who are sometimes your competition) are representing themselves. No, you don’t want to lie on your resume and say you’re C# expert when all you’ve written is “Hello, world.” But at the same time, if everyone on the job market is listing themselves as experienced C# developers with only a year of experience, shouldn’t you be using that as the same bar for yourself? In fact, if you don’t do this--if you hold yourself to a higher bar--you might be inadvertently misleading folks into thinking you're less competent than you really are, because you're using a different scale.
 
-// To do: Draw a diagram illustrating this phenomenon
+![Difference in confidence scale](/images/confidence_chart.jpeg "Difference in confidence scale")
 
 Overselling your abilities is unwise and feels “icky.” But when you really understand how people with your abilities represent themselves, you may find you speak with more confidence naturally, simply because you feel it’s honestly deserved.
 
@@ -98,20 +98,30 @@ I’m guilty, often, of being so afraid of being “found out” that when I say
 
 I also tack on:
 
-“But I don’t know anything about Flask or Django or how to author a pip package, and I don’t know the difference between Python 3 and Python 2, and I’ve never used the collections package, and sometimes when I laugh too hard, I pee myself a little bit.”
+“But I don’t know anything about Flask or Django or how to author a pip package, and I don’t know the difference between Python 3 and Python 2, and I’ve never used the `collections` package, and sometimes when I laugh too hard, I pee myself a little bit.”
 
-My fiancé once asked his dad for advice on asking out a girl who was “out of his league.” His father replied: “Let her figure that out.”
+My fiancé once asked his dad for advice on asking out a girl who was “out of his league.” His father replied:
 
-For me and many of the women I’ve spoken to, we are so afraid of saying something that turns out to be wrong that we’re willing to massacure our credibility right up front to avoid that possibility. This is unnecessary. If you say something wrong, someone will look it up and correct you, or maybe they won’t. Big whoop. Just don’t try this on Twitter.
+“Let her figure that out.”
+
+For me and many of the women I’ve spoken to, we are so afraid of saying something that turns out to be wrong that we’re willing to massacre our credibility right up front to avoid that possibility. This is unnecessary. If you say something wrong, someone will look it up and correct you, or maybe they won’t. Big whoop. Just don’t try this on Twitter.
 
 ## You’re Smart Even If You Don’t Know About Kubernetes
 
 Maybe this is the most important tip of all. 
 
-For most of this post, I’ve suggested actions you can take to feel like less of an imposter--to change the way you think of yourself, and the way you present yourself to others. But of course, there’s a lot about the way people perceive you you simply cannot control, especially when it comes to bias. As a woman in tech, I will always struggle to convince folks I’m competent, and their reactions will always make me feel less so. Plus, sexism aside, tech is filled with lots of jerks, and many more people who aren’t jerks, but that occasionally speak like them. I don’t know how to change that.
+For most of this post, I’ve suggested actions you can take to feel like less of an imposter--to change the way you think of yourself, and the way you present yourself to others. But of course, there’s a lot about the way people perceive you you simply cannot control, especially when bias is involved. As a woman in tech, I will always struggle to convince folks I’m competent, and their reactions will always make me feel less so. Plus, sexism aside, tech is filled with lots of jerks, and many more people who aren’t jerks, but that occasionally speak like them. I don’t know how to change that.
 
-But I do think there’s value in recognizing when you’re talking to a jerk, so you don’t internalize this as a flaw in yourself. You cannot reasonably go up to Vint Cerf, the inverter of TCP/IP, and expect to have a debate about network protocols in which you don’t get totally schooled. But no matter how much or how little you know about a subject, you always deserve to be spoken to like a smart person. When I wonder if a coworker is “talking down to me,” I ask myself, “is this how that person would talk to me if I were Richard Feynman?” Because Richard Feynman doesn’t know about Kubernetes, but you’d never explain something to him like he was a hapless dummy.
+But I do think there’s value in recognizing when you’re talking to a jerk, so you don’t internalize this as a flaw in yourself. You cannot reasonably go up to Vint Cerf, the inverter of TCP/IP, and expect to have a debate about network protocols in which you don’t get totally schooled. But no matter how much or how little you know about a subject, you always deserve to be spoken to like a smart person. When I wonder if a coworker is talking down to me, I ask myself, “is this how that person would speak to me if I were Richard Feynman?” Because Richard Feynman doesn’t know about Kubernetes, but you’d never explain something to him like he were a hapless dummy.
 
 Of course, when you identify you're being talked down to, there's not necessarily much you can do about it. But sometimes identifying the things you can't change gives you more time to focus on the things you can.
 
-But that’s just, like, my opinion, and what do I know?
+But what do I know?
+
+\---
+
+A very big thanks to [Sara Robinson](https://twitter.com/SRobTweets) and [Anu Srivasta](https://twitter.com/asrivas_dev), two of my wicked smart and thoughtful coworkers, for feedback on this post.
+
+
+
+\* "Frank," you know who you are.
