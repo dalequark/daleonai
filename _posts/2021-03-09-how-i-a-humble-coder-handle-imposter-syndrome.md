@@ -120,7 +120,7 @@ But what do I know?
 
 \---
 
-A very big thanks to [Sara Robinson](https://twitter.com/SRobTweets) and [Anu Srivasta](https://twitter.com/asrivas_dev), two of my wicked smart and thoughtful coworkers, for feedback on this post.
+A very big thanks to [Sara Robinson](https://twitter.com/SRobTweets) and [Anu Srivastava](https://twitter.com/asrivas_dev), two of my wicked smart and thoughtful coworkers, for feedback on this post.
 
 
 
