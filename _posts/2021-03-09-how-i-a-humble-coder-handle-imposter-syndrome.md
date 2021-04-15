@@ -20,7 +20,7 @@ Akhem. While there’s already tons of advice for overcoming imposter syndrome, 
 
 The first angle is clearly useless, and the second, I’d argue, is neither possible nor advisable. 
 
-Hot take: you cannot successfully fake being confident. Not to say it wouldn’t be useful if you could. Research shows that when it comes to appearing competent, confidence is as (or more) persuasive than actual competence in getting people to think you know what you're doing. _Over_confidence can get you far in life. But the same studies show that it’s not enough to merely fake being confident. You have to actually believe it--you have to be “honestly overconfident.” In a fantastic piece for [The Atlantic](https://www.theatlantic.com/magazine/archive/2014/05/the-confidence-gap/359815/), Katty Kay and Claire Shipman write of their interview with the confidence researcher Cameron Anderson:
+Hot take: you cannot successfully fake being confident. Not to say it wouldn’t be useful if you could. Research shows that when it comes to appearing competent, confidence is as (or more) persuasive than actual competence in getting people to think you know what you're doing. *Over*confidence can get you far in life. But the same studies show that it’s not enough to merely fake being confident. You have to actually believe it--you have to be “honestly overconfident.” In a fantastic piece for [The Atlantic](https://www.theatlantic.com/magazine/archive/2014/05/the-confidence-gap/359815/), Katty Kay and Claire Shipman write of their interview with the confidence researcher Cameron Anderson:
 
 > True overconfidence is not mere bluster. Anderson thinks the reason extremely confident people don’t alienate others is that they aren’t faking it. They genuinely believe they are good, and that self-belief is what comes across. Fake confidence, he told us, just doesn’t work in the same way. \[...] Most people can spot fake confidence from a mile away.
 
@@ -40,7 +40,7 @@ So what’s the solution? For me, the answer has been to focus on acquiring “t
 
 There’s a famous Bob Thaves quote that says, of the dancer Fred Astaire: 
 
-Sure he was great, but don't forget that [Ginger Rogers](https://en.wikipedia.org/wiki/Ginger_Rogers) did everything he did, backwards, and in high heels.
+> Sure he was great, but don't forget that [Ginger Rogers](https://en.wikipedia.org/wiki/Ginger_Rogers) did everything he did, backwards, and in high heels.
 
 It may well be true that no matter how qualified you are, if you don’t come in the right package--if you’re not tall or male or confident or charismatic--that you have to work twice as hard for people to realize it. If they ever realize it.
 
@@ -121,7 +121,5 @@ But what do I know?
 \---
 
 A very big thanks to [Sara Robinson](https://twitter.com/SRobTweets) and [Anu Srivastava](https://twitter.com/asrivas_dev), two of my wicked smart and thoughtful coworkers, for feedback on this post.
-
-
 
 \* "Frank," you know who you are.
