@@ -43,4 +43,6 @@ But RNNS had issues. First, they struggled to handle large sequences of text, li
 
 Worse, RNNs were hard to train. They were notoriously susceptible to what's called the [vanishing/exploding gradient problem](https://towardsdatascience.com/the-exploding-and-vanishing-gradients-problem-in-time-series-6b87d558d22) (sometimes you simply had to restart training and cross your fingers). Even more problematic, because they processed words sequentially, RNNs were hard to parallelize. This meant you couldn't just speed up training by throwing more GPUs at the them, which meant, in turn, you couldn't train them on all that much data.
 
-##Enter Transformers
+## Enter Transformers
+
+This is where the Transformer changed everything. It was a model developed in 2017 by researchers at Google and the University of Toronto, and it was initially designed to do translation.
