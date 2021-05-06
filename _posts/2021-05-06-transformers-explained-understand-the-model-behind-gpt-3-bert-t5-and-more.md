@@ -120,3 +120,9 @@ The attention mechanism has been an extremely useful tool for natural language p
 
 
 #### Self-Attention
+
+The last piece of the Transformer is a twist on attention called "self-attention," and this part is really core to the breakthrough.
+
+The type of attention we just talked about helped align words across English and French sentences, which is important for translation. But what if you're not trying to translate words but instead build a model that understands underlying meaning and patterns in language--a type of model that could be used to do any number of language tasks?
+
+In general, what makes neural networks powerful and exciting and cool is that they often automatically build up meaningful internal representations of the data they're trained on. When you inspect the layers of a convolutional neural network trained on a vision task, for example, you'll find sets of neurons that "recognize" edges, shapes, and even high-level structures like eyes and mouths. A model trained on text data might automatically learn parts of speech and other rules of grammar, and whether words are synonymous. (Word and sentence embeddings are a great example, which I explain in depth [here](https://daleonai.com/semantic-ml).)
