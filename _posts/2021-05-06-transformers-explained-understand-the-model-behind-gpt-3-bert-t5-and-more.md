@@ -60,3 +60,5 @@ So if you remember anything about Transformers, let it be this: combine a model 
 
 
 ## How do Transformers Work?
+
+While the diagram from the [original paper](## Enter Transformers)
