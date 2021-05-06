@@ -155,7 +155,7 @@ If you want a deeper technical explanation, I'd highly recommend checking out Ja
 
 #### What Can Transformers Do?
 
-One of the most popular Transformer-based models is called BERT, short for "Bidirectional Encoder Representations from Transformers." It was introduced by researchers at Google around the time I joined the company, in 2018, and soon made its way into almost every NLP project.
+One of the most popular Transformer-based models is called BERT, short for "Bidirectional Encoder Representations from Transformers." It was introduced by researchers at Google around the time I joined the company, in 2018, and soon made its way into almost every NLP project--including [Google Search](https://blog.google/products/search/search-language-understanding-bert/).
 
 BERT refers not just a model architecture but to a trained model itself, which you can download and use for free [here](https://github.com/google-research/bert). It was trained by Google researchers on a massive text corpus and has become something of a general-purpose pocket knife for NLP. It can be extended solve a bunch of different tasks, like:
 
@@ -171,8 +171,25 @@ BERT refers not just a model architecture but to a trained model itself, which y
 
 \- offensive message/profanity detection
 
-\- 
+\- understanding user queries
 
 \- a whole lot more
 
 BERT proved that you could build very good language models trained on unlabeled data, like text scraped from Wikipedia and Reddit, and that these large "base" models could then be adapted with domain-specific data to lots of different use cases.
+
+More recently, the model [GPT-3](https://daleonai.com/gpt3-explained-fast), created by OpenAI, has been blowing people's minds with its ability to generate realistic text. [Meena](https://ai.googleblog.com/2020/01/towards-conversational-agent-that-can.html), introduced by Google Research last year, is a Transformer-based chatbot (akhem, "conversational agent") that can have compelling conversations about almost any topic (this author once spent twenty minutes arguing with Meena about what it means to be human).
+
+Transformers have also been making waves outside of NLP, by [composing music](https://magenta.tensorflow.org/music-transformer), [generating images from text descriptions](https://daleonai.com/dalle-5-mins), and [predicting protein structure](https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology).
+
+## \
+How Can I Use Transformers?
+
+Now that you're sold on the power of Transformers, you might want to know how you can start using them in your own app. No problemo.
+
+You can download common Transformer-based models like BERT from [TensorFlow Hub](https://tfhub.dev/). For a code tutorial, check out [this one](https://daleonai.com/semantic-ml) I wrote on building apps powered by semantic language.
+
+But if you want to be really trendy and you write Python, I'd highly recommend the popular "Transformers" library maintained by the company [HuggingFace](https://huggingface.co/). The platform allow you to train and use most of today's popular NLP models, like BERT, Roberta, T5, GPT-2, in a very developer-friendly way.
+
+And now that you've made it all the way to the bottom of this article, let indulge you and myself in this picture of an 18 meter, 25 tonne Gundam robot that was [just build in Japan](https://www.theguardian.com/world/2020/sep/23/giant-gundam-robot-japan-makes-its-first-moves-in-yokohama). No, it doesn't have anything to do with Transformers.
+
+![Big in Japan: giant Gundam robot makes its first moves in Yokohama | Japan  | The Guardian](https://i.guim.co.uk/img/media/f945cfc496f5ae647ebe51f099c5a0694294e9aa/581_0_2838_1703/master/2838.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=11094301b13800b7167e3e52fa763c0e)
