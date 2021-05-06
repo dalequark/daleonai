@@ -91,7 +91,7 @@ I've done a bit of over-simplification here--the original authors used sine func
 
 THE NEXT IMPORTANT PART OF TRANSFORMERS IS CALLED ATTENTION.
 
-See what I did there?
+Got that?
 
 Attention is a neural network structure that you'll hear about all over the place in machine learning these days. In fact, the title of the 2017 paper that introduced Transformers wasn't called, *We Present You the Transformer.* Instead it was called [Attention is All You Need](https://arxiv.org/pdf/1706.03762.pdf).
 
@@ -114,3 +114,9 @@ Attention is a mechanism that allows a text model to "look at" every single word
 It's a sort of heat map that shows where the model is "attending" when it outputs each word in the French sentence. As you might expect, w**h**en the model outputs the word “européenne,” it’s attending heavily to both the input words “European" and "Economic.”
 
 And how does the model know which words it should be “attending” to at each time step? It’s something that’s learned from training data. By seeing thousands of examples of French and English sentences, the model learns what types of words are interdependent. It learns how to respect gender, plurality, and other rules of grammar.
+
+The attention mechanism has been an extremely useful tool for natural language processing since its discovery in 2015, but in its original form, it was used alongside recurrent neural networks. So, the innovation of the 2017 Transformers paper was, in part, to ditch RNNs entirely. That's why the 2017 paper was called "Attention is *all* you need."
+
+
+
+#### Self-Attention
