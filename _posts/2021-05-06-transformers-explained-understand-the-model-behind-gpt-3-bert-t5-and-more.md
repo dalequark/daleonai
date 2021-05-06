@@ -5,7 +5,7 @@ date: 2021-05-06T15:57:35.230Z
 description: A quick intro to Transformers, a new neural network transforming
   SOTA in machine learning.
 feature_image: /images/transformers-explained-small.png
-thumbnail_image: /images/ai-dubs.png
+thumbnail_image: /images/transformers-explained-small.png
 permalink: transformers-explained
 ---
 The neat thing about working in Machine Learning is that every three or four years, someone discovers something revolutionary that makes you completely reconsider what's possible--whether it's a model that [beats the world champion in Go](https://deepmind.com/research/case-studies/alphago-the-story-so-far) or that generates [eerily realistic human faces](https://thispersondoesnotexist.com/).
