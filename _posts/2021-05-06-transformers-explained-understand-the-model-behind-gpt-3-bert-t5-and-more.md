@@ -43,8 +43,6 @@ But RNNS had issues. First, they struggled to handle large sequences of text, li
 
 Worse, RNNs were hard to train. They were notoriously susceptible to what's called the [vanishing/exploding gradient problem](https://towardsdatascience.com/the-exploding-and-vanishing-gradients-problem-in-time-series-6b87d558d22) (sometimes you simply had to restart training and cross your fingers). Even more problematic, because they processed words sequentially, RNNs were hard to parallelize. This meant you couldn't just speed up training by throwing more GPUs at the them, which meant, in turn, you couldn't train them on all that much data.
 
-
-
 ## Enter Transformers
 
 This is where Transformers changed everything. They were developed in 2017 by researchers at Google and the University of Toronto, initially designed to do translation. But unlike recurrent neural networks, Transformers could be very efficiently parallelized. And that meant, with the right hardware, you could train some really big models.
@@ -61,4 +59,32 @@ So if you remember anything about Transformers, let it be this: combine a model 
 
 ## How do Transformers Work?
 
-While the diagram from the [original paper](## Enter Transformers)
+![](/images/screen-shot-2021-05-06-at-12.12.21-pm.png)
+
+*Transformer diagram from the original paper*
+
+While the diagram from the [original paper](https://arxiv.org/abs/1706.03762) is a little scary, the innovation behind Transformers boils down to three main concepts:
+
+1. Positional Encodings
+
+2. Attention
+
+3. Self-Attention
+
+
+
+#### Positional Encodings
+
+Let's start with the first one, positional encodings. Let’s say we’re trying to translate text from English to French. Remember that RNNs, the old way of doing translation, understood word order by processing words sequentially. But this is also what made them hard to parallelize.
+
+Transformers get around this barrier via an innovational called positional encodings. The idea is to take all of the words in your input sequence--an English sentence, in this case--and append each word with a number it's order. So, you feed your network a sequence like:
+
+`[("Dale", 1), ("says", 2), ("hello", 3), ("world", 4)]`
+
+Conceptually, you can think of this as moving the burden of understanding word order from the structure of the neural network to the data itself. 
+
+At first, before the Transformer has been trained on any data, it doesn't know how to interpret these positional encodings. But as the model sees more and more examples of sentences and their encodings, it learns how to use them effectively.
+
+I've done a bit of over-simplification here--the original authors used sine functions to come up with positional encodings, not the simple integers 1, 2, 3, 4--but the point is the same. Store word order as data, not structure, and your neural network becomes easier to train.
+
+#### Attention
