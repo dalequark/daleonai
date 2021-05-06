@@ -125,4 +125,14 @@ The last piece of the Transformer is a twist on attention called "self-attention
 
 The type of attention we just talked about helped align words across English and French sentences, which is important for translation. But what if you're not trying to translate words but instead build a model that understands underlying meaning and patterns in language--a type of model that could be used to do any number of language tasks?
 
-In general, what makes neural networks powerful and exciting and cool is that they often automatically build up meaningful internal representations of the data they're trained on. When you inspect the layers of a convolutional neural network trained on a vision task, for example, you'll find sets of neurons that "recognize" edges, shapes, and even high-level structures like eyes and mouths. A model trained on text data might automatically learn parts of speech and other rules of grammar, and whether words are synonymous. (Word and sentence embeddings are a great example, which I explain in depth [here](https://daleonai.com/semantic-ml).)
+In general, what makes neural networks powerful and exciting and cool is that they often automatically build up meaningful internal representations of the data they're trained on. When you inspect the layers of a convolutional neural network trained on a vision task, for example, you'll find sets of neurons that "recognize" edges, shapes, and even high-level structures like eyes and mouths. A model trained on text data might automatically learn parts of speech and other rules of grammar, and whether words are synonymous. (Word and sentence embeddings are a great example, which I explain in depth [here](https://daleonai.com/semantic-ml).) 
+
+The better the internal representation of language a neural network learns, the better it will be at any language task. And it turns out that attention can be a very effective way of doing just this, if it's turned on the input text itself.
+
+For example, take these two sentence:
+
+"Server, can I have the check?"
+
+"Looks like I just crashed the server."
+
+The word server here means two very different things, which we can tell by the words that surround it. Self-attention allows a neural network to understand a word in the context of the words around it.
