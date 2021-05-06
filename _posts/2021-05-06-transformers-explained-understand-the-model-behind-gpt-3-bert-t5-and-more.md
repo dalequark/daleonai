@@ -8,25 +8,23 @@ feature_image: /images/transformers-explained.png
 thumbnail_image: /images/transformers-explained-small.png
 permalink: transformers-explained
 ---
-The neat thing about working in Machine Learning is that every three or four years, someone discovers something revolutionary that makes you completely reconsider what's possible--whether it's a model that [beats the world champion in Go](https://deepmind.com/research/case-studies/alphago-the-story-so-far) or that generates [eerily realistic human faces](https://thispersondoesnotexist.com/).
-
-Today, the mind-blowing discovery that's rocking everyone's world is a type of neural network architecture called a Transformer. Transformers are models that can be designed to translate text, write [poems and op eds](https://www.gwern.net/GPT-3), and e[ven generate computer code](https://www.wired.com/story/ai-latest-trick-writing-computer-code/). In fact, lots of the amazing research I write about on daleonai.com is built on Transformers, like [AlphaFold 2](https://daleonai.com/how-alphafold-works), the model that predicts the structures of proteins from their genetic sequences, as well as powerful natural language processing (NLP) models like [GPT-3](https://daleonai.com/how-alphafold-works), BERT, T5, Switch, Meena, and others. It's as if Transformers are a magical machine learning hammer that seems to turn every problem into a nail. You might say they're more than meets the... ugh, forget it.
+You know that expression *When you have a hammer, everything looks like a nail*? Well, in machine learning, it seems like we really have discovered a magical hammer for which everything is, in fact, a nail, and they're called Transformers. Transformers are models that can be designed to translate text, write [poems and op eds](https://www.gwern.net/GPT-3), and [even generate computer code](https://www.wired.com/story/ai-latest-trick-writing-computer-code/). In fact, lots of the amazing research I write about on daleonai.com is built on Transformers, like [AlphaFold 2](https://daleonai.com/how-alphafold-works), the model that predicts the structures of proteins from their genetic sequences, as well as powerful natural language processing (NLP) models like [GPT-3](https://daleonai.com/how-alphafold-works), BERT, T5, Switch, Meena, and others. You might say they're more than meets the... ugh, forget it.
 
 If you want to stay hip in machine learning and especially NLP, you have to know at least a bit about Transformers. So in this post, we'll talk about what they are, how they work, and why they've been so impactful.
 
 - - -
 
-A Transformer is a type of neural network architecture. To recap, neural nets are a very effective type of model for analyzing complex data types like images, videos, audio, and text. But there are different types of neural networks optimized for different types of data. For example, for analyzing images, we'll typically use [convolutional neural networks](https://en.wikipedia.org/wiki/Convolutional_neural_network) or "CNNs." Vaguely, they're mimic the way the human brain processes visual information.
+A Transformer is a type of neural network architecture. To recap, neural nets are a very effective type of model for analyzing complex data types like images, videos, audio, and text. But there are different types of neural networks optimized for different types of data. For example, for analyzing images, we'll typically use [convolutional neural networks](https://en.wikipedia.org/wiki/Convolutional_neural_network) or "CNNs." Vaguely, they mimic the way the human brain processes visual information.
 
-![](/images/cnn.png "Convolutional Neural Network")
+![Convolutional Neural Network](/images/cnn.png "Convolutional Neural Network")
 
-*Convolutional Neural Network, courtesy Renanar2 at Wikicommons*
+*Convolutional Neural Network, courtesy Renanar2 at Wikicommons.*
 
 And [since around 2012](https://qz.com/1034972/the-data-that-changed-the-direction-of-ai-research-and-possibly-the-world/), we've been quite successful at solving vision problems with CNNs, like identifying objects in photos, recognizing faces, and reading handwritten digits. But for a long time, nothing comparably good existed for language tasks (translation, text summarization, text generation, named entity recognition, etc). That was unfortunate, because language is the main way we humans communicate.
 
 Before Transformers were introduced in 2017, the way we used deep learning to understand text was with a type of model called a Recurrent Neural Network or RNN that looked something like this:
 
-![](/images/renn.png)
+![Recurrent Neural Network diagram](/images/renn.png)
 
 *Image of an RNN, courtesy Wikimedia.*
 
@@ -38,9 +36,9 @@ means something very different from the sentence:
 
 “Trouble went looking for Jane”
 
-So any model that’s going to understand language must capture word order, and recurrent neural networks did this by processing at one word at a time, in a sequence.
+So any model that’s going to understand language must capture word order, and recurrent neural networks did this by processing one word at a time, in a sequence.
 
-But RNNS had issues. First, they struggled to handle large sequences of text, like long paragraphs or essays. By the time got to the end of a paragraph, they'd forget what happened at the beginning. An RNN-based translation model, for example, might have trouble remembering the gender of the subject of a long paragraph.
+But RNNs had issues. First, they struggled to handle large sequences of text, like long paragraphs or essays. By the time got to the end of a paragraph, they'd forget what happened at the beginning. An RNN-based translation model, for example, might have trouble remembering the gender of the subject of a long paragraph.
 
 Worse, RNNs were hard to train. They were notoriously susceptible to what's called the [vanishing/exploding gradient problem](https://towardsdatascience.com/the-exploding-and-vanishing-gradients-problem-in-time-series-6b87d558d22) (sometimes you simply had to restart training and cross your fingers). Even more problematic, because they processed words sequentially, RNNs were hard to parallelize. This meant you couldn't just speed up training by throwing more GPUs at the them, which meant, in turn, you couldn't train them on all that much data.
 
@@ -56,23 +54,17 @@ GPT-3, the especially impressive text-generation model that writes almost as wel
 
 So if you remember anything about Transformers, let it be this: combine a model that scales well with a huge dataset and the results will likely blow you away.
 
-
-
 ## How do Transformers Work?
 
-![](/images/screen-shot-2021-05-06-at-12.12.21-pm.png)
+![Diagram of a Transformer](/images/screen-shot-2021-05-06-at-12.12.21-pm.png)
 
 *Transformer diagram from the original paper*
 
 While the diagram from the [original paper](https://arxiv.org/abs/1706.03762) is a little scary, the innovation behind Transformers boils down to three main concepts:
 
 1. Positional Encodings
-
 2. Attention
-
 3. Self-Attention
-
-
 
 #### Positional Encodings
 
@@ -108,7 +100,7 @@ One bad way to try to translate that sentence would be to go through each word i
 
 Attention is a mechanism that allows a text model to "look at" every single word in the original sentence when making a decision about how to translate words in the output sentence. Here's a nice visualization from that original attention paper:
 
-![](/images/screen-shot-2021-05-06-at-12.40.39-pm.png)
+![diagram of attention](/images/screen-shot-2021-05-06-at-12.40.39-pm.png)
 
 *Figure from the paper, "Neural Machine Translation by Jointly Learning to Align and Translate (2015)"*
 
@@ -117,8 +109,6 @@ It's a sort of heat map that shows where the model is "attending" when it output
 And how does the model know which words it should be “attending” to at each time step? It’s something that’s learned from training data. By seeing thousands of examples of French and English sentences, the model learns what types of words are interdependent. It learns how to respect gender, plurality, and other rules of grammar.
 
 The attention mechanism has been an extremely useful tool for natural language processing since its discovery in 2015, but in its original form, it was used alongside recurrent neural networks. So, the innovation of the 2017 Transformers paper was, in part, to ditch RNNs entirely. That's why the 2017 paper was called "Attention is *all* you need."
-
-
 
 #### Self-Attention
 
@@ -147,9 +137,7 @@ Self-attention help neural networks disambiguate words, do part-of-speech taggin
 So, here we are.: Transformers, explained at 10,000 feet, boil down to:
 
 1. Position Encodings
-
 2. Attention
-
 3. Self-Attention
 
 If you want a deeper technical explanation, I'd highly recommend checking out Jay Alammar's blog post [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/). 
@@ -182,8 +170,7 @@ More recently, the model [GPT-3](https://daleonai.com/gpt3-explained-fast), crea
 
 Transformers have also been making waves outside of NLP, by [composing music](https://magenta.tensorflow.org/music-transformer), [generating images from text descriptions](https://daleonai.com/dalle-5-mins), and [predicting protein structure](https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology).
 
-## \
-How Can I Use Transformers?
+## How Can I Use Transformers?
 
 Now that you're sold on the power of Transformers, you might want to know how you can start using them in your own app. No problemo.
 
@@ -191,6 +178,4 @@ You can download common Transformer-based models like BERT from [TensorFlow Hub]
 
 But if you want to be really trendy and you write Python, I'd highly recommend the popular "Transformers" library maintained by the company [HuggingFace](https://huggingface.co/). The platform allow you to train and use most of today's popular NLP models, like BERT, Roberta, T5, GPT-2, in a very developer-friendly way.
 
-And now that you've made it all the way to the bottom of this article, let indulge you and myself in this picture of an 18 meter, 25 tonne Gundam robot that was [just build in Japan](https://www.theguardian.com/world/2020/sep/23/giant-gundam-robot-japan-makes-its-first-moves-in-yokohama). No, it doesn't have anything to do with Transformers.
-
-![Big in Japan: giant Gundam robot makes its first moves in Yokohama | Japan  | The Guardian](https://i.guim.co.uk/img/media/f945cfc496f5ae647ebe51f099c5a0694294e9aa/581_0_2838_1703/master/2838.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=11094301b13800b7167e3e52fa763c0e)
+If you want to learn more about building apps with Transformers, come back soon! More tutorials coming soon.
