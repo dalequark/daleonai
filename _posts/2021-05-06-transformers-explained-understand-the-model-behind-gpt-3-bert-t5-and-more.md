@@ -106,3 +106,7 @@ Now imagine trying to translate that sentence into its French equivalent:
 One bad way to try to translate that sentence would be to go through each word in the English sentence and try to spit out its French equivalent, one word at a time. That wouldn't work well for several reasons, but for one, some words in the French translation are flipped: it's "European Economic Area" in English, but "la zone économique européenne" in French. Also, French is a language with gendered words. The adjectives "économique" and  "européenne" must be in feminine form to match the feminine object "la zone." 
 
 Attention is a mechanism that allows a text model to "look at" every single word in the original sentence when making a decision about how to translate words in the output sentence. Here's a nice visualization from that original attention paper:
+
+![](/images/screen-shot-2021-05-06-at-12.40.39-pm.png)
+
+*Figure from the paper, "Neural Machine Translation by Jointly Learning to Align and Translate (2015)"*
