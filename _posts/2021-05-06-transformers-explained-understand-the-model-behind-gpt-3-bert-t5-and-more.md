@@ -14,3 +14,7 @@ The neat thing about working in Machine Learning is that every three or four yea
 Today, the mind-blowing discovery that's rocking everyone's world is a type of neural network architecture called a Transformer. Transformers are models that can be designed to translate text, write [poems and op eds](https://www.gwern.net/GPT-3), and e[ven generate computer code](https://www.wired.com/story/ai-latest-trick-writing-computer-code/). In fact, lots of the amazing research I write about on daleonai.com is built on Transformers, like [AlphaFold 2](https://daleonai.com/how-alphafold-works), the model that predicts the structures of proteins from their genetic sequences, as well as powerful natural language processing (NLP) models like [GPT-3](https://daleonai.com/how-alphafold-works), BERT, T5, Switch, Meena, and others. It's as if Transformers are a magical machine learning hammer that seems to turn every problem into a nail. You might say they're more than meets the... ugh, forget it.
 
 If you want to stay hip in machine learning and especially NLP, you have to know at least a bit about Transformers. So in this post, we'll talk about what they are, how they work, and why they've been so impactful.
+
+---
+
+A Transformer is a type of neural network architecture. To recap, neural nets are a very effective type of model for analyzing complex data types like images, videos, audio, and text. But there are different types or architectures of neural networks optimized for 
