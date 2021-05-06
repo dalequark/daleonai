@@ -95,4 +95,12 @@ See what I did there?
 
 Attention is a neural network structure that you'll hear about all over the place in machine learning these days. In fact, the title of the 2017 paper that introduced Transformers wasn't called, *We Present You the Transformer.* Instead it was called [Attention is All You Need](https://arxiv.org/pdf/1706.03762.pdf).
 
-C
+[Attention](https://arxiv.org/pdf/1409.0473.pdf) was introduced in the context of translation two years earlier, in 2015. To understand it, take this example sentence from the original paper:
+
+*The agreement on the European Economic Area was signed in August 1992.*
+
+Now imagine trying to translate that sentence into its French equivalent:
+
+*L’accord sur la zone économique européenne a été signé en août 1992.*
+
+One bad way to try to translate that sentence would be to go through each word in the English sentence and try to spit out its French equivalent, one word at a time. That wouldn't work well for several reasons, but for one, some words in the French translation are flipped: it's "European Economic Area" in English, but "la zone économique européenne" in French. Also, French is a language with gendered words. The adjectives "économique" and  "européenne" must be in feminine form to match the feminine object "la zone."
