@@ -179,3 +179,7 @@ You can download common Transformer-based models like BERT from [TensorFlow Hub]
 But if you want to be really trendy and you write Python, I'd highly recommend the popular "Transformers" library maintained by the company [HuggingFace](https://huggingface.co/). The platform allow you to train and use most of today's popular NLP models, like BERT, Roberta, T5, GPT-2, in a very developer-friendly way.
 
 If you want to learn more about building apps with Transformers, come back soon! More tutorials coming soon.
+
+---
+
+Special thanks to Luiz/Gus Gustavo, Karl Weinmeister, and Alex Ku for reviewing early drafts of this post!
