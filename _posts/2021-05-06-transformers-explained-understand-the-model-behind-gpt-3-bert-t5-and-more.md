@@ -121,11 +121,11 @@ The attention mechanism has been an extremely useful tool for natural language p
 
 #### Self-Attention
 
-The last piece of the Transformer is a twist on attention called "self-attention," and this part is really core to the breakthrough.
+The last (and maybe most impactful) piece of the Transformer is a twist on attention called "self-attention."
 
-The type of attention we just talked about helped align words across English and French sentences, which is important for translation. But what if you're not trying to translate words but instead build a model that understands underlying meaning and patterns in language--a type of model that could be used to do any number of language tasks?
+The type of "vanilla" attention we just talked about helped align words across English and French sentences, which is important for translation. But what if you're not trying to translate words but instead build a model that understands underlying meaning and patterns in language--a type of model that could be used to do any number of language tasks?
 
-In general, what makes neural networks powerful and exciting and cool is that they often automatically build up meaningful internal representations of the data they're trained on. When you inspect the layers of a convolutional neural network trained on a vision task, for example, you'll find sets of neurons that "recognize" edges, shapes, and even high-level structures like eyes and mouths. A model trained on text data might automatically learn parts of speech and other rules of grammar, and whether words are synonymous. (Word and sentence embeddings are a great example, which I explain in depth [here](https://daleonai.com/semantic-ml).) 
+In general, what makes neural networks powerful and exciting and cool is that they often automatically build up meaningful internal representations of the data they're trained on. When you inspect the layers of a vision neural network, for example, you'll find sets of neurons that "recognize" edges, shapes, and even high-level structures like eyes and mouths. A model trained on text data might automatically learn parts of speech, rules of grammar, and whether words are synonymous.
 
 The better the internal representation of language a neural network learns, the better it will be at any language task. And it turns out that attention can be a very effective way of doing just this, if it's turned on the input text itself.
 
@@ -135,4 +135,44 @@ For example, take these two sentence:
 
 "Looks like I just crashed the server."
 
-The word server here means two very different things, which we can tell by the words that surround it. Self-attention allows a neural network to understand a word in the context of the words around it.
+The word server here means two very different things, which we humans can easily disambiguate by looking at surrounding words. Self-attention allows a neural network to understand a word in the context of the words around it.
+
+So when a model processes the word "server" in the first sentence, it might be “attending” to the word “check,” which helps disambiguate a human server from a metal one.
+
+In the second sentence, the model might attend to the word “crashed” to determine *this* "server" refers to a machine.
+
+Self-attention help neural networks disambiguate words, do part-of-speech tagging, entity resolution, learn semantic roles and [a lot more](https://arxiv.org/abs/1905.05950).
+
+So, here we are.: Transformers, explained at 10,000 feet, boil down to:
+
+1. Position Encodings
+
+2. Attention
+
+3. Self-Attention
+
+If you want a deeper technical explanation, I'd highly recommend checking out Jay Alammar's blog post [The Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/). 
+
+#### What Can Transformers Do?
+
+One of the most popular Transformer-based models is called BERT, short for "Bidirectional Encoder Representations from Transformers." It was introduced by researchers at Google around the time I joined the company, in 2018, and soon made its way into almost every NLP project.
+
+BERT refers not just a model architecture but to a trained model itself, which you can download and use for free [here](https://github.com/google-research/bert). It was trained by Google researchers on a massive text corpus and has become something of a general-purpose pocket knife for NLP. It can be extended solve a bunch of different tasks, like:
+
+\- text summarization
+
+\- question answering
+
+\- classification
+
+\- named entity resolution
+
+\- text similarity
+
+\- offensive message/profanity detection
+
+\- 
+
+\- a whole lot more
+
+BERT proved that you could build very good language models trained on unlabeled data, like text scraped from Wikipedia and Reddit, and that these large "base" models could then be adapted with domain-specific data to lots of different use cases.
