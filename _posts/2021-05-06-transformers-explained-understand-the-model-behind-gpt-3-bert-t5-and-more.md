@@ -27,7 +27,9 @@ And [since around 2012](https://qz.com/1034972/the-data-that-changed-the-directi
 
 Before Transformers were introduced in 2017, the way we used deep learning to understand text was with a type of model called a Recurrent Neural Network or RNN that looked something like this:
 
-TODO: ADD PIC
+![](/images/renn.png)
+
+*Image of an RNN, courtesy Wikimedia.*
 
 Let’s say you wanted to translate a sentence from English to French. An RNN would take as input an English sentence, process the words one at a time, and then, sequentially, spit out their French counterparts. The key word here is “sequential.” In language, the order of words matters and you can’t just shuffle them around. The sentence:
 
