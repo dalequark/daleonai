@@ -88,3 +88,11 @@ At first, before the Transformer has been trained on any data, it doesn't know h
 I've done a bit of over-simplification here--the original authors used sine functions to come up with positional encodings, not the simple integers 1, 2, 3, 4--but the point is the same. Store word order as data, not structure, and your neural network becomes easier to train.
 
 #### Attention
+
+THE NEXT IMPORTANT PART OF TRANSFORMERS IS CALLED ATTENTION.
+
+See what I did there?
+
+Attention is a neural network structure that you'll hear about all over the place in machine learning these days. In fact, the title of the 2017 paper that introduced Transformers wasn't called, *We Present You the Transformer.* Instead it was called [Attention is All You Need](https://arxiv.org/pdf/1706.03762.pdf).
+
+C
