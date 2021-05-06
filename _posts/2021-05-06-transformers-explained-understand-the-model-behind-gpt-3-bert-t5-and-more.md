@@ -28,3 +28,19 @@ And [since around 2012](https://qz.com/1034972/the-data-that-changed-the-directi
 Before Transformers were introduced in 2017, the way we used deep learning to understand text was with a type of model called a Recurrent Neural Network or RNN that looked something like this:
 
 TODO: ADD PIC
+
+Let’s say you wanted to translate a sentence from English to French. An RNN would take as input an English sentence, process the words one at a time, and then, sequentially, spit out their French counterparts. The key word here is “sequential.” In language, the order of words matters and you can’t just shuffle them around. The sentence:
+
+"Jane went looking for trouble."
+
+means something very different from the sentence:
+
+“Trouble went looking for Jane”
+
+So any model that’s going to understand language must capture word order, and recurrent neural networks did this by processing at one word at a time, in a sequence.
+
+But RNNS had issues. First, they struggled to handle large sequences of text, like long paragraphs or essays. By the time got to the end of a paragraph, they'd forget what happened at the beginning. An RNN-based translation model, for example, might have trouble remembering the gender of the subject of a long paragraph.
+
+Worse, RNNs were hard to train. They were notoriously susceptible to what's called the [vanishing/exploding gradient problem](https://towardsdatascience.com/the-exploding-and-vanishing-gradients-problem-in-time-series-6b87d558d22) (sometimes you simply had to restart training and cross your fingers). Even more problematic, because they processed words sequentially, RNNs were hard to parallelize. This meant you couldn't just speed up training by throwing more GPUs at the them, which meant, in turn, you couldn't train them on all that much data.
+
+##Enter Transformers
