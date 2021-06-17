@@ -72,3 +72,5 @@ You can set this up in a few lines of code:
 <script src="https://gist.github.com/dalequark/c0e9c83e338508a96cc9c12d8d30daf5.js"></script>
 
 What this code does first is load a pre-trained, general purpose [COCO-SD](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd) computer vision TensorFlow.js model. COCO-SSD recognizes [80 types of objects](https://github.com/tensorflow/tfjs-models/blob/master/coco-ssd/src/classes.ts), including but not limited to: giraffe, tie, wine glass, broccoli, hair dryer.
+
+Using the model is as simple as calling \`model.detect(video)\`, where \`video\` is a pointer to your webcam stream. (That's \`video id="webcam" autoplay></video>\` in HTML land).
