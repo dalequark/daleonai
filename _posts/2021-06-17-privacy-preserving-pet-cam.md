@@ -81,4 +81,6 @@ Jason and I designed this app so that when two objects you care about intersect-
 
 ![](/images/screen-shot-2021-06-17-at-3.55.55-pm.png)
 
-As someone who, you know, regularly plays n-dimensional chess, I was
+In this picture, my adorable little chick Millie (RIP) is "intersecting" with her water dish.
+
+How do you calculate how close two bounding boxes are to each other? As someone who, you know, regularly plays n-dimensional chess (just kidding, I can barely add three-digit numbers in my head), I thought figuring out the "algorithm" to calculating bounding box distance would be simple.
