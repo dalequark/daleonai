@@ -77,10 +77,16 @@ Using the model is as simple as calling \`model.detect(video)\`, where \`video\`
 
 To analyze a stream of video rather than just a single frame, run \`model.detect\` in a loop. Voila! You have real-time object detection.
 
+### How to Calculate Bounding Box Intersections/Distances
+
 Jason and I designed this app so that when two objects you care about intersect--a dog and a water bowl, a cat and your laptop, you and your refrigerator--the app triggers an event, i.e. "HUMAN AT THE FRIDGE." We then save that event to a [Firestore](https://firebase.google.com/products/firestore?gclid=Cj0KCQjw5auGBhDEARIsAFyNm9GcM3cLF2jvupM-V8VPweUPEwP_8hCXXisbuyqvDnWFXlRxc7kSzZoaAh1QEALw_wcB&gclsrc=aw.ds) backend so that we can view a log of all past events in the future, and trigger a Slack notification. By intersect, I mean when two bounding boxes around the detected objects intersect:
 
 ![](/images/screen-shot-2021-06-17-at-3.55.55-pm.png)
 
 In this picture, my adorable little chick Millie (RIP) is "intersecting" with her water dish.
 
-How do you calculate how close two bounding boxes are to each other? As someone who, you know, regularly plays n-dimensional chess (just kidding, I can barely add three-digit numbers in my head), I thought figuring out the "algorithm" to calculating bounding box distance would be simple.
+How do you calculate how close two bounding boxes are to each other? As someone who, you know, regularly plays n-dimensional chess in my head (kidding, I can't even add three digit numbers in there!), I thought figuring out the "algorithm" for calculating bounding box distance would be simple. I've since come to believe that if you think something is going to be simple, you've screwed yourself for sure.
+
+ Actually, the code for calculating bounding-box distance isn't so bad:
+
+<script src="https://gist.github.com/dalequark/85213496b784a1c0cabeb988284cb509.js"></script>
