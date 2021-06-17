@@ -49,10 +49,22 @@ Okay, this part is really a "nice-to-have." For PetCam 1.0, we'll use a pre-buil
 
 Phew, this project is kind of a chonker, isn't it? Two different frontends, isn't that a little extra? As always, you can find all of the code to build this app yourself here \[TODO]. Or, if you just are about the pet-tracking frontend, you can find the code and a live demo in the [Glitch link](https://glitch.com/edit/#!/pet-cam?path=README.md%3A1%3A0).
 
-Now, since this project is so big and my attention span is so small, I'm not going to bore you with all the little minutiae of how Jason and I set up authentication and created a GCP account and deployed a cloud function and blahdy-blah. You can figure most of that stuff out yourself by reading the code \[TODO], reading the README \[TODO], or watching our YouTube video \[TODO].
+Now, since this project is so big and my attention span is so small, I'm not going to bore you with all the little minutiae of how Jason and I set up authentication and installed TensorFlow and deployed a cloud function and blahdy-blah. You can figure most of that stuff out yourself by reading the code \[TODO], reading the README \[TODO], watching our YouTube video \[TODO], or (please don't murder me) by *googling around*.
 
-Instead, I just want to cover each piece at 5,000 feet and focus mainly on the tricky, unexpected hurdles Jason and I had to solve when we built this thing, so that you don't have to solve them yourself and so I can feel smart.
+Instead, I just want to cover each component at 5,000 feet and focus mainly on the tricky, unexpected hurdles Jason and I had to solve when we built this thing, so that you don't have to solve them yourself and so I can feel smart.
 
 Now, to the code mines!
 
-## Tracking pets (or cars or
+## Tracking pets (or people or cars or Amazon packages)
+
+Have you ever tried doing [object detection](https://en.wikipedia.org/wiki/Object_detection) on your webcam, in the browser, using Javascript?
+
+![](/images/detected-with-yolo-schreibtisch-mit-objekten.jpg)
+
+*Image by MTheiler from Wikipedia*
+
+Turns out it's really easy. Too easy, if you ask me! Soon everyone and their grandma's gonna be tracking objects in the browser and you'll never be able to get the drop on anyone. 
+
+You can set this up in a few lines of code:
+
+<script src="https://gist.github.com/dalequark/c0e9c83e338508a96cc9c12d8d30daf5.js"></script>
