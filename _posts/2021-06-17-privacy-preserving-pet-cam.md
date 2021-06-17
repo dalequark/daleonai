@@ -65,7 +65,7 @@ Have you ever tried doing [object detection](https://en.wikipedia.org/wiki/Objec
 
 *Image by MTheiler from Wikipedia*
 
-Turns out it's really easy. Too easy, if you ask me! Soon everyone and their grandma's gonna be tracking objects in the browser and you'll never be able to get the drop on anyone. 
+Turns out it's really easy. Too easy, if you ask me! Soon your baby chickens will be building web apps to track *you*.
 
 You can set this up in a few lines of code:
 
@@ -73,4 +73,6 @@ You can set this up in a few lines of code:
 
 What this code does first is load a pre-trained, general purpose [COCO-SD](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd) computer vision TensorFlow.js model. COCO-SSD recognizes [80 types of objects](https://github.com/tensorflow/tfjs-models/blob/master/coco-ssd/src/classes.ts), including but not limited to: giraffe, tie, wine glass, broccoli, hair dryer.
 
-Using the model is as simple as calling \`model.detect(video)\`, where \`video\` is a pointer to your webcam stream. (That's \`video id="webcam" autoplay></video>\` in HTML land).
+Using the model is as simple as calling \`model.detect(video)\`, where \`video\` is a pointer to your webcam stream. (That's \`video id="webcam" autoplay></video>\` in HTML land). It makes more sense when you look at the code [here](https://glitch.com/edit/#!/pet-cam?path=index.html%3A25%3A9) in Glitch.
+
+To analyze a stream of video rather than just a single frame, run \`model.detect\` in a loop. Voila! You have real-time object detection.
