@@ -90,3 +90,7 @@ How do you calculate how close two bounding boxes are to each other? As someone 
  Actually, the code for calculating bounding-box distance isn't so bad:
 
 <script src="https://gist.github.com/dalequark/85213496b784a1c0cabeb988284cb509.js"></script>
+
+TODO: EXPLAIN
+
+### Knowing When to Send Alerts
