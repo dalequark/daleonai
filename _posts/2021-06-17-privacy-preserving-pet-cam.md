@@ -47,4 +47,12 @@ Okay, this part is really a "nice-to-have." For PetCam 1.0, we'll use a pre-buil
 
 ![](/images/screen-shot-2021-06-17-at-3.56.07-pm.png)
 
-Phew, this project is kind of a chonker, isn't it? Two different frontends, what's that about? As always, you can find all of the code to build this app yourself here \[TODO].
+Phew, this project is kind of a chonker, isn't it? Two different frontends, isn't that a little extra? As always, you can find all of the code to build this app yourself here \[TODO]. Or, if you just are about the pet-tracking frontend, you can find the code and a live demo in the [Glitch link](https://glitch.com/edit/#!/pet-cam?path=README.md%3A1%3A0).
+
+Now, since this project is so big and my attention span is so small, I'm not going to bore you with all the little minutiae of how Jason and I set up authentication and created a GCP account and deployed a cloud function and blahdy-blah. You can figure most of that stuff out yourself by reading the code \[TODO], reading the README \[TODO], or watching our YouTube video \[TODO].
+
+Instead, I just want to cover each piece at 5,000 feet and focus mainly on the tricky, unexpected hurdles Jason and I had to solve when we built this thing, so that you don't have to solve them yourself and so I can feel smart.
+
+Now, to the code mines!
+
+## Tracking pets (or cars or
