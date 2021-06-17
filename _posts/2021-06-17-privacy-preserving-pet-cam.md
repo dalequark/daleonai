@@ -76,3 +76,5 @@ What this code does first is load a pre-trained, general purpose [COCO-SD](https
 Using the model is as simple as calling \`model.detect(video)\`, where \`video\` is a pointer to your webcam stream. (That's \`video id="webcam" autoplay></video>\` in HTML land). It makes more sense when you look at the code [here](https://glitch.com/edit/#!/pet-cam?path=index.html%3A25%3A9) in Glitch.
 
 To analyze a stream of video rather than just a single frame, run \`model.detect\` in a loop. Voila! You have real-time object detection.
+
+Jason and I designed this app so that when two objects you care about intersect--a dog and a water bowl, a cat and your laptop, you and your refrigerator--the app triggers an event, i.e. "HUMAN AT THE FRIDGE." We then save that event to a [Firestore](https://firebase.google.com/products/firestore?gclid=Cj0KCQjw5auGBhDEARIsAFyNm9GcM3cLF2jvupM-V8VPweUPEwP_8hCXXisbuyqvDnWFXlRxc7kSzZoaAh1QEALw_wcB&gclsrc=aw.ds) backend so that we can view a log of all past events in the future, and trigger a Slack notification.
