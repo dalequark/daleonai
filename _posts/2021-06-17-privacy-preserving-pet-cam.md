@@ -97,7 +97,11 @@ Once I figured out that box-intersection code (with some, er, assistance) I felt
 
 Recall that to do real-time object detection and tracking, we run code to analyze our webcam image and detect an intersection multiple times a second, in a loop. So, if your corgi Rufus is just chilling on the couch, we'll compute that the "dog" bounding box intersects with the "couch" bounding box multiple times a second. Obviously, we only want to count this as an "event" the first time this happens, when Rufus jumps on the couch, but not after. Then if Rufus leaves and comes back later, we can fire the event again. So maybe we a variable that keeps track of whether we've sent a notification to the user, and resets it when Rufus leaves the couch.
 
-Except it's more complicated than that, because what if Rufus is kind of hovering in front of the couch, or running around it, so our code detects him as "on" and "off" the couch many times in the same few seconds? We don't want to spam our user with notifications for events that aren't really "unique." We need to do some sort of "debouncing," limiting how frequently we can send alerts. Seems simple, right--like we should just add a cool down period so we don't send users too many notifications too close in time? This is, in fact, what Jason and I did, and in code it looks like this.
+Except it's more complicated than that, because what if Rufus is kind of hovering in front of the couch, or running around it, so our code detects him as "on" and "off" the couch many times in the same few seconds? Like this doggo with the zoomies?
+
+<iframe src="https://giphy.com/embed/3ouPV9rzoRvjPukLrB" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nest-dog-jumping-3ouPV9rzoRvjPukLrB">via GIPHY</a></p>
+
+We don't want to spam our user with notifications for events that aren't really "unique." We need to do some sort of "debouncing," limiting how frequently we can send alerts. Seems simple, right--like we should just add a cool down period so we don't send users too many notifications too close in time? This is, in fact, what Jason and I did, and in code it looks like this.
 
 `// Min number of seconds before we send another alert.`
 
@@ -115,7 +119,11 @@ Except it's more complicated than that, because what if Rufus is kind of hoverin
 
 Except a cool down period is not enough! Because what if you have *two* dogs, or many dogs, running on and off the couch? Because if Rufus jumps up and then Milo jumps up right after him, those are two unique events, and we want to alert the user for both. Suddenly you have to know *which* dogs are moving around and keep track of their state and you have a hair "multi-object tracking" problem, which sounds like someone's PhD thesis, and [it is](https://whluo.github.io/papers/Luo-W-2016-PhD-Thesis.pdf)! (Actually, you do get this functionality for free via the [Google Cloud Video Intelligence API](https://cloud.google.com/video-intelligence), but we're stuck here in TensorFlow.js land and it's hard).
 
-This realization really had me sweating, and for a while, Jason and I thought we were screwed. But then we ended up doing what one always does when out of one's technical depth: solving a not-as-good but much, much simpler problem. Our compromise was this: for a single object type (i.e. "dog," "cat," "bottle") we would keep track of the number of those objects in a frame, and only notify the user when that number went up (i.e. 3 dogs -> 4 dogs in frame). When that happened, we would increment our dog counter. But we wouldn't *decrement* the dog counter until all dogs were out of the frame. It's kind of nonintuitive, but take a quick look at the code:
+This realization really had me sweating, and for a while, Jason and I thought we were screwed. But then we ended up doing what one always does when out of one's technical depth: solving a not-as-good but much, much simpler problem. Our compromise was this: we would settle for alerting users when the number of dogs on the couch *increased,* but not when the number of dogs was going up and down in flux, like this:
+
+
+
+ for a single object type (i.e. "dog," "cat," "bottle") we would keep track of the number of those objects in a frame, and only notify the user when that number went up (i.e. 3 dogs -> 4 dogs in frame). When that happened, we would increment our dog counter. But we wouldn't *decrement* the dog counter until all dogs were out of the frame. It's kind of nonintuitive, but take a quick look at the code:
 
 <script src="https://gist.github.com/dalequark/017d7ca83c21b9a894833c3335e0cc67.js"></script>
 
