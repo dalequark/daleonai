@@ -85,6 +85,10 @@ Jason and I designed this app so that when two objects you care about intersect-
 
 In this picture, my adorable little chick Millie (RIP) is "intersecting" with her water dish, and therefore I conclude she's probably drinking.
 
+Jason also built out a nice interface that helps you select what two objects you want to track:
+
+
+
 How do you calculate how close two bounding boxes are to each other? For this project, we wanted to know not just whether or not two bounding boxes ("bboxes") intersect, but also, if they don't, how far apart are they? Here's the code:
 
 <script src="https://gist.github.com/dalequark/85213496b784a1c0cabeb988284cb509.js"></script>
@@ -140,3 +144,17 @@ It's a bit non-intuitive to set up an alert system like this, but take a second 
 
 
 Phew. On to simpler stuff!
+
+
+
+## Building a Pet Diary/Viewer App
+
+So far, everything we've talked about runs entirely in your browser. This is nice, because no data is leaving your phone or computer, so you can feel good from a privacy perspective. However, when events of interest do occur, we want to be able to persist them to memory and revisit them later. For that, we'll use Firebase [Firestore](https://firebase.google.com/products/firestore?gclid=CjwKCAjwiLGGBhAqEiwAgq3q_l3P-pp9uFAKhuBjD_-4N3Oa11aWC6riulPy99QIddihR90LEZoinBoCJvwQAvD_BwE&gclsrc=aw.ds), a simple 'n lightweight database in the cloud that you can easily read from our write to in the browser.
+
+I've used Firestore in [so many projects](https://daleonai.com/social-media-fashion-ai) and talked about it so many times on Dale on AI, I won't go into detail here. When the frontend PetCam app detects an event (via the algorithm above), it writes some event data to Firestore. Here's what my Firestore database looks like:
+
+![](/images/screen-shot-2021-06-17-at-1.38.42-pm.png)
+
+Because it's easy to write to and read from Firestore, building a frontend "diary" viewer app around the data saved Firestore was pretty straightforward. I built it using React, and you can find the code [here](https://github.com/google/making_with_ml/tree/master/petcam/admin). Here's what the viewer app looked like:
+
+![](/images/screen-shot-2021-06-17-at-1.33.01-pm.png)
