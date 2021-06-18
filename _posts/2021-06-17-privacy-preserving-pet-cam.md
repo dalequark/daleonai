@@ -15,7 +15,25 @@ tags:
   - videointelligence
 permalink: ai-pet-cam
 ---
+
+
 *Introducing PetCam: a non-invasive machine-learning-powered pet tracker that runs on an old smartphone. This project is a collaboration between me and [Jason Mayes](https://twitter.com/jason_mayes), who came up with the idea. Also, funny story, uh... my colleague Markku Lepistö built (almost) THE EXACT SAME PROJECT at the same time on his own YouTube show, Level Up, [which you can see here](https://www.youtube.com/watch?v=--VDgKKqZc4). We use old smartphones. He uses a [Coral development board](https://coral.ai/products/dev-board/). Choose your own adventure.*
+
+When I was young and lived at home in New Jersey, my parents were really strict with me about remembering to close the garage at night. Because if I didn’t close the garage, something like this would happen:
+
+![](/images/bear.gif)
+
+Then the next morning, we’d walk out the front door, get hit with a strong whiff of dirty diapers, and see a trash bag torn up and emptied all over our driveway. Clearly someone had a wild night.
+
+Bears love eating trash. Raccoons love eating trash. Even foxes will have a go at trash at it if you make it easy for them. All considered, I probably should have gotten better about remembering to close the garage. But it also would’ve been nice to have hacked a little machine learning app onto my dad’s Nest camera rig, so that whenever it did spot a bear taking out our trash, it would play a loud, menacing-sounding air horn noise that would scare the bandit back into the woods. 
+
+What I wanted back then was PetCam, the project I bring you today: **a**n app that alerts when your dog, cat, bird, chicken (more animals pending) jumps on your bed, couch, chair, laptop, and more.
+
+When Fluffy jumps on your couch (the “event of interest”), PetCam sends you an alert via Slack and saves a snapshot to a “diary” app in the cloud.
+
+PetCam can be run on a smartphone and processes all video locally (i.e. the video stream never leaves your device). But if you do want to save a picture of an event of interest (i.e. snap and save a photo of Fluffy on the couch), you can configure PetCam to send a photo of just that moment to the cloud.
+
+Here's the overview.
 
 ## Architecture
 
@@ -83,7 +101,7 @@ Jason and I designed this app so that when two objects you care about intersect-
 
 ![](/images/screen-shot-2021-06-17-at-3.55.55-pm.png)
 
-In this picture, my adorable little chick Millie (RIP) is "intersecting" with her water dish, and therefore I conclude she's probably drinking.
+In this picture, my adorable little chick Millie is "intersecting" with her water dish, and therefore I conclude she's probably drinking.
 
 Jason also built out a nice interface that helps you select what two objects you want to track:
 
@@ -138,11 +156,7 @@ It's a bit non-intuitive to set up an alert system like this, but take a second 
 | 2 dogs -> 1 dog -> 2 dogs          | No                                                  |
 | 2 dogs -> 1 dog -> 0 dogs -> 1 dog | Yes (for the very last dog that jumps on the couch) |
 
-
-
 Phew. On to simpler stuff!
-
-
 
 ## Building a Pet Diary/Viewer App
 
