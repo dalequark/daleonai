@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Privacy-Preserving Pet Cam
+title: Build an Animal/Object Tracking Camera App with TensorFlow.js
 date: 2021-06-17T18:18:32.533Z
 description: Build a smart camera that tracks your pets (and whatever else)
   using privacy-preserving, on-device ML.
