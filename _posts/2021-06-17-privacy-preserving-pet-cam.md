@@ -85,12 +85,18 @@ Jason and I designed this app so that when two objects you care about intersect-
 
 In this picture, my adorable little chick Millie (RIP) is "intersecting" with her water dish, and therefore I conclude she's probably drinking.
 
-How do you calculate how close two bounding boxes are to each other? As someone who, you know, regularly plays n-dimensional chess in my head (kidding, I can't even add two digit numbers in there!), I thought figuring out the "algorithm" for calculating bounding box distance would be simple. I've since come to believe that if you think something is going to be simple, you've screwed yourself for sure.
-
- Actually, the code for calculating bounding-box distance isn't so bad:
+How do you calculate how close two bounding boxes are to each other? For this project, we wanted to know not just whether or not two bounding boxes ("bboxes") intersect, but also, if they don't, how far apart are they? Here's the code:
 
 <script src="https://gist.github.com/dalequark/85213496b784a1c0cabeb988284cb509.js"></script>
 
 TODO: EXPLAIN
 
 ### Knowing When to Send Alerts
+
+Once I figured out that box-intersection code (with some, er, assistance) I felt brilliant! But then Jason and I discovered a less sexy but far more troubling problem we didn't know how to solve: how do you know when to save an event and send the user an alert?
+
+Recall that to do real-time object detection and tracking, we run code to analyze our webcam image and detect an intersection multiple times a second, in a loop. So, if your corgi Rufus is just chilling on the couch, we'll compute that the "dog" bounding box intersects with the "couch" bounding box multiple times a second. Obviously, we only want to count this as an "event" the first time this happens, when Rufus jumps on the couch, but not after. Then if Rufus leaves and comes back later, we can fire the event again. So maybe we a variable that keeps track of whether we've sent a notification to the user, and resets it when Rufus leaves the couch.
+
+Except it's more complicated than that, because what if Rufus is kind of hovering in front of the couch, or running around it, so our code detects him as "on" and "off" the couch many times in the same few seconds? We don't want to spam our user with notifications for events that aren't really "unique." We need to do some sort of "debouncing," limiting how frequently we can send alerts. Seems simple, right--like we should just add a blackout window so we don't send a users two notifications too close in time?
+
+Except it's more complicated than that, too! Because what if you have *two* dogs, or many dogs, running on and off the couch? Because if Rufus jumps up and the Harold jumps up right after him, those are two unique events, and we want to alert the user for both. Suddenly you have to know *which* dogs are moving around and keep track of their state and you have a hair "multi-object tracking" problem, which sounds like someone's PhD thesis! (Actually, you do get this functionality for free via the [Google Cloud Video Intelligence API](https://cloud.google.com/video-intelligence), but we're stuck here in TensorFlow.js land and it's hard!).
