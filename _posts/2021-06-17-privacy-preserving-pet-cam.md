@@ -87,13 +87,13 @@ In this picture, my adorable little chick Millie (RIP) is "intersecting" with he
 
 Jason also built out a nice interface that helps you select what two objects you want to track:
 
-
+![](/images/object_select.gif)
 
 How do you calculate how close two bounding boxes are to each other? For this project, we wanted to know not just whether or not two bounding boxes ("bboxes") intersect, but also, if they don't, how far apart are they? Here's the code:
 
 <script src="https://gist.github.com/dalequark/85213496b784a1c0cabeb988284cb509.js"></script>
 
-TODO: EXPLAIN
+It returns 0 if the two boxes intersect, or the distance between them if they do not.
 
 ### Knowing When to Send Alerts
 
