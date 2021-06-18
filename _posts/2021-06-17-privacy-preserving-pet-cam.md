@@ -121,15 +121,13 @@ Except a cool down period is not enough! Because what if you have *two* dogs, or
 
 This realization really had me sweating, and for a while, Jason and I thought we were screwed. But then we ended up doing what one always does when out of one's technical depth: solving a not-as-good but much, much simpler problem. Our compromise was this: we would settle for alerting users when the number of dogs on the couch *increased,* but not when the number of dogs was going up and down in flux, like this:
 
+<iframe src="https://giphy.com/embed/l2QZXwGah3PZa9x28" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/adultswim-l2QZXwGah3PZa9x28">via GIPHY</a></p>
 
-
- for a single object type (i.e. "dog," "cat," "bottle") we would keep track of the number of those objects in a frame, and only notify the user when that number went up (i.e. 3 dogs -> 4 dogs in frame). When that happened, we would increment our dog counter. But we wouldn't *decrement* the dog counter until all dogs were out of the frame. It's kind of nonintuitive, but take a quick look at the code:
+To implement this, we kept a counter of how many animals were in frame. If the number of animals increased, we sent a notification and incremented the counter. However, we never decremented the counter unless the number of animals in frame reached zero (at that point, we did a hard reset). Kinda weird-sounding, but take a look at the code here:
 
 <script src="https://gist.github.com/dalequark/017d7ca83c21b9a894833c3335e0cc67.js"></script>
 
-Let's quickly try to understand how this notification "algorithm" works:
-
-
+It's a bit non-intuitive to set up an alert system like this, but take a second to convince yourself that it actually gives you the behavior you, as a user, probably want. Here are some different cases our algorithm fires or doesn't fire off an alert:
 
 | Scenario                           | Send Alert?                                         |
 | ---------------------------------- | --------------------------------------------------- |
@@ -138,3 +136,7 @@ Let's quickly try to understand how this notification "algorithm" works:
 | 3 dogs -> 2 dogs                   | No                                                  |
 | 2 dogs -> 1 dog -> 2 dogs          | No                                                  |
 | 2 dogs -> 1 dog -> 0 dogs -> 1 dog | Yes (for the very last dog that jumps on the couch) |
+
+
+
+Phew. On to simpler stuff!
