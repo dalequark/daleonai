@@ -99,4 +99,16 @@ Recall that to do real-time object detection and tracking, we run code to analyz
 
 Except it's more complicated than that, because what if Rufus is kind of hovering in front of the couch, or running around it, so our code detects him as "on" and "off" the couch many times in the same few seconds? We don't want to spam our user with notifications for events that aren't really "unique." We need to do some sort of "debouncing," limiting how frequently we can send alerts. Seems simple, right--like we should just add a blackout window so we don't send a users two notifications too close in time?
 
-Except it's more complicated than that, too! Because what if you have *two* dogs, or many dogs, running on and off the couch? Because if Rufus jumps up and the Harold jumps up right after him, those are two unique events, and we want to alert the user for both. Suddenly you have to know *which* dogs are moving around and keep track of their state and you have a hair "multi-object tracking" problem, which sounds like someone's PhD thesis! (Actually, you do get this functionality for free via the [Google Cloud Video Intelligence API](https://cloud.google.com/video-intelligence), but we're stuck here in TensorFlow.js land and it's hard!).
+Except it's more complicated than that, too! Because what if you have *two* dogs, or many dogs, running on and off the couch? Because if Rufus jumps up and the Harold jumps up right after him, those are two unique events, and we want to alert the user for both. Suddenly you have to know *which* dogs are moving around and keep track of their state and you have a hair "multi-object tracking" problem, which sounds like someone's PhD thesis, and [it is](https://whluo.github.io/papers/Luo-W-2016-PhD-Thesis.pdf)! (Actually, you do get this functionality for free via the [Google Cloud Video Intelligence API](https://cloud.google.com/video-intelligence), but we're stuck here in TensorFlow.js land and it's hard).
+
+So, Jason and I had to come up with some hacks. First, we went ahead and added a "cooldown" period that would stop us from sending notifications to the user too frequently for any reason. That looks like this:
+
+`if (sendAlerts) {`
+
+`sendAlerts = false;`
+
+`sendAlert(naughtyAnimals);`
+
+`setTimeout(cooldown, MIN_ALERT_COOLDOWN_TIME * 1000);`
+
+`}`
