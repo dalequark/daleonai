@@ -49,13 +49,13 @@ Okay, this part is really a "nice-to-have." For PetCam 1.0, we'll use a pre-buil
 
 ![](/images/screen-shot-2021-06-17-at-3.56.07-pm.png)
 
-Phew, this project is kind of a chonker, isn't it? Two different frontends, isn't that a little extra? As always, you can find all of the code to build this app yourself here \[TODO]. Or, if you just are about the pet-tracking frontend, you can find the code and a live demo in the [Glitch link](https://glitch.com/edit/#!/pet-cam?path=README.md%3A1%3A0).
+Phew, this project is kind of a chonker, isn't it? Two different frontends, isn't that a little extra? As always, you can find all of the code to build this app yourself [here](https://github.com/google/making_with_ml/tree/master/petcam) in the Making with ML repo. Or, if you just are about the pet-tracking frontend, you can find the code and a live demo in the [Glitch link](https://glitch.com/edit/#!/pet-cam?path=README.md%3A1%3A0).
 
-Now, since this project is so big and my attention span is so small, I'm not going to bore you with all the little minutiae of how Jason and I set up authentication and installed TensorFlow and deployed a cloud function and blahdy-blah. You can figure most of that stuff out yourself by reading the code \[TODO], reading the README \[TODO], watching our YouTube video \[TODO], or (please don't murder me) by *googling around*.
+Now, since this project is so big and my attention span is so small, I'm not going to bore you with all the little minutiae of how Jason and I set up authentication and installed TensorFlow and deployed a cloud function and blahdy-blah. You can figure most of that stuff out yourself by [reading the code](https://github.com/google/making_with_ml/tree/master/petcam), reading the [README](https://github.com/google/making_with_ml/blob/master/petcam/README.md), watching our YouTube video \[TODO], or (please don't murder me) by *googling around*.
 
 Instead, I just want to cover each component at 5,000 feet and focus mainly on the tricky, unexpected hurdles Jason and I had to solve when we built this thing, so that you don't have to solve them yourself and so we can feel smart.
 
-Now, down to the code mines!
+Now, to the code mines!
 
 ## Tracking pets (or people or cars or Amazon packages)
 
@@ -65,7 +65,7 @@ Have you ever tried doing [object detection](https://en.wikipedia.org/wiki/Objec
 
 *Image by MTheiler from Wikipedia*
 
-Turns out it's really easy. Too easy, if you ask me! Soon your baby chickens will be building web apps to track *you*.
+Turns out it's really easy. Too easy, if you ask me! Soon your cats will be building web apps to track *you*.
 
 You can set this up in a few lines of code:
 
@@ -79,13 +79,13 @@ To analyze a stream of video rather than just a single frame, run \`model.detect
 
 ### How to Calculate Bounding Box Intersections/Distances
 
-Jason and I designed this app so that when two objects you care about intersect--a dog and a water bowl, a cat and your laptop, you and your refrigerator--the app triggers an event, i.e. "HUMAN AT THE FRIDGE." We then save that event to a [Firestore](https://firebase.google.com/products/firestore?gclid=Cj0KCQjw5auGBhDEARIsAFyNm9GcM3cLF2jvupM-V8VPweUPEwP_8hCXXisbuyqvDnWFXlRxc7kSzZoaAh1QEALw_wcB&gclsrc=aw.ds) backend so that we can view a log of all past events in the future, and trigger a Slack notification. By intersect, I mean when two bounding boxes around the detected objects intersect:
+Jason and I designed this app so that when two objects you care about intersect--a dog and a water bowl, a cat and your laptop, you and your refrigerator--the app triggers an event, i.e. "HUMAN AT THE FRIDGE." We then save that event to a [Firestore](https://firebase.google.com/products/firestore?gclid=Cj0KCQjw5auGBhDEARIsAFyNm9GcM3cLF2jvupM-V8VPweUPEwP_8hCXXisbuyqvDnWFXlRxc7kSzZoaAh1QEALw_wcB&gclsrc=aw.ds) backend so that we can view a log of all past events in the future, and trigger a Slack notification (more on the backend in a bit). By intersect, I mean when two bounding boxes around the detected objects intersect:
 
 ![](/images/screen-shot-2021-06-17-at-3.55.55-pm.png)
 
-In this picture, my adorable little chick Millie (RIP) is "intersecting" with her water dish.
+In this picture, my adorable little chick Millie (RIP) is "intersecting" with her water dish, and therefore I conclude she's probably drinking.
 
-How do you calculate how close two bounding boxes are to each other? As someone who, you know, regularly plays n-dimensional chess in my head (kidding, I can't even add three digit numbers in there!), I thought figuring out the "algorithm" for calculating bounding box distance would be simple. I've since come to believe that if you think something is going to be simple, you've screwed yourself for sure.
+How do you calculate how close two bounding boxes are to each other? As someone who, you know, regularly plays n-dimensional chess in my head (kidding, I can't even add two digit numbers in there!), I thought figuring out the "algorithm" for calculating bounding box distance would be simple. I've since come to believe that if you think something is going to be simple, you've screwed yourself for sure.
 
  Actually, the code for calculating bounding-box distance isn't so bad:
 
