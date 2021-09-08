@@ -3,8 +3,8 @@ layout: post
 title: An Impractical Guide to AI on Google Cloud
 date: 2021-09-08T16:48:34.285Z
 description: Everything you wanted to know about AI on Google Cloud, and much more
-feature_image: /images/untitled-design.png
-thumbnail_image: /images/untitled-design.png
+feature_image: /images/google-cloud-brain.png
+thumbnail_image: /images/google-cloud-brain.png
 tags:
   - machinelearning
   - ml
