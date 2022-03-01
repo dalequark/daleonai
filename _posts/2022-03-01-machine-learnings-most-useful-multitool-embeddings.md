@@ -80,6 +80,8 @@ The graphs above also illustrate an additional and very neat property of Word2Ve
 
 So many kinds of things!
 
+
+
 ### Text
 
 Individual words, as in the case of Word2Vec, but also entire sentences and chunks of text. One of open source’s most popular embedding models is called the [Universal Sentence Encoder](https://www.tensorflow.org/hub/tutorials/semantic_similarity_with_tf_hub_universal_encoder) (USE). The name is a bit misleading, because USE can be used to encode not only sentences but also entire text chunks. Here’s a visual from the TensorFlow website. The heat map shows how similar different sentences are according to their distance in embedding space.
@@ -98,6 +100,8 @@ Imagine, for example, that I wanted to create a searchable database of news arti
 | Science: Has it gone too far?          |
 | Lint: Taming the Sock Drawer Menace    |
 
+
+
 Now suppose I search this database with the text query “food.” The most relevant result in the database is the article about the burrito/taco controversy, even though the word “food” doesn’t appear in the article headline. If we searched by the USE embeddings of the headlines rather than by the raw text itself, we’d be able to capture that–because USE captures semantic similarity of text rather than overlap of specific words. 
 
 It’s worth noting here that since we can link many data types to text–captions for images, transcripts for movies–we can also adapt this technique to use text search for multimedia. As an example, check out this searchable video archive.
@@ -111,3 +115,59 @@ We can also embed images, which enables us to do reverse-image search, i.e. “s
 Imagine, for example, that you’re a clothing store and you want to build out a search feature. You might want to support text queries like “leather goth studded mini skirt.” Using something like a USE embedding, you might be able to match that text user query with a product description. But wouldn’t it be neat if you could let users search by image? So that they could upload, say, a trending top from Instagram and see it matched against similar products in your inventory? (That’s exactly what [this tutorial](https://youtu.be/o6nGn1euRjk) shows you how to build.)
 
 One of my favorite products that uses image search is Google Lens. It matches camera photos with visually similar products.
+
+![Google lens search of Dale's sneakers](/images/271387756_422048173050337_2202992223284585099_n.jpg "Google lens search of Dale's sneakers")
+
+As with sentence embeddings, there are lots of free-to-use image embedding models available. This TensorFlow Hub page [provides a bunch](https://tfhub.dev/google/collections/image/1), under the label “feature vector.” These embeddings were extracted from large deep learning models that were initially trained to do image classification on large datasets. To see a demo of image search powered by [MobileNet embeddings](https://tfhub.dev/google/imagenet/mobilenet_v2_100_224/feature_vector/5), check out [this demo](https://matchit.magellanic-clouds.com/) that lets you upload a photo and searches all of Wikimedia to find similar images.
+
+Unfortunately, unlike sentence embeddings, open-source image embeddings often need to be tuned for a particular task to be high-quality. For example, if you wanted to build a similarity search for clothing, you’d likely want a clothing dataset to train your embeddings on. (More on how to train embeddings in a bit.)
+
+**Try it out**: [Compression, search, interpolation, and clustering of images using machine learning | by Lak Lakshmanan | Towards Data Science](https://towardsdatascience.com/compression-search-interpolation-and-clustering-of-images-using-machine-learning-eb65fcf0abbb)
+
+
+
+### Products and Shoppers
+
+Embeddings are especially useful in the retail space when it comes to making product recommendations. [How does Spotify know](https://research.atspotify.com/contextual-and-sequential-user-embeddings-for-music-recommendation/) which songs to recommend listeners based on their listening history? [How does Netflix decide](https://netflixtechblog.com/supporting-content-decision-makers-with-machine-learning-995b7b76006f) which movies to suggest? How does Amazon know what products to recommend shoppers based on purchase histories?
+
+Nowadays, the cutting-edge way to build recommendation systems is with embeddings. Using purchase/listening/watching history data, retailers train models that embed users and items. (More on how that’s done in a second.)
+
+Imagine, for example, that I’m a frequent shopper at an imaginary, high-tech book-selling site called BookShop. BookShop maintains two embedding models:
+
+The first, its **user embedding mode**l, maps me to user space based on my purchase history. Based on the fact that I buy a lot of O’Reilly tech guides, pop science books, and fantasy books, this model maps me close to other nerds in **user space**.
+
+Meanwhile, BookSpace also maintains an **item embedding model** that maps books to **item space**. In item space, we'd expect books of similar genres and topics to cluster together. So, we'd find the vector representing Philip K. Dick's *Do Androids Dream of Electric Sheep* nearby to the vector representing William Gibson's *Neuromancer*, since these books are topically/stylistically similar.
+
+Phew. Okay. So far we’ve talked about: 
+
+* What types of apps embeddings enable
+* What embeddings are (a mapping of data to points in space)
+* Some of the data types that can actually be embedded
+
+What we haven’t yet covered is where embeddings come from. Or rather, where machine learning models that take in data and spit out embeddings come from. So let's do that now.
+
+## How are embeddings created/where do I score some?
+
+Here, as in most of machine learning, we have two options: the pre-trained model route and the DIY, train-your-own model route.
+
+### Pre-Trained Models
+
+If you’d like to embed text–i.e. to do text search or similarity search on text–you’re in luck. There are tons and tons of pre-trained text embeddings free and easily available for your using. One of the most popular models is the Universal Sentence Encoder model I mentioned above, which you can download [here](https://tfhub.dev/google/collections/universal-sentence-encoder/1) from the TensorFlow Hub model repository. Using this model in code is pretty straightforward. This Python sample is snatched directly from the TensorFlow website:
+
+> ```python
+> import tensorflow_hub as hub
+>
+> embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
+> embeddings = embed([
+>     "The quick brown fox jumps over the lazy dog.",
+>     "I am a sentence for which I would like to get its embedding"])
+>
+> print(embeddings)
+>
+> # Response looks like: [[0.001, 0.201, ...]]
+> # i.e., an array of vectors
+> ```
+
+Can you think of anything this sophisticated that you can accomplish in so few lines of Python code?
+
+To actually get use out of these text embeddings, we'll need to implement nearest neighbor search and calculate similarity. For that, let me point you to [this blog post](https://daleonai.com/semantic-ml) I wrote recently on this very topic--building text/semantically intelligent apps using sentence embeddings.
