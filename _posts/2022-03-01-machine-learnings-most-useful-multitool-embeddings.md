@@ -75,3 +75,20 @@ Similarity scores are useful for applications like duplicate detection and facia
 Similarity scores can also be used for typo correction. In Word2Vec, common misspellings–”hello,” “helo,” “helllo,” “hEeeeelO”--tend to have high similarity scores because they’re all used in the same contexts.
 
 The graphs above also illustrate an additional and very neat property of Word2Vec, which is that different axes capture grammatical meaning, like gender, verb tense, and so on. This means that by adding and subtracting word vectors, we can solve analogies, like “man is to woman as king is to \_\_\_\_.” It’s quite a neat feature of word vectors, though this trait doesn’t always translate in a useful way to embeddings of more complex data types, like images and longer chunks of text. (More on that in a second.)
+
+## What kinds of things can be embedded?
+
+So many kinds of things!
+
+### Text
+
+Individual words, as in the case of Word2Vec, but also entire sentences and chunks of text. One of open source’s most popular embedding models is called the [Universal Sentence Encoder](https://www.tensorflow.org/hub/tutorials/semantic_similarity_with_tf_hub_universal_encoder) (USE). The name is a bit misleading, because USE can be used to encode not only sentences but also entire text chunks. Here’s a visual from the TensorFlow website. The heat map shows how similar different sentences are according to their distance in embedding space.
+
+![visualization of USE embeddings](/images/embeddings2.png "visualization of USE embeddings")
+
+\
+The Universal Sentence Encoder model has tons of uses, especially when it comes to text search. That’s because USE embeddings capture sentence meanings rather than overfitting on individual words.
+
+
+
+Imagine, for example, that I wanted to create a searchable database of New York Times articles.
