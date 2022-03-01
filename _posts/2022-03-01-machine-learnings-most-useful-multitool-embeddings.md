@@ -86,9 +86,28 @@ Individual words, as in the case of Word2Vec, but also entire sentences and chun
 
 ![visualization of USE embeddings](/images/embeddings2.png "visualization of USE embeddings")
 
-\
 The Universal Sentence Encoder model has tons of uses, especially when it comes to text search. That’s because USE embeddings capture sentence meanings rather than overfitting on individual words.
 
+Imagine, for example, that I wanted to create a searchable database of news articles.
 
+| The Dale Times News Article Database   |
+| -------------------------------------- |
+| Man Bites Dog                          |
+| Are Burritos the Next Taco?            |
+| Top Ten ML Trends You Missed This Week |
+| Science: Has it gone too far?          |
+| Lint: Taming the Sock Drawer Menace    |
 
-Imagine, for example, that I wanted to create a searchable database of New York Times articles.
+Now suppose I search this database with the text query “food.” The most relevant result in the database is the article about the burrito/taco controversy, even though the word “food” doesn’t appear in the article headline. If we searched by the USE embeddings of the headlines rather than by the raw text itself, we’d be able to capture that–because USE captures semantic similarity of text rather than overlap of specific words. 
+
+It’s worth noting here that since we can link many data types to text–captions for images, transcripts for movies–we can also adapt this technique to use text search for multimedia. As an example, check out this searchable video archive.
+
+**Try it out: [How to do text similarity search and document clustering in BigQuery | by Lak Lakshmanan | Towards Data Science](https://towardsdatascience.com/how-to-do-text-similarity-search-and-document-clustering-in-bigquery-75eb8f45ab65)**
+
+### Images
+
+We can also embed images, which enables us to do reverse-image search, i.e. “search by image.” One example is vision product search, which also happens to be a [Google Cloud product](https://cloud.google.com/vision/product-search/docs) by the same name.
+
+Imagine, for example, that you’re a clothing store and you want to build out a search feature. You might want to support text queries like “leather goth studded mini skirt.” Using something like a USE embedding, you might be able to match that text user query with a product description. But wouldn’t it be neat if you could let users search by image? So that they could upload, say, a trending top from Instagram and see it matched against similar products in your inventory? (That’s exactly what [this tutorial](https://youtu.be/o6nGn1euRjk) shows you how to build.)
+
+One of my favorite products that uses image search is Google Lens. It matches camera photos with visually similar products.
