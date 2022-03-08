@@ -3,8 +3,8 @@ layout: post
 title: "Machine Learning's Most Useful Multitool: Embeddings"
 date: 2022-03-01T16:30:55.384Z
 description: Are embeddings machine learning's most underrated but super useful tool?
-feature_image: /images/apple-watch.jpg
-thumbnail_image: /images/apple-watch.jpg
+feature_image: /images/embeddings-blog-post-smol.png
+thumbnail_image: /images/embeddings-blog-post-smol.png
 tags:
   - ai
   - nlp
