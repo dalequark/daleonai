@@ -98,8 +98,6 @@ Imagine, for example, that I wanted to create a searchable database of news arti
 | Science: Has it gone too far?            |
 | Lint: Taming the Sock Drawer Menace      |
 
-
-
 Now suppose I search this database with the text query “food.” The most relevant result in the database is the article about the infamous burrito/taco controversy, even though the word “food” doesn’t appear in the article headline. If we searched by the USE embeddings of the headlines rather than by the raw text itself, we’d be able to capture that–because USE captures semantic similarity of text rather than overlap of specific words. 
 
 It’s worth noting here that since we can associate many data types with text–captions for images, transcripts for movies–we can also adapt this technique to use text search for multimedia. As an example, check out this searchable video archive.
@@ -136,17 +134,15 @@ The first, its user embedding model, maps me, a book-buyer, to user space based 
 
 Meanwhile, BookSpace also maintains an item embedding model that maps books to item space. In item space, we'd expect books of similar genres and topics to cluster together. So, we'd find the vector representing Philip K. Dick's Do Androids Dream of Electric Sheep nearby to the vector representing William Gibson's Neuromancer, since these books are topically/stylistically similar.
 
-xxx
+## How are embeddings created/where do I score some?
 
-Phew. Okay. So far we’ve talked about: 
+To recap, so far we’ve talked about: 
 
-* What types of apps embeddings enable
+* What types of apps embeddings power
 * What embeddings are (a mapping of data to points in space)
 * Some of the data types that can actually be embedded
 
-What we haven’t yet covered is where embeddings come from. Or rather, where machine learning models that take in data and spit out embeddings come from. So let's do that now.
-
-## How are embeddings created/where do I score some?
+What we haven’t yet covered is where embeddings come from. (When a data scientist and a SQL database love each other very much…) Er, uh, more specifically: how to build a machine learning model that takes in data and spits out semantically meaningful embeddings based on your use case.
 
 Here, as in most of machine learning, we have two options: the pre-trained model route and the DIY, train-your-own model route.
 
@@ -154,20 +150,32 @@ Here, as in most of machine learning, we have two options: the pre-trained model
 
 If you’d like to embed text–i.e. to do text search or similarity search on text–you’re in luck. There are tons and tons of pre-trained text embeddings free and easily available for your using. One of the most popular models is the Universal Sentence Encoder model I mentioned above, which you can download [here](https://tfhub.dev/google/collections/universal-sentence-encoder/1) from the TensorFlow Hub model repository. Using this model in code is pretty straightforward. This Python sample is snatched directly from the TensorFlow website:
 
-> ```python
-> import tensorflow_hub as hub
->
-> embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
-> embeddings = embed([
->     "The quick brown fox jumps over the lazy dog.",
->     "I am a sentence for which I would like to get its embedding"])
->
-> print(embeddings)
->
-> # Response looks like: [[0.001, 0.201, ...]]
-> # i.e., an array of vectors
-> ```
+```python
+import tensorflow_hub as hub
 
-Can you think of anything this sophisticated that you can accomplish in so few lines of Python code?
+embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
+embeddings = embed([
+    "The quick brown fox jumps over the lazy dog.",
+    "I am a sentence for which I would like to get its embedding"])
+
+print(embeddings)
+
+# Response looks like: [[0.001, 0.201, ...]]
+# i.e., an array of vectors
+```
 
 To actually get use out of these text embeddings, we'll need to implement nearest neighbor search and calculate similarity. For that, let me point you to [this blog post](https://daleonai.com/semantic-ml) I wrote recently on this very topic--building text/semantically intelligent apps using sentence embeddings.
+
+Open-source image embeddings are easy to come by too. Here’s where you can find them on [TensorFlow Hub](https://tfhub.dev/s?module-type=image-feature-vector). Again, to be useful for domain-specific tasks, it’s often useful to fine-tune these types of embeddings on domain-specific data (i.e. pictures of clothing items, dog breeds, etc.)
+
+Finally, I'd be remiss not to mention one of the most hype-inducing embedding models released as of late: [OpenAI's CLIP model](https://huggingface.co/docs/transformers/model_doc/clip). CLIP can take an image *or* text as input and map both data types to the same embedding space. This allows you to build software that can do things like: figure out which caption (text) is most fitting for an image.
+
+#### Training Your Own Embeddings
+
+Beyond generic text and image embeddings, we often need to train embedding models ourselves on our own data. Nowadays, one of the most popular ways to do this is with what’s called a Two-Tower Model. From the Google Cloud website:
+
+The Two-Tower model trains embeddings by using labeled data. The Two-Tower model pairs similar types of objects, such as user profiles, search queries, web documents, answer passages, or images, in the same vector space, so that related items are close to each other. The Two-Tower model consists of two encoder towers: the query tower and the candidate tower. These towers embed independent items into a shared embedding space, which lets Matching Engine retrieve similarly matched items.
+
+I’m not going to go into detail about how to train a two-tower model in this post. For that, I’ll direct you to this guide on [Training Your Own Two-Tower Model on Google Cloud](https://cloud.google.com/vertex-ai/docs/matching-engine/train-embeddings-two-tower), or this page on [Tensorflow Recommenders](https://www.tensorflow.org/recommenders), which shows you how to train your own TensorFlow Two-Tower/recommendation models.
+
+Anywho, that's it for now. Up next, we'll talk about how to build apps based on embedding technology. As always, thanks for reading.
