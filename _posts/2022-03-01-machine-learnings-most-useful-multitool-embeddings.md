@@ -32,7 +32,7 @@ Good. Let’s dive in. In this post, we’ll explore:
 
 ## What can you build with embeddings?
 
-Before we talk about what embeddings are, let’s take quick stock of what you can build with them. (You know--to whet your appetite.)
+Before we talk about what embeddings are, let’s take quick stock of what you can build with them. (You know--to whet your appetite.) Vector embeddings power:
 
 1. Recommendation systems (i.e. Netflix-style if-you-like-these-movies-you’ll-like-this-one-too)
 2. All kinds of search
@@ -48,7 +48,7 @@ Before we talk about what embeddings are, let’s take quick stock of what you c
 8. Detecting when ML models go stale (drift)
 9. So much more!
 
-Even if you’re not trying to do something on this list, the applications of embeddings are so broad that you should probably keep reading, just in case. Right?
+Even if you’re not trying to do something on this list, the applications of embeddings are so broad that you should probably keep on reading, just in case. Right?
 
 ## What are Embeddings?
 
@@ -78,9 +78,7 @@ The graphs above also illustrate an additional and very neat property of Word2Ve
 
 ## What kinds of things can be embedded?
 
-So many kinds of things!
-
-
+![](/images/allthethings.gif)
 
 ### Text
 
@@ -92,19 +90,19 @@ The Universal Sentence Encoder model has tons of uses, especially when it comes 
 
 Imagine, for example, that I wanted to create a searchable database of news articles.
 
-| The Dale Times News Article Database   |
-| -------------------------------------- |
-| Man Bites Dog                          |
-| Are Burritos the Next Taco?            |
-| Top Ten ML Trends You Missed This Week |
-| Science: Has it gone too far?          |
-| Lint: Taming the Sock Drawer Menace    |
+| **The Dale Times News Article Database** |
+| ---------------------------------------- |
+| Man Bites Dog                            |
+| Are Burritos the Next Taco?              |
+| Top Ten ML Trends You Missed This Week   |
+| Science: Has it gone too far?            |
+| Lint: Taming the Sock Drawer Menace      |
 
 
 
-Now suppose I search this database with the text query “food.” The most relevant result in the database is the article about the burrito/taco controversy, even though the word “food” doesn’t appear in the article headline. If we searched by the USE embeddings of the headlines rather than by the raw text itself, we’d be able to capture that–because USE captures semantic similarity of text rather than overlap of specific words. 
+Now suppose I search this database with the text query “food.” The most relevant result in the database is the article about the infamous burrito/taco controversy, even though the word “food” doesn’t appear in the article headline. If we searched by the USE embeddings of the headlines rather than by the raw text itself, we’d be able to capture that–because USE captures semantic similarity of text rather than overlap of specific words. 
 
-It’s worth noting here that since we can link many data types to text–captions for images, transcripts for movies–we can also adapt this technique to use text search for multimedia. As an example, check out this searchable video archive.
+It’s worth noting here that since we can associate many data types with text–captions for images, transcripts for movies–we can also adapt this technique to use text search for multimedia. As an example, check out this searchable video archive.
 
 **Try it out: [How to do text similarity search and document clustering in BigQuery | by Lak Lakshmanan | Towards Data Science](https://towardsdatascience.com/how-to-do-text-similarity-search-and-document-clustering-in-bigquery-75eb8f45ab65)**
 
@@ -112,9 +110,9 @@ It’s worth noting here that since we can link many data types to text–captio
 
 We can also embed images, which enables us to do reverse-image search, i.e. “search by image.” One example is vision product search, which also happens to be a [Google Cloud product](https://cloud.google.com/vision/product-search/docs) by the same name.
 
-Imagine, for example, that you’re a clothing store and you want to build out a search feature. You might want to support text queries like “leather goth studded mini skirt.” Using something like a USE embedding, you might be able to match that text user query with a product description. But wouldn’t it be neat if you could let users search by image? So that they could upload, say, a trending top from Instagram and see it matched against similar products in your inventory? (That’s exactly what [this tutorial](https://youtu.be/o6nGn1euRjk) shows you how to build.)
+Imagine, for example, that you’re a clothing store and you want to build out a search feature. You might want to support text queries like “leather goth studded mini skirt.” Using something like a USE embedding, you might be able to match that text user query with a product description. But wouldn’t it be neat if you could let users search by image instead of just text? So that shoppers could upload, say, a trending top from Instagram and see it matched against similar products in your inventory? (That’s exactly what [this tutorial](https://youtu.be/o6nGn1euRjk) shows you how to build.)
 
-One of my favorite products that uses image search is Google Lens. It matches camera photos with visually similar products.
+One of my favorite products that uses image search is Google Lens. It matches camera photos with visually similar products. Here, it tries to match online products that look similar to my pair of sneakers: 
 
 ![Google lens search of Dale's sneakers](/images/271387756_422048173050337_2202992223284585099_n.jpg "Google lens search of Dale's sneakers")
 
@@ -124,19 +122,21 @@ Unfortunately, unlike sentence embeddings, open-source image embeddings often ne
 
 **Try it out**: [Compression, search, interpolation, and clustering of images using machine learning | by Lak Lakshmanan | Towards Data Science](https://towardsdatascience.com/compression-search-interpolation-and-clustering-of-images-using-machine-learning-eb65fcf0abbb)
 
-
-
 ### Products and Shoppers
 
-Embeddings are especially useful in the retail space when it comes to making product recommendations. [How does Spotify know](https://research.atspotify.com/contextual-and-sequential-user-embeddings-for-music-recommendation/) which songs to recommend listeners based on their listening history? [How does Netflix decide](https://netflixtechblog.com/supporting-content-decision-makers-with-machine-learning-995b7b76006f) which movies to suggest? How does Amazon know what products to recommend shoppers based on purchase histories?
+Embeddings are especially useful in the retail space when it comes to making product recommendations. [How does Spotify know](https://research.atspotify.com/contextual-and-sequential-user-embeddings-for-music-recommendation/) which songs to recommend listeners based on their listening histories? [How does Netflix decide](https://netflixtechblog.com/supporting-content-decision-makers-with-machine-learning-995b7b76006f) which movies to suggest? How does Amazon know what products to recommend shoppers based on purchase histories?
 
-Nowadays, the cutting-edge way to build recommendation systems is with embeddings. Using purchase/listening/watching history data, retailers train models that embed users and items. (More on how that’s done in a second.)
+Nowadays, the cutting-edge way to build recommendation systems is with embeddings. Using purchase/listening/watching history data, retailers train models that embed users and items. 
 
-Imagine, for example, that I’m a frequent shopper at an imaginary, high-tech book-selling site called BookShop. BookShop maintains two embedding models:
+What does that mean?
 
-The first, its **user embedding mode**l, maps me to user space based on my purchase history. Based on the fact that I buy a lot of O’Reilly tech guides, pop science books, and fantasy books, this model maps me close to other nerds in **user space**.
+Imagine, for example, that I’m a frequent shopper at an imaginary, high-tech book-selling site called BookShop. Using purchase history data, BookShop trained two embedding models:
 
-Meanwhile, BookSpace also maintains an **item embedding model** that maps books to **item space**. In item space, we'd expect books of similar genres and topics to cluster together. So, we'd find the vector representing Philip K. Dick's *Do Androids Dream of Electric Sheep* nearby to the vector representing William Gibson's *Neuromancer*, since these books are topically/stylistically similar.
+The first, its user embedding model, maps me, a book-buyer, to user space based on my purchase history. I.e. because I buy a lot of O’Reilly tech guides, pop science books, and fantasy books, this model maps me close to other nerds in user space.
+
+Meanwhile, BookSpace also maintains an item embedding model that maps books to item space. In item space, we'd expect books of similar genres and topics to cluster together. So, we'd find the vector representing Philip K. Dick's Do Androids Dream of Electric Sheep nearby to the vector representing William Gibson's Neuromancer, since these books are topically/stylistically similar.
+
+xxx
 
 Phew. Okay. So far we’ve talked about: 
 
