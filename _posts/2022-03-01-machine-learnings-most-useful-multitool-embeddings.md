@@ -102,7 +102,7 @@ Now suppose I search this database with the text query “food.” The most rele
 
 It’s worth noting here that since we can associate many data types with text–captions for images, transcripts for movies–we can also adapt this technique to use text search for multimedia. As an example, check out this searchable video archive.
 
-**Try it out: [How to do text similarity search and document clustering in BigQuery | by Lak Lakshmanan | Towards Data Science](https://towardsdatascience.com/how-to-do-text-similarity-search-and-document-clustering-in-bigquery-75eb8f45ab65)**
+- Try it out: [How to do text similarity search and document clustering in BigQuery](https://towardsdatascience.com/how-to-do-text-similarity-search-and-document-clustering-in-bigquery-75eb8f45ab65)
 
 ### Images
 
@@ -118,7 +118,7 @@ As with sentence embeddings, there are lots of free-to-use image embedding model
 
 Unfortunately, unlike sentence embeddings, open-source image embeddings often need to be tuned for a particular task to be high-quality. For example, if you wanted to build a similarity search for clothing, you’d likely want a clothing dataset to train your embeddings on. (More on how to train embeddings in a bit.)
 
-**Try it out**: [Compression, search, interpolation, and clustering of images using machine learning](https://towardsdatascience.com/compression-search-interpolation-and-clustering-of-images-using-machine-learning-eb65fcf0abbb)
+-Try it out: [Compression, search, interpolation, and clustering of images using machine learning](https://towardsdatascience.com/compression-search-interpolation-and-clustering-of-images-using-machine-learning-eb65fcf0abbb)
 
 ### Products and Shoppers
 
