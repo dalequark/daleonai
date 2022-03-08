@@ -118,7 +118,7 @@ As with sentence embeddings, there are lots of free-to-use image embedding model
 
 Unfortunately, unlike sentence embeddings, open-source image embeddings often need to be tuned for a particular task to be high-quality. For example, if you wanted to build a similarity search for clothing, you’d likely want a clothing dataset to train your embeddings on. (More on how to train embeddings in a bit.)
 
-**Try it out**: [Compression, search, interpolation, and clustering of images using machine learning | by Lak Lakshmanan | Towards Data Science](https://towardsdatascience.com/compression-search-interpolation-and-clustering-of-images-using-machine-learning-eb65fcf0abbb)
+**Try it out**: [Compression, search, interpolation, and clustering of images using machine learning](https://towardsdatascience.com/compression-search-interpolation-and-clustering-of-images-using-machine-learning-eb65fcf0abbb)
 
 ### Products and Shoppers
 
