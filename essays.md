@@ -39,3 +39,7 @@ _Artificial Intelligence_
 [DaleonAI.com - You, Me, and My AI-Generated Alternate Identity](https://daleonai.com/ai-generated-identity) (09/2021)
 
 [Googe.com - How LaMDA Works](https://aitestkitchen.withgoogle.com/how-lamda-works) (06/2022)
+
+**Dale's YouTube Videos**
+
+[bit.ly/gmakingwithml](bit.ly/gmakingwithml)
