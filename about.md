@@ -4,7 +4,7 @@ layout: page
 ---
 <img src="/images/dale_wall_small.jpeg" style="display: inline-block; float: left; margin: 0 2em 0.5em 0;" width="300" />
 
-<h3 style="margin-top: -1.15em;">Generative AI Developer Advocacy Lead @ Google Labs. Writer, Coder, Maker, Napper.</h3>
+<h3 style="margin-top: -1.15em;">Generative AI DevRel Lead @ Google Labs. Writer, Coder, Maker, Napper.</h3>
 
 I lead Generative AI advocacy and education at Google, focusing on Large Language Models. I help design tools to make LLM development easier, build prototypes, and teach developers internally and externally how to build apps with LLMs.
 
