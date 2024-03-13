@@ -177,3 +177,5 @@ I can definitely say that the style guide made Gemini a much better critiquer:
 | "So the first step is to determine how similar two amino acid sequences are. To do that, biologists typically compute something called an MSA or Multiple Sequence Alignment." | Rule 17: In summaries, keep to one tense. | "The initial step involves assessing the similarity between two amino acid sequences. Biologists typically achieve this through Multiple Sequence Alignment (MSA)." |
 | "BERT proved that you could build very good language models trained on unlabeled data, like text scraped from Wikipedia and Reddit, and that these large “base” models could then be adapted with domain-specific data to lots of different use cases." | Rule 14: Avoid a succession of loose sentences. | "BERT demonstrated the feasibility of constructing high-quality language models from vast amounts of unlabeled data, such as text extracted from Wikipedia and Reddit. These foundational models can then be fine-tuned with domain-specific data to address a wide range of applications." |
 ```
+
+I﻿t was able to accurately quote rules and their numbers from the *Elements of Style* PDF. Pretty neat!
