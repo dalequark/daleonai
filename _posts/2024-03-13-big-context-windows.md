@@ -36,3 +36,9 @@ and pay careful attention to make sure you're very accurate.
 
 
 ![Prompting Gemini with a family video](/images/1996_video_prompt.png "Summarizing an hour-long family video from 1996")
+
+A﻿nd it worked!
+
+![Gemini summarizes a family video](/images/1996_model_summary.png "Family video play by play")
+
+Mostly. All of these scenes are indeed clips from my video, and in the correct order. Gemini did miss a scene or two, which is why I packed my prompt with clarifiers like: "Make sure not to forget any scenes." Overall, I was impressed. The chances of me watching this hour-long video end-to-end were nil, so it was nice to have Gemini give me the highlight reel.
