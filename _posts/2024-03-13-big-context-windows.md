@@ -137,7 +137,7 @@ This result blew me away, not only because it's so cool in its own right, but al
 
 ### L﻿aTeX Slide Generator
 
-I decided to apply this approach--"textbook prompting"--to a problem I've been grappling with for some time--figuring out a way to automate my least favorite task: making slides. I would love to be able to feed an LLM one of my blog posts and have it transform the post into a slide presentation. Alas, I've had little luck. You might think image generation models like DALLE would be able to help here, but alas: image generation models still suck at generating lucid text.
+I decided to apply this approach--"textbook prompting"--to a problem I've been grappling with for some time--figuring out a way to automate my least favorite task: making slides. I would love to be able to feed an LLM one of my blog posts and have it transform the post into a slide presentation. Alas, I've had little luck. You might think image generation models like DALLE would be able to help here, but no: image generation models still suck at generating lucid text.
 
 Instead, I decided to turn to LaTeX. For the uninitiated, LaTeX is a markup language for formatting documents and slide presentations. It enables scientists, mathematicians, and researchers to write beautifully formatted research papers and presentations with perfectly rendered tables, graphs, and mathematical equations--that is, if they can get their LaTeX code to compile before they rage quit.
 
