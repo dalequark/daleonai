@@ -203,3 +203,14 @@ In other words, I threw everything but the kitchen sink into my massive document
 Overall, Gemini's output blog post was pretty impressive, but it just wasn't up to my exacting standards. Did it capture my style? It tried its darndest, using phrases I've used before, like: "Hold on to your hats, folks," and, "So buckle up." (Cringe! Do I really say those things?) However, Gemini's output was a bit short. Though Gemini 1.5 can consume long chunks of information, it doesn't necessarily output long responses. I could have gotten around this limitation by having Gemini output one or two paragraphs at a time, but, well... what can I say? The writer in me wanted to give this post my signature human touch. Maybe I'm too sentimental. Maybe Gemini's post was better! Who am I to say? [You decide](https://gist.github.com/dalequark/b1234ae30bd770a2a79f7449b97ee637).
 
 Regardless, as I was putting this experiment together, I was struck by the feeling that I was toying around with a whole new way of prompting. I didn't have to do any software engineering to get this blog generator to work. Instead, I spent my time in Google Docs, engineering the perfect word document, one that I could easily reuse in the future by swapping out reference material and form fields. I was truly doing document prompting.
+
+## B﻿ut wait, there's more
+
+These experiments obviously just scratch the surface of what's possible with long context windows. Some other experiments that I tried that didn't make the cut for this post?
+
+* Prompting Gemini with Blake Snyder's famous [Save The Cat](https://savethecat.com/) screenwriting beat sheet, which enabled Gemini to generate screenplays outlines in Synder's clever format
+* Getting Gemini to analyze hours of GoPro footage, picking out the interesting bits
+* Prompting Gemini with a bunch of research papers on medical ailments (i.e. allergies, dry eye) and having it summarize the most SOTA treatments
+* Asking Gemini to summarize and simplify the breakthroughs in DeepMind's Gemini 1.5 research paper
+
+Now I know what you're thinking: neat, but when am I actually going to get access to Gemini 1.5? I don't know. I'm sorry. But know that I'm on the edge of my seat too, just waiting to see what awesome things you'll build.
