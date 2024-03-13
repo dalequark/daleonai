@@ -179,3 +179,27 @@ I can definitely say that the style guide made Gemini a much better critiquer:
 ```
 
 I﻿t was able to accurately quote rules and their numbers from the *Elements of Style* PDF. Pretty neat!
+
+### Kitchen Sink Prompting
+
+On the topic of blog posts: you better believe that one of the first things I tried to do with Gemini 1.5 was get it to generate this entire blog post for me. To accomplish that, I set out to engineer a mega-prompt. In Google docs, I started assembling everything I thought could possibly relevant to generating a blog post into one giant document. The first page looked like this:
+
+![](/images/document_prompt.png)
+
+My document prompt consisted of:
+
+* A table of contents, describing each section of the Google Doc
+* A description of the task, i.e. "Your job is to write blog posts in the style of Dale Markowitz," along with the potential title of said post.
+* A ramble-y, stream-of-consciousness summary of the blog post I recorded on my phone while on a long walk, transcribed with Speech-to-Text. (Side bar, this is another one of my favorite LLM use cases: going on long walks, blabbing into my phone's recorder, than using an LLM to transform the whole thing into an eloquent memo.)
+* Some sample posts from my blog [daleonai.com](http://daleonai.com/), with an instruction to read them for *style*
+* Reference resources, including the DeepMind research paper, Google's launch blog post, and some use cases culled from Twitter/X
+
+In other words, I threw everything but the kitchen sink into my massive document prompt, which is why I'm going to call this technique "kitchen sink prompting." The final prompt document was around 70,000 tokens--just a fraction of Gemini 1.5's million-token context window. I told Gemini to take everything I'd given it and weave together a cohesive [daleonai.com](http://daleonai.com/) blog post on large context windows in my tone and style. The result? You're reading it.
+
+...is what I would have liked to have said. Actually, the only thing Gemini wrote that I used was that joke:
+
+![](/images/geminis_contribution.png)
+
+Overall, Gemini's output blog post was pretty impressive, but it just wasn't up to my exacting standards. Did it capture my style? It tried its darndest, using phrases I've used before, like: "Hold on to your hats, folks," and, "So buckle up." (Cringe! Do I really say those things?) However, Gemini's output was a bit short. Though Gemini 1.5 can consume long chunks of information, it doesn't necessarily output long responses. I could have gotten around this limitation by having Gemini output one or two paragraphs at a time, but, well... what can I say? The writer in me wanted to give this post my signature human touch. Maybe I'm too sentimental. Maybe Gemini's post was better! Who am I to say? [You decide](https://gist.github.com/dalequark/b1234ae30bd770a2a79f7449b97ee637).
+
+Regardless, as I was putting this experiment together, I was struck by the feeling that I was toying around with a whole new way of prompting. I didn't have to do any software engineering to get this blog generator to work. Instead, I spent my time in Google Docs, engineering the perfect word document, one that I could easily reuse in the future by swapping out reference material and form fields. I was truly doing document prompting.
