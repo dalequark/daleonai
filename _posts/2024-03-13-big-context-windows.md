@@ -13,6 +13,8 @@ tags:
   - ml
 permalink: bigcontextwindows
 ---
+
+
 Last week, I got my hands on Google's newest generative model: Gemini 1.5, a multi-modal behemoth that can consume up to an hour of video, 11 hours of audio, 30,000 lines of code, or 700,000 words. That's a big leap forward in terms of context length: Gemini accepts 5x times more input than its beefiest predecessor, Claude 2.1.
 
 I've been excitedly anticipating the era of long context windows for a while, not just because they enable generative models to solve entirely new kinds of problems, but also because they just might just transform the way we develop with LLMs. But I'm getting ahead of myself. First, let me share with you some of my favorite Gemini 1.5 experiments.
@@ -149,3 +151,29 @@ Unfortunately, modern LLMs seem almost as baffled by LaTeX as I am; they'd alway
 With Gemini 1.5, I tried something new, inspired by the DeepMind authors: prompting the model with a series of LaTeX/Beamer tutorial blog posts, i.e. "textbook prompting." And it worked:
 
 ![Prompting a model to generate LaTeX slides](/images/beamer_manual_propmpt.png "Prompting a model to generate LaTeX slides")
+
+I prompted Gemini with a couple of LaTeX blog posts in the form of a PDF, then sent it a second PDF--in this case, the DeepMind Gemini 1.5 Research paper--and asked it to turn the latter into a slide presentation. Gemini output functional LaTeX code I was able to compile into this deck:
+
+![Generated LaTeX slide](/images/latex_slide_1.png "Generated LaTeX slide")
+
+![Generated LaTeX slide](/images/latex_slide_2.png "Generated LaTeX slide")
+
+I mean, is there any surer mark of genius than mastering LaTeX?
+
+### Writing With Style
+
+Another thing generative models are strangely bad at? Writing well. It's a bit of a mystery, but whenever I've asked an LLM to critique my writing style or improve a paragraph, I've always found its output to be unconscionably corny. LLMs seem not to understand a cardinal rule of writing: show don't tell. They're about as nuanced as a slap in the face, and their propensity for puns is just repulsive. With this in mind, I wondered if I could make Gemini 1.5 a better writing partner by prompting it to improve my [daleonai.com](http://daleonai.com/) blog posts by prompting the model first with William Strunk’s famous *The Elements of Style.*
+
+![Prompting Gemini with The Elements of Style](/images/elements_of_style.png "Prompting Gemini with The Elements of Style")
+
+I can definitely say that the style guide made Gemini a much better critiquer:
+
+```markdown
+| Dale Quote | EoS Rule | Suggested Improvement |
+|---|---|---|
+| "Embeddings are one of the most versatile techniques in machine learning, and a critical tool every ML engineer should have in their tool belt. It’s a shame, then, that so few of us understand what they are and what they’re good for!" | Rule 11: Put statements in positive form. | "Embeddings are a powerful and versatile technique in machine learning, essential for any ML engineer's toolkit. Understanding their potential unlocks a wide range of applications." |
+| "With Word2Vec, similar words cluster together in space—so the vector/point representing “king” and “queen” and “prince” will all cluster nearby. Same thing with synonyms (“walked,” “strolled,” “jogged”)." | Rule 13: Omit needless words. | "Word2Vec positions similar words like "king," "queen," and "prince" close together in the embedding space. Synonyms such as "walked," "strolled," and "jogged" also cluster together." |
+| "The Universal Sentence Encoder model has tons of uses, especially when it comes to text search. That’s because USE embeddings capture sentence meanings rather than overfitting on individual words." | Rule 12: Use definite, specific, concrete language. | "The Universal Sentence Encoder excels in text search applications. Its embeddings effectively capture the semantic meaning of sentences, going beyond mere word overlap." |
+| "So the first step is to determine how similar two amino acid sequences are. To do that, biologists typically compute something called an MSA or Multiple Sequence Alignment." | Rule 17: In summaries, keep to one tense. | "The initial step involves assessing the similarity between two amino acid sequences. Biologists typically achieve this through Multiple Sequence Alignment (MSA)." |
+| "BERT proved that you could build very good language models trained on unlabeled data, like text scraped from Wikipedia and Reddit, and that these large “base” models could then be adapted with domain-specific data to lots of different use cases." | Rule 14: Avoid a succession of loose sentences. | "BERT demonstrated the feasibility of constructing high-quality language models from vast amounts of unlabeled data, such as text extracted from Wikipedia and Reddit. These foundational models can then be fine-tuned with domain-specific data to address a wide range of applications." |
+```
