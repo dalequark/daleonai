@@ -89,8 +89,6 @@ Edging: Edging can help to create a clean line between the grass and the gravel.
 Lighting: Lighting can help to highlight the landscaping and make it more inviting. You might want to consider adding lighting to the yard.
 ```
 
-
-
 Though I'm no gardener, I'm pretty sure Gemini was on the money here. It correctly identified my agave, yucca, and the profusion of dandelions/weeds, as well as a broken planter the former resident left behind. I was particularly impressed/weirded out by this line: "St. Augustine grass: This is a warm-season grass that is popular in Texas." It would seem that Gemini figured out where I lived by identifying my grass? Weird! But... useful?
 
 ### Improving My Tennis Serve
@@ -100,3 +98,54 @@ My final experiment with video was another throwback to an AI project I'd built 
 ![Gemini analyzing a tennis serve](/images/screenshot-2024-03-05-at-11.38.40 am.png "Gemini 1.5 analyzes my tennis serves.")
 
 Is Gemini being overly generous when it says, "Your serve looks good!"? Probably yes. But still, it was definitely on point about the fact that I can't toss the ball consistently. And no one ever once told me I need to improve my "leg drive."
+
+## T﻿he Era of Document Prompting
+
+Video is flashy and all, but in this developer's opinion, prompting with ~700,000 words of text is just as impressive. If 700,000 words sounds a little vague, here's a quick reference:
+
+```
+| Document                                  | Word Count |
+|-------------------------------------------|------------|
+| The US Constitution                       | 4,543      |
+| Introduction to Algorithms Textbook       | 328,000    |
+| War and Peace                             | 587,000    |
+| The King James Bible                      | 783,137    |
+| The Complete Harry Potter Book Series     | 1,084,170  |
+(Note: Counts are approximate)
+```
+
+We can finally throw entire novels, textbooks, and reference manuals into prompts. Not to mention, we can stop wasting so much time and energy thinking up clever ways to stuff additional info into our prompts, and building out complicated engineering solutions (like RAG) to augment the data our models have access to.
+
+W﻿hat does that mean? More people (i.e. non-coders) can prototype more complex applications faster. Welcome to the era of document prompting.
+
+### P﻿rompting with Manuals
+
+In the past, if we wanted to teach an LLM to do a task, we had two prompting techniques at our disposal:
+
+1. **Instruction prompting**: Describe the task we want completed in a few sentences.
+2. **Example prompting**: Feed the model input-out examples (i.e. for translation, example pairs of sentences in English and their French translations). If we had large example sets (i.e. thousands), we could use the to tune a model. Smaller example sets could be used for few-shot prompting.
+
+Unfortunately, not all problems could be solved with these two methods. Take translating low-resource languages . For as long as I've been working in NLP, the problem of translating languages spoken by only a few people has been nigh impossible. With long context windows, no longer. In their [report on Gemini 1.5](https://storage.googleapis.com/deepmind-media/gemini/gemini_v1_5_report.pdf), DeepMind showed it could be done by writing a prompt that enabled Gemini to translate from English to Kalamang, a language with fewer than 200 speakers. They did it by prompting Gemini with:
+
+* 500 pages of linguistic documentation (i.e. akin to a Kalamang textbook)
+* a dictionary
+* ≈ 400 parallel sentences
+
+This result blew me away, not only because it's so cool in its own right, but also because it got me thinking: what new abilities are unlocked when we start prompting models with textbooks? Or guides? Or manuals?
+
+### L﻿aTeX Slide Generator
+
+I decided to apply this approach--"textbook prompting"--to a problem I've been grappling with for some time--figuring out a way to automate my least favorite task: making slides. I would love to be able to feed an LLM one of my blog posts and have it transform the post into a slide presentation. Alas, I've had little luck. You might think image generation models like DALLE would be able to help here, but alas: image generation models still suck at generating lucid text.
+
+Instead, I decided to turn to LaTeX. For the uninitiated, LaTeX is a markup language for formatting documents and slide presentations. It enables scientists, mathematicians, and researchers to write beautifully formatted research papers and presentations with perfectly rendered tables, graphs, and mathematical equations--that is, if they can get their LaTeX code to compile before they rage quit.
+
+Since generative models have proven effective at generating code, I wondered if I could use them to help me generate LaTeX slides. I wanted to write a prompt that could:
+
+1. Read a blog post
+2. Spit out a LaTeX presentation version of that blog post
+
+Unfortunately, modern LLMs seem almost as baffled by LaTeX as I am; they'd always generate LaTeX with too many errors to compile.
+
+With Gemini 1.5, I tried something new, inspired by the DeepMind authors: prompting the model with a series of LaTeX/Beamer tutorial blog posts, i.e. "textbook prompting." And it worked:
+
+![Prompting a model to generate LaTeX slides](/images/beamer_manual_propmpt.png "Prompting a model to generate LaTeX slides")
