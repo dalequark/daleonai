@@ -1,11 +1,10 @@
 ---
 layout: post
-title: "Big Context Windows Are a Big Deal: Experiments with Gemini 1.5's 1
-  million token context window"
+title: Big Context Windows Are a Big Deal
 date: 2024-03-13T20:54:51.292Z
 description: LLMs with huge context windows are here. What opportunities do they unlock?
 feature_image: /images/big_context_feature.jpeg
-thumbnail_image: /images/big_context_feature_thumb.jpg
+thumbnail_image: /images/big_context_thumb_2.webp
 tags:
   - ai
   - genai
@@ -13,11 +12,9 @@ tags:
   - ml
 permalink: bigcontextwindows
 ---
-
-
 Last week, I got my hands on Google's newest generative model: Gemini 1.5, a multi-modal behemoth that can consume up to an hour of video, 11 hours of audio, 30,000 lines of code, or 700,000 words. That's a big leap forward in terms of context length: Gemini accepts 5x times more input than its beefiest predecessor, Claude 2.1.
 
-I've been excitedly anticipating the era of long context windows for a while, not just because they enable generative models to solve entirely new kinds of problems, but also because they just might just transform the way we develop with LLMs. But I'm getting ahead of myself. First, let me share with you some of my favorite Gemini 1.5 experiments.
+I've been excitedly anticipating the era of long context windows for a while, not just because they enable generative models to solve entirely new kinds of problems, but also because they just might transform the way we develop with LLMs. But I'm getting ahead of myself. First, let me share with you some of my favorite Gemini 1.5 experiments.
 
 ## P﻿rompting with Video
 
@@ -190,7 +187,7 @@ My document prompt consisted of:
 
 * A table of contents, describing each section of the Google Doc
 * A description of the task, i.e. "Your job is to write blog posts in the style of Dale Markowitz," along with the potential title of said post.
-* A ramble-y, stream-of-consciousness summary of the blog post I recorded on my phone while on a long walk, transcribed with Speech-to-Text. (Side bar, this is another one of my favorite LLM use cases: going on long walks, blabbing into my phone's recorder, than using an LLM to transform the whole thing into an eloquent memo.)
+* A ramble-y, stream-of-consciousness summary of the blog post I recorded on my phone while on a long walk. (Side bar, this is another one of my favorite LLM use cases: going on long walks, blabbing into my phone's recorder, than using an LLM to transform the whole thing into an eloquent memo.)
 * Some sample posts from my blog [daleonai.com](http://daleonai.com/), with an instruction to read them for *style*
 * Reference resources, including the DeepMind research paper, Google's launch blog post, and some use cases culled from Twitter/X
 
