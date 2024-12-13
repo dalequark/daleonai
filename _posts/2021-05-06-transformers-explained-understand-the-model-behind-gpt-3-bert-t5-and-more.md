@@ -104,7 +104,7 @@ Attention is a mechanism that allows a text model to "look at" every single word
 
 *Figure from the paper, "Neural Machine Translation by Jointly Learning to Align and Translate (2015)"*
 
-It's a sort of heat map that shows where the model is "attending" when it outputs each word in the French sentence. As you might expect, w**h**en the model outputs the word “européenne,” it’s attending heavily to both the input words “European" and "Economic.”
+It's a sort of heat map that shows where the model is "attending" when it outputs each word in the French sentence. As you might expect, when the model outputs the word “européenne,” it’s attending heavily to both the input words “European" and "Economic.”
 
 And how does the model know which words it should be “attending” to at each time step? It’s something that’s learned from training data. By seeing thousands of examples of French and English sentences, the model learns what types of words are interdependent. It learns how to respect gender, plurality, and other rules of grammar.
 
