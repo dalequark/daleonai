@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: Streaming Dialogflow on your Desktop/Device/Raspberry Pi
 description: Stream Dialogflow in Javascript through your desktop or Raspberry Pi.
 date: 2020-02-06
@@ -18,7 +18,7 @@ If you’ve worked with [Dialogflow](https://dialogflow.com/) (DF) before, you k
 
 Out of the box, Dialogflow comes with a handful of supported integrations that make deploying a DF app on Slack/Facebook/Alexa/etc a snap.
 
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/1" title="Some bulit-in Dialogflow integrations." caption="Some bulit-in Dialogflow integrations." %}
+<!-- TODO: Fix image include -->
 
 
 
@@ -35,19 +35,23 @@ First, log in to the [Dialogflow console](https://dialogflow.cloud.google.com/#/
 
 Click the gear icon in the upper left corner of the screen.
 
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/2" title="Here, under the General tab, note your project id (mine is `simplealarm-spoitm`). Save that value for later." caption="Here, under the General tab, note your project id (mine is `simplealarm-spoitm`). Save that value for later." %}
+<!-- TODO: Fix image include -->
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/3" title="Next, navigate to the 'Speech' tab, scroll down and click the slider next to 'Enable Automatic Text to Speech.' Enabling this option causes Dialogflow to return audio data in its responses, which can be played directly through the speaker." caption="Next, navigate to the 'Speech' tab, scroll down and click the slider next to 'Enable Automatic Text to Speech.' Enabling this option causes Dialogflow to return audio data in its responses, which can be played directly through the speaker." %}
+<!-- TODO: Fix image include -->
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/4" title="If you scroll down here, you’ll also be able to see various options for changing your agent’s voice. Under 'Voice,' which by default is set to 'Automatic,' you can select alternate male and female voices as well as [WaveNet](https://cloud.google.com/text-to-speech/docs/wavenet) voices, which sound more human-like than the standard voices." caption="If you scroll down here, you’ll also be able to see various options for changing your agent’s voice. Under 'Voice,' which by default is set to 'Automatic,' you can select alternate male and female voices as well as [WaveNet](https://cloud.google.com/text-to-speech/docs/wavenet) voices, which sound more human-like than the standard voices." %}
+<!-- TODO: Fix image include -->
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/5" title="Click save, and we’re good to go." caption="Click save, and we’re good to go." %}
+<!-- TODO: Fix image include -->
+
+
+
+<!-- TODO: Fix image include -->
 
 
 
@@ -60,27 +64,27 @@ First, navigate to the GCP [console](https://console.cloud.google.com/) (now’s
 
 In the left hand bar, go to IAM & admin -> Service accounts.
 
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/6" title="Click '+ CREATE SERVICE ACCOUNT' at the top of the screen." caption="Click '+ CREATE SERVICE ACCOUNT' at the top of the screen." %}
+<!-- TODO: Fix image include -->
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/7" title="Create a new service account with some name that describes where you expect it to be used (in this case, on our desktop/raspi/etc)." caption="Create a new service account with some name that describes where you expect it to be used (in this case, on our desktop/raspi/etc)." %}
+<!-- TODO: Fix image include -->
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/8" title="Click create. On the next page, you’ll be able to give permissions to your account. For now, all we’ll need is the 'Dialogflow API Client' permission." caption="Click create. On the next page, you’ll be able to give permissions to your account. For now, all we’ll need is the 'Dialogflow API Client' permission." %}
+<!-- TODO: Fix image include -->
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/9" title="Finally, on the last screen, you’ll see a button that says '+ CREATE KEY.' Click that button." caption="Finally, on the last screen, you’ll see a button that says '+ CREATE KEY.' Click that button." %}
+<!-- TODO: Fix image include -->
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/10" title="Next, select 'JSON' for Key type and select Create." caption="Next, select 'JSON' for Key type and select Create." %}
+<!-- TODO: Fix image include -->
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-06-streaming-dialogflow-on-your-desktop-device-raspberry-pi/11" title="This should download a `json` credentials file to your computer. Anyone with this file will be able to access your Dialogflow Agent, so keep this a secret and don’t check it in to any GitHub repos!" caption="This should download a `json` credentials file to your computer. Anyone with this file will be able to access your Dialogflow Agent, so keep this a secret and don’t check it in to any GitHub repos!" %}
+<!-- TODO: Fix image include -->
 
 
 

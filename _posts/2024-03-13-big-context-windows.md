@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: Big Context Windows Are a Big Deal
-date: 2024-03-13T20:54:51.292Z
+date: 2024-03-13
 description: LLMs with huge context windows are here. What opportunities do they unlock?
 feature_image: /images/big_context_feature.jpeg
 thumbnail_image: /images/big_context_thumb_2.webp

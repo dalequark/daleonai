@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: 'Software Developers: You’re Learning Machine Learning Upside Down'
 description: Most of us learn Machine Learning from the ground up. But the skills
   developers need to be effective users of ML is something totally different. So what
@@ -49,7 +49,8 @@ Today, if you want to build a neural network that recognizes your cat’s face i
 
 In its short lifespan, TensorFlow has already become way, _way_ more user-friendly than it was five years ago. In its early days, you had to understand not only Machine Learning but also distributed computing and deferred graph architectures to be an effective TensorFlow programmer. Even writing a simple print statement was a challenge.
 
-{% include image_caption.html imageurl="/images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/1" title="Breakdown of Keras/TensorFlow/PyTorch popularity, courtesy [this](https://www.quora.com/What-are-the-major-differences-between-TensorFlow-Keras-and-PyTorch) Quora answer." caption="Breakdown of Keras/TensorFlow/PyTorch popularity, courtesy [this](https://www.quora.com/What-are-the-major-differences-between-TensorFlow-Keras-and-PyTorch) Quora answer." %}
+![Breakdown of Keras/TensorFlow/PyTorch popularity, courtesy [this](https://www.quora.com/What-are-the-major-differences-between-TensorFlow-Keras-and-PyTorch) Quora answer.](/images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/1 "Breakdown of Keras/TensorFlow/PyTorch popularity, courtesy [this](https://www.quora.com/What-are-the-major-differences-between-TensorFlow-Keras-and-PyTorch) Quora answer.")
+*Breakdown of Keras/TensorFlow/PyTorch popularity, courtesy [this](https://www.quora.com/What-are-the-major-differences-between-TensorFlow-Keras-and-PyTorch) Quora answer.*
 
 Just earlier this fall, TensorFlow 2.0 officially launched, making the framework significantly more developer-friendly. Here’s what a Hello-World-style model looks like in TensorFlow 2.0:
 
@@ -88,7 +89,8 @@ The disadvantage to using pre-trained models is that they solve generic problems
 
 But even when it comes to training custom models for domain-specific tasks, our tools are becoming much more user-friendly.
 
-{% include image_caption.html imageurl="/images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/2" title="Screenshot of Teachable Machine, a tool for building vision, gesture, and speech models in the browser." caption="Screenshot of Teachable Machine, a tool for building vision, gesture, and speech models in the browser." %}
+![Screenshot of Teachable Machine, a tool for building vision, gesture, and speech models in the browser.](/images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/2 "Screenshot of Teachable Machine, a tool for building vision, gesture, and speech models in the browser.")
+*Screenshot of Teachable Machine, a tool for building vision, gesture, and speech models in the browser.*
 
 Google’s free [Teachable Machine](https://teachablemachine.withgoogle.com/) site lets users collect data and train models in the browser using a drag-and-drop interface. Earlier this year, MIT released a similar [code-free interface](http://news.mit.edu/2019/drag-drop-data-analytics-0627) for building custom models that runs on touchscreen devices, designed for non-coders like doctors. [Microsoft](https://azure.microsoft.com/en-us/services/machine-learning-studio/) and startups like [lobe.ai](https://lobe.ai/) offer similar solutions. Meanwhile, [Google Cloud AutoML](https://cloud.google.com/automl/) is an automated model-training framework for enterprise-scale workloads.
 
@@ -116,7 +118,8 @@ Machine Learning models are notoriously opaque. That’s why they’re sometimes
 
 It’s for this reason that so many players in the ML space are focusing on building “Explainable AI” features — tools that let users more closely examine what features models are using to make predictions. We still haven’t entirely cracked this problem as an industry, but we’re making progress. In November, for example, Google launched a suite of explainability tools as well as something called [Model Cards](https://modelcards.withgoogle.com/face-detection) — a sort of visual guide for helping users understand the limitations of ML models.
 
-{% include image_caption.html imageurl="/images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/3.png" title="Google’s Facial Recognition Model Card shows the limitations of this particular model." caption="Google’s Facial Recognition Model Card shows the limitations of this particular model." %}
+![Google’s Facial Recognition Model Card shows the limitations of this particular model.](/images/2019-12-17-software-developers:-youre-learning-machine-learning-upside-down/3.png "Google’s Facial Recognition Model Card shows the limitations of this particular model.")
+*Google’s Facial Recognition Model Card shows the limitations of this particular model.*
 
 **Getting Creative with Applications**
 

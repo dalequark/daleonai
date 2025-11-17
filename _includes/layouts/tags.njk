@@ -1,0 +1,26 @@
+---
+layout: layouts/main.njk
+---
+
+<main class="site-main">
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">{{ title }}</h1>
+    </header><!-- .post-header -->
+    <div class="post-content">
+      <div class="archive-tags">
+        {% for tag in collections.tagList %}
+          <a class="tag-block" href="#{{ tag }}">{{ tag }}</a>
+        {% endfor %}
+      </div><!-- .archive-tag-list -->
+      {% for tag in collections.tagList %}
+        <h2 id="{{ tag }}">{{ tag }}</h2>
+        <ul class="archive-post-list">
+        {% for post in collections.postsByTag[tag] %}
+          <li><a href="{{ post.url }}">{{ post.data.title }}</a> <span class="archive-meta"> — <time class="archive-date" datetime="{{ post.date | date('yyyy-MM-dd') }}">{{ post.date | date('MMMM d, yyyy') }}</time></span></li>
+        {% endfor %}
+        </ul><!-- .archive-post-list -->
+      {% endfor %}
+    </div><!-- .post-content -->
+  </article><!-- .post -->
+</main><!-- .site-main -->

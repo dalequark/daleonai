@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: I Built an AI Stylist Inspired by Social Media
-date: 2020-10-28T19:16:29.745Z
+date: 2020-10-28
 description: I let an AI pick out my outfits using computer vision and pictures
   of social media fashion influencers.
 feature_image: /images/ai-stylist.png

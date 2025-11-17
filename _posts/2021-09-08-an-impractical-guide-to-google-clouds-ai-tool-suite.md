@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: An Impractical Guide to AI on Google Cloud
-date: 2021-09-08T16:48:34.285Z
+date: 2021-09-08
 description: Everything you wanted to know about AI on Google Cloud, and much more
 feature_image: /images/google-cloud-brain.png
 thumbnail_image: /images/google-cloud-brain.png

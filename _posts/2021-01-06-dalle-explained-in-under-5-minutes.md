@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: DALL·E Explained in Under 5 Minutes
-date: 2021-01-06T18:50:35.324Z
+date: 2021-01-06
 description: OpenAI's new image-generating-model does more than just paint pictures
 feature_image: /images/copy-of-ai-stylist-2-.png
 thumbnail_image: /images/copy-of-ai-stylist-3-.png

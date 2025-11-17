@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: Convert PDFs to Audiobooks with Machine Learning
 description: Use easy-to-use Machine Learning/AI tools to convert PDFs into audiobooks.
-date: 2020-09-01 21:00:00 +0000
+date: 2020-09-01
 feature_image: "/images/turn-a-pdf-into-an-audiobook.png"
 tags:
 - google cloud
