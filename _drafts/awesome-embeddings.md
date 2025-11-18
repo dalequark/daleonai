@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: "Behold, the awesome and overlooked usefulness of text embeddings"
 description: ""
-date: 2020-10-5
+date: 2020-10-05
 feature_image: 
 tags: ["natural language processing", "google cloud", "machine learning"]
 ---

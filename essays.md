@@ -1,12 +1,11 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: Essays
 description: Non-technical writing from a past life
-date: 2022-11-25 05:00:00 +0000
+date: 2022-11-25
 feature_image: ''
 tags: []
-permalink: essays
-
+permalink: essays.html
 ---
 **Dale's Essays**
 

@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: Build an Animal/Object Tracking Camera App with TensorFlow.js
-date: 2021-06-17T18:18:32.533Z
+date: 2021-06-17
 description: Build a smart camera that tracks your pets (and whatever else)
   using privacy-preserving, on-device ML.
 feature_image: /images/pet-cam.png

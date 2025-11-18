@@ -1,0 +1,64 @@
+---
+layout: layouts/main.njk
+---
+
+<main class="main-content">
+
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">{{ title }}</h1>
+      <div class="post-meta">
+        <span class="post-author">By {{ site.data.author.name }}</span>
+        <span class="post-meta-divider">·</span>
+        <time class="post-date" datetime="{{ page.date | date('yyyy-MM-dd') }}">{{ page.date | date('MMMM d, yyyy') }}</time>
+      </div>
+
+      {% if feature_image %}
+      <figure class="post-image image-card width-wide">
+        <img src="{{ feature_image }}" alt="{{ title }}">
+      </figure>
+      {% endif %}
+    </header>
+
+    <div class="post-content">
+      {{ content | safe }}
+    </div><!-- .post-content -->
+
+    {% if tags %}
+    <div class="post-tags">
+      <h3>Article Tags</h3>
+      {% for tag in tags %}
+        <a class="tag-block" href="/tags#{{ tag }}">{{ tag }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="post-share">
+      <h3>Share this Article</h3>
+      <a class="tag-block"
+        target="_blank"
+        href="https://twitter.com/intent/tweet?text={{ title }}&amp;url={{ page.url }}" rel="noopener">Twitter</a>
+      <a class="tag-block"
+        target="_blank"
+        href="https://www.facebook.com/sharer/sharer.php?u={{ page.url }}&amp;t={{ title }}" rel="noopener">Facebook</a>
+    </div><!-- .share-post -->
+  </article><!-- .post -->
+
+  {% if site.disqus %}
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = "{{ page.url }}";
+            this.page.identifier = "{{ title }}";
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://{{ site.disqus }}.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  {% endif %}
+
+</main><!-- .main-content -->

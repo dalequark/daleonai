@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: You, Me, and My AI-Generated Alternate Identity
-date: 2021-09-13T16:54:48.174Z
+date: 2021-09-13
 description: Using machine learning and AI to generate a fake identity online,
   for art and profit
 feature_image: /images/yellow-fishing-boat-blog-banner.png

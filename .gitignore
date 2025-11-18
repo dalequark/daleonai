@@ -1,25 +1,22 @@
-<<<<<<< HEAD
-*.swp
-
-# Ruby Gem
-*.gem
-.bundle
-Gemfile.lock
-vendor/bundle
-
-# macOS
-.DS_Store
-
 # Jekyll generated files
 .jekyll-cache
 .jekyll-metadata
 .sass-cache
 _asset_bundler_cache
 _site
-=======
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
+
+# Ruby Gem
+*.gem
+.bundle
+Gemfile.lock
+vendor/bundle
 vendor
->>>>>>> 5d072a49d4f2b23d6d0e5c140105cc0675a2d635
+
+# macOS
+.DS_Store
+
+# Other
+*.swp
+
+# Node
+node_modules

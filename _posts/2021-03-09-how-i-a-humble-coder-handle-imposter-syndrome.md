@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: How I, One Humble Engineer, Deal With Imposter Syndrome
-date: 2021-03-09T18:17:18.790Z
+date: 2021-03-09
 description: But it's just, like, my opinion.
 feature_image: /images/copy-of-painless-ai-on-google-cloud.png
 thumbnail_image: /images/imposter-syndrome.png

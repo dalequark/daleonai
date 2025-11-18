@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: Build a Machine Learning Model in 10 Minutes
-date: 2020-10-05T20:05:17.295Z
+date: 2020-10-05
 description: Seriously. No excuses!
 feature_image: /images/build_ml.jpg
 thumbnail_image: /images/build_ml_thumb.jpeg

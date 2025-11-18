@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: 'Building a Talking Trivia Alarm Clock, Part 3: Dialogflow Fulfillments'
 description: Learn how to use Fulfillments with Dialogflow to augment your chatbot
   with custom code.
@@ -66,11 +66,11 @@ git clone [git@github.com](mailto:git@github.com):dalequark/talking_to_machines.
 
 The `trivia_alarm` folder in this repository contains all the code you’ll need to complete your trivia alarm. There, you’ll a file called `TriviaAgent.zip`. That file contains all the entities and intents you’ll need for our new Dialogflow Agent. To import it into your agent, click the gear icon in the Dialogflow left hand bar, then click “IMPORT FROM ZIP” and select the file `TriviaAgent.zip`.
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/1.png" title="Once that zip file has finished importing, head over to the “Intents” tab and take a look around. You should see six intents:" caption="Once that zip file has finished importing, head over to the “Intents” tab and take a look around. You should see six intents:" %}
+<!-- TODO: Fix image include -->
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/2.png" title="Six intents imported from the TriviaAgent.zip file." caption="Six intents imported from the TriviaAgent.zip file." %}
+<!-- TODO: Fix image include -->
 
 
 
@@ -78,7 +78,7 @@ You’ll notice the `Default Welcome Intent`, which comes with every Dialogflow 
 
 There’s also an intent called `Ask Question`, which is responsible for asking the user trivia questions. If you type something like, “Let’s play trivia,” in the right hand bar of the Dialogflow test console, you’ll trigger that intent:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/3.png" title="“Let’s play trivia” matches the “Ask Question” intent" caption="“Let’s play trivia” matches the “Ask Question” intent" %}
+<!-- TODO: Fix image include -->
 
 
 
@@ -90,13 +90,13 @@ Meanwhile, the phrase “I don’t know” will match the “Next Question” in
 
 Finally, if you try typing something like “The answer is 7” into the Dialogflow console, you’ll match the “Answer Question” intent.
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/4.png" title="“The answer is 9” matches the “Answer Question” intent" caption="“The answer is 9” matches the “Answer Question” intent" %}
+<!-- TODO: Fix image include -->
 
 
 
 Actually, if you go back and try the phrase “gobbledy gobbledy goop” or “What is love?” you’ll find these also match the intent `Answer Question`. That’s because `Answer Question` is actually, sneakily, a [fallback intent](https://cloud.google.com/dialogflow/docs/intents-default)! Remember those from Part 1? They’re wildcard intents that are matched when Dialogflow doesn’t find an alternative matching intent. You can verify this by clicking on the `Answer Question` intent in the Dialogflow console:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/5.png" title="As the info box shows, Answer Question is a fallback intent." caption="As the info box shows, Answer Question is a fallback intent." %}
+<!-- TODO: Fix image include -->
 
 
 
@@ -111,7 +111,7 @@ When a user interacts with a voice assistant or a chatbot, they usually expect i
 
 There’s another way to inject code into Dialogflow so that it’s dynamic and useful, and it’s called [Fulfillments](https://cloud.google.com/dialogflow/docs/fulfillment-overview). The idea is this: when your DF Agent matches an intent, rather than responding with a hard-coded response (like the ones pictured written below), your Agent sends the request to code that runs in the Cloud.
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/6.png" title="Hard-coded responses" caption="Hard-coded responses" %}
+<!-- TODO: Fix image include -->
 
 
 
@@ -139,7 +139,7 @@ Up and Running with Fulfillments
 
 If you take a look at any of our project’s intents in the Dialogflow UI, you’ll notice there’s a header called “Fulfillment” at the bottom with the slider next to “Enable webhook call for this intent” activated:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/7.png" title="Instead of using the “Text Response” box above to produce responses, we’ll use Fulfillments to dynamically decide what Dialogflow should say." caption="Instead of using the “Text Response” box above to produce responses, we’ll use Fulfillments to dynamically decide what Dialogflow should say." %}
+<!-- TODO: Fix image include -->
 
 
 
@@ -147,7 +147,7 @@ This means that when the `Ask Question` intent is invoked (i.e. by a user saying
 
 Let’s take a look at where that Fulfillment code lives. In the Dialogflow UI, click on the tab that says “Fulfillment” in the left hand sidebar:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/8.png" title="Here you’ll see two headers, both disabled: “Webhook” and “Inline Editor”. The “Webhook” option allows you to write code in any language you’d like that runs anywhere you’d like (on your own server, [on App Engine](https://cloud.google.com/appengine?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-p-dr-1008076&utm_content=text-ad-none-any-DEV_c-CRE_122585960767-ADGP_Hybrid+%7C+AW+SEM+%7C+SKWS+%7C+US+%7C+en+%7C+Multi+~+App+Engine-KWID_43700017651054481-aud-382823310150:kwd-7742176743&utm_term=KW_app%20engine-ST_app+engine&gclid=Cj0KCQiAv8PyBRDMARIsAFo4wK1BStahnJhtc5ReW8qA3AyYdckEGv7annzzSLzWEDdkLtaDEinvbs0aAlQ5EALw_wcB), with [Firebase Cloud Functions](https://firebase.google.com/docs/functions), etc.). You’ll just need to write code that can accept POST requests from Dialogflow and can respond to [spec](https://cloud.google.com/dialogflow/docs/fulfillment-overview)." caption="Here you’ll see two headers, both disabled: “Webhook” and “Inline Editor”. The “Webhook” option allows you to write code in any language you’d like that runs anywhere you’d like (on your own server, [on App Engine](https://cloud.google.com/appengine?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-p-dr-1008076&utm_content=text-ad-none-any-DEV_c-CRE_122585960767-ADGP_Hybrid+%7C+AW+SEM+%7C+SKWS+%7C+US+%7C+en+%7C+Multi+~+App+Engine-KWID_43700017651054481-aud-382823310150:kwd-7742176743&utm_term=KW_app%20engine-ST_app+engine&gclid=Cj0KCQiAv8PyBRDMARIsAFo4wK1BStahnJhtc5ReW8qA3AyYdckEGv7annzzSLzWEDdkLtaDEinvbs0aAlQ5EALw_wcB), with [Firebase Cloud Functions](https://firebase.google.com/docs/functions), etc.). You’ll just need to write code that can accept POST requests from Dialogflow and can respond to [spec](https://cloud.google.com/dialogflow/docs/fulfillment-overview)." %}
+<!-- TODO: Fix image include -->
 
 
 
@@ -225,7 +225,7 @@ Deploying Fulfillments
 
 The next and final step to putting our alarm clock together is to deploy our fulfillment code. You can either do this in the inline Dialogflow code editor or by hosting it yourself. Because I have code spread across multiple files (`index.js` and `trivia.js`), I thought it’d be neater to host the code myself. I deployed it in using [Firebase Cloud Functions](https://firebase.google.com/products/functions?gclid=Cj0KCQiAqNPyBRCjARIsAKA-WFwrRYwgSYTXmTBilH5yrzppwSQRHFZTX6GPmpGpwT5f7avX9-OPR1waApNuEALw_wcB). If you’ve decided to take this route, go to the Fulfillment tab and configure your webhook, like so:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-3:-dialogflow-fulfillments/9.png" title="Now, try asking your Dialogflow Agent to play trivia! It should ask you three questions before letting you back to sleep!" caption="Now, try asking your Dialogflow Agent to play trivia! It should ask you three questions before letting you back to sleep!" %}
+<!-- TODO: Fix image include -->
 
 
 

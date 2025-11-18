@@ -1,11 +1,11 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: Can AI Make You a Better Athlete? Using Machine Learning to Analyze Tennis
   Serves and Penalty Kicks
 description: In this post, well use Machine Learning to analyze key features athletes
   need to know, like their posture, angles of their bodies, and the speed or power
   of their throws.
-date: 2020-07-16T13:00:00.000+00:00
+date: 2020-07-16
 feature_image: "/images/design-proposal.png"
 tags:
 - machine learning

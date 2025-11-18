@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: "Parsing Structured Documents with Custom Entity Extraction"
 description: ""
 date: 2019-05-20
@@ -13,7 +13,8 @@ _Build your own custom entity extraction model with easy-to-use Machine Learning
 
 There are lots of [great tutorials](https://medium.com/@srobtweets/classifying-congressional-bills-with-machine-learning-d6d769d818fd) on the web that explain how to classify chunks of text with Machine Learning. But what if, rather than just _categorize_ text, you want to categorize individual words, like this:
 
-{% include image_caption.html imageurl="/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/1.png" title="You can’t make me apologize for loving Comic Sans." caption="You can’t make me apologize for loving Comic Sans." %}
+![You can’t make me apologize for loving Comic Sans.](/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/1.png "You can’t make me apologize for loving Comic Sans.")
+*You can’t make me apologize for loving Comic Sans.*
 
 
 This is called [entity extraction](https://en.wikipedia.org/wiki/Named-entity_recognition) (or named-entity recognition) and it comes in handy a lot. You could use this technique, for example, to pick out all of the people and places mentioned in news articles and use them as article tags (newsrooms sometimes do this).
@@ -24,7 +25,8 @@ For Google I/O this year, I wanted to build an app that could take a photo of a 
 
 I wanted to be able to upload a picture of a menu like this:
 
-{% include image_caption.html imageurl="/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/2.png" title="Step one: upload a photo of a menu" caption="Step one: upload a photo of a menu" %}
+![Step one: upload a photo of a menu](/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/2.png "Step one: upload a photo of a menu")
+*Step one: upload a photo of a menu*
 
 
 
@@ -32,7 +34,8 @@ And then use machine learning to magically extract entities from the menu, like 
 
 The idea was that if you’re a restaurant that wants to get listed on an app like Seamless or Grubhub, you could input your menu without having to manually type the whole thing out.
 
-{% include image_caption.html imageurl="/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/3.png" title="Step two: identify all the foods, plus the food headings (“Salads,” “Mains”) and their descriptions (“On a pretzel bun”)." caption="Step two: identify all the foods, plus the food headings (“Salads,” “Mains”) and their descriptions (“On a pretzel bun”)." %}
+![Step two: identify all the foods, plus the food headings (“Salads,” “Mains”) and their descriptions (“On a pretzel bun”).](/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/3.png "Step two: identify all the foods, plus the food headings (“Salads,” “Mains”) and their descriptions (“On a pretzel bun”).")
+*Step two: identify all the foods, plus the food headings (“Salads,” “Mains”) and their descriptions (“On a pretzel bun”).*
 
 
 
@@ -49,13 +52,15 @@ The Natural Language API is able to automatically detect common entities. For ex
 
 > Dale would like to buy a $3.50 croissant from the coffee shop at 1600 Ampitheatre Pkwy, Mountain View, CA 94043, whose phone number is (650) 253–0000.
 
-{% include image_caption.html imageurl="/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/4.png" title="The NL API recognizes entities like people, consumer goods, addresses, price, phone numbers, and more." caption="The NL API recognizes entities like people, consumer goods, addresses, price, phone numbers, and more." %}
+![The NL API recognizes entities like people, consumer goods, addresses, price, phone numbers, and more.](/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/4.png "The NL API recognizes entities like people, consumer goods, addresses, price, phone numbers, and more.")
+*The NL API recognizes entities like people, consumer goods, addresses, price, phone numbers, and more.*
 
 
 
 Next, I made my app a little sleeker by adding a restaurant photo, star ratings, and a map. None of this info was directly printed on the menu, but the restaurant’s phone number was. Using this phone number, I could query the [Google Places API](https://developers.google.com/places/web-service/search) to pull photos, star ratings, etc.
 
-{% include image_caption.html imageurl="/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/5.png" title="The restaurant’s star rating, photo, and GPS location come from the Places API." caption="The restaurant’s star rating, photo, and GPS location come from the Places API." %}
+![The restaurant’s star rating, photo, and GPS location come from the Places API.](/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/5.png "The restaurant’s star rating, photo, and GPS location come from the Places API.")
+*The restaurant’s star rating, photo, and GPS location come from the Places API.*
 
 
 
@@ -87,13 +92,15 @@ To get started, I used the Vision API again to convert all of the menus in that 
 
 In order to train a custom entity extraction model, I had to transform my data and its labels into jsonl format ([the format that AutoML expects](https://cloud.google.com/natural-language/automl/entity-analysis/docs/prepare)). It looks like this:
 
-{% include image_caption.html imageurl="/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/6.png" title="jsonl file format" caption="jsonl file format" %}
+![jsonl file format](/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/6.png "jsonl file format")
+*jsonl file format*
 
 
 
 I’m going to be honest and warn you that actually labeling these menus was a pain. I used some hackish Python script to pair the dataset’s labels with the OCR-extracted menu text, but they often didn’t line up. I had to go into the AutoML UI and hand-label a bunch of these menus, like this:
 
-{% include image_caption.html imageurl="/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/7.png" title="Hand-labeling menus using the AutoML editor." caption="Hand-labeling menus using the AutoML editor." %}
+![Hand-labeling menus using the AutoML editor.](/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/7.png "Hand-labeling menus using the AutoML editor.")
+*Hand-labeling menus using the AutoML editor.*
 
 
 
@@ -106,7 +113,8 @@ Training a Model
 
 With Google AutoML, the hardest part of building a model is building a labeled dataset. Actually _training_ a model with that data is pretty straightforward — just hop into the “Train” tab and click “Start Training.” It takes about 4 hours to build a custom model.
 
-{% include image_caption.html imageurl="/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/8.png" title="Behind the scenes, Google trains a neural network to extract your custom entities." caption="Behind the scenes, Google trains a neural network to extract your custom entities." %}
+![Behind the scenes, Google trains a neural network to extract your custom entities.](/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/8.png "Behind the scenes, Google trains a neural network to extract your custom entities.")
+*Behind the scenes, Google trains a neural network to extract your custom entities.*
 
 
 
@@ -115,7 +123,8 @@ Making Predictions
 
 When our entity extraction model is done training, we can test it out in the AutoML UI:
 
-{% include image_caption.html imageurl="/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/9.png" title="The model tagged most of the entities, but missed “Potato Chips” and “Fish and Chips.”" caption="The model tagged most of the entities, but missed “Potato Chips” and “Fish and Chips.”" %}
+![The model tagged most of the entities, but missed “Potato Chips” and “Fish and Chips.”](/images/2019-05-20-parsing-structured-documents-with-custom-entity-extraction/9.png "The model tagged most of the entities, but missed “Potato Chips” and “Fish and Chips.”")
+*The model tagged most of the entities, but missed “Potato Chips” and “Fish and Chips.”*
 
 
 

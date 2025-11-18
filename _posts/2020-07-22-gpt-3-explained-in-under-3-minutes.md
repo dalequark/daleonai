@@ -1,9 +1,9 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: GPT-3 Explained in Under 3 Minutes
 description: A quick, under-the-hood explanation of how OpenAI's new GPT3 language
   model works.
-date: 2020-07-22T05:00:00.000+00:00
+date: 2020-07-22
 feature_image: "/images/gpt-3-explained-in-under-3-minutes.png"
 tags:
 - nlp

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: 'Building a Talking Trivia Alarm Clock, Part 1: Intro to Dialogflow'
 description: Learn how to get started with Dialogflow by building a simple alarm clock
   chatbot.
@@ -30,7 +30,7 @@ So BUZZ BUZZ BUZZ. IT’S TIME TO START BUILDING A DIALOGFLOW ALARM CLOCK.
 
 Dialogflow is Google’s machine-learning-powered framework for building chatbots. Now why, you might think, do you need a whole framework, let alone machine learning, to build a chatbot? [ELIZA](http://psych.fullerton.edu/mbirnbaum/psych101/Eliza.htm) didn’t have one, and look how savvy she turned out:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/1.png" title="ELIZA was one of the original chatbots created by MIT in 1964." caption="ELIZA was one of the original chatbots created by MIT in 1964." %}
+<!-- TODO: Fix image include -->
 
 Of course, if you’ve ever called a customer service hotline and felt dread as a bot answered instead of a human being, you know how frustrating poorly designed “conversational interfaces” can be.
 
@@ -46,13 +46,13 @@ Today we’re going to replicate that “conversational interface” in Dialogfl
 
 First, navigate to the [Dialogflow](https://dialogflow.cloud.google.com/) homepage and create an account. Step one to any DF project is to create a new “agent,” which more or less corresponds to one chatbot. You can do this by clicking on the gear icon on the left hand side of the UI and selecting “Create new agent” from the dropdown.
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/2" title="Create a new agent" caption="Create a new agent" %}
+<!-- TODO: Fix image include -->
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/3" title="Name your Agent (mine is called “SimpleAlarm”), and select “Create a new Google project” from the dropdown. This will create a new Google Cloud Platform project for you, which supplies, on the backend, the resources needed to run your Dialogflow agent. More on that later." caption="Name your Agent (mine is called “SimpleAlarm”), and select “Create a new Google project” from the dropdown. This will create a new Google Cloud Platform project for you, which supplies, on the backend, the resources needed to run your Dialogflow agent. More on that later." %}
+<!-- TODO: Fix image include -->
 
 Once your agent is created, you’ll be able to start chatting with it in the side panel where it says “Try it now”:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/4" title="Woohoo 🎊! Your agent talks." caption="Woohoo 🎊! Your agent talks." %}
+<!-- TODO: Fix image include -->
 
 ## Intents in Dialogflow
 
@@ -68,15 +68,15 @@ Logically, we want to support three different types of actions:
 
 Each of these actions will correspond to an Intent in Dialogflow. In the UI, you’ll notice your agent already comes pre-set with two Intents: the “Default Fallback Intent” and the “Default Welcome Intent.”
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/5" title="Every agent comes preset with a “Default Fallback Intent” and a “Default Welcome Intent”" caption="Every agent comes preset with a “Default Fallback Intent” and a “Default Welcome Intent”" %}
+<!-- TODO: Fix image include -->
 
 Let’s investigate the “Default Welcome Intent.” This Intent is responsible for responding to users who say, in one way or another, “Hello.” If you click on this Intent and scroll down, you’ll see a section labeled “Training Phrases”:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/6" title="These phrases are a bunch of variations on saying “hello.” Using these training phrases (you can add more by adding text to the “Add user expression” box), Dialogflow not only maps _these_ requests to the “Welcome Intent,” but also uses machine learning to recognize other phrases that are similar to “hello” that should also be handled by the “Welcome Intent.” That’s why, when I asked my agent“What’s going on, dude?” before, it was able to respond with “Hello! How can I help you?”" caption="These phrases are a bunch of variations on saying “hello.” Using these training phrases (you can add more by adding text to the “Add user expression” box), Dialogflow not only maps _these_ requests to the “Welcome Intent,” but also uses machine learning to recognize other phrases that are similar to “hello” that should also be handled by the “Welcome Intent.” That’s why, when I asked my agent“What’s going on, dude?” before, it was able to respond with “Hello! How can I help you?”" %}
+<!-- TODO: Fix image include -->
 
 If you scroll down further in the Welcome Intent, you’ll also see a section called “Responses”:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/7" title="When a user request matches the “Welcome Intent,” Dialogflow will respond with one of these phrases." caption="When a user request matches the “Welcome Intent,” Dialogflow will respond with one of these phrases." %}
+<!-- TODO: Fix image include -->
 
 Here, you can give Dialogflow a variety of different ways to respond to a user when she says something equivalent to “Hello.”¹
 
@@ -92,7 +92,7 @@ Create a new Intent by clicking “Create Intent” on the upper right side of t
 
 Next, name your Intent something like “setAlarm.” Scroll down and click “Add training phrases.” In the box that says “Add user expression,” type in the phrase “Set an alarm for 9AM” and press enter:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/8" title="Add a new training phrase — “Set an alarm for 9 AM.” The pop-op shows that an entity — in this case, a time — was automatically recognized." caption="Add a new training phrase — “Set an alarm for 9 AM.” The pop-op shows that an entity — in this case, a time — was automatically recognized." %}
+<!-- TODO: Fix image include -->
 
 You’ll notice that when your new training phrase appears below, the “9AM” part is highlighted yellow. If you click on that highlighted yellow part, you should see a pop-up that probably says `@sys.time:time`.
 
@@ -100,21 +100,21 @@ What’s just happened is that Dialogflow recognized an **entity**, in this case
 
 Second, it extracts parameters — i.e. 9 AM — and stores it in variables we can later make use of in code. If you scroll down, you should see, under the Action and parameters heading, a new parameter named `table`. We’ll be able to use this variable later when we’re actually setting an alarm.
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/9.png" title="**Adding Training Phrases**" caption="**Adding Training Phrases**" %}
+<!-- TODO: Fix image include -->
 
 Next we’ll need to define some training phrases that teach Dialogflow what type of user queries should be matched to the `addAlarm` intent.
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/10" title="Here, try to imagine the different ways a user might ask to set an alarm." caption="Here, try to imagine the different ways a user might ask to set an alarm." %}
+<!-- TODO: Fix image include -->
 
 Now let’s add some responses. Scroll down to the Responses area and click “Add Response.” Here, you can add different variations of responses:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/11" title="See that `$time` keyword I’ve used in the responses? That fills in the response with the value of the matched parameter with the same name. In other words, if the user says, “Set an alarm for 7AM,” Dialogflow will respond with a phrase like, “Got it, I’ll set your alarm for 7AM.”" caption="See that `$time` keyword I’ve used in the responses? That fills in the response with the value of the matched parameter with the same name. In other words, if the user says, “Set an alarm for 7AM,” Dialogflow will respond with a phrase like, “Got it, I’ll set your alarm for 7AM.”" %}
+<!-- TODO: Fix image include -->
 
 **Training Your Agent**
 
 Click save, and Dialogflow will start training your Agent using the training data you provided. This could take a minute. When training is finished, try out your new intent in the test console:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/12" title="In the side bar here, you can see that the phrase “Wake me up at 11PM” matched the intent `setAlarm` 🎊. It worked! Notice also that under “PARAMETER,” it also automatically recognized 11PM as the `time` parameter and mapped to 23:00. Pretty neat if you ask me." caption="In the side bar here, you can see that the phrase “Wake me up at 11PM” matched the intent `setAlarm` 🎊. It worked! Notice also that under “PARAMETER,” it also automatically recognized 11PM as the `time` parameter and mapped to 23:00. Pretty neat if you ask me." %}
+<!-- TODO: Fix image include -->
 
 **Adding a Required Parameter Prompt**
 
@@ -122,11 +122,11 @@ So far, our Intent works great if the user asks our bot to set an alarm and prov
 
 Navigate to the “Actions and Parameters” section of your Intent. Here, you should see `time` listed as one of your parameters. Next to `time` tick the box under “Required.” This indicates to Dialogflow that if the user hasn’t provided a time, it should ask the user for one. You can then “prompt” the user to provide a time. Click on “Define prompts…” next to the “time” parameter:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/13" title="Make “time” a required parameter." caption="Make “time” a required parameter." %}
+<!-- TODO: Fix image include -->
 
 Here, you can tell Dialogflow how to ask users to specify a time:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/14" title="Set a prompt to get required parameters." caption="Set a prompt to get required parameters." %}
+<!-- TODO: Fix image include -->
 
 Thanks to this nice feature, we can go back to the “Training Phrases” section and add some more phrases that don’t specify times, like:
 
@@ -140,7 +140,7 @@ This way, Dialogflow will match all of these requests to the `addAlarm` intent, 
 
 Click “Save,” wait for your agent to train, and test it out in the console:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-1:-intro-to-dialogflow/15" title="" caption="" %}
+<!-- TODO: Fix image include -->
 
 Now let’s create two more intents, just like we did the `setAlarm` intent, but for listing an existing alarm (call it “listAlarm”) and for deleting an alarm (call it “deleteAlarm”).
 

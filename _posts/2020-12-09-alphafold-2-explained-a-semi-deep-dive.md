@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: layouts/post.njk
 title: "AlphaFold 2 Explained: A Semi-Deep Dive"
-date: 2020-12-09T16:08:19.324Z
+date: 2020-12-09
 description: A quick look into the biology and machine learning behind
   DeepMind's new AlphaFold
 feature_image: /images/copy-of-ai-stylist.png
