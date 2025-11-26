@@ -1,63 +1,45 @@
----
----
-
-/**
- * Scriptor Jekyll Theme 2.0.0
- * By Just Good Themes - https://justgoodthemes.com/
-*/
-
-/* ==========================================================================
-   Table of Contents
-   ========================================================================== */
-/*
-  0. Icons
-  1. Reset
-  2. General
-  3. Structure
-  4. Site Header
-  5. Content
-  6. Comments
-  7. Posts Navigation
-  8. Site Footer
-  9. Animations
-*/
-
-// Font.
-$font: (
-  // primary: ("Source Sans Pro","Helvetica Neue",Helvetica,sans-serif),
-  primary: ("Open Sans", "Helvetica Neue", "Helvetica", sans-serif),
-  // secondary: ("Playfair Display",Georgia,serif)
-  secondary: ("Raleway", sans-serif)
-);
-
-// Palette.
-$theme: #23745C;
-$accent: $theme;
-$primary: #212121;
 $palette: (
-  theme:     $theme,
-  accent:    $accent,
-  primary:   $primary,
-  secondary: $primary,
-  meta:      lighten($primary, 50%),
-  border:    lighten($primary, 75%),
-  bg:        #FFF,
+  primary: #333,
+  secondary: #007bff,
+  accent: #ffc107,
+  bg: #f5f5f5,
+  border: #ddd,
+  meta: #888
 );
 
-// Imports
-@import "functions";
-@import "icons";
-@import "reset";
-@import "general";
-@import "structure";
-@import "site-header";
-@import "content";
-@import "comments";
-@import "home";
-@import "preview";
-@import "posts-navigation";
-@import "site-footer";
-@import "animations";
-@import "subscribe";
-@import "subscribed";
-@import "rouge";
+$font: (
+  primary: 'Source Sans Pro',
+  secondary: 'Playfair Display'
+);
+
+@import "../../sass/functions";
+@import "../../sass/reset";
+@import "../../sass/general";
+@import "../../sass/icons";
+@import "../../sass/structure";
+@import "../../sass/site-header";
+@import "../../sass/site-footer";
+@import "../../sass/content";
+@import "../../sass/posts-navigation";
+@import "../../sass/comments";
+@import "../../sass/animations";
+@import "../../sass/rouge";
+@import "../../sass/subscribe";
+@import "../../sass/subscribed";
+@import "../../sass/home";
+@import "../../sass/preview";
+
+// New styles for the refresh
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+  color: #007bff;
+}
+
+.site-title a {
+  color: #333;
+}

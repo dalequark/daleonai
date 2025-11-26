@@ -13,7 +13,7 @@ _What’s Google’s new Translation API Advanced (v3), and how can you use it t
 
 If you’ve ever typed “how do you say X in language Y” into Google search, you’ve probably come across [Google Translate](https://translate.google.com/) — a feature that lets you translate text, PDF documents, or speech between languages:
 
-{% include image_caption.html imageurl="/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/1.png" title="You can use Google’s translation models through Search (above), in the Translate app, or in your _own_ apps using the Google Cloud Translate API." caption="You can use Google’s translation models through Search (above), in the Translate app, or in your _own_ apps using the Google Cloud Translate API." %}
+{% include "image_caption.html" imageurl: "/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/1.png" title: "You can use Google’s translation models through Search (above), in the Translate app, or in your _own_ apps using the Google Cloud Translate API." caption: "You can use Google’s translation models through Search (above), in the Translate app, or in your _own_ apps using the Google Cloud Translate API." %}
 
 
 
@@ -35,7 +35,7 @@ To get started, you’ll first need to [create a new GCP project](https://cloud.
 
 Next, you’ll need to set up authentication. The Advanced edition requires you authenticate with a [service account](https://cloud.google.com/iam/docs/understanding-service-accounts), which is a profile or identity that enables your app to authenticate.
 
-{% include image_caption.html imageurl="/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/2.png" title="Create a new service account." caption="Create a new service account." %}
+{% include "image_caption.html" imageurl: "/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/2.png" title: "Create a new service account." caption: "Create a new service account." %}
 
 
 
@@ -93,7 +93,7 @@ Above, we translated the sentence “Let’s try the Translation API on Google C
 
 In these cases, we’d like more control over how specific words (company names, product names, proper nouns, etc) are translated. That’s where the Translation API Advanced’s new glossary feature comes in. It allows you to upload a `csv` of word pairs that specify exactly how words should be translated. This is useful for specifying when words _should not_ be translated or for choosing between alternative translations.
 
-{% include image_caption.html imageurl="/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/3.png" title="An example dictionary of word pairs that we specify to indicate how we want terms to be translated. The “pos” and “description” columns are optional." caption="An example dictionary of word pairs that we specify to indicate how we want terms to be translated. The “pos” and “description” columns are optional." %}
+{% include "image_caption.html" imageurl: "/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/3.png" title: "An example dictionary of word pairs that we specify to indicate how we want terms to be translated. The “pos” and “description” columns are optional." caption: "An example dictionary of word pairs that we specify to indicate how we want terms to be translated. The “pos” and “description” columns are optional." %}
 
 
 
@@ -178,13 +178,13 @@ For example, within Google Cloud, we wanted to see if we could train a model to 
 
 First, on the GCP console page, click into the “Translation” tool under “Artificial Intelligence”:
 
-{% include image_caption.html imageurl="/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/4.png" title="On the GCP console page, scroll down to “Artificial Intelligence” and select “Translation”." caption="On the GCP console page, scroll down to “Artificial Intelligence” and select “Translation”." %}
+{% include "image_caption.html" imageurl: "/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/4.png" title: "On the GCP console page, scroll down to “Artificial Intelligence” and select “Translation”." caption: "On the GCP console page, scroll down to “Artificial Intelligence” and select “Translation”." %}
 
 
 
 Here, you’ll be given the option to use the Translation API or AutoML Translation. Under “AutoML Translation,” click “Get started.”
 
-{% include image_caption.html imageurl="/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/5.png" title="Use AutoML Translation to train a custom modle." caption="Use AutoML Translation to train a custom modle." %}
+{% include "image_caption.html" imageurl: "/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/5.png" title: "Use AutoML Translation to train a custom modle." caption: "Use AutoML Translation to train a custom modle." %}
 
 
 
@@ -192,7 +192,7 @@ Next, click “Create New Dataset” to upload your training data, specifying yo
 
 Here’s what my GCP documentation data, translating from Japanese to English, looked like:
 
-{% include image_caption.html imageurl="/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/6.png" title="The training data consists of existing human translated pairs." caption="The training data consists of existing human translated pairs." %}
+{% include "image_caption.html" imageurl: "/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/6.png" title: "The training data consists of existing human translated pairs." caption: "The training data consists of existing human translated pairs." %}
 
 
 
@@ -200,13 +200,13 @@ Luckily, because we’ve been using human translators to translate documentation
 
 To train a model, click on the “Train” tab and click “Start Training.” You’ll be asked to choose a Base model, which by default is Google’s general-purpose model, “Google NMT.” After you start training models, they’ll appear in this drop down, so you can improve the performance of models you’ve already trained by adding new data. Click “Start Training,” and then take a break. This could take a while.
 
-{% include image_caption.html imageurl="/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/7.png" title="Train a new model. This could take a while!" caption="Train a new model. This could take a while!" %}
+{% include "image_caption.html" imageurl: "/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/7.png" title: "Train a new model. This could take a while!" caption: "Train a new model. This could take a while!" %}
 
 
 
 When your model is done training, you’ll get an email. Then you’ll be able to see your model’s performance back in the “Train” tab:
 
-{% include image_caption.html imageurl="/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/8.png" title="Model Performance" caption="Model Performance" %}
+{% include "image_caption.html" imageurl: "/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/8.png" title: "Model Performance" caption: "Model Performance" %}
 
 
 
@@ -218,7 +218,7 @@ How can we tell how well our custom model performed? One way is to compare the p
 
 As a sanity check, you can hop to the “Predict” tab and translate sentences right from the AutoML UI:
 
-{% include image_caption.html imageurl="/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/9.png" title="Here, you can compare your custom model’s translations (above) with the base model’s translations (below)" caption="Here, you can compare your custom model’s translations (above) with the base model’s translations (below)" %}
+{% include "image_caption.html" imageurl: "/images/2019-11-05-improving-machine-translation-with-the-google-translation-api-advanced/9.png" title: "Here, you can compare your custom model’s translations (above) with the base model’s translations (below)" caption: "Here, you can compare your custom model’s translations (above) with the base model’s translations (below)" %}
 
 
 

@@ -2,28 +2,28 @@
   "links": [
     {
       "title": "Twitter",
-      "icon": "fa-twitter",
-      "url": "https://twitter.com/dalequark"
+      "url": "https://twitter.com/dalequark",
+      "icon": "icon-twitter"
     },
     {
       "title": "GitHub",
-      "icon": "fa-github",
-      "url": "https://github.com/dalequark"
-    },
-    {
-      "title": "Instagram",
-      "icon": "fa-instagram",
-      "url": "https://www.instagram.com/dale_on_ai"
+      "url": "https://github.com/dalequark",
+      "icon": "icon-github"
     },
     {
       "title": "LinkedIn",
-      "icon": "fa-linkedin",
-      "url": "https://www.linkedin.com/in/dale-markowitz-40a9a852"
+      "url": "https://www.linkedin.com/in/dalemarkowitz/",
+      "icon": "icon-linkedin"
     },
     {
       "title": "YouTube",
-      "icon": "fa-youtube",
-      "url": "https://www.youtube.com/playlist?list=PLIivdWyY5sqLsaG5hNms0D9aZRBE7DHBb"
+      "url": "https://www.youtube.com/channel/UCHIu_k5_u2-BF-Q-S-8-f4Q",
+      "icon": "icon-youtube"
+    },
+    {
+      "title": "Medium",
+      "url": "https://medium.com/@dalemarkowitz",
+      "icon": "icon-medium"
     }
   ]
 }

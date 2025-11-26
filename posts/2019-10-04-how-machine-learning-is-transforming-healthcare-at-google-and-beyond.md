@@ -30,7 +30,7 @@ Over the past ~5 years, machine learning has become incredibly good at analyzing
 
 Neural networks power tools that recognize faces and pets in photos, that convert handwriting into text, that create fluid translations, that let you search photos by keyword in the Google Photos app, and more.
 
-{% include image_caption.html imageurl="/images/2019-10-04-how-machine-learning-is-transforming-healthcare-at-google-and-beyond/1.png" title="Neural nets let you search your pictures by keyword in the Google Photos app. Here are all my breakfast pics." caption="Neural nets let you search your pictures by keyword in the Google Photos app. Here are all my breakfast pics." %}
+{% include "image_caption.html" imageurl: "/images/2019-10-04-how-machine-learning-is-transforming-healthcare-at-google-and-beyond/1.png" title: "Neural nets let you search your pictures by keyword in the Google Photos app. Here are all my breakfast pics." caption: "Neural nets let you search your pictures by keyword in the Google Photos app. Here are all my breakfast pics." %}
 
 
 
@@ -42,7 +42,7 @@ Just last month, researchers at Google [trained a neural net](https://arxiv.org/
 
 This is only the most recent of tons of studies that have almost the same storyline. We’ve been able to [spot metastatic breast cancer](https://ai.googleblog.com/2017/03/assisting-pathologists-in-detecting.html), [predict whether or not prostate cancer will become aggressive](https://ai.googleblog.com/2018/11/improved-grading-of-prostate-cancer.html), and detect [diabetic retinopathy](https://ai.googleblog.com/2018/12/improving-effectiveness-of-diabetic.html) (the fastest growing cause of blindness) from scans of the back of the eye.
 
-{% include image_caption.html imageurl="/images/2019-10-04-how-machine-learning-is-transforming-healthcare-at-google-and-beyond/2.png" title="Predicting lung cancer from CT scans. Credit: [https://www.blog.google/technology/health/lung-cancer-prediction/](https://www.blog.google/technology/health/lung-cancer-prediction/)" caption="Predicting lung cancer from CT scans. Credit: [https://www.blog.google/technology/health/lung-cancer-prediction/](https://www.blog.google/technology/health/lung-cancer-prediction/)" %}
+{% include "image_caption.html" imageurl: "/images/2019-10-04-how-machine-learning-is-transforming-healthcare-at-google-and-beyond/2.png" title: "Predicting lung cancer from CT scans. Credit: [https://www.blog.google/technology/health/lung-cancer-prediction/](https://www.blog.google/technology/health/lung-cancer-prediction/)" caption: "Predicting lung cancer from CT scans. Credit: [https://www.blog.google/technology/health/lung-cancer-prediction/](https://www.blog.google/technology/health/lung-cancer-prediction/)" %}
 
 
 
@@ -57,7 +57,7 @@ To be truly helpful aids, though, medical imaging models will need not only to s
 
 For this reason, researchers will often build models that not only make predictions about the _presence_ of disease, but that will also visually highlight the regions of scans (heat maps) that contribute to those predictions.
 
-{% include image_caption.html imageurl="/images/2019-10-04-how-machine-learning-is-transforming-healthcare-at-google-and-beyond/3.jpg" title="Ophthalmologists were better at detecting DR when aided by deep learning models and their associated decision heat maps, like the one above. Source: [https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext)" caption="Ophthalmologists were better at detecting DR when aided by deep learning models and their associated decision heat maps, like the one above. Source: [https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext)" %}
+{% include "image_caption.html" imageurl: "/images/2019-10-04-how-machine-learning-is-transforming-healthcare-at-google-and-beyond/3.jpg" title: "Ophthalmologists were better at detecting DR when aided by deep learning models and their associated decision heat maps, like the one above. Source: [https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext)" caption: "Ophthalmologists were better at detecting DR when aided by deep learning models and their associated decision heat maps, like the one above. Source: [https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext](https://www.aaojournal.org/article/S0161-6420(18)31575-6/fulltext)" %}
 
 
 
@@ -72,7 +72,7 @@ Maybe “data wrangling” doesn’t sound as exciting as spotting tumors in CT 
 
 Just as neural networks can be trained to spot diseases in images, so too can they be trained to parse documents and forms. For example, we might use models to analyze medical intake forms, converting handwriting to text and organizing that text semantically so that it can be stored in a database.¹
 
-{% include image_caption.html imageurl="/images/2019-10-04-how-machine-learning-is-transforming-healthcare-at-google-and-beyond/4.png" title="Using a ML Vision model, you could extract handwriting to text. Then you could use an ML technique called “Entity Extraction” to understand words in a document and their semantic relationship to each other." caption="Using a ML Vision model, you could extract handwriting to text. Then you could use an ML technique called “Entity Extraction” to understand words in a document and their semantic relationship to each other." %}
+{% include "image_caption.html" imageurl: "/images/2019-10-04-how-machine-learning-is-transforming-healthcare-at-google-and-beyond/4.png" title: "Using a ML Vision model, you could extract handwriting to text. Then you could use an ML technique called “Entity Extraction” to understand words in a document and their semantic relationship to each other." caption: "Using a ML Vision model, you could extract handwriting to text. Then you could use an ML technique called “Entity Extraction” to understand words in a document and their semantic relationship to each other." %}
 
 
 
@@ -80,7 +80,7 @@ The easier we make data to work with, the easier it is for us to build powerful 
 
 Thanks to these data wrangling tools, we’re able to train models we never could before. Last year, for example, [researchers](https://ai.googleblog.com/2018/05/deep-learning-for-electronic-health.html) were able to construct detailed timelines of hospital patients’ visits using FHIR data:
 
-{% include image_caption.html imageurl="/images/2019-10-04-how-machine-learning-is-transforming-healthcare-at-google-and-beyond/5" title="Credit: [https://ai.googleblog.com/2018/05/deep-learning-for-electronic-health.html](https://ai.googleblog.com/2018/05/deep-learning-for-electronic-health.html)" caption="Credit: [https://ai.googleblog.com/2018/05/deep-learning-for-electronic-health.html](https://ai.googleblog.com/2018/05/deep-learning-for-electronic-health.html)" %}
+{% include "image_caption.html" imageurl: "/images/2019-10-04-how-machine-learning-is-transforming-healthcare-at-google-and-beyond/5" title: "Credit: [https://ai.googleblog.com/2018/05/deep-learning-for-electronic-health.html](https://ai.googleblog.com/2018/05/deep-learning-for-electronic-health.html)" caption: "Credit: [https://ai.googleblog.com/2018/05/deep-learning-for-electronic-health.html](https://ai.googleblog.com/2018/05/deep-learning-for-electronic-health.html)" %}
 
 
 

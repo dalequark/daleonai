@@ -13,7 +13,7 @@ _What can Wikipedia biographies and Deep Neural Networks tell us about what’s 
 
 When I was young, I always hated being named _Dale_. This is mostly because my primary image of what Dales looked like was shaped by Dale Gribble from _King of the Hill,_ and also Dale Earnhardt Jr., the NASCAR driver.
 
-{% include image_caption.html imageurl="/images/2020-02-06-building-a-deep-learning-powered-baby-name-generator/1.png" title="Dale Gribble image [credit](http://costumewall.com) , Dale Earnhardt Jr image [credit](https://en.wikipedia.org/wiki/File:DaleJrRVA2018.png)" caption="Dale Gribble image [credit](http://costumewall.com) , Dale Earnhardt Jr image [credit](https://en.wikipedia.org/wiki/File:DaleJrRVA2018.png)" %}
+{% include "image_caption.html" imageurl: "/images/2020-02-06-building-a-deep-learning-powered-baby-name-generator/1.png" title: "Dale Gribble image [credit](http://costumewall.com) , Dale Earnhardt Jr image [credit](https://en.wikipedia.org/wiki/File:DaleJrRVA2018.png)" caption: "Dale Gribble image [credit](http://costumewall.com) , Dale Earnhardt Jr image [credit](https://en.wikipedia.org/wiki/File:DaleJrRVA2018.png)" %}
 
 
 
@@ -79,13 +79,13 @@ Once I prepared my dataset, I set out to build a deep learning language model. T
 
 I uploaded my dataset into AutoML, which automatically split it into 36,497 training examples, 4,570 validation examples, a 4,570 test examples:
 
-{% include image_caption.html imageurl="/images/2020-02-06-building-a-deep-learning-powered-baby-name-generator/2.png" title="Even though I attempted to remove first and last names, a couple of middle names names slipped in!" caption="Even though I attempted to remove first and last names, a couple of middle names names slipped in!" %}
+{% include "image_caption.html" imageurl: "/images/2020-02-06-building-a-deep-learning-powered-baby-name-generator/2.png" title: "Even though I attempted to remove first and last names, a couple of middle names names slipped in!" caption: "Even though I attempted to remove first and last names, a couple of middle names names slipped in!" %}
 
 
 
 To train a model, I navigated to the “Train” tab and clicked “Start Training.” Around four hours later, training was done.
 
-{% include image_caption.html imageurl="/images/2020-02-06-building-a-deep-learning-powered-baby-name-generator/3.png" title="" caption="" %}
+{% include "image_caption.html" imageurl: "/images/2020-02-06-building-a-deep-learning-powered-baby-name-generator/3.png" title: "" caption: "" %}
 
 
 
@@ -101,7 +101,7 @@ One way to dig deeper into what a model’s learned is to look at a table called
 
 In the “Evaluate” tab, AutoML provides a confusion matrix. Here’s a tiny corner of it (cut off because I had _sooo_ many names in the dataset):
 
-{% include image_caption.html imageurl="/images/2020-02-06-building-a-deep-learning-powered-baby-name-generator/4.png" title="In this table, the row headers are the **True labels** and the column headers are the **Predicted labels**. The rows indicate what a person’s name _should_ have been, and the columns indicate what the model _predicted_ the person’s name was." caption="In this table, the row headers are the **True labels** and the column headers are the **Predicted labels**. The rows indicate what a person’s name _should_ have been, and the columns indicate what the model _predicted_ the person’s name was." %}
+{% include "image_caption.html" imageurl: "/images/2020-02-06-building-a-deep-learning-powered-baby-name-generator/4.png" title: "In this table, the row headers are the **True labels** and the column headers are the **Predicted labels**. The rows indicate what a person’s name _should_ have been, and the columns indicate what the model _predicted_ the person’s name was." caption: "In this table, the row headers are the **True labels** and the column headers are the **Predicted labels**. The rows indicate what a person’s name _should_ have been, and the columns indicate what the model _predicted_ the person’s name was." %}
 
 
 

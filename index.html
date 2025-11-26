@@ -1,93 +1,45 @@
 ---
 layout: default
-
+title: Articles
+pagination:
+  data: collections.posts
+  size: 10
+  alias: posts
 ---
+
 <main class="main-content">
-  <div class="home-content">
-    <div class="home-posts">
-      {% for post in paginator.posts %}
-        <article class="preview">
-            <a href="{{site.baseurl}}{{post.url}}">
-              <div class="preview-thumbnail-container">
-              {% if post.thumbnail_image and post.thumbnail_image != "" %}
-                <img src="{{ post.thumbnail_image | relative_url }}" class="preview-thumbnail" />
-              {% elsif post.feature_image and post.feature_image != "" %}
-                <img src="{{ post.feature_image | relative_url }}" class="preview-thumbnail" />
-              {% endif %}
-              </div>
-            </a>
-          <div class="preview-text">
-            <div class="preview-meta">
-              <time class="preview-date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{post.date | date: "%B %-d, %Y" }}</time>
-      
-              <!-- <div class="preview-tags">
-                {% for tag in post.tags %}
-                  <a class="tag-block" href="{{ site.baseurl }}/tags#{{ tag | cgi_escape }}" rel="tag">{{ tag }}</a>
-                {% endfor %}
-              </div> -->
-            </div>
-            <h2 class="preview-title">
-              <a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a>
-            </h2>
-      
-            <div class="preview-content">
-              {% if post.content contains '<!--more-->' %}
-              {{ post.content | split:'<!--more-->' | first }}
-              {% elsif post.description %}
-              {{post.description}}
-              {% endif %}
-            </div>
-          </div><!-- .post-header -->
-        </article><!-- .post -->
-      {% endfor %}
-    
-      {% if paginator.total_pages > 1 %}
-      <nav class="pagination">
-        <h2 class="screen-reader-text">Posts navigation</h2>
-        <div class="nav-links">
-          {% if paginator.previous_page %}
-          <a href="{{ paginator.previous_page_path | relative_url }}" class="newer-posts">&larr; Newer Posts</a>
-          {% endif %}
-          <span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-          {% if paginator.next_page %}
-          <a href="{{ paginator.next_page_path | relative_url }}" class="older-posts">Older Posts &rarr;</a>
-          {% endif %}
+  <div class="post-list">
+    {% for post in posts %}
+      <article class="post">
+        <header class="post-header">
+          <h2 class="post-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+          <div class="post-meta">
+            <span class="post-author">By {{ site.data.author.name }}</span>
+            <span class="post-meta-divider">·</span>
+            <time class="post-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | postDate }}</time>
+          </div>
+        </header>
+        <div class="post-content">
+          {{ post.templateContent | truncatewords: 50 }}
         </div>
-      </nav><!-- .pagination -->
-      {% endif %}
-    </div>
-    <div class="home-sidebar">
-      <div class="home-bio home-sidebar-card">
-        <div class="home-bio-title-container">
-          <h3 class="home-bio-title">About Dale</h3>
+        <div class="post-footer">
+          <a href="{{ post.url }}" class="read-more">Read More</a>
         </div>
-        <img class="home-bio-image" src="/images/dale_wall_smaller.jpeg" width="100" height="100" />
-        <p class="home-bio-text">
-          <strong style="display: block; margin-bottom: 10px;">Generative AI DevRel Lead @ Google Labs.</strong>
-          Dale is a coder, writer, maker, and napper at Google Labs. Here, she writes about Machine Learning for developers, AI in the world, and a whole lot more.
-        </p>
-      </div>
-
-      <div class="home-tags home-sidebar-card">
-        <h3 class="home-tags-title">Article Tags</h3>
-        {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-        {% assign sortedTags = site_tags | split:',' | sort %}
-        {% for tag in sortedTags %}
-        <a href="/tags#{{ tag | cgi_escape }}" class="tag-block">{{ tag }}</a>{% unless forloop.last %} {% endunless %}
-        {% endfor %}
-      </div>
-
-      <div class="home-subscribe home-sidebar-card">
-        <h3 class="home-subscribe-title">Never miss an update</h3>
-        <div class="subscribe">
-          <form class="subscribe-form" action="https://getsimpleform.com/messages?form_api_token=9614d366a96deaef6923068dab84d7a4" method="post">
-            <input type="hidden" name="redirect_to" value="{{ site.url }}/subscribed" />
-            <!-- all your input fields here.... -->
-            <input class="subscribe-input" type="text" name="Email" placeholder="you@email.com"/>
-            <input class="subscribe-submit" type="submit" value="Submit" />
-          </form>
-        </div>
-      </div>
-    </div>
+      </article>
+    {% endfor %}
   </div>
-</main><!-- .site-main -->
+
+  <nav class="pagination">
+    <a href="{{ pagination.href.first }}">&laquo; First</a>
+    {% if pagination.href.previous %}
+      <a href="{{ pagination.href.previous }}">&larr; Prev</a>
+    {% endif %}
+
+    <span>Page {{ pagination.pageNumber | plus: 1 }} of {{ pagination.pages.length }}</span>
+
+    {% if pagination.href.next %}
+      <a href="{{ pagination.href.next }}">Next &rarr;</a>
+    {% endif %}
+    <a href="{{ pagination.href.last }}">Last &raquo;</a>
+  </nav>
+</main>

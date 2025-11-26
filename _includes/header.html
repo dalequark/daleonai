@@ -5,12 +5,8 @@
       <h2 class="screen-reader-text">Main navigation</h2>
       <ul class="menu">
         {% for item in site.navigation %}
-        {% assign current = nil %}
-        {% if page.url == item.url %}
-        {% assign current = 'nav-current' %}
-        {% endif %}
-        <li class="menu-item {{ current }}">
-          <a class="{{ current }}" href="{{ item.url }}">{{ item.text }}</a>
+        <li class="menu-item {% if page.url == item.url %}nav-current{% endif %}">
+          <a class="{% if page.url == item.url %}nav-current{% endif %}" href="{{ item.url }}">{{ item.text }}</a>
         </li>
         {% endfor %}
       </ul><!-- .menu -->
@@ -19,7 +15,7 @@
     </div><!-- .site-navigation-wrap -->
   </nav><!-- .site-navigation -->
   <div class="site-social">
-    {% include social.html %}
+    {% include "social.html" %}
   </div>
   <button id="menu-open" class="menu-toggle"><span class="screen-reader-text">Open Menu</span><span class="icon-menu" aria-hidden="true"></span></button>
 </header>

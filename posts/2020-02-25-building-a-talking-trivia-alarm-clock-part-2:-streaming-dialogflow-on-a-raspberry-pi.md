@@ -42,7 +42,7 @@ The AIY Voice Kit
 
 First, let’s get our Dialogflow agent running on our Raspberry Pi (Raspi). For this project, I decided to use an [AIY Voice Kit](https://aiyprojects.withgoogle.com/voice/), a maker-minded kit from Google for building a “DIY Intelligent Speaker.” It comes with a [Raspberry Pi Zero](https://www.adafruit.com/product/3708) (which is a very small/lightweight type of Raspi), a pushbutton, a speaker, a “Voice Bonnet” (i.e. a board with a microphone that snaps on to the Raspi), a cardboard enclosure, and all of the wires and bits needed to put the thing together.
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/1.jpg" title="All the bits that come with the AIY Voice Kit, [https://aiyprojects.withgoogle.com/voice/#list-of-materials](https://aiyprojects.withgoogle.com/voice/#list-of-materials)" caption="All the bits that come with the AIY Voice Kit, [https://aiyprojects.withgoogle.com/voice/#list-of-materials](https://aiyprojects.withgoogle.com/voice/#list-of-materials)" %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/1.jpg" title: "All the bits that come with the AIY Voice Kit, [https://aiyprojects.withgoogle.com/voice/#list-of-materials](https://aiyprojects.withgoogle.com/voice/#list-of-materials)" caption: "All the bits that come with the AIY Voice Kit, [https://aiyprojects.withgoogle.com/voice/#list-of-materials](https://aiyprojects.withgoogle.com/voice/#list-of-materials)" %}
 
 
 
@@ -71,7 +71,7 @@ cd talking_to_machines/trivia_alarm
 
 and take a look around. Notice `SimpleAlarmAgent.zip`, which is Dialogflow agent we built in the first post. If you followed along in that first post and built your own agent, you can ignore that file. Otherwise, you’ll need to go to the [Dialogflow console](https://dialogflow.cloud.google.com/#/login) and import this file:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/2.png" title="Create a new agent named “SimpleAlarm.” Under the gear icon -> “Export and Import” click “Import from Zip” and upload the file “SimpleAlarmAgent.zip”" caption="Create a new agent named “SimpleAlarm.” Under the gear icon -> “Export and Import” click “Import from Zip” and upload the file “SimpleAlarmAgent.zip”" %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/2.png" title: "Create a new agent named “SimpleAlarm.” Under the gear icon -> “Export and Import” click “Import from Zip” and upload the file “SimpleAlarmAgent.zip”" caption: "Create a new agent named “SimpleAlarm.” Under the gear icon -> “Export and Import” click “Import from Zip” and upload the file “SimpleAlarmAgent.zip”" %}
 
 
 
@@ -79,11 +79,11 @@ Next, you’ll need some pieces of information from the Dialogflow console, like
 
 Click on the gear icon next to your project’s name in the left-hand bar.
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/3" title="On this page, under “General,” you should see a “GOOGLE PROJECT” section with a field “Project ID.”" caption="On this page, under “General,” you should see a “GOOGLE PROJECT” section with a field “Project ID.”" %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/3" title: "On this page, under “General,” you should see a “GOOGLE PROJECT” section with a field “Project ID.”" caption: "On this page, under “General,” you should see a “GOOGLE PROJECT” section with a field “Project ID.”" %}
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/4" title="You’ll need that project id(mine, in this case, is `simplealarm-spoitm`) for the next step." caption="You’ll need that project id(mine, in this case, is `simplealarm-spoitm`) for the next step." %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/4" title: "You’ll need that project id(mine, in this case, is `simplealarm-spoitm`) for the next step." caption: "You’ll need that project id(mine, in this case, is `simplealarm-spoitm`) for the next step." %}
 
 
 
@@ -98,27 +98,27 @@ First, navigate to the GCP [console](https://console.cloud.google.com/) (now’s
 
 In the left hand bar, go to IAM & admin -> Service accounts.
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/5" title="Click “+ CREATE SERVICE ACCOUNT” at the top of the screen." caption="Click “+ CREATE SERVICE ACCOUNT” at the top of the screen." %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/5" title: "Click “+ CREATE SERVICE ACCOUNT” at the top of the screen." caption: "Click “+ CREATE SERVICE ACCOUNT” at the top of the screen." %}
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/6" title="Create a new service account and name it something like “raspberry_pi”." caption="Create a new service account and name it something like “raspberry_pi”." %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/6" title: "Create a new service account and name it something like “raspberry_pi”." caption: "Create a new service account and name it something like “raspberry_pi”." %}
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/7" title="Click create. On the next page, you’ll be able to give permissions to your account. For now, all we’ll need is the “Dialogflow API Client” permission." caption="Click create. On the next page, you’ll be able to give permissions to your account. For now, all we’ll need is the “Dialogflow API Client” permission." %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/7" title: "Click create. On the next page, you’ll be able to give permissions to your account. For now, all we’ll need is the “Dialogflow API Client” permission." caption: "Click create. On the next page, you’ll be able to give permissions to your account. For now, all we’ll need is the “Dialogflow API Client” permission." %}
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/8" title="Finally, on the last screen, you’ll see a button that says “+ CREATE KEY.” Click that button." caption="Finally, on the last screen, you’ll see a button that says “+ CREATE KEY.” Click that button." %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/8" title: "Finally, on the last screen, you’ll see a button that says “+ CREATE KEY.” Click that button." caption: "Finally, on the last screen, you’ll see a button that says “+ CREATE KEY.” Click that button." %}
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/9" title="Next, select “JSON” for Key type and select Create." caption="Next, select “JSON” for Key type and select Create." %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/9" title: "Next, select “JSON” for Key type and select Create." caption: "Next, select “JSON” for Key type and select Create." %}
 
 
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/10" title="This should download a `json` key file with credentials to your computer. I like to rename mine something like `key.json`." caption="This should download a `json` key file with credentials to your computer. I like to rename mine something like `key.json`." %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/10" title: "This should download a `json` key file with credentials to your computer. I like to rename mine something like `key.json`." caption: "This should download a `json` key file with credentials to your computer. I like to rename mine something like `key.json`." %}
 
 
 
@@ -135,7 +135,7 @@ Enabling Text-to-Speech
 
 Next, you’ll need to enable Google’s Text-to-Speech API. Navigate [here](https://console.cloud.google.com/apis/library/texttospeech.googleapis.com) and click “Enable”:
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/11.png" title="" caption="" %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/11.png" title: "" caption: "" %}
 
 
 
@@ -200,7 +200,7 @@ appear in the Terminal.
 
 If you’re running this on your laptop or some device with a keyboard, hit “enter” to start conversing. On the AIY Voice Kit, hit push button.
 
-{% include image_caption.html imageurl="/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/12.png" title="Either press a keyboard key or the button on top of the AIY kit" caption="Either press a keyboard key or the button on top of the AIY kit" %}
+{% include "image_caption.html" imageurl: "/images/2020-02-25-building-a-talking-trivia-alarm-clock,-part-2:-streaming-dialogflow-on-a-raspberry-pi/12.png" title: "Either press a keyboard key or the button on top of the AIY kit" caption: "Either press a keyboard key or the button on top of the AIY kit" %}
 
 
 

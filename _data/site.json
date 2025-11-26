@@ -1,0 +1,22 @@
+{
+  "title": "Dale on AI",
+  "description": "Dale Markowitz talks about AI",
+  "url": "https://daleonai.com",
+  "favicon": "images/favicon.ico",
+  "google_analytics": "UA-165957528-1",
+  "navigation": [
+    {
+      "text": "Articles",
+      "url": "/"
+    },
+    {
+      "text": "About",
+      "url": "/about/"
+    }
+  ],
+  "disqus": "daleonai-com",
+  "footer": {
+    "content": "&copy; Dat Dale tho.",
+    "has_social": true
+  }
+}
