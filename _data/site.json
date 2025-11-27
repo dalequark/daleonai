@@ -13,10 +13,5 @@
       "text": "About",
       "url": "/about/"
     }
-  ],
-  "disqus": "daleonai-com",
-  "footer": {
-    "content": "&copy; Dat Dale tho.",
-    "has_social": true
-  }
+  ]
 }
