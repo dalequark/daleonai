@@ -5,9 +5,10 @@
   "main": ".eleventy.js",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy",
+    "build": "npm run css && eleventy",
     "css": "sass assets/css/style.scss _site/assets/css/style.css",
-    "watch:css": "npm run css -- --watch"
+    "watch:css": "npm run css -- --watch",
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
