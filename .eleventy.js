@@ -1,10 +1,10 @@
 const { DateTime } = require("luxon");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 
-module.exports = function(eleventyConfig) {
+module.exports = function (eleventyConfig) {
   // Passthrough copy for assets, images, and admin
   eleventyConfig.addPassthroughCopy("assets");
-  eleventyConfig.addPassthroughCopy({ "images": "assets/img" });
+  eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("admin");
 
   // Format dates
@@ -24,21 +24,21 @@ module.exports = function(eleventyConfig) {
   });
 
   // Configure collection for posts
-  eleventyConfig.addCollection("posts", function(collection) {
-    return collection.getFilteredByGlob("posts/*.md").sort(function(a, b) {
+  eleventyConfig.addCollection("posts", function (collection) {
+    return collection.getFilteredByGlob("posts/*.md").sort(function (a, b) {
       return b.date - a.date;
     });
   });
 
   // Create a collection of all tags
-  eleventyConfig.addCollection("tagList", function(collection) {
+  eleventyConfig.addCollection("tagList", function (collection) {
     let tagSet = new Set();
-    collection.getAll().forEach(function(item) {
-      if( "tags" in item.data ) {
+    collection.getAll().forEach(function (item) {
+      if ("tags" in item.data) {
         let tags = item.data.tags;
 
-        tags = tags.filter(function(item) {
-          switch(item) {
+        tags = tags.filter(function (item) {
+          switch (item) {
             // this list should match the tags used in your templates, like page.md
             case "all":
             case "nav":
