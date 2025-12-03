@@ -2,47 +2,64 @@
 layout: default
 ---
 
-<main class="main-content">
-
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">{{ title }}</h1>
-      <div class="post-meta">
-        <span class="post-author">By {{ author.name }}</span>
-        <span class="post-meta-divider">·</span>
-        <time class="post-date" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | postDate }}</time>
+<article class="post max-w-3xl mx-auto py-12">
+    <header class="mb-12 text-center">
+      <div class="mb-4 flex items-center justify-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-dale-pink"></span>
+        <span class="font-mono text-sm font-bold uppercase tracking-widest text-dale-pink">
+          {% if tags %}
+            {{ tags | first }}
+          {% else %}
+            Article
+          {% endif %}
+        </span>
       </div>
 
-      {% if feature_image and feature_image != "" %}
-      <figure class="post-image image-card width-wide">
-        <img src="{{ feature_image }}" alt="{{ title }}">
-      </figure>
+      <h1 class="font-serif font-bold text-4xl md:text-5xl text-solar-bg mb-6 leading-tight">
+        {{ title }}
+      </h1>
+
+      <div class="flex items-center justify-center gap-6 font-mono text-xs text-slate-400 uppercase tracking-wider">
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
+          {{ page.date | date: "%B %d, %Y" }}
+        </time>
+        <span>/</span>
+        <span>By {{ author.name | default: site.title }}</span>
+      </div>
+
+      {% if feature_image %}
+      <div class="mt-8 rounded-xl overflow-hidden shadow-lg">
+        <img src="{{ feature_image }}" alt="{{ title }}" class="w-full h-auto object-cover">
+      </div>
       {% endif %}
     </header>
 
-    <div class="post-content">
+    <div class="prose prose-lg prose-slate mx-auto font-serif">
       {{ content }}
-    </div><!-- .post-content -->
+    </div>
 
     {% if tags.size > 0 %}
-    <div class="post-tags">
-      <h3>Article Tags</h3>
-      {% for tag in tags %}<a class="tag-block" href="/tags#{{ tag | cgi_escape }}" rel="tag">{{ tag }}</a>{% endfor %}
+    <div class="mt-12 pt-8 border-t border-slate-200">
+      <h3 class="font-mono text-sm font-bold uppercase tracking-widest text-slate-400 mb-4">Tags</h3>
+      <div class="flex flex-wrap gap-2">
+        {% for tag in tags %}
+          <a href="/tags#{{ tag | cgi_escape }}" class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-mono hover:bg-dale-pink hover:text-white transition-colors">
+            {{ tag }}
+          </a>
+        {% endfor %}
+      </div>
     </div>
     {% endif %}
 
-    <div class="post-share">
-      <h3>Share this Article</h3>
-      {% if page.url %}
-      <a class="tag-block" target="_blank"
+    <div class="mt-12 pt-8 border-t border-slate-200">
+      <h3 class="font-mono text-sm font-bold uppercase tracking-widest text-slate-400 mb-4">Share</h3>
+      <div class="flex gap-4">
+        <a class="text-solar-cyan hover:text-dale-pink transition-colors font-mono text-sm" target="_blank"
         href="https://twitter.com/intent/tweet?text={{ title | url_encode }}&amp;url={{ site.url }}{{ page.url }}"
         rel="noopener">Twitter</a>
-      <a class="tag-block" target="_blank"
+      <a class="text-solar-cyan hover:text-dale-pink transition-colors font-mono text-sm" target="_blank"
         href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}&amp;t={{ title | url_encode }}"
         rel="noopener">Facebook</a>
-      {% endif %}
-    </div><!-- .share-post -->
-
-  </article><!-- .post -->
-
-</main><!-- .main-content -->
+      </div>
+    </div>
+</article>
