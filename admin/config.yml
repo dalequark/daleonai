@@ -1,9 +1,7 @@
 backend:
   name: github
-  branch: master # Branch to update (optional; defaults to master)
+  branch: feat/eleventy-migration # Branch to update (optional; defaults to master)
   repo: dalequark/daleonai
-  site_domain: tender-fermi-3d1983.netlify.app
-
 
 publish_mode: editorial_workflow
 
