@@ -11,7 +11,7 @@ tags:
   - ai
   - deepfakes
   - gan
-permalink: ai-generated-identity
+permalink: ai-generated-identity/
 ---
 [@azusagakuyuki](https://twitter.com/azusagakuyuki/status/1402512356769296384?s=20) is a young Japanese motorcyclist with long hair, a delicate chin, and 33,000 Twitter followers. There, she posts pictures of herself in a biker shirt, posing in front of her gleaming red-and-blue Yamaha Telkor on dirt roads and hilltops and misty beaches. She’s beautiful, adventurous, and envy-inducing. 
 

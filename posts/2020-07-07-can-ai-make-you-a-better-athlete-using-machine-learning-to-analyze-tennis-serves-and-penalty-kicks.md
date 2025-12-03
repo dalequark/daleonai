@@ -13,7 +13,7 @@ tags:
 - video intelligence
 - computer vision
 - google cloud
-permalink: machine-learning-for-sports
+permalink: machine-learning-for-sports/
 
 ---
 _I'll show you how to use machine learning to analyze your performance in your sport of choice (mine's Tennis!)._

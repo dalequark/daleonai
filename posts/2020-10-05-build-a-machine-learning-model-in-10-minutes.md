@@ -8,7 +8,7 @@ thumbnail_image: /images/build_ml_thumb.jpeg
 tags:
   - machine learning
   - tensorflow.js
-permalink: ml-model-ten-mins
+permalink: ml-model-ten-mins/
 ---
 I like to divide my machine learning education into two eras:
 

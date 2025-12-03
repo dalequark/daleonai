@@ -6,7 +6,7 @@ description: A quick intro to Transformers, a new neural network transforming
   SOTA in machine learning.
 feature_image: /images/transformers-explained.png
 thumbnail_image: /images/transformers-explained-small.png
-permalink: transformers-explained
+permalink: transformers-explained/
 ---
 You know that expression *When you have a hammer, everything looks like a nail*? Well, in machine learning, it seems like we really have discovered a magical hammer for which everything is, in fact, a nail, and they're called Transformers. Transformers are models that can be designed to translate text, write [poems and op eds](https://www.gwern.net/GPT-3), and [even generate computer code](https://www.wired.com/story/ai-latest-trick-writing-computer-code/). In fact, lots of the amazing research I write about on daleonai.com is built on Transformers, like [AlphaFold 2](https://daleonai.com/how-alphafold-works), the model that predicts the structures of proteins from their genetic sequences, as well as powerful natural language processing (NLP) models like [GPT-3](https://daleonai.com/how-alphafold-works), BERT, T5, Switch, Meena, and others. You might say they're more than meets the... ugh, forget it.
 

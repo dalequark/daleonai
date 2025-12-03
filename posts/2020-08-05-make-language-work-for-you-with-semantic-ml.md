@@ -12,7 +12,7 @@ tags:
 - natural language processing
 - 'nlp '
 - tensorflow
-permalink: semantic-ml
+permalink: semantic-ml/
 
 ---
 _In this post, I'll show you how to use beginner-friendly ML tools--Semantic Reactor and TensorFlow.js--to build an app that's powered by natural language._

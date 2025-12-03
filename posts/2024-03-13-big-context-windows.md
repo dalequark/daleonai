@@ -10,7 +10,7 @@ tags:
   - genai
   - llm
   - ml
-permalink: bigcontextwindows
+permalink: bigcontextwindows/
 ---
 Last week, I got my hands on Google's newest generative model: Gemini 1.5, a multi-modal behemoth that can consume up to an hour of video, 11 hours of audio, 30,000 lines of code, or 700,000 words. That's a big leap forward in terms of context length: Gemini accepts 5x times more input than its beefiest predecessor, Claude 2.1.
 

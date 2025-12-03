@@ -10,7 +10,7 @@ tags:
   - nlp
   - computervision
   - ml
-permalink: embeddings-explained
+permalink: embeddings-explained/
 ---
 Embeddings are one of the most versatile techniques in machine learning, and a critical tool every ML engineer should have in their tool belt. It’s a shame, then, that so few of us understand what they are and what they’re good for!
 

@@ -6,7 +6,7 @@ description: Forcing machine learning hires to have fancy degrees is outdated, a
 date: 2020-08-26
 feature_image: "/images/your-ml-hire-doesn-t-need-a-phd.png"
 tags: []
-permalink: hire-ml-no-phd
+permalink: hire-ml-no-phd/
 
 ---
 Asking Machine Learning/AI hires to have fancy degrees is outdated. Here's why.

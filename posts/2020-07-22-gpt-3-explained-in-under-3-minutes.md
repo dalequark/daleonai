@@ -9,7 +9,7 @@ tags:
 - nlp
 - generative models
 - machine learning
-permalink: gpt3-explained-fast
+permalink: gpt3-explained-fast/
 
 ---
 

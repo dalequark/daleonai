@@ -13,7 +13,7 @@ tags:
   - automl
   - machinelearning
   - videointelligence
-permalink: ai-pet-cam
+permalink: ai-pet-cam/
 ---
 
 

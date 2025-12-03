@@ -10,7 +10,7 @@ tags:
   - computer vision
   - machine learning
   - google cloud
-permalink: social-media-fashion-ai
+permalink: social-media-fashion-ai/
 ---
 Last year, in a universe where it still made sense to own pants, I decided to hire a personal stylist. 
 

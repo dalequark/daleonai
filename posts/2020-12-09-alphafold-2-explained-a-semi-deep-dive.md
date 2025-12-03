@@ -9,7 +9,7 @@ thumbnail_image: /images/copy-of-ai-stylist-1-.png
 tags:
   - machinelearning
   - healthcare
-permalink: how-alphafold-works
+permalink: how-alphafold-works/
 ---
 At the end of last month, DeepMind, Google’s machine learning research branch known for building bots that beat world champions at Go and StarCraft II, [hit a new benchmark](https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology): accurately predicting the structure of proteins. If their results are as good as the team claims, their model, AlphaFold, could be a major boon for both drug discovery and fundamental biological research. But how does this new neural-network-based model work? In this post, I’ll try to give you a brief but semi-deep dive behind both the machine learning and biology that power this model.
 

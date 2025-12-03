@@ -7,7 +7,7 @@ feature_image: /images/copy-of-painless-ai-on-google-cloud.png
 thumbnail_image: /images/imposter-syndrome.png
 tags:
   - life
-permalink: my-take-imposter-syndrome-tech
+permalink: my-take-imposter-syndrome-tech/
 ---
 Let me start this post off by saying that imposter syndrome has already been covered profusely and at length, and there’s probably nothing new I can add to the discussion, so let me stop here, thanks for reading, and sorry for wasting your time.
 

@@ -8,7 +8,7 @@ tags:
 - google cloud
 - nlp
 - machine learning
-permalink: pdf-to-audiobook
+permalink: pdf-to-audiobook/
 
 ---
 _Ever wish you could listen to documents? In this post, we'll use machine learning to transform PDFs into audiobooks._

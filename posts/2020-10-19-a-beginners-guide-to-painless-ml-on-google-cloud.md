@@ -10,7 +10,7 @@ tags:
   - machine learning
   - nlp
   - google cloud
-permalink: painless-gcp-ml
+permalink: painless-gcp-ml/
 ---
 A few weeks ago, the folks who run Google's Cloud Blog asked me to put together a post for them on my favorite, developer-friendly ML tools. If you regularly read this blog, you've probably seen many of them in action! But if you haven't, here's the post (see the original [here](https://cloud.google.com/blog/products/ai-machine-learning/beginners-guide-to-painless-machine-learning)). Enjoy!
 

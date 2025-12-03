@@ -10,7 +10,7 @@ tags:
   - gpt3
   - nlp
   - computervision
-permalink: dalle-5-mins
+permalink: dalle-5-mins/
 ---
 It seems like every few months, someone publishes a machine learning paper or demo that makes my jaw drop. This month, it's OpenAI's new image-generating model, [DALL·E](https://openai.com/blog/dall-e/).
 

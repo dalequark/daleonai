@@ -10,7 +10,7 @@ tags:
   - ml
   - googlecloud
   - ""
-permalink: impractical-gcp-ai-guide
+permalink: impractical-gcp-ai-guide/
 ---
 Your manager holds a gun to the side of your head and says, “Sell me a Google Cloud AI product in the next ten minutes or you’re toast.” It’s that time of year again. Performance reviews. *Perf*.
 

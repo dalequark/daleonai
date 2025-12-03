@@ -8,7 +8,7 @@ feature_image: /images/ai-dubs-2-.png
 thumbnail_image: /images/ai-dubs-3-.png
 tags:
   - nlp
-permalink: translate-dub-videos-with-ml
+permalink: translate-dub-videos-with-ml/
 ---
 Alongside cooking for myself and walking laps around the house, Japanese cartoons (or "anime" as the kids are calling it) are something I've learned to love during quarantine.
 
