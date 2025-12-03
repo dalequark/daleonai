@@ -19,7 +19,7 @@ pagination:
           {% endif %}
           <h2 class="post-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
           <div class="post-meta">
-            <span class="post-author">By {{ site.data.author.name }}</span>
+            <span class="post-author">By {{ author.name }}</span>
             <span class="post-meta-divider">·</span>
             <time class="post-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | postDate }}</time>
           </div>
