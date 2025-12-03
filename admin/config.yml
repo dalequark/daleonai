@@ -2,6 +2,16 @@ backend:
   name: github
   branch: feat/eleventy-migration # Branch to update (optional; defaults to master)
   repo: dalequark/daleonai
+  base_url: https://daleonai.vercel.app # Defaults to site root, but good to be explicit or dynamic if possible. 
+  # Actually, Decap CMS uses the current domain by default if base_url is not set, but we need to tell it where the auth endpoint is relative to.
+  # If we set base_url, it looks for /auth and /callback relative to that.
+  # Let's try omitting base_url first as it defaults to current domain, which is what we want for the Vercel deployment.
+  # Wait, the user is on a preview URL. If we hardcode base_url, it might break preview.
+  # But we need to tell it to use the custom backend.
+  # The documentation says: "When using the 'repo' backend, you can specify a 'base_url' to point to your own authentication server."
+  # If we don't specify it, it defaults to https://api.netlify.com.
+  # So we MUST specify it.
+  base_url: "" # Relative to current domain
 
 publish_mode: editorial_workflow
 
