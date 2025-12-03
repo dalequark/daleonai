@@ -25,7 +25,7 @@ pagination:
           </div>
         </header>
         <div class="post-content">
-          {{ post.templateContent | truncatewords: 50 }}
+          {{ post.templateContent | strip_html | truncatewords: 50 }}
         </div>
         <div class="post-footer">
           <a href="{{ post.url }}" class="read-more">Read More</a>
