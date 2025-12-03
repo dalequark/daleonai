@@ -52,3 +52,24 @@ Runs the Sass compiler in watch mode. Use this in a separate terminal tab during
 - **`assets/`**: Static assets like CSS (Sass), images, and JS.
 - **`images/`**: Post-specific images.
 - **`.eleventy.js`**: Eleventy configuration file.
+
+## Writing Posts
+
+To create a new blog post:
+
+1.  Create a new Markdown file in the `posts/` directory.
+2.  Name the file with the format `YYYY-MM-DD-your-title.md` (e.g., `2023-10-27-hello-world.md`).
+3.  Add the following Front Matter at the top of the file:
+
+    ```yaml
+    ---
+    layout: post
+    title: "Your Post Title"
+    date: 2023-10-27
+    tags: ["tag1", "tag2"]
+    author: "Your name here"
+    feature_image: "/images/your-image.jpg" # Optional
+    ---
+    ```
+
+4.  Write your content below the Front Matter using Markdown.
