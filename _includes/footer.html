@@ -1,13 +1,13 @@
-<footer class="site-footer">
-  <div class="footer-bottom">
-    <div class="footer-social">
-      {% if site.footer.has_social %}
-        {% include "social.html" %}
-      {% endif %}
+<footer class="bg-solar-bg border-t border-white/5 py-12 mt-auto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 font-mono text-xs text-solar-text/60 uppercase tracking-wider">
+    <div>
+      &copy; {{ "now" | date: "%Y" }} Dale on AI. All rights reserved.
     </div>
-    <div class="copyright">
-      {{ site.footer.content }}
+
+    <div class="flex gap-8">
+      <a href="https://github.com/dalequark" class="hover:text-dale-pink transition-colors">Github</a>
+      <a href="https://twitter.com/dalequark" class="hover:text-dale-pink transition-colors">Twitter</a>
+      <a href="https://www.linkedin.com/in/dale-markowitz/" class="hover:text-dale-pink transition-colors">LinkedIn</a>
     </div>
-    <a href="#page" id="back-to-top" class="back-to-top"><span class="screen-reader-text">Back to the top </span>&#8593;</a>
-  </div><!-- .footer-bottom -->
-</footer><!-- .site-footer -->
+  </div>
+</footer>
