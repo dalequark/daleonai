@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dale on AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['Newsreader', 'serif'],
+              mono: ['Source Code Pro', 'monospace'],
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'solar-bg': '#2E3440',      /* Nord Polar Night */
+              'solar-text': '#D8DEE9',    /* Nord Snow Storm */
+              'solar-green': '#A3BE8C',   /* Nord Green */
+              'solar-cyan': '#88C0D0',    /* Nord Cyan */
+              'dale-pink': '#B48EAD',     /* Nord Purple/Pink - nice pastel */
+              'dale-bg': '#F0F4F8',       /* Very light blue-grey pastel background */
+              'pastel-purple': '#Cba6f7',
+              'pastel-blue': '#89b4fa',
+              'pastel-yellow': '#f9e2af',
+            },
+            animation: {
+              'cursor-blink': 'blink 1.2s step-end infinite',
+            },
+            keyframes: {
+              blink: {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '0' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #F0F4F8;
+      }
+      /* Hide scrollbar for clean horizontal scrolling if needed */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

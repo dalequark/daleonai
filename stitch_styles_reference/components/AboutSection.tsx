@@ -1,0 +1,35 @@
+import React from 'react';
+
+export const AboutSection: React.FC = () => {
+  return (
+    <section className="border-t border-b border-slate-200 py-16 my-8 bg-white">
+      <div className="flex flex-col md:flex-row items-center gap-10 max-w-4xl mx-auto px-4">
+        <div className="relative shrink-0 group">
+            {/* Decorative border/shadow effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-pastel-purple to-pastel-blue rounded-full transform rotate-6 scale-105 opacity-70 blur-md group-hover:rotate-12 transition-transform duration-500"></div>
+            <img 
+                src="https://picsum.photos/200/200?random=99" 
+                alt="Dale"
+                className="relative w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-white shadow-xl"
+            />
+        </div>
+        
+        <div className="text-center md:text-left">
+          <h2 className="font-serif font-bold text-3xl md:text-4xl text-solar-bg mb-4">
+            About Dale
+          </h2>
+          <p className="font-sans text-slate-500 text-lg leading-relaxed mb-6">
+            Hey, I'm Dale. I'm a machine learning engineer with a passion for making complex AI concepts accessible to everyone. My goal with this blog is to share practical, hands-on knowledge that empowers developers to build the next generation of intelligent applications.
+          </p>
+          <a 
+            href="#" 
+            className="font-mono text-sm font-bold text-dale-pink uppercase tracking-widest hover:text-pastel-purple transition-colors flex items-center justify-center md:justify-start gap-2 group"
+          >
+            More about my journey 
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
