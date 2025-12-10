@@ -10,14 +10,14 @@ pagination:
 
 <section class="pb-16">
   <!--
-    Tailwind's columns utility creates a masonry-like layout
-    by ordering items top-to-bottom within columns.
+    Using CSS Grid for strict left-to-right, top-to-bottom ordering.
+    Each card will take up equal height in the row to maintain alignment.
   -->
-  <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     {% for post in posts %}
-    <div class="break-inside-avoid mb-8 group cursor-pointer" onclick="window.location.href='{{ post.url }}'">
-      <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-dale-pink/30">
-        <div class="overflow-hidden relative">
+    <div class="group cursor-pointer flex flex-col h-full" onclick="window.location.href='{{ post.url }}'">
+      <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-dale-pink/30 flex flex-col h-full">
+        <div class="overflow-hidden relative flex-shrink-0">
           {% if post.data.feature_image %}
           <img
             src="{{ post.data.feature_image }}"
@@ -31,7 +31,7 @@ pagination:
           {% endif %}
           <div class="absolute inset-0 bg-dale-pink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"></div>
         </div>
-        <div class="p-6">
+        <div class="p-6 flex flex-col flex-grow">
           <div class="mb-3 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-dale-pink"></span>
             <span class="font-mono text-xs font-bold uppercase tracking-widest text-dale-pink">
@@ -48,7 +48,7 @@ pagination:
           <p class="font-sans text-slate-500 mb-5 text-sm leading-relaxed line-clamp-3">
             {{ post.data.description | default: post.templateContent | strip_html | truncate: 150 }}
           </p>
-          <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+          <div class="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto">
             <div class="font-mono text-xs text-slate-400">
                 {{ post.date | date: "%b %d, %Y" }}
             </div>
