@@ -2,18 +2,14 @@
 layout: default
 ---
 
-<main class="main-content">
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">{{ title }}</h1>
-      {% if feature_image and feature_image != "" %}
-      <figure class="post-thumbnail image-card width-wide">
-        <img src="{{ feature_image }}" alt="{{ title }}">
-      </figure><!-- .post-thumbnail -->
-      {% endif %}
-    </header><!-- .post-header -->
-    <div class="post-content">
-      {{ content }}
-    </div><!-- .post-content -->
-  </article><!-- .post -->
-</main><!-- .site-main -->
+<article class="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+  <header class="mb-12 text-center">
+    <h1 class="font-serif font-bold text-4xl md:text-5xl text-solar-bg mb-6 leading-tight">
+      {{ title }}
+    </h1>
+  </header>
+
+  <div class="prose prose-lg prose-slate mx-auto font-serif">
+    {{ content }}
+  </div>
+</article>

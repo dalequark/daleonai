@@ -2,27 +2,61 @@
 layout: default
 ---
 
-<main class="site-main">
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">{{ title }}</h1>
-    </header><!-- .post-header -->
-    <div class="post-content">
-      <div class="archive-tags">
-        {% for tag in collections.tagList %}
-          <a class="tag-block" href="#{{ tag | cgi_escape }}">{{ tag }}</a>
-        {% endfor %}
-      </div><!-- .archive-tag-list -->
+<div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+  <header class="mb-16 text-center">
+    <div class="mb-4 inline-block">
+      <span class="font-mono text-sm font-bold uppercase tracking-widest text-dale-pink bg-dale-pink/10 px-3 py-1 rounded-full">
+        Archive
+      </span>
+    </div>
+    <h1 class="font-serif font-bold text-4xl md:text-5xl text-solar-bg mb-6">Article Tags</h1>
+    <p class="font-sans text-lg text-slate-600 max-w-2xl mx-auto">
+      Browse all articles by topic.
+    </p>
+
+    <!-- Tag Cloud -->
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
       {% for tag in collections.tagList %}
-        <h2 id="{{ tag | cgi_escape }}">{{ tag }}</h2>
-        <ul class="archive-post-list">
+        <a href="#{{ tag | cgi_escape }}" class="group flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-full hover:border-dale-pink hover:bg-dale-pink/5 transition-all">
+          <span class="font-mono text-sm font-medium text-slate-600 group-hover:text-dale-pink">{{ tag }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </header>
+
+  <div class="space-y-16">
+    {% for tag in collections.tagList %}
+      <section id="{{ tag | cgi_escape }}" class="scroll-mt-24">
+        <div class="flex items-center gap-4 mb-6 pb-2 border-b border-slate-200">
+          <h2 class="font-serif font-bold text-3xl text-solar-bg">{{ tag | capitalize }}</h2>
+          <span class="px-2 py-1 bg-slate-100 rounded text-xs font-mono text-slate-500">
+            {{ collections[tag].size }} posts
+          </span>
+        </div>
+
+        <div class="grid gap-6">
           {% for post in collections.posts %}
             {% if post.data.tags contains tag %}
-              <li><a href="{{ post.url }}">{{ post.data.title }}</a> <span class="archive-meta"> — <time class="archive-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | postDate }}</time></span></li>
+              <article class="group relative flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 p-4 -mx-4 rounded-xl hover:bg-white hover:shadow-sm transition-all">
+                <time class="font-mono text-sm text-slate-400 shrink-0 w-32" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+                  {{ post.date | date: "%b %d, %Y" }}
+                </time>
+                <div>
+                  <h3 class="font-serif font-bold text-xl text-slate-800 group-hover:text-dale-pink transition-colors">
+                    <a href="{{ post.url }}">
+                      <span class="absolute inset-0"></span>
+                      {{ post.data.title }}
+                    </a>
+                  </h3>
+                  {% if post.data.description %}
+                  <p class="mt-2 text-sm text-slate-600 line-clamp-2">{{ post.data.description }}</p>
+                  {% endif %}
+                </div>
+              </article>
             {% endif %}
           {% endfor %}
-        </ul><!-- .archive-post-list -->
-      {% endfor %}
-    </div><!-- .post-content -->
-  </article><!-- .post -->
-</main><!-- .site-main -->
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<section class="py-16 md:py-24 flex flex-col items-center text-center">
+  <h1 class="font-serif italic text-5xl md:text-7xl text-solar-bg mb-6 tracking-tight drop-shadow-sm">
+    Dale on AI
+  </h1>
+
+  <div class="w-full border-t border-b border-slate-200/60 py-6 bg-white/30 backdrop-blur-sm">
+    <div class="flex flex-wrap justify-center items-center gap-3 md:gap-4" id="topic-filter">
+      <span class="font-mono text-xs uppercase tracking-widest text-slate-400 mr-2">
+        Filter by:
+      </span>
+      {% assign topics = "All,LLMs,Fine-Tuning,Prompting,Systems,Python,Architecture" | split: "," %}
+      {% for topic in topics %}
+        {% if topic == 'All' %}
+          <a
+            href="/"
+            class="topic-btn px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 ease-out border bg-dale-pink text-white border-dale-pink shadow-lg shadow-dale-pink/20 scale-105 active"
+          >
+            {{ topic }}
+          </a>
+        {% else %}
+          <a
+            href="/tags#{{ topic | downcase }}"
+            class="topic-btn px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 ease-out border bg-white text-slate-500 border-slate-200 hover:border-dale-pink hover:text-dale-pink hover:shadow-md"
+          >
+            {{ topic }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
