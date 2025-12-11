@@ -11,6 +11,25 @@
       name="description"
       content="{{ description | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}"
     />
+    <meta property="og:title" content="{% if title %}{{ title | escape }}{% else %}{{ site.title | escape }}{% endif %}" />
+    <meta property="og:description" content="{{ description | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:site_name" content="{{ site.title }}" />
+    {% if feature_image %}
+    <meta property="og:image" content="{{ site.url }}{{ feature_image }}" />
+    {% elsif thumbnail_image %}
+    <meta property="og:image" content="{{ site.url }}{{ thumbnail_image }}" />
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@dalequark" />
+    <meta name="twitter:creator" content="@dalequark" />
+    <meta name="twitter:title" content="{% if title %}{{ title | escape }}{% else %}{{ site.title | escape }}{% endif %}" />
+    <meta name="twitter:description" content="{{ description | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
+    {% if feature_image %}
+    <meta name="twitter:image" content="{{ site.url }}{{ feature_image }}" />
+    {% elsif thumbnail_image %}
+    <meta name="twitter:image" content="{{ site.url }}{{ thumbnail_image }}" />
+    {% endif %}
     <link
       rel="canonical"
       href="{{ page.url | replace:'index.html', '' }}"
