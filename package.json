@@ -5,6 +5,7 @@
   "main": ".eleventy.js",
   "scripts": {
     "start": "eleventy --serve",
+    "new-post": "node scripts/create_post.js",
     "build": "npm run css && eleventy",
     "css": "sass assets/css/style.scss _site/assets/css/style.css",
     "watch:css": "npm run css -- --watch",
