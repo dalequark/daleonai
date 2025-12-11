@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@11ty/eleventy-img": "^6.0.4",
     "luxon": "^2.3.1"
   },
   "devDependencies": {

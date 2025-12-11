@@ -6,7 +6,7 @@ pagination:
   alias: posts
 ---
 
-{% include "hero.html" %}
+{% include "hero.njk" %}
 
 <section class="pb-16">
   <!--
@@ -17,19 +17,17 @@ pagination:
     {% for post in posts %}
     <div class="group cursor-pointer flex flex-col h-full" onclick="window.location.href='{{ post.url }}'">
       <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-dale-pink/30 flex flex-col h-full">
-        <div class="overflow-hidden relative flex-shrink-0">
+        <div class="overflow-hidden relative flex-shrink-0" style="aspect-ratio: 16/9;">
           {% if post.data.feature_image or post.data.thumbnail_image %}
-          <img
-            src="{{ post.data.feature_image | default: post.data.thumbnail_image }}"
-            alt="{{ post.data.title }}"
-            class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out grayscale-[10%] group-hover:grayscale-0"
-          />
+            {% set image_src = post.data.feature_image or post.data.thumbnail_image %}
+            {% set image_cls = "w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out grayscale-[10%] group-hover:grayscale-0" %}
+            {% image image_src, post.data.title, image_cls %}
           {% else %}
-          <div class="w-full h-48 bg-slate-200 flex items-center justify-center text-slate-400">
+          <div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400">
             No Image
           </div>
           {% endif %}
-          <div class="absolute inset-0 bg-dale-pink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-multiply"></div>
+          <div class="absolute inset-0 bg-dale-pink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-multiply pointer-events-none"></div>
         </div>
         <div class="p-6 flex flex-col flex-grow">
           <div class="mb-3 flex items-center gap-2">
@@ -46,11 +44,11 @@ pagination:
             {{ post.data.title }}
           </h3>
           <p class="font-sans text-slate-500 mb-5 text-sm leading-relaxed line-clamp-3">
-            {{ post.data.description | default: post.templateContent | strip_html | truncate: 150 }}
+            {{ post.data.description | default(post.templateContent) | striptags | truncate(150) }}
           </p>
           <div class="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto">
             <div class="font-mono text-xs text-slate-400">
-                {{ post.date | date: "%b %d, %Y" }}
+                {{ post.date | postDate }}
             </div>
              <div class="font-mono text-xs font-semibold text-solar-cyan bg-solar-cyan/10 px-2 py-1 rounded">
                 Read
