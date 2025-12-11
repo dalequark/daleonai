@@ -18,9 +18,9 @@ pagination:
     <div class="group cursor-pointer flex flex-col h-full" onclick="window.location.href='{{ post.url }}'">
       <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:border-dale-pink/30 flex flex-col h-full">
         <div class="overflow-hidden relative flex-shrink-0">
-          {% if post.data.feature_image %}
+          {% if post.data.feature_image or post.data.thumbnail_image %}
           <img
-            src="{{ post.data.feature_image }}"
+            src="{{ post.data.feature_image | default: post.data.thumbnail_image }}"
             alt="{{ post.data.title }}"
             class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out grayscale-[10%] group-hover:grayscale-0"
           />
