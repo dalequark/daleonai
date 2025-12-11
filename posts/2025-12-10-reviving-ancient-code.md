@@ -3,9 +3,9 @@ layout: post
 title: Reviving Ancient Code with Google Jules
 date: 2025-12-10T20:41:03.137-06:00
 author: Dale Markowitz
-description: Using Google Jules to modernize crufty old codebases
-feature_image: /images/2025-12-10-reviving-ancient-code/image2.png
-thumbnail_image: /images/2025-12-10-reviving-ancient-code/image2.png
+description: Using AI to modernize codebases so old and crufty, just thinking about them makes you want to die.
+feature_image: /images/2025-12-10-reviving-ancient-code/header.png
+thumbnail_image: /images/2025-12-10-reviving-ancient-code/header.png
 tags: ["jules", "ai"]
 permalink: reviving-ancient-code/
 ---
