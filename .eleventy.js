@@ -71,7 +71,8 @@ module.exports = function (eleventyConfig) {
     templateFormats: [
       "md",
       "html",
-      "liquid"
+      "liquid",
+      "njk"
     ],
     markdownTemplateEngine: "liquid",
     htmlTemplateEngine: "liquid"
