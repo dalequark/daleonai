@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: daleonai
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./_site
+    customDomains:
+      - daleonai.com
+      - www.daleonai.com
